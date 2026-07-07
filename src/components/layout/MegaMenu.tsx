@@ -126,18 +126,19 @@ export function MegaMenu({ label, columns, variant = "default", featured }: Mega
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-1/2 -translate-x-1/2 top-full w-[min(880px,calc(100vw-2rem))] mt-px"
+              className="absolute left-1/2 -translate-x-1/2 top-full w-[min(900px,calc(100vw-2rem))] mt-px"
               onMouseEnter={() => setOpen(true)}
             >
               <div className="rounded-b-2xl border border-primary/15 border-t-0 bg-surface shadow-2xl shadow-black/50 p-6">
                 <div className="grid grid-cols-3 gap-6">
                   {columns.map((col) => (
                     <div key={col.title} className="space-y-1">
-                      <h4 className="text-xs font-mono font-bold tracking-widest text-primary uppercase mb-3">
+                      <h4 className="text-xs font-mono font-bold tracking-widest text-primary uppercase mb-3 flex items-center gap-2">
                         {col.title}
                       </h4>
                       {col.links.map((item) => {
-                        const Icon = (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[item.icon] || Circle;
+                        const iconName = item.icon ?? "";
+                        const Icon = (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[iconName] || Circle;
                         return (
                           <Link
                             key={item.label}
