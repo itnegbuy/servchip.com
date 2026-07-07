@@ -89,6 +89,51 @@ export default function RootLayout({
     <html lang="en" className="light" suppressHydrationWarning>
       <head>
         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Servchip Inc.",
+              url: "https://servchip.com",
+              logo: "https://servchip.com/favicon.svg",
+              description:
+                "Authorized distributor of authentic NVIDIA chips and enterprise GPU solutions.",
+              foundingDate: "2018",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+1-555-0123",
+                contactType: "sales",
+                email: "sales@servchip.com",
+                availableLanguage: ["English"],
+              },
+              sameAs: [
+                "https://www.linkedin.com/company/servchip",
+                "https://twitter.com/servchip",
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Servchip",
+              url: "https://servchip.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://servchip.com/products?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
