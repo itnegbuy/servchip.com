@@ -18,7 +18,6 @@ import {
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ChipModel } from "@/components/3d/ChipModel";
-import { SceneWrapper } from "@/components/3d/SceneWrapper";
 import { Button } from "@/components/ui/Button";
 import { TECHNOLOGY_FEATURES } from "@/data/home";
 
@@ -33,7 +32,12 @@ const ARCHITECTURE_TIMELINE = [
     chips: ["B200", "GB200"],
     color: "#76FF03",
     icon: Cpu,
-    features: ["FP4 Tensor Cores", "Transformer Engine v2", "NVLink 5.0 (1.8 TB/s)", "Dual-die design"],
+    features: [
+      "FP4 Tensor Cores",
+      "Transformer Engine v2",
+      "NVLink 5.0 (1.8 TB/s)",
+      "Dual-die design",
+    ],
   },
   {
     name: "Hopper",
@@ -45,7 +49,12 @@ const ARCHITECTURE_TIMELINE = [
     chips: ["H100", "H200", "GH200"],
     color: "#00E5FF",
     icon: Zap,
-    features: ["Transformer Engine", "FP8 Precision", "NVLink 4.0 (900 GB/s)", "Confidential Computing"],
+    features: [
+      "Transformer Engine",
+      "FP8 Precision",
+      "NVLink 4.0 (900 GB/s)",
+      "Confidential Computing",
+    ],
   },
   {
     name: "Ada Lovelace",
@@ -57,7 +66,12 @@ const ARCHITECTURE_TIMELINE = [
     chips: ["RTX 6000 Ada", "L40S", "L4", "RTX 4090"],
     color: "#AA00FF",
     icon: Boxes,
-    features: ["3rd-gen RT Cores", "4th-gen Tensor Cores", "AV1 Encode/Decode", "DLSS 3.5"],
+    features: [
+      "3rd-gen RT Cores",
+      "4th-gen Tensor Cores",
+      "AV1 Encode/Decode",
+      "DLSS 3.5",
+    ],
   },
   {
     name: "Ampere",
@@ -69,7 +83,12 @@ const ARCHITECTURE_TIMELINE = [
     chips: ["A100", "Jetson AGX Orin", "ConnectX-7"],
     color: "#FFD600",
     icon: Gauge,
-    features: ["3rd-gen Tensor Cores", "MIG (7 instances)", "TF32 Precision", "Structural Sparsity"],
+    features: [
+      "3rd-gen Tensor Cores",
+      "MIG (7 instances)",
+      "TF32 Precision",
+      "Structural Sparsity",
+    ],
   },
 ];
 
@@ -125,15 +144,69 @@ const FEATURE_DEEP_DIVES = [
 ];
 
 const ARCHITECTURE_COMPARISON = [
-  { label: "Architecture", blackwell: "Blackwell", hopper: "Hopper", ada: "Ada Lovelace", ampere: "Ampere" },
-  { label: "Process Node", blackwell: "4NP TSMC", hopper: "4nm TSMC", ada: "5nm TSMC 4N", ampere: "7nm TSMC" },
-  { label: "Max Memory", blackwell: "384GB HBM3e", hopper: "141GB HBM3e", ada: "48GB GDDR6", ampere: "80GB HBM2e" },
-  { label: "Memory Bandwidth", blackwell: "8 TB/s", hopper: "4.8 TB/s", ada: "960 GB/s", ampere: "2 TB/s" },
-  { label: "FP8 Performance", blackwell: "9000 TFLOPS", hopper: "3958 TFLOPS", ada: "2816 TFLOPS", ampere: "—" },
-  { label: "FP4 Performance", blackwell: "20 PFLOPS", hopper: "—", ada: "—", ampere: "—" },
-  { label: "NVLink", blackwell: "5.0 (1.8 TB/s)", hopper: "4.0 (900 GB/s)", ada: "Optional", ampere: "3.0 (600 GB/s)" },
-  { label: "Tensor Cores", blackwell: "5th gen", hopper: "4th gen", ada: "4th gen", ampere: "3rd gen" },
-  { label: "TDP (max)", blackwell: "1000W", hopper: "700W", ada: "350W", ampere: "400W" },
+  {
+    label: "Architecture",
+    blackwell: "Blackwell",
+    hopper: "Hopper",
+    ada: "Ada Lovelace",
+    ampere: "Ampere",
+  },
+  {
+    label: "Process Node",
+    blackwell: "4NP TSMC",
+    hopper: "4nm TSMC",
+    ada: "5nm TSMC 4N",
+    ampere: "7nm TSMC",
+  },
+  {
+    label: "Max Memory",
+    blackwell: "384GB HBM3e",
+    hopper: "141GB HBM3e",
+    ada: "48GB GDDR6",
+    ampere: "80GB HBM2e",
+  },
+  {
+    label: "Memory Bandwidth",
+    blackwell: "8 TB/s",
+    hopper: "4.8 TB/s",
+    ada: "960 GB/s",
+    ampere: "2 TB/s",
+  },
+  {
+    label: "FP8 Performance",
+    blackwell: "9000 TFLOPS",
+    hopper: "3958 TFLOPS",
+    ada: "2816 TFLOPS",
+    ampere: "—",
+  },
+  {
+    label: "FP4 Performance",
+    blackwell: "20 PFLOPS",
+    hopper: "—",
+    ada: "—",
+    ampere: "—",
+  },
+  {
+    label: "NVLink",
+    blackwell: "5.0 (1.8 TB/s)",
+    hopper: "4.0 (900 GB/s)",
+    ada: "Optional",
+    ampere: "3.0 (600 GB/s)",
+  },
+  {
+    label: "Tensor Cores",
+    blackwell: "5th gen",
+    hopper: "4th gen",
+    ada: "4th gen",
+    ampere: "3rd gen",
+  },
+  {
+    label: "TDP (max)",
+    blackwell: "1000W",
+    hopper: "700W",
+    ada: "350W",
+    ampere: "400W",
+  },
 ];
 
 const TECH_CARDS = [
@@ -176,7 +249,13 @@ function MiniScene() {
       style={{ background: "transparent" }}
     >
       <ambientLight intensity={0.35} />
-      <spotLight position={[3, 4, 3]} angle={0.3} penumbra={1} intensity={2} color="#76FF03" />
+      <spotLight
+        position={[3, 4, 3]}
+        angle={0.3}
+        penumbra={1}
+        intensity={2}
+        color="#76FF03"
+      />
       <pointLight position={[-3, 2, -3]} intensity={1.5} color="#00E5FF" />
       <directionalLight position={[0, 2, 5]} intensity={0.5} color="#ffffff" />
       <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.5}>
@@ -200,11 +279,8 @@ export default function TechnologyPage() {
       <PageHero
         label="The Technology"
         title="Built for the Next Generation of AI Computing"
-        subtitle="From Blackwell's FP4 precision to Grace CPU superchips — we deliver the most advanced NVIDIA architectures in the industry. Explore the technologies powering trillion-parameter AI."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Technology" },
-        ]}
+        subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel Granite Rapids — we deliver the most advanced chip architectures in the industry. Explore the technologies powering next-gen AI."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Technology" }]}
       />
 
       {/* Technology section */}
@@ -220,7 +296,7 @@ export default function TechnologyPage() {
           <SectionHeading
             label="The Technology"
             title="Built for the Next Generation of AI Computing"
-            subtitle="From Blackwell's FP4 precision to Grace CPU superchips — we deliver the most advanced NVIDIA architectures in the industry."
+            subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel AMX — we deliver the most advanced chip architectures in the industry."
           />
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16">
@@ -233,25 +309,31 @@ export default function TechnologyPage() {
               className="relative h-[320px] md:h-[420px] rounded-2xl border border-border bg-surface overflow-hidden"
             >
               <div className="absolute inset-0 bg-dot-grid opacity-20" />
-              <SceneWrapper className="w-full h-full">
-                <MiniScene />
-              </SceneWrapper>
+              <MiniScene />
               {/* Floating stat */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
                 className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm"
               >
-                <div className="text-[10px] font-mono text-text-dim">MEMORY BANDWIDTH</div>
-                <div className="text-sm font-bold text-primary font-mono">8 TB/s</div>
+                <div className="text-[10px] font-mono text-text-dim">
+                  MEMORY BANDWIDTH
+                </div>
+                <div className="text-sm font-bold text-primary font-mono">
+                  8 TB/s
+                </div>
               </motion.div>
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
                 className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm"
               >
-                <div className="text-[10px] font-mono text-text-dim">ARCHITECTURE</div>
-                <div className="text-sm font-bold text-secondary font-mono">Blackwell</div>
+                <div className="text-[10px] font-mono text-text-dim">
+                  ARCHITECTURE
+                </div>
+                <div className="text-sm font-bold text-secondary font-mono">
+                  Blackwell
+                </div>
               </motion.div>
             </motion.div>
 
@@ -296,12 +378,16 @@ export default function TechnologyPage() {
                 className="rounded-xl border border-border bg-surface p-5 card-hover"
               >
                 <card.icon className="w-7 h-7 text-primary mb-3" />
-                <h4 className="text-sm font-bold text-text mb-1">{card.title}</h4>
+                <h4 className="text-sm font-bold text-text mb-1">
+                  {card.title}
+                </h4>
                 <p className="text-xs text-text-muted mb-3 leading-relaxed">
                   {card.description}
                 </p>
                 <div className="pt-3 border-t border-border">
-                  <div className="text-xl font-black text-primary font-mono">{card.stat}</div>
+                  <div className="text-xl font-black text-primary font-mono">
+                    {card.stat}
+                  </div>
                   <div className="text-[10px] text-text-dim uppercase tracking-wider">
                     {card.statLabel}
                   </div>
@@ -313,7 +399,7 @@ export default function TechnologyPage() {
       </section>
 
       {/* Architecture timeline */}
-      <section className="py-20 md:py-28 bg-surface relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-bg-body relative overflow-hidden">
         <div className="absolute inset-0 bg-dot-grid opacity-15" />
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 md:mb-16">
@@ -349,12 +435,22 @@ export default function TechnologyPage() {
                         borderColor: `${arch.color}40`,
                       }}
                     >
-                      <arch.icon className="w-6 h-6" style={{ color: arch.color }} />
+                      <arch.icon
+                        className="w-6 h-6"
+                        style={{ color: arch.color }}
+                      />
                     </div>
                     <div>
-                      <div className="text-xs font-mono text-text-dim">{arch.year}</div>
-                      <h3 className="text-xl font-black text-text">{arch.name}</h3>
-                      <div className="text-xs font-mono" style={{ color: arch.color }}>
+                      <div className="text-xs font-mono text-text-dim">
+                        {arch.year}
+                      </div>
+                      <h3 className="text-xl font-black text-text">
+                        {arch.name}
+                      </h3>
+                      <div
+                        className="text-xs font-mono"
+                        style={{ color: arch.color }}
+                      >
                         {arch.highlight}
                       </div>
                     </div>
@@ -370,13 +466,18 @@ export default function TechnologyPage() {
                           key={f}
                           className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-2 border border-border text-[11px] font-mono text-text-muted"
                         >
-                          <Check className="w-3 h-3" style={{ color: arch.color }} />
+                          <Check
+                            className="w-3 h-3"
+                            style={{ color: arch.color }}
+                          />
                           {f}
                         </span>
                       ))}
                     </div>
                     <div className="flex flex-wrap items-center gap-2 text-xs text-text-dim">
-                      <span className="font-mono uppercase tracking-wider">Chips:</span>
+                      <span className="font-mono uppercase tracking-wider">
+                        Chips:
+                      </span>
                       {arch.chips.map((c) => (
                         <Link
                           key={c}
@@ -416,10 +517,10 @@ export default function TechnologyPage() {
               Feature Deep Dives
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-text max-w-3xl mx-auto">
-              Inside the NVIDIA Stack
+              Inside the Technology Stack
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              The innovations that make NVIDIA the platform of choice for AI,
+              The innovations across NVIDIA, AMD, Intel and more that power AI,
               HPC, and accelerated computing.
             </p>
           </div>
@@ -435,12 +536,16 @@ export default function TechnologyPage() {
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <f.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-lg font-bold text-text mb-2">{f.title}</h3>
+                  <h3 className="text-lg font-bold text-text mb-2">
+                    {f.title}
+                  </h3>
                   <p className="text-sm text-text-muted leading-relaxed mb-5">
                     {f.description}
                   </p>
                   <div className="pt-4 border-t border-border">
-                    <div className="text-2xl font-black text-primary font-mono">{f.stat}</div>
+                    <div className="text-2xl font-black text-primary font-mono">
+                      {f.stat}
+                    </div>
                     <div className="text-[10px] text-text-dim uppercase tracking-wider">
                       {f.statLabel}
                     </div>
@@ -454,7 +559,7 @@ export default function TechnologyPage() {
           <div className="mt-12 rounded-2xl border border-border bg-surface p-6 md:p-8">
             <h3 className="text-sm font-mono font-bold text-primary uppercase tracking-wider mb-5 flex items-center gap-2">
               <Check className="w-4 h-4" />
-              NVIDIA Platform Highlights
+              Multi-Platform Highlights
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
               {TECHNOLOGY_FEATURES.map((feature) => (
@@ -473,7 +578,7 @@ export default function TechnologyPage() {
       </section>
 
       {/* Architecture comparison table */}
-      <section className="py-20 md:py-28 bg-surface border-t border-border">
+      <section className="py-20 md:py-28 bg-bg-body border-t border-border">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono font-medium tracking-widest uppercase mb-3">
@@ -484,7 +589,7 @@ export default function TechnologyPage() {
               Specs Side-by-Side
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              Compare the four modern NVIDIA architectures across key metrics.
+              Compare modern chip architectures across key metrics.
             </p>
           </div>
 
@@ -501,10 +606,16 @@ export default function TechnologyPage() {
                   <th className="text-left p-4 text-xs font-mono font-bold text-secondary uppercase tracking-wider">
                     Hopper
                   </th>
-                  <th className="text-left p-4 text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "#AA00FF" }}>
+                  <th
+                    className="text-left p-4 text-xs font-mono font-bold uppercase tracking-wider"
+                    style={{ color: "#AA00FF" }}
+                  >
                     Ada Lovelace
                   </th>
-                  <th className="text-left p-4 text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "#FFD600" }}>
+                  <th
+                    className="text-left p-4 text-xs font-mono font-bold uppercase tracking-wider"
+                    style={{ color: "#FFD600" }}
+                  >
                     Ampere
                   </th>
                 </tr>
@@ -518,10 +629,18 @@ export default function TechnologyPage() {
                     <td className="p-4 text-xs font-mono text-text-dim uppercase tracking-wider">
                       {row.label}
                     </td>
-                    <td className="p-4 text-sm font-mono text-text">{row.blackwell}</td>
-                    <td className="p-4 text-sm font-mono text-text">{row.hopper}</td>
-                    <td className="p-4 text-sm font-mono text-text">{row.ada}</td>
-                    <td className="p-4 text-sm font-mono text-text">{row.ampere}</td>
+                    <td className="p-4 text-sm font-mono text-text">
+                      {row.blackwell}
+                    </td>
+                    <td className="p-4 text-sm font-mono text-text">
+                      {row.hopper}
+                    </td>
+                    <td className="p-4 text-sm font-mono text-text">
+                      {row.ada}
+                    </td>
+                    <td className="p-4 text-sm font-mono text-text">
+                      {row.ampere}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -535,7 +654,10 @@ export default function TechnologyPage() {
               </Button>
             </Link>
             <Link href="/comparison">
-              <Button variant="outline" className="border-border text-text-muted hover:text-text">
+              <Button
+                variant="outline"
+                className="border-border text-text-muted hover:text-text"
+              >
                 Compare Specific Chips
               </Button>
             </Link>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hero3D } from "@/components/home/Hero3D";
 import { TrustBar } from "@/components/home/TrustBar";
 import { QuickLinks } from "@/components/home/QuickLinks";
+import { GamingChips } from "@/components/home/GamingChips";
 import { StatsCounter } from "@/components/home/StatsCounter";
 import { FeaturedChips } from "@/components/home/FeaturedChips";
 import { Technology } from "@/components/home/Technology";
@@ -14,14 +15,14 @@ import { LatestInsights } from "@/components/home/LatestInsights";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Servchip — Authorized NVIDIA Chip Distributor",
+  title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
   description:
-    "Premium distributor of authentic NVIDIA chips including H100, H200, B200, RTX 6000 Ada. Enterprise AI training, HPC, and data center GPU solutions. Global delivery with certified support.",
+    "Premium distributor of authentic enterprise chips from NVIDIA, AMD, Intel, Nokia and more. H100, MI300X, Xeon, Gaudi 3, AI accelerators, server processors, networking solutions. Global delivery with certified support.",
   alternates: { canonical: "https://servchip.com" },
   openGraph: {
-    title: "Servchip — Authorized NVIDIA Chip Distributor",
+    title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
     description:
-      "Premium distributor of authentic NVIDIA chips. Global delivery, enterprise support.",
+      "Premium distributor of authentic enterprise chips from NVIDIA, AMD, Intel, Nokia and more. Global delivery, enterprise support.",
     url: "https://servchip.com",
   },
 };
@@ -32,6 +33,7 @@ export default function HomePage() {
       <Hero3D />
       <TrustBar />
       <QuickLinks />
+      <GamingChips />
       <StatsCounter />
       <FeaturedChips />
       <Technology />

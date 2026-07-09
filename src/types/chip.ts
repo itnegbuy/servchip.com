@@ -2,6 +2,8 @@ export interface ChipProduct {
   id: string;
   name: string;
   slug: string;
+  manufacturer: string;
+  manufacturerId: string;
   series: string;
   architecture: string;
   categoryId: string;

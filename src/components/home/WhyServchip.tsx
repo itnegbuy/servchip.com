@@ -11,7 +11,7 @@ export function WhyServchip() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Why Servchip"
-          title="The Trusted Source for NVIDIA Computing Solutions"
+          title="The Trusted Source for Enterprise Chip Solutions"
           align="center"
         />
 
@@ -30,8 +30,12 @@ export function WhyServchip() {
                     <feature.icon className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-text mb-2">{feature.title}</h3>
-                    <p className="text-text-muted text-sm leading-relaxed">{feature.desc}</p>
+                    <h3 className="text-base font-bold text-text mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-text-muted text-sm leading-relaxed">
+                      {feature.desc}
+                    </p>
                   </div>
                 </div>
               </Card>

@@ -1,13 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TESTIMONIALS } from "@/data/home";
 
 export function SuccessStories() {
+  const [failedAvatars, setFailedAvatars] = useState<Set<string>>(new Set());
+
   return (
-    <section className="py-20 bg-surface">
+    <section className="py-20 bg-bg-body">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Client Stories"
@@ -36,11 +39,26 @@ export function SuccessStories() {
                 {t.content}
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary text-xs font-bold">
-                  {t.author.avatar}
-                </div>
+                {t.author.image && !failedAvatars.has(t.author.name) ? (
+                  <img
+                    src={t.author.image}
+                    alt={t.author.name}
+                    onError={() =>
+                      setFailedAvatars((prev) =>
+                        new Set(prev).add(t.author.name),
+                      )
+                    }
+                    className="w-10 h-10 rounded-full object-cover border border-primary/20"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary text-xs font-bold">
+                    {t.author.avatar}
+                  </div>
+                )}
                 <div>
-                  <div className="text-text text-sm font-semibold">{t.author.name}</div>
+                  <div className="text-text text-sm font-semibold">
+                    {t.author.name}
+                  </div>
                   <div className="text-text-dim text-xs">{t.author.role}</div>
                 </div>
               </div>

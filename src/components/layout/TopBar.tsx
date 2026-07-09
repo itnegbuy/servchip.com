@@ -8,7 +8,7 @@ export function TopBar() {
     <motion.div
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="hidden lg:flex h-8 items-center justify-between px-4 sm:px-8 bg-gradient-to-r from-surface via-surface to-surface border-b border-border/50 text-[11px] text-text-dim relative z-10"
+      className="hidden lg:flex h-8 items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/60 dark:border-border/60 text-[11px] text-text-dim relative z-10"
     >
       <div className="flex items-center gap-4">
         <span className="flex items-center gap-1.5 hover:text-text transition-colors duration-200 cursor-pointer">
@@ -26,7 +26,7 @@ export function TopBar() {
             <span className="relative rounded-full bg-primary w-[6px] h-[6px]" />
           </span>
           <span className="font-semibold text-primary/90">
-            Official NVIDIA Partner
+            Enterprise Chip Distributor
           </span>
         </span>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />

@@ -2,8 +2,9 @@
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "About Servchip — Authorized NVIDIA Distributor & Technology Partner",
-  description: "Learn about Servchip, an authorized NVIDIA distributor serving enterprises worldwide. Certified quality, global logistics, and deep technical expertise in AI and HPC infrastructure.",
+  title: "About Servchip — Enterprise Chip Distributor & Technology Partner",
+  description:
+    "Learn about Servchip, an authorized enterprise chip distributor serving enterprises worldwide. Certified quality, global logistics, and deep technical expertise across NVIDIA, AMD, Intel, Nokia and more.",
   alternates: { canonical: "https://servchip.com/about" },
 };
 

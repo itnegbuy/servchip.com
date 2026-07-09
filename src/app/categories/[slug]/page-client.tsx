@@ -14,11 +14,13 @@ export default function CategoryDetailPage() {
   const { slug } = useParams<{ slug: string }>();
 
   const category = CATEGORIES.find((c) => c.slug === slug);
-  const categoryChips = CHIPS.filter((chip) => chip.categoryId === category?.id);
+  const categoryChips = CHIPS.filter(
+    (chip) => chip.categoryId === category?.id,
+  );
 
   if (!category) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-20">
+      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -26,9 +28,12 @@ export default function CategoryDetailPage() {
             className="flex flex-col items-center justify-center py-32 text-center"
           >
             <Server className="w-16 h-16 text-text-dim mb-6" />
-            <h1 className="text-2xl font-bold text-text mb-2">Category Not Found</h1>
+            <h1 className="text-2xl font-bold text-text mb-2">
+              Category Not Found
+            </h1>
             <p className="text-text-muted text-sm mb-8 max-w-md">
-              The chip category you are looking for does not exist or may have been moved.
+              The chip category you are looking for does not exist or may have
+              been moved.
             </p>
             <Link
               href="/categories"
@@ -44,7 +49,7 @@ export default function CategoryDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-20">
+    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
       <div className="max-w-7xl mx-auto px-4">
         {/* Breadcrumb */}
         <motion.nav
@@ -52,7 +57,10 @@ export default function CategoryDetailPage() {
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-2 text-sm text-text-dim mb-8 pt-4"
         >
-          <Link href="/categories" className="hover:text-primary transition-colors">
+          <Link
+            href="/categories"
+            className="hover:text-primary transition-colors"
+          >
             Categories
           </Link>
           <span className="text-text-dim">/</span>
@@ -75,7 +83,8 @@ export default function CategoryDetailPage() {
           <div className="flex items-center gap-3">
             <Badge variant="green" size="md">
               <Server className="w-3 h-3 mr-1" />
-              {categoryChips.length} {categoryChips.length === 1 ? "Chip" : "Chips"}
+              {categoryChips.length}{" "}
+              {categoryChips.length === 1 ? "Chip" : "Chips"}
             </Badge>
           </div>
         </motion.div>

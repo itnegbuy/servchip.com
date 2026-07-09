@@ -1,107 +1,221 @@
-import type { BlogPost } from "@/types";
+import type { BlogPost, BlogCategory, BlogTag } from "@/types";
+
+export const BLOG_CATEGORIES: BlogCategory[] = [
+  {
+    id: "architecture",
+    name: "Architecture",
+    slug: "architecture",
+    description: "Deep dives into chip architectures",
+    postCount: 3,
+  },
+  {
+    id: "comparison",
+    name: "Comparison",
+    slug: "comparison",
+    description: "Side-by-side chip comparisons",
+    postCount: 2,
+  },
+  {
+    id: "deployment",
+    name: "Deployment",
+    slug: "deployment",
+    description: "Deployment guides and best practices",
+    postCount: 2,
+  },
+  {
+    id: "guides",
+    name: "Guides",
+    slug: "guides",
+    description: "Technical guides and tutorials",
+    postCount: 2,
+  },
+  {
+    id: "case-studies",
+    name: "Case Studies",
+    slug: "case-studies",
+    description: "Real-world deployment stories",
+    postCount: 1,
+  },
+];
+
+export const BLOG_TAGS: BlogTag[] = [
+  { id: "ai-training", name: "AI Training", slug: "ai-training" },
+  { id: "inference", name: "Inference", slug: "inference" },
+  { id: "hpc", name: "HPC", slug: "hpc" },
+  { id: "data-center", name: "Data Center", slug: "data-center" },
+  { id: "edge", name: "Edge Computing", slug: "edge" },
+  { id: "nvidia", name: "NVIDIA", slug: "nvidia" },
+  { id: "amd", name: "AMD", slug: "amd" },
+  { id: "intel", name: "Intel", slug: "intel" },
+];
+
+function cat(slug: string): BlogCategory {
+  return BLOG_CATEGORIES.find((c) => c.slug === slug)!;
+}
+
+function tag(slug: string): BlogTag {
+  return BLOG_TAGS.find((t) => t.slug === slug)!;
+}
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    id: "post-1",
-    title: "Understanding NVIDIA Blackwell Architecture: A Deep Dive into FP4 Computing",
-    slug: "understanding-nvidia-blackwell-architecture",
+    id: "1",
+    title: "AI Chip Landscape 2026: NVIDIA, AMD, Intel Compared",
+    slug: "ai-chip-landscape-2026-comparison",
     excerpt:
-      "Explore how NVIDIA's Blackwell architecture with FP4 precision enables 20 PFLOPS of AI performance and powers the next generation of trillion-parameter models.",
-    content: `<p>The NVIDIA Blackwell architecture represents the most significant leap in GPU computing since the introduction of the GPU itself.</p><p>The B200 GPU delivers 20 PFLOPS of FP4 AI performance, enabling training and inference of models with over 10 trillion parameters.</p><h2>The Dual-Die Revolution</h2><p>Blackwell introduces a revolutionary dual-die design connected by 10 TB/s of NVLink interconnect.</p><h2>FP4 Precision: The Game Changer</h2><p>The most significant innovation in Blackwell is native FP4 support, achieving 2x the throughput while maintaining accuracy.</p>`,
+      "A comprehensive analysis of the current AI chip market. We compare NVIDIA H100/H200/B200, AMD Instinct MI300X, and Intel Gaudi 3 across performance, memory, and ecosystem.",
+    content: "",
     featuredImage: "",
-    category: { id: "cat-arch", name: "Architecture", slug: "architecture", postCount: 3 },
-    tags: [{ id: "tag-bw", name: "Blackwell", slug: "blackwell" }, { id: "tag-b200", name: "B200", slug: "b200" }],
-    author: { name: "Dr. Arjun Mehta", avatar: "AM", bio: "Principal Solutions Architect" },
+    category: cat("architecture"),
+    tags: [
+      tag("ai-training"),
+      tag("data-center"),
+      tag("nvidia"),
+      tag("amd"),
+      tag("intel"),
+    ],
+    author: { name: "Servchip Tech Team", avatar: "ST" },
+    readingTime: 12,
+    publishedAt: "2026-06-15",
+    isPublished: true,
+    seo: {
+      metaTitle: "AI Chip Landscape 2026 | NVIDIA vs AMD vs Intel | Servchip",
+      metaDescription:
+        "Comprehensive comparison of NVIDIA H100/B200, AMD MI300X, and Intel Gaudi 3 for AI workloads. Find the right AI accelerator for your needs.",
+    },
+  },
+  {
+    id: "2",
+    title: "H100 vs MI300X vs Gaudi 3: Choosing the Right AI Accelerator",
+    slug: "h100-vs-mi300x-vs-gaudi3-comparison",
+    excerpt:
+      "Detailed comparison of the three leading AI accelerators — NVIDIA H100, AMD MI300X, and Intel Gaudi 3 — for training, inference, and HPC workloads.",
+    content: "",
+    featuredImage: "",
+    category: cat("comparison"),
+    tags: [
+      tag("ai-training"),
+      tag("inference"),
+      tag("nvidia"),
+      tag("amd"),
+      tag("intel"),
+    ],
+    author: { name: "Servchip Tech Team", avatar: "ST" },
+    readingTime: 15,
+    publishedAt: "2026-06-10",
+    isPublished: true,
+    seo: {
+      metaTitle: "H100 vs MI300X vs Gaudi 3 Comparison | Servchip",
+      metaDescription:
+        "Compare NVIDIA H100, AMD MI300X, and Intel Gaudi 3 AI accelerators head-to-head for performance, memory, and cost considerations.",
+    },
+  },
+  {
+    id: "3",
+    title: "Multi-Vendor GPU Deployments: Best Practices for Enterprise",
+    slug: "multi-vendor-gpu-deployments-best-practices",
+    excerpt:
+      "How to build and manage heterogeneous GPU infrastructure with chips from NVIDIA, AMD, and Intel in the same data center.",
+    content: "",
+    featuredImage: "",
+    category: cat("deployment"),
+    tags: [
+      tag("data-center"),
+      tag("hpc"),
+      tag("nvidia"),
+      tag("amd"),
+      tag("intel"),
+    ],
+    author: { name: "Servchip Tech Team", avatar: "ST" },
+    readingTime: 10,
+    publishedAt: "2026-06-05",
+    isPublished: true,
+    seo: {
+      metaTitle: "Multi-Vendor GPU Deployments Guide | Servchip",
+      metaDescription:
+        "Best practices for deploying and managing heterogeneous GPU infrastructure with NVIDIA, AMD, and Intel accelerators.",
+    },
+  },
+  {
+    id: "4",
+    title: "AMD Instinct MI300X Deep Dive: Architecture and Performance",
+    slug: "amd-instinct-mi300x-deep-dive",
+    excerpt:
+      "An in-depth look at AMD's flagship AI accelerator, the MI300X with CDNA 3 architecture, 192GB HBM3 memory, and ROCm software ecosystem.",
+    content: "",
+    featuredImage: "",
+    category: cat("architecture"),
+    tags: [tag("ai-training"), tag("hpc"), tag("amd")],
+    author: { name: "Servchip Tech Team", avatar: "ST" },
+    readingTime: 10,
+    publishedAt: "2026-05-28",
+    isPublished: true,
+    seo: {
+      metaTitle: "AMD Instinct MI300X Deep Dive | Servchip",
+      metaDescription:
+        "Detailed analysis of AMD Instinct MI300X architecture, CDNA 3 compute units, 192GB HBM3 memory, and performance benchmarks.",
+    },
+  },
+  {
+    id: "5",
+    title: "Intel Gaudi 3 AI Accelerator: What You Need to Know",
+    slug: "intel-gaudi-3-ai-accelerator-guide",
+    excerpt:
+      "Everything about Intel's Gaudi 3 AI accelerator — architecture, performance, software stack, and how it compares to NVIDIA and AMD offerings.",
+    content: "",
+    featuredImage: "",
+    category: cat("architecture"),
+    tags: [tag("ai-training"), tag("inference"), tag("intel")],
+    author: { name: "Servchip Tech Team", avatar: "ST" },
     readingTime: 8,
-    publishedAt: "2025-11-15",
+    publishedAt: "2026-05-20",
     isPublished: true,
-    seo: { metaTitle: "Blackwell Architecture Deep Dive | Servchip Blog", metaDescription: "Explore NVIDIA Blackwell architecture with FP4 precision." },
+    seo: {
+      metaTitle: "Intel Gaudi 3 AI Accelerator Guide | Servchip",
+      metaDescription:
+        "Complete guide to Intel Gaudi 3 AI accelerator — architecture, 144GB HBM2e memory, integrated Ethernet, and software ecosystem.",
+    },
   },
   {
-    id: "post-2",
-    title: "H100 vs H200: When to Choose Which for Your AI Workloads",
-    slug: "h100-vs-h200-comparison-guide",
+    id: "6",
+    title: "The Future of Heterogeneous Computing: Multi-Vendor Strategies",
+    slug: "future-heterogeneous-computing-strategies",
     excerpt:
-      "A detailed comparison of NVIDIA H100 and H200 GPUs across training, inference, and HPC workloads to help you make the right infrastructure decision.",
-    content: `<p>The NVIDIA H100 and H200 are both based on the Hopper architecture, but the memory differences make them suited for very different workloads.</p><h2>Key Differences</h2><p>H100 has 80GB HBM3 with 3.35 TB/s bandwidth. H200 has 141GB HBM3e with 4.8 TB/s bandwidth.</p>`,
+      "How enterprises are leveraging chips from multiple vendors to build flexible, cost-effective AI and HPC infrastructure.",
+    content: "",
     featuredImage: "",
-    category: { id: "cat-comp", name: "Comparison", slug: "comparison", postCount: 1 },
-    tags: [{ id: "tag-h100", name: "H100", slug: "h100" }, { id: "tag-h200", name: "H200", slug: "h200" }],
-    author: { name: "Priya Sharma", avatar: "PS", bio: "Solutions Engineer" },
-    readingTime: 6,
-    publishedAt: "2025-10-28",
-    isPublished: true,
-    seo: { metaTitle: "H100 vs H200 Comparison | Servchip Blog", metaDescription: "Compare NVIDIA H100 and H200 GPUs for AI workloads." },
-  },
-  {
-    id: "post-3",
-    title: "Building a Production LLM Inference Cluster with NVIDIA L40S",
-    slug: "building-llm-inference-cluster-l40s",
-    excerpt:
-      "A practical guide to architecting a scalable LLM serving infrastructure using NVIDIA L40S GPUs, TensorRT-LLM, and Kubernetes.",
-    content: `<p>Deploying large language models in production requires careful infrastructure planning. The NVIDIA L40S has emerged as a cost-effective alternative to H100 for inference workloads.</p><h2>Why L40S for Inference?</h2><p>The L40S delivers 1.45x the inference performance of the A100 at a lower price point.</p>`,
-    featuredImage: "",
-    category: { id: "cat-guide", name: "Guide", slug: "guide", postCount: 4 },
-    tags: [{ id: "tag-l40s", name: "L40S", slug: "l40s" }, { id: "tag-llm", name: "LLM", slug: "llm" }],
-    author: { name: "Rahul Verma", avatar: "RV", bio: "DevOps Architect" },
-    readingTime: 7,
-    publishedAt: "2025-10-10",
-    isPublished: true,
-    seo: { metaTitle: "LLM Inference Cluster with L40S | Servchip Blog", metaDescription: "Build production LLM inference with NVIDIA L40S." },
-  },
-  {
-    id: "post-4",
-    title: "The Complete Guide to NVIDIA Grace Hopper Superchip",
-    slug: "complete-guide-grace-hopper-superchip",
-    excerpt:
-      "Discover how the GH200 Grace Hopper Superchip with 624GB unified memory is transforming giant AI model deployment.",
-    content: `<p>The NVIDIA GH200 Grace Hopper Superchip represents a paradigm shift in computing architecture. By integrating CPU and GPU into a single superchip, it eliminates the PCIe bottleneck.</p><h2>624GB Unified Memory</h2><p>The flagship GH200 configuration offers 624GB of unified memory.</p>`,
-    featuredImage: "",
-    category: { id: "cat-guide", name: "Guide", slug: "guide", postCount: 4 },
-    tags: [{ id: "tag-gh200", name: "GH200", slug: "gh200" }, { id: "tag-grace", name: "Grace", slug: "grace" }],
-    author: { name: "Dr. Arjun Mehta", avatar: "AM", bio: "Principal Solutions Architect" },
+    category: cat("deployment"),
+    tags: [
+      tag("data-center"),
+      tag("hpc"),
+      tag("nvidia"),
+      tag("amd"),
+      tag("intel"),
+    ],
+    author: { name: "Servchip Tech Team", avatar: "ST" },
     readingTime: 9,
-    publishedAt: "2025-09-22",
+    publishedAt: "2026-05-15",
     isPublished: true,
-    seo: { metaTitle: "Grace Hopper Superchip Guide | Servchip Blog", metaDescription: "Complete guide to NVIDIA GH200 Grace Hopper Superchip." },
-  },
-  {
-    id: "post-5",
-    title: "Edge AI Deployment with NVIDIA Jetson AGX Orin: Best Practices",
-    slug: "edge-ai-deployment-jetson-orin",
-    excerpt:
-      "Learn how to deploy and optimize computer vision and robotics models on NVIDIA Jetson AGX Orin for real-time edge applications.",
-    content: `<p>Edge AI deployment requires careful optimization to achieve real-time performance within power constraints. The Jetson AGX Orin with 275 TOPS is the most capable edge AI platform available today.</p>`,
-    featuredImage: "",
-    category: { id: "cat-guide", name: "Guide", slug: "guide", postCount: 4 },
-    tags: [{ id: "tag-jetson", name: "Jetson", slug: "jetson" }, { id: "tag-orin", name: "Orin", slug: "orin" }],
-    author: { name: "Sneha Patel", avatar: "SP", bio: "Edge AI Specialist" },
-    readingTime: 6,
-    publishedAt: "2025-09-05",
-    isPublished: true,
-    seo: { metaTitle: "Edge AI with Jetson Orin | Servchip Blog", metaDescription: "Deploy AI on NVIDIA Jetson AGX Orin." },
-  },
-  {
-    id: "post-6",
-    title: "NVIDIA MIG Technology: Maximizing GPU Utilization in Multi-Tenant Environments",
-    slug: "nvidia-mig-multi-tenant-guide",
-    excerpt:
-      "How Multi-Instance GPU technology partitions a single H100 or A100 into isolated instances for efficient cloud and enterprise deployments.",
-    content: `<p>Multi-Instance GPU (MIG) technology allows partitioning a single NVIDIA GPU into up to seven isolated instances.</p>`,
-    featuredImage: "",
-    category: { id: "cat-guide", name: "Guide", slug: "guide", postCount: 4 },
-    tags: [{ id: "tag-mig", name: "MIG", slug: "mig" }, { id: "tag-virtualization", name: "Virtualization", slug: "virtualization" }],
-    author: { name: "Rahul Verma", avatar: "RV", bio: "DevOps Architect" },
-    readingTime: 5,
-    publishedAt: "2025-08-18",
-    isPublished: true,
-    seo: { metaTitle: "NVIDIA MIG Guide | Servchip Blog", metaDescription: "Maximize GPU utilization with MIG technology." },
+    seo: {
+      metaTitle: "Future of Heterogeneous Computing | Servchip",
+      metaDescription:
+        "Learn how enterprises are using multi-vendor chip strategies with NVIDIA, AMD, and Intel to build flexible AI infrastructure.",
+    },
   },
 ];
 
-export const BLOG_CATEGORIES = [
-  { id: "all", name: "All", slug: "all" },
-  { id: "cat-arch", name: "Architecture", slug: "architecture" },
-  { id: "cat-comp", name: "Comparison", slug: "comparison" },
-  { id: "cat-guide", name: "Guide", slug: "guide" },
-];
+export function getBlogPostBySlug(slug: string): BlogPost | undefined {
+  return BLOG_POSTS.find((p) => p.slug === slug);
+}
+
+export function getBlogPostsByCategory(categorySlug: string): BlogPost[] {
+  return BLOG_POSTS.filter((p) => p.category.slug === categorySlug);
+}
+
+export function getBlogPostsByTag(tagSlug: string): BlogPost[] {
+  return BLOG_POSTS.filter((p) => p.tags.some((t) => t.slug === tagSlug));
+}
+
+export function getFeaturedBlogPosts(): BlogPost[] {
+  return BLOG_POSTS.filter((p) => p.isPublished).slice(0, 3);
+}

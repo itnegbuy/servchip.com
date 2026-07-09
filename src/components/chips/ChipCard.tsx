@@ -34,25 +34,194 @@ export function ChipCard({ chip, index = 0 }: ChipCardProps) {
       transition={{ duration: 0.4, delay: index * 0.05 }}
     >
       <Tilt3D>
-        <div className="bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-          {/* Chip visual */}
-          <div className="w-full h-36 bg-gradient-to-br from-surface-2 to-bg-dark rounded-lg border border-border mb-4 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-12 mx-auto bg-gradient-to-br from-bg-dark to-surface-2 rounded border border-primary/20 flex items-center justify-center">
-                <span className="text-[7px] text-primary font-mono tracking-widest">
-                  {chip.series}
-                </span>
-              </div>
-              <div className="flex gap-1 justify-center mt-2">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div key={i} className="w-1 h-2.5 bg-primary/30 rounded-sm" />
-                ))}
-              </div>
-            </div>
+        <div className="bg-surface border border-primary/40 rounded-xl p-5 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+          {/* Chip visual - Processor SVG */}
+          <div className="w-full h-36 bg-gradient-to-br from-surface-2 to-bg-dark rounded-lg border border-border mb-4 flex items-center justify-center overflow-hidden">
+            <svg viewBox="0 0 200 200" className="w-32 h-32 drop-shadow-lg">
+              <defs>
+                <linearGradient
+                  id="subGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="#1E222B" />
+                  <stop offset="100%" stopColor="#0B0C10" />
+                </linearGradient>
+                <linearGradient
+                  id="metalGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="#3A3F4D" />
+                  <stop offset="100%" stopColor="#14161D" />
+                </linearGradient>
+                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#FFE293" />
+                  <stop offset="100%" stopColor="#B38938" />
+                </linearGradient>
+                <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#6EFF00" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="#00E5FF" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              <rect
+                x="15"
+                y="15"
+                width="170"
+                height="170"
+                rx="16"
+                fill="url(#subGrad)"
+                stroke="#2C313D"
+                strokeWidth="2"
+              />
+              {[...Array(7)].map((_, i) => {
+                const p = 38 + i * 20;
+                return (
+                  <g key={i}>
+                    <rect
+                      x={p}
+                      y={7}
+                      width="8"
+                      height="5"
+                      rx="1"
+                      fill="url(#goldGrad)"
+                      opacity="0.8"
+                    />
+                    <rect
+                      x={p}
+                      y={188}
+                      width="8"
+                      height="5"
+                      rx="1"
+                      fill="url(#goldGrad)"
+                      opacity="0.8"
+                    />
+                    <rect
+                      x={7}
+                      y={p}
+                      width="5"
+                      height="8"
+                      rx="1"
+                      fill="url(#goldGrad)"
+                      opacity="0.8"
+                    />
+                    <rect
+                      x={188}
+                      y={p}
+                      width="5"
+                      height="8"
+                      rx="1"
+                      fill="url(#goldGrad)"
+                      opacity="0.8"
+                    />
+                  </g>
+                );
+              })}
+              <rect
+                x="42"
+                y="42"
+                width="116"
+                height="116"
+                rx="12"
+                fill="url(#metalGrad)"
+                stroke="#111"
+                strokeWidth="3"
+              />
+              <rect
+                x="45"
+                y="45"
+                width="110"
+                height="110"
+                rx="10"
+                fill="none"
+                stroke="#5A6375"
+                strokeWidth="1"
+                opacity="0.5"
+              />
+              <circle cx="52" cy="52" r="3" fill="#7A8599" />
+              <circle cx="148" cy="52" r="3" fill="#7A8599" />
+              <circle cx="52" cy="148" r="3" fill="#7A8599" />
+              <circle cx="148" cy="148" r="3" fill="#7A8599" />
+              <rect
+                x="68"
+                y="68"
+                width="64"
+                height="64"
+                rx="6"
+                fill="#090A0F"
+                stroke="#6EFF00"
+                strokeWidth="2.5"
+              />
+              <rect
+                x="68"
+                y="68"
+                width="64"
+                height="64"
+                fill="url(#coreGlow)"
+              />
+              <path
+                d="M 76 80 H 124 M 76 92 H 124 M 76 108 H 124 M 76 120 H 124"
+                stroke="#00E5FF"
+                strokeWidth="0.5"
+                opacity="0.2"
+              />
+              <path
+                d="M 84 72 V 128 M 96 72 V 128 M 104 72 V 128 M 116 72 V 128"
+                stroke="#6EFF00"
+                strokeWidth="0.5"
+                opacity="0.2"
+              />
+              <text
+                x="100"
+                y="106"
+                textAnchor="middle"
+                fontFamily="system-ui, sans-serif"
+                fontWeight="900"
+                fontSize="22"
+                letterSpacing="-1"
+              >
+                <tspan fill="#6EFF00">{chip.series.slice(0, 1)}</tspan>
+                <tspan fill="#00E5FF">{chip.series.slice(1)}</tspan>
+              </text>
+              <text
+                x="100"
+                y="58"
+                textAnchor="middle"
+                fill="#8A95A5"
+                fontFamily="monospace"
+                fontWeight="700"
+                fontSize="6"
+                letterSpacing="1.5"
+              >
+                {chip.series}
+              </text>
+              <circle
+                cx="74"
+                cy="74"
+                r="1.5"
+                fill="#00E5FF"
+                className="animate-pulse"
+              />
+              <circle cx="126" cy="74" r="1.5" fill="#6EFF00" />
+              <circle cx="74" cy="126" r="1.5" fill="#6EFF00" />
+              <circle
+                cx="126"
+                cy="126"
+                r="1.5"
+                fill="#00E5FF"
+                className="animate-pulse"
+              />
+            </svg>
           </div>
 
           <div className="mb-1">
-            <Badge variant={status.variant} size="sm">{status.label}</Badge>
+            <Badge variant={status.variant} size="sm">
+              {status.label}
+            </Badge>
           </div>
           <h3 className="text-sm font-bold text-text leading-tight mb-2 line-clamp-1">
             {chip.name}
@@ -68,11 +237,15 @@ export function ChipCard({ chip, index = 0 }: ChipCardProps) {
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-text-dim">Memory</span>
-              <span className="text-text-muted font-mono text-[11px]">{chip.specifications.memory}</span>
+              <span className="text-text-muted font-mono text-[11px]">
+                {chip.specifications.memory}
+              </span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-text-dim">TDP</span>
-              <span className="text-text-muted font-mono text-[11px]">{chip.specifications.tdp}</span>
+              <span className="text-text-muted font-mono text-[11px]">
+                {chip.specifications.tdp}
+              </span>
             </div>
           </div>
 

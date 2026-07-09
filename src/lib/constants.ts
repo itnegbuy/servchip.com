@@ -16,26 +16,3 @@ export const BREAKPOINTS = {
   tablet: 1024,
   desktop: 1280,
 } as const;
-
-export const NAV_ITEMS = {
-  categories: [
-    { label: "Data Center GPUs", slug: "data-center-gpus", icon: "server" },
-    { label: "AI Accelerators", slug: "ai-accelerators", icon: "brain" },
-    { label: "Professional RTX", slug: "professional-rtx", icon: "monitor" },
-    { label: "Edge AI & Embedded", slug: "edge-ai-embedded", icon: "chip" },
-    { label: "Networking", slug: "networking", icon: "network" },
-    { label: "Automotive", slug: "automotive", icon: "car" },
-    { label: "HPC & Grace", slug: "hpc-grace", icon: "zap" },
-    { label: "Gaming & GeForce", slug: "gaming-geforce", icon: "gamepad" },
-    {
-      label: "Cloud & Virtualization",
-      slug: "cloud-virtualization",
-      icon: "cloud",
-    },
-    {
-      label: "Healthcare & Life Sci",
-      slug: "healthcare-life-sci",
-      icon: "medical",
-    },
-  ] as const,
-} as const;

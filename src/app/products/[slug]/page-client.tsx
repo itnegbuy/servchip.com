@@ -5,8 +5,20 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Check, ArrowLeft, ArrowRight, Cpu, Server, Eye,
-  HardDrive, Activity, Thermometer, Zap, Layers, Network, Factory, Gauge,
+  Check,
+  ArrowLeft,
+  ArrowRight,
+  Cpu,
+  Server,
+  Eye,
+  HardDrive,
+  Activity,
+  Thermometer,
+  Zap,
+  Layers,
+  Network,
+  Factory,
+  Gauge,
 } from "lucide-react";
 import { CHIPS } from "@/data/chips";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -16,7 +28,10 @@ import { ChipCard } from "@/components/chips/ChipCard";
 import type { ChipProduct } from "@/types";
 
 const ChipViewerScene = dynamic(
-  () => import("@/components/3d/ChipViewerScene").then((mod) => mod.ChipViewerScene),
+  () =>
+    import("@/components/3d/ChipViewerScene").then(
+      (mod) => mod.ChipViewerScene,
+    ),
   {
     ssr: false,
     loading: () => (
@@ -32,7 +47,9 @@ const ChipViewerScene = dynamic(
           </div>
         </div>
         <div className="text-center">
-          <p className="text-sm text-primary font-semibold">Interactive 3D Model</p>
+          <p className="text-sm text-primary font-semibold">
+            Interactive 3D Model
+          </p>
           <p className="text-xs text-text-dim mt-1">Loading viewer...</p>
         </div>
         <div className="flex items-center gap-1 text-text-dim">
@@ -41,7 +58,7 @@ const ChipViewerScene = dynamic(
         </div>
       </div>
     ),
-  }
+  },
 );
 
 const statusStyles: Record<
@@ -104,7 +121,15 @@ const SPEC_GROUPS: {
   },
 ];
 
-function QuickStat({ icon: Icon, label, value }: { icon: typeof Cpu; label: string; value: string }) {
+function QuickStat({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: typeof Cpu;
+  label: string;
+  value: string;
+}) {
   return (
     <div className="rounded-xl border border-border bg-surface p-3 md:p-4">
       <div className="flex items-center gap-1.5 text-[10px] font-mono text-text-dim uppercase tracking-wider mb-1">
@@ -135,12 +160,14 @@ export default function ProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const chip = CHIPS.find((c) => c.slug === slug);
   const relatedChips = chip
-    ? CHIPS.filter((c) => c.categoryId === chip.categoryId && c.id !== chip.id).slice(0, 4)
+    ? CHIPS.filter(
+        (c) => c.categoryId === chip.categoryId && c.id !== chip.id,
+      ).slice(0, 4)
     : [];
 
   if (!chip) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-24 pb-20 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20 flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -149,9 +176,12 @@ export default function ProductDetailPage() {
           <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-surface-2 border border-border flex items-center justify-center">
             <Cpu className="w-10 h-10 text-text-dim" />
           </div>
-          <h1 className="text-2xl font-black text-text mb-3">Product Not Found</h1>
+          <h1 className="text-2xl font-black text-text mb-3">
+            Product Not Found
+          </h1>
           <p className="text-text-muted text-sm mb-8">
-            The chip you are looking for does not exist or may have been removed.
+            The chip you are looking for does not exist or may have been
+            removed.
           </p>
           <Link href="/products">
             <Button variant="solid" icon={<ArrowLeft className="w-4 h-4" />}>
@@ -166,7 +196,7 @@ export default function ProductDetailPage() {
   const status = statusStyles[chip.status];
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-24 pb-20">
+    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -175,20 +205,34 @@ export default function ProductDetailPage() {
           className="space-y-12"
         >
           {/* Breadcrumb */}
-          <motion.nav variants={itemVariants} className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-text-dim hover:text-primary transition-colors">
+          <motion.nav
+            variants={itemVariants}
+            className="flex items-center gap-2 text-sm"
+          >
+            <Link
+              href="/"
+              className="text-text-dim hover:text-primary transition-colors"
+            >
               Home
             </Link>
             <span className="text-text-dim">/</span>
-            <Link href="/products" className="text-text-dim hover:text-primary transition-colors">
+            <Link
+              href="/products"
+              className="text-text-dim hover:text-primary transition-colors"
+            >
               Products
             </Link>
             <span className="text-text-dim">/</span>
-            <span className="text-text-muted truncate max-w-[200px]">{chip.name}</span>
+            <span className="text-text-muted truncate max-w-[200px]">
+              {chip.name}
+            </span>
           </motion.nav>
 
           {/* Hero Section */}
-          <motion.div variants={itemVariants} className="grid lg:grid-cols-2 gap-8 items-start">
+          <motion.div
+            variants={itemVariants}
+            className="grid lg:grid-cols-2 gap-8 items-start"
+          >
             {/* Left: 3D Viewer + Quick Stats */}
             <div>
               <div className="relative h-[380px] md:h-[480px] rounded-2xl border border-border bg-surface overflow-hidden">
@@ -199,20 +243,40 @@ export default function ProductDetailPage() {
                 </div>
                 {/* Floating spec chips */}
                 <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm">
-                  <div className="text-[10px] font-mono text-text-dim">ARCHITECTURE</div>
-                  <div className="text-sm font-bold text-primary font-mono">{chip.architecture}</div>
+                  <div className="text-[10px] font-mono text-text-dim">
+                    ARCHITECTURE
+                  </div>
+                  <div className="text-sm font-bold text-primary font-mono">
+                    {chip.architecture}
+                  </div>
                 </div>
                 <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm">
-                  <div className="text-[10px] font-mono text-text-dim">SERIES</div>
-                  <div className="text-sm font-bold text-secondary font-mono">{chip.series}</div>
+                  <div className="text-[10px] font-mono text-text-dim">
+                    SERIES
+                  </div>
+                  <div className="text-sm font-bold text-secondary font-mono">
+                    {chip.series}
+                  </div>
                 </div>
               </div>
 
               {/* Quick stats strip */}
               <div className="grid grid-cols-3 gap-3 mt-4">
-                <QuickStat icon={HardDrive} label="Memory" value={chip.specifications.memory} />
-                <QuickStat icon={Activity} label="Bandwidth" value={chip.specifications.memoryBandwidth} />
-                <QuickStat icon={Thermometer} label="TDP" value={chip.specifications.tdp} />
+                <QuickStat
+                  icon={HardDrive}
+                  label="Memory"
+                  value={chip.specifications.memory}
+                />
+                <QuickStat
+                  icon={Activity}
+                  label="Bandwidth"
+                  value={chip.specifications.memoryBandwidth}
+                />
+                <QuickStat
+                  icon={Thermometer}
+                  label="TDP"
+                  value={chip.specifications.tdp}
+                />
               </div>
             </div>
 
@@ -220,7 +284,9 @@ export default function ProductDetailPage() {
             <div className="space-y-6">
               <div className="space-y-3">
                 <div className="flex items-center gap-3 flex-wrap">
-                  <Badge variant={status.variant} size="md">{status.label}</Badge>
+                  <Badge variant={status.variant} size="md">
+                    {status.label}
+                  </Badge>
                   <span className="text-xs text-text-dim font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-surface-2 border border-border">
                     {chip.series}
                   </span>
@@ -287,12 +353,21 @@ export default function ProductDetailPage() {
               {/* CTAs */}
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link href={`/rfq?chip=${chip.slug}`}>
-                  <Button variant="solid" size="lg" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+                  <Button
+                    variant="solid"
+                    size="lg"
+                    icon={<ArrowRight className="w-4 h-4" />}
+                    iconPosition="right"
+                  >
                     Get Quote
                   </Button>
                 </Link>
                 <Link href={`/comparison?add=${chip.slug}`}>
-                  <Button variant="outline" size="lg" icon={<Layers className="w-4 h-4" />}>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    icon={<Layers className="w-4 h-4" />}
+                  >
                     Add to Compare
                   </Button>
                 </Link>
@@ -312,7 +387,9 @@ export default function ProductDetailPage() {
                 <Cpu className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl md:text-3xl font-black text-text">Full Specifications</h2>
+                <h2 className="text-2xl md:text-3xl font-black text-text">
+                  Full Specifications
+                </h2>
                 <p className="text-sm text-text-muted">
                   Complete technical specifications for the {chip.series}.
                 </p>
@@ -321,7 +398,10 @@ export default function ProductDetailPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {SPEC_GROUPS.map((group) => (
-                <div key={group.title} className="rounded-2xl border border-border bg-surface p-5 md:p-6">
+                <div
+                  key={group.title}
+                  className="rounded-2xl border border-border bg-surface p-5 md:p-6"
+                >
                   <h3 className="text-sm font-mono font-bold text-primary uppercase tracking-wider mb-4 flex items-center gap-2">
                     <group.icon className="w-4 h-4" />
                     {group.title}
@@ -331,9 +411,16 @@ export default function ProductDetailPage() {
                       const value = chip.specifications[row.key];
                       if (!value || value === "ΓÇö") return null;
                       return (
-                        <div key={row.key} className="flex items-start justify-between gap-4 pb-2.5 border-b border-border last:border-0 last:pb-0">
-                          <dt className="text-xs text-text-dim uppercase tracking-wider pt-0.5">{row.label}</dt>
-                          <dd className="text-sm font-mono text-text text-right">{value}</dd>
+                        <div
+                          key={row.key}
+                          className="flex items-start justify-between gap-4 pb-2.5 border-b border-border last:border-0 last:pb-0"
+                        >
+                          <dt className="text-xs text-text-dim uppercase tracking-wider pt-0.5">
+                            {row.label}
+                          </dt>
+                          <dd className="text-sm font-mono text-text text-right">
+                            {value}
+                          </dd>
                         </div>
                       );
                     })}
@@ -351,13 +438,19 @@ export default function ProductDetailPage() {
                   Ready to deploy the {chip.series}?
                 </h3>
                 <p className="text-sm md:text-base text-text-muted max-w-2xl">
-                  Get a personalized quote within 24 hours. Our NVIDIA-certified engineers
-                  will help you architect the optimal configuration for your workload.
+                  Get a personalized quote within 24 hours. Our certified
+                  engineers will help you architect the optimal configuration
+                  for your workload.
                 </p>
               </div>
               <div className="flex gap-3 shrink-0">
                 <Link href={`/rfq?chip=${chip.slug}`}>
-                  <Button variant="solid" size="lg" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+                  <Button
+                    variant="solid"
+                    size="lg"
+                    icon={<ArrowRight className="w-4 h-4" />}
+                    iconPosition="right"
+                  >
                     Request Quote
                   </Button>
                 </Link>
@@ -375,8 +468,12 @@ export default function ProductDetailPage() {
             <motion.div variants={itemVariants}>
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-black text-text mb-1">Related Chips</h2>
-                  <p className="text-sm text-text-muted">More chips in {chip.categoryName}.</p>
+                  <h2 className="text-2xl md:text-3xl font-black text-text mb-1">
+                    Related Chips
+                  </h2>
+                  <p className="text-sm text-text-muted">
+                    More chips in {chip.categoryName}.
+                  </p>
                 </div>
                 <Link href={`/products?category=${chip.categoryId}`}>
                   <Button variant="outline" size="sm">

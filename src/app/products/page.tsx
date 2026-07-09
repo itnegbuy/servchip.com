@@ -2,8 +2,9 @@
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "NVIDIA GPU Products — H100, H200, B200, RTX 6000 Ada & More",
-  description: "Browse the complete catalog of authentic NVIDIA GPUs and accelerators. H100, H200, B200 data center GPUs, RTX 6000 Ada professional cards, and networking solutions.",
+  title: "All Chip Products — NVIDIA, AMD, Intel & More",
+  description:
+    "Browse the complete catalog of authentic enterprise chips from NVIDIA, AMD, Intel, Nokia and more. AI accelerators, data center GPUs, server CPUs, professional graphics, and networking solutions.",
   alternates: { canonical: "https://servchip.com/products" },
 };
 

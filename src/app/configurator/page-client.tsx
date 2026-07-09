@@ -3,7 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as Icons from "lucide-react";
-import { ArrowRight, ArrowLeft, Check, Zap, Sparkles, RotateCcw } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowLeft,
+  Check,
+  Zap,
+  Sparkles,
+  RotateCcw,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -14,25 +21,80 @@ import type { ChipProduct } from "@/types";
 import { cn } from "@/lib/utils";
 
 const BUDGET_TIERS = [
-  { id: "budget", label: "Budget", description: "Cost-effective, efficient solutions" },
-  { id: "mid-range", label: "Mid-Range", description: "Balanced performance and value" },
-  { id: "high-end", label: "High-End", description: "Premium performance for demanding workloads" },
-  { id: "enterprise", label: "Enterprise", description: "Maximum performance, data-center grade" },
+  {
+    id: "budget",
+    label: "Budget",
+    description: "Cost-effective, efficient solutions",
+  },
+  {
+    id: "mid-range",
+    label: "Mid-Range",
+    description: "Balanced performance and value",
+  },
+  {
+    id: "high-end",
+    label: "High-End",
+    description: "Premium performance for demanding workloads",
+  },
+  {
+    id: "enterprise",
+    label: "Enterprise",
+    description: "Maximum performance, data-center grade",
+  },
 ] as const;
 
 const PERFORMANCE_PRIORITIES = [
-  { id: "memory", label: "Memory Capacity", description: "Maximize VRAM for large models" },
-  { id: "compute", label: "Compute", description: "Maximize TFLOPS for training" },
-  { id: "bandwidth", label: "Memory Bandwidth", description: "Maximize throughput for inference" },
-  { id: "balanced", label: "Balanced", description: "Even performance across all dimensions" },
+  {
+    id: "memory",
+    label: "Memory Capacity",
+    description: "Maximize VRAM for large models",
+  },
+  {
+    id: "compute",
+    label: "Compute",
+    description: "Maximize TFLOPS for training",
+  },
+  {
+    id: "bandwidth",
+    label: "Memory Bandwidth",
+    description: "Maximize throughput for inference",
+  },
+  {
+    id: "balanced",
+    label: "Balanced",
+    description: "Even performance across all dimensions",
+  },
 ] as const;
 
-const STATUS_CONFIG: Record<string, { label: string; clr: string; dot: string }> = {
-  in_stock: { label: "In Stock", clr: "text-success border-success/30 bg-success/5", dot: "bg-success" },
-  on_order: { label: "On Order", clr: "text-warning border-warning/30 bg-warning/5", dot: "bg-warning" },
-  limited: { label: "Limited", clr: "text-warning border-warning/30 bg-warning/5", dot: "bg-warning" },
-  pre_order: { label: "Pre-Order", clr: "text-secondary border-secondary/30 bg-secondary/5", dot: "bg-secondary" },
-  discontinued: { label: "Discontinued", clr: "text-error border-error/30 bg-error/5", dot: "bg-error" },
+const STATUS_CONFIG: Record<
+  string,
+  { label: string; clr: string; dot: string }
+> = {
+  in_stock: {
+    label: "In Stock",
+    clr: "text-success border-success/30 bg-success/5",
+    dot: "bg-success",
+  },
+  on_order: {
+    label: "On Order",
+    clr: "text-warning border-warning/30 bg-warning/5",
+    dot: "bg-warning",
+  },
+  limited: {
+    label: "Limited",
+    clr: "text-warning border-warning/30 bg-warning/5",
+    dot: "bg-warning",
+  },
+  pre_order: {
+    label: "Pre-Order",
+    clr: "text-secondary border-secondary/30 bg-secondary/5",
+    dot: "bg-secondary",
+  },
+  discontinued: {
+    label: "Discontinued",
+    clr: "text-error border-error/30 bg-error/5",
+    dot: "bg-error",
+  },
 };
 
 export default function ConfiguratorPage() {
@@ -51,17 +113,40 @@ export default function ConfiguratorPage() {
       const chip = CHIPS.find((c) => c.id === chipId);
       if (!chip) return null;
       let match = 75;
-      if (budget === "enterprise" && chip.specifications.tdp.includes("700")) match += 15;
-      if (budget === "budget" && chip.specifications.tdp.includes("72")) match += 15;
-      if (budget === "mid-range" && (chip.specifications.tdp.includes("350") || chip.specifications.tdp.includes("300"))) match += 15;
-      if (performance === "memory" && chip.specifications.memory.includes("141")) match += 10;
-      if (performance === "compute" && chip.specifications.fp8TFLOPS && parseInt(chip.specifications.fp8TFLOPS) > 3000) match += 10;
-      if (performance === "bandwidth" && chip.specifications.memoryBandwidth.includes("TB")) match += 10;
+      if (budget === "enterprise" && chip.specifications.tdp.includes("700"))
+        match += 15;
+      if (budget === "budget" && chip.specifications.tdp.includes("72"))
+        match += 15;
+      if (
+        budget === "mid-range" &&
+        (chip.specifications.tdp.includes("350") ||
+          chip.specifications.tdp.includes("300"))
+      )
+        match += 15;
+      if (
+        performance === "memory" &&
+        chip.specifications.memory.includes("141")
+      )
+        match += 10;
+      if (
+        performance === "compute" &&
+        chip.specifications.fp8TFLOPS &&
+        parseInt(chip.specifications.fp8TFLOPS) > 3000
+      )
+        match += 10;
+      if (
+        performance === "bandwidth" &&
+        chip.specifications.memoryBandwidth.includes("TB")
+      )
+        match += 10;
       match = Math.min(match, 99);
       return { chip, match };
     })
     .filter(Boolean)
-    .sort((a, b) => b!.match - a!.match) as { chip: ChipProduct; match: number }[];
+    .sort((a, b) => b!.match - a!.match) as {
+    chip: ChipProduct;
+    match: number;
+  }[];
 
   const handleQuote = (chips: ChipProduct[]) => {
     if (chips.length === 0) {
@@ -84,17 +169,20 @@ export default function ConfiguratorPage() {
     <>
       <PageHero
         label="Chip Configurator"
-        title="Find Your Perfect NVIDIA Chip Match"
-        subtitle="Answer a few questions and our AI-powered configurator will recommend the optimal NVIDIA chips for your specific workload, performance needs, and budget — backed by certified engineering expertise."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Configurator" },
-        ]}
+        title="Find Your Perfect Chip Match"
+        subtitle="Answer a few questions and our AI-powered configurator will recommend the optimal chips from NVIDIA, AMD, Intel and more for your specific workload, performance needs, and budget — backed by certified engineering expertise."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Configurator" }]}
       />
 
-      <section id="configurator" className="py-20 md:py-28 bg-bg-body scroll-mt-20 relative overflow-hidden">
+      <section
+        id="configurator"
+        className="py-20 md:py-28 bg-bg-body scroll-mt-20 relative overflow-hidden"
+      >
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-        <div className="absolute w-96 h-96 rounded-full bg-primary/10 blur-3xl top-20 right-1/4 pointer-events-none" aria-hidden />
+        <div
+          className="absolute w-96 h-96 rounded-full bg-primary/10 blur-3xl top-20 right-1/4 pointer-events-none"
+          aria-hidden
+        />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeading
             label="Chip Configurator"
@@ -106,13 +194,16 @@ export default function ConfiguratorPage() {
             {/* Progress bar */}
             <div className="flex items-center justify-between mb-8">
               {[1, 2, 3, 4].map((s) => (
-                <div key={s} className="flex items-center flex-1 last:flex-none">
+                <div
+                  key={s}
+                  className="flex items-center flex-1 last:flex-none"
+                >
                   <div
                     className={cn(
                       "w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold font-mono transition-all border-2",
                       step >= s
                         ? "bg-primary text-bg-dark border-primary"
-                        : "bg-surface text-text-dim border-border"
+                        : "bg-surface text-text-dim border-border",
                     )}
                   >
                     {step > s ? <Check className="w-4 h-4" /> : s}
@@ -121,7 +212,7 @@ export default function ConfiguratorPage() {
                     <div
                       className={cn(
                         "h-0.5 flex-1 mx-2 transition-colors",
-                        step > s ? "bg-primary" : "bg-border"
+                        step > s ? "bg-primary" : "bg-border",
                       )}
                     />
                   )}
@@ -138,11 +229,18 @@ export default function ConfiguratorPage() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                 >
-                  <h3 className="text-lg font-bold text-text mb-1">What&apos;s your primary use case?</h3>
-                  <p className="text-sm text-text-muted mb-6">Select the workload that best describes your project.</p>
+                  <h3 className="text-lg font-bold text-text mb-1">
+                    What&apos;s your primary use case?
+                  </h3>
+                  <p className="text-sm text-text-muted mb-6">
+                    Select the workload that best describes your project.
+                  </p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     {USE_CASES.map((uc) => {
-                      const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[uc.icon] || Icons.Circle;
+                      const Icon =
+                        (Icons as unknown as Record<string, Icons.LucideIcon>)[
+                          uc.icon
+                        ] || Icons.Circle;
                       const selected = useCase === uc.id;
                       return (
                         <button
@@ -152,28 +250,32 @@ export default function ConfiguratorPage() {
                             "p-4 rounded-xl border text-left transition-all",
                             selected
                               ? "border-primary bg-primary/10"
-                              : "border-border bg-surface hover:border-primary/30"
+                              : "border-border bg-surface hover:border-primary/30",
                           )}
                         >
                           <Icon
                             className={cn(
                               "w-6 h-6 mb-2",
-                              selected ? "text-primary" : "text-text-muted"
+                              selected ? "text-primary" : "text-text-muted",
                             )}
                           />
-                          <p className={cn("text-sm font-bold mb-1", selected ? "text-primary" : "text-text")}>
+                          <p
+                            className={cn(
+                              "text-sm font-bold mb-1",
+                              selected ? "text-primary" : "text-text",
+                            )}
+                          >
                             {uc.label}
                           </p>
-                          <p className="text-[11px] text-text-dim line-clamp-2">{uc.description}</p>
+                          <p className="text-[11px] text-text-dim line-clamp-2">
+                            {uc.description}
+                          </p>
                         </button>
                       );
                     })}
                   </div>
                   <div className="flex justify-end mt-6">
-                    <Button
-                      onClick={() => setStep(2)}
-                      disabled={!useCase}
-                    >
+                    <Button onClick={() => setStep(2)} disabled={!useCase}>
                       Continue <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
@@ -188,13 +290,19 @@ export default function ConfiguratorPage() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                 >
-                  <h3 className="text-lg font-bold text-text mb-1">Configure your parameters</h3>
-                  <p className="text-sm text-text-muted mb-6">Set your budget, performance priority, and quantity.</p>
+                  <h3 className="text-lg font-bold text-text mb-1">
+                    Configure your parameters
+                  </h3>
+                  <p className="text-sm text-text-muted mb-6">
+                    Set your budget, performance priority, and quantity.
+                  </p>
 
                   <div className="space-y-6">
                     {/* Budget */}
                     <div>
-                      <label className="text-sm font-medium text-text mb-2 block">Budget Tier</label>
+                      <label className="text-sm font-medium text-text mb-2 block">
+                        Budget Tier
+                      </label>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                         {BUDGET_TIERS.map((b) => (
                           <button
@@ -204,13 +312,20 @@ export default function ConfiguratorPage() {
                               "p-3 rounded-lg border text-left transition-all",
                               budget === b.id
                                 ? "border-primary bg-primary/10"
-                                : "border-border hover:border-primary/30"
+                                : "border-border hover:border-primary/30",
                             )}
                           >
-                            <p className={cn("text-sm font-bold", budget === b.id ? "text-primary" : "text-text")}>
+                            <p
+                              className={cn(
+                                "text-sm font-bold",
+                                budget === b.id ? "text-primary" : "text-text",
+                              )}
+                            >
                               {b.label}
                             </p>
-                            <p className="text-[10px] text-text-dim mt-0.5">{b.description}</p>
+                            <p className="text-[10px] text-text-dim mt-0.5">
+                              {b.description}
+                            </p>
                           </button>
                         ))}
                       </div>
@@ -218,7 +333,9 @@ export default function ConfiguratorPage() {
 
                     {/* Performance Priority */}
                     <div>
-                      <label className="text-sm font-medium text-text mb-2 block">Performance Priority</label>
+                      <label className="text-sm font-medium text-text mb-2 block">
+                        Performance Priority
+                      </label>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                         {PERFORMANCE_PRIORITIES.map((p) => (
                           <button
@@ -228,13 +345,22 @@ export default function ConfiguratorPage() {
                               "p-3 rounded-lg border text-left transition-all",
                               performance === p.id
                                 ? "border-primary bg-primary/10"
-                                : "border-border hover:border-primary/30"
+                                : "border-border hover:border-primary/30",
                             )}
                           >
-                            <p className={cn("text-sm font-bold", performance === p.id ? "text-primary" : "text-text")}>
+                            <p
+                              className={cn(
+                                "text-sm font-bold",
+                                performance === p.id
+                                  ? "text-primary"
+                                  : "text-text",
+                              )}
+                            >
                               {p.label}
                             </p>
-                            <p className="text-[10px] text-text-dim mt-0.5">{p.description}</p>
+                            <p className="text-[10px] text-text-dim mt-0.5">
+                              {p.description}
+                            </p>
                           </button>
                         ))}
                       </div>
@@ -243,7 +369,10 @@ export default function ConfiguratorPage() {
                     {/* Quantity */}
                     <div>
                       <label className="text-sm font-medium text-text mb-2 block">
-                        Quantity: <span className="text-primary font-mono">{quantity} units</span>
+                        Quantity:{" "}
+                        <span className="text-primary font-mono">
+                          {quantity} units
+                        </span>
                       </label>
                       <input
                         type="range"
@@ -282,17 +411,28 @@ export default function ConfiguratorPage() {
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <Sparkles className="w-5 h-5 text-primary" />
-                    <h3 className="text-lg font-bold text-text">Your Recommended Chips</h3>
+                    <h3 className="text-lg font-bold text-text">
+                      Your Recommended Chips
+                    </h3>
                   </div>
                   <p className="text-sm text-text-muted mb-6">
-                    Based on <span className="text-primary">{selectedUseCase?.label}</span> workload,
-                    <span className="text-primary"> {BUDGET_TIERS.find((b) => b.id === budget)?.label}</span> budget,
-                    and <span className="text-primary">{quantity}</span> units needed.
+                    Based on{" "}
+                    <span className="text-primary">
+                      {selectedUseCase?.label}
+                    </span>{" "}
+                    workload,
+                    <span className="text-primary">
+                      {" "}
+                      {BUDGET_TIERS.find((b) => b.id === budget)?.label}
+                    </span>{" "}
+                    budget, and <span className="text-primary">{quantity}</span>{" "}
+                    units needed.
                   </p>
 
                   <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
                     {matchingChips.map(({ chip, match }) => {
-                      const sc = STATUS_CONFIG[chip.status] || STATUS_CONFIG.in_stock;
+                      const sc =
+                        STATUS_CONFIG[chip.status] || STATUS_CONFIG.in_stock;
                       return (
                         <div
                           key={chip.id}
@@ -300,8 +440,19 @@ export default function ConfiguratorPage() {
                         >
                           {/* Match circle */}
                           <div className="relative w-14 h-14 shrink-0">
-                            <svg className="w-14 h-14 -rotate-90" viewBox="0 0 56 56">
-                              <circle cx="28" cy="28" r="24" fill="none" stroke="currentColor" strokeWidth="4" className="text-border" />
+                            <svg
+                              className="w-14 h-14 -rotate-90"
+                              viewBox="0 0 56 56"
+                            >
+                              <circle
+                                cx="28"
+                                cy="28"
+                                r="24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                                className="text-border"
+                              />
                               <circle
                                 cx="28"
                                 cy="28"
@@ -315,19 +466,28 @@ export default function ConfiguratorPage() {
                               />
                             </svg>
                             <div className="absolute inset-0 flex items-center justify-center">
-                              <span className="text-sm font-bold text-primary font-mono">{match}%</span>
+                              <span className="text-sm font-bold text-primary font-mono">
+                                {match}%
+                              </span>
                             </div>
                           </div>
 
                           {/* Chip info */}
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold text-text truncate">{chip.name}</p>
+                            <p className="text-sm font-bold text-text truncate">
+                              {chip.name}
+                            </p>
                             <p className="text-xs text-text-muted font-mono">
-                              {chip.specifications.memory} · {chip.architecture} · {chip.specifications.tdp}
+                              {chip.specifications.memory} · {chip.architecture}{" "}
+                              · {chip.specifications.tdp}
                             </p>
                             <div className="mt-1.5">
-                              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-medium ${sc.clr}`}>
-                                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${sc.dot}`} />
+                              <span
+                                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-medium ${sc.clr}`}
+                              >
+                                <span
+                                  className={`w-1.5 h-1.5 rounded-full animate-pulse ${sc.dot}`}
+                                />
                                 {sc.label}
                               </span>
                             </div>

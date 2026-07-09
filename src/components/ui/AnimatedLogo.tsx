@@ -318,7 +318,7 @@ export function AnimatedLogo({
             SERV<span className="text-primary">CHIP</span>
           </span>
           <span className="text-[9px] font-mono text-text-dim tracking-widest">
-            NVIDIA COMPUTING
+            ENTERPRISE CHIPS
           </span>
         </div>
       )}

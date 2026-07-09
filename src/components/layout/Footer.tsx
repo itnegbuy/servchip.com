@@ -26,6 +26,15 @@ const FOOTER_LINKS = [
     ],
   },
   {
+    title: "Manufacturers",
+    links: [
+      { label: "NVIDIA", href: "/manufacturers/nvidia" },
+      { label: "AMD", href: "/manufacturers/amd" },
+      { label: "Intel", href: "/manufacturers/intel" },
+      { label: "Nokia", href: "/manufacturers/nokia" },
+    ],
+  },
+  {
     title: "Resources",
     links: [
       { label: "Developer Hub", href: "/developer-hub" },
@@ -51,7 +60,7 @@ export function Footer() {
   return (
     <footer className="bg-bg-dark border-t border-border">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="mb-4 inline-block">
@@ -62,8 +71,9 @@ export function Footer() {
               />
             </Link>
             <p className="text-text-dim text-xs leading-relaxed mb-4">
-              Authorized distributor of authentic NVIDIA chips and computing
-              solutions for AI, HPC, and enterprise workloads worldwide.
+              Authorized distributor of authentic enterprise chips — NVIDIA,
+              AMD, Intel, Nokia and more — for AI, HPC, and enterprise workloads
+              worldwide.
             </p>
             <div className="flex gap-2">
               {[Globe, ExternalLink, MessageCircle, Code2].map((Icon, i) => (
@@ -96,9 +106,9 @@ export function Footer() {
             </div>
             {/* Newsletter */}
             <div className="mt-5">
-              <h5 className="text-[10px] font-semibold uppercase tracking-wider text-text-dim mb-2">
+              <h4 className="text-[10px] font-semibold uppercase tracking-wider text-text-dim mb-2">
                 Stay Updated
-              </h5>
+              </h4>
               <NewsletterForm />
             </div>
           </div>
@@ -129,7 +139,7 @@ export function Footer() {
         <div className="border-t border-border mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-text-dim">
             &copy; {new Date().getFullYear()} Servchip Inc. All rights reserved.
-            NVIDIA is a registered trademark of NVIDIA Corporation.
+            All trademarks are property of their respective owners.
           </p>
           <div className="flex items-center gap-4 text-xs text-text-dim">
             <Link href="/privacy" className="hover:text-text transition-colors">
@@ -199,6 +209,7 @@ function NewsletterForm() {
       />
       <button
         type="submit"
+        aria-label="Subscribe to newsletter"
         disabled={status === "loading"}
         className="shrink-0 px-2.5 py-1.5 bg-primary text-bg-dark rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50"
       >

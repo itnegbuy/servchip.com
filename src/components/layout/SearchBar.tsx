@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Search, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CHIPS } from "@/data/chips";
 
 interface SearchResult {
   title: string;
@@ -26,31 +27,44 @@ export function SearchBar() {
   }, [open]);
 
   useEffect(() => {
-    if (query.length >= 2) return;
-    const t = setTimeout(() => {
-      setResults([]);
-      setLoading(false);
-    }, 0);
-    return () => clearTimeout(t);
-  }, [query]);
-
-  useEffect(() => {
-    if (query.length < 2) return;
-    const t1 = setTimeout(() => setLoading(true), 0);
-    const timer = setTimeout(() => {
-      setResults([
-        { title: "NVIDIA H100 Tensor Core GPU", slug: "nvidia-h100-tensor-core-gpu", type: "chip", subtitle: "80GB HBM3, 3.35 TB/s" },
-        { title: "NVIDIA H200 Tensor Core GPU", slug: "nvidia-h200-tensor-core-gpu", type: "chip", subtitle: "141GB HBM3e, 4.8 TB/s" },
-        { title: "NVIDIA B200 Tensor Core GPU", slug: "nvidia-b200-tensor-core-gpu", type: "chip", subtitle: "384GB HBM3e, 10 TB/s" },
-      ]);
-      setLoading(false);
-    }, 300);
-    return () => { clearTimeout(t1); clearTimeout(timer); };
+    const timer = setTimeout(
+      () => {
+        if (query.length < 2) {
+          setResults([]);
+          setLoading(false);
+          return;
+        }
+        setLoading(true);
+        const q = query.toLowerCase();
+        const matched = CHIPS.filter(
+          (c) =>
+            c.name.toLowerCase().includes(q) ||
+            c.series.toLowerCase().includes(q) ||
+            c.manufacturer.toLowerCase().includes(q),
+        )
+          .slice(0, 6)
+          .map((c): SearchResult => ({
+            title: c.name,
+            slug: c.slug,
+            type: "chip",
+            subtitle: `${c.manufacturer} — ${c.specifications.memory}`,
+          }));
+        setResults(matched);
+        setLoading(false);
+      },
+      query.length < 2 ? 0 : 300,
+    );
+    return () => clearTimeout(timer);
   }, [query]);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node) && open) setOpen(false);
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        open
+      )
+        setOpen(false);
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
@@ -62,7 +76,9 @@ export function SearchBar() {
         onClick={() => setOpen((v) => !v)}
         className={cn(
           "p-2 rounded-lg transition-colors",
-          open ? "text-primary bg-primary/10" : "text-text-muted hover:text-text hover:bg-surface"
+          open
+            ? "text-primary bg-primary/10"
+            : "text-text-muted hover:text-text hover:bg-surface",
         )}
         aria-label="Search"
       >
@@ -88,9 +104,14 @@ export function SearchBar() {
                 placeholder="Search chips, categories..."
                 className="flex-1 bg-transparent text-sm text-text placeholder-text-dim outline-none"
               />
-              {loading && <Loader2 className="w-3.5 h-3.5 text-text-dim animate-spin" />}
+              {loading && (
+                <Loader2 className="w-3.5 h-3.5 text-text-dim animate-spin" />
+              )}
               {query && !loading && (
-                <button onClick={() => setQuery("")} className="text-text-dim hover:text-text">
+                <button
+                  onClick={() => setQuery("")}
+                  className="text-text-dim hover:text-text"
+                >
                   <X className="w-3.5 h-3.5" />
                 </button>
               )}
@@ -98,17 +119,26 @@ export function SearchBar() {
 
             <div className="max-h-72 overflow-y-auto">
               {results.length === 0 && query.length >= 2 && !loading && (
-                <p className="px-4 py-6 text-center text-text-dim text-xs">No results found</p>
+                <p className="px-4 py-6 text-center text-text-dim text-xs">
+                  No results found
+                </p>
               )}
               {results.map((r) => (
                 <Link
                   key={r.slug}
                   href={`/${r.type === "blog" ? "blog" : r.type === "category" ? "categories" : "products"}/${r.slug}`}
-                  onClick={() => { setOpen(false); setQuery(""); }}
+                  onClick={() => {
+                    setOpen(false);
+                    setQuery("");
+                  }}
                   className="block px-4 py-3 hover:bg-bg-dark transition-colors"
                 >
                   <div className="text-sm text-text font-medium">{r.title}</div>
-                  {r.subtitle && <div className="text-xs text-text-dim mt-0.5">{r.subtitle}</div>}
+                  {r.subtitle && (
+                    <div className="text-xs text-text-dim mt-0.5">
+                      {r.subtitle}
+                    </div>
+                  )}
                 </Link>
               ))}
             </div>

@@ -2,8 +2,9 @@
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "FAQ — Frequently Asked Questions About NVIDIA Chip Purchasing",
-  description: "Answers to common questions about NVIDIA GPU purchasing, shipping, warranty, authenticity verification, and enterprise support from Servchip.",
+  title: "FAQ — Frequently Asked Questions About Enterprise Chip Purchasing",
+  description:
+    "Answers to common questions about enterprise chip purchasing, shipping, warranty, authenticity verification, and support from Servchip across all manufacturers.",
   alternates: { canonical: "https://servchip.com/faq" },
 };
 

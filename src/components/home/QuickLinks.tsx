@@ -5,10 +5,30 @@ import { motion } from "framer-motion";
 import { Cpu, Sparkles, Layers, BookOpen, ArrowUpRight } from "lucide-react";
 
 const QUICK_LINKS = [
-  { href: "/products", label: "Browse All Chips", desc: "12+ NVIDIA GPUs", icon: Cpu },
-  { href: "/configurator", label: "Chip Configurator", desc: "AI-powered matching", icon: Sparkles },
-  { href: "/comparison", label: "Compare Chips", desc: "Side-by-side specs", icon: Layers },
-  { href: "/blog", label: "Read Blog", desc: "Expert insights", icon: BookOpen },
+  {
+    href: "/products",
+    label: "Browse All Chips",
+    desc: "NVIDIA, AMD, Intel & more",
+    icon: Cpu,
+  },
+  {
+    href: "/configurator",
+    label: "Chip Configurator",
+    desc: "AI-powered matching",
+    icon: Sparkles,
+  },
+  {
+    href: "/comparison",
+    label: "Compare Chips",
+    desc: "Side-by-side specs",
+    icon: Layers,
+  },
+  {
+    href: "/blog",
+    label: "Read Blog",
+    desc: "Expert insights",
+    icon: BookOpen,
+  },
 ];
 
 export function QuickLinks() {
@@ -38,7 +58,9 @@ export function QuickLinks() {
                 </div>
 
                 <div className="relative">
-                  <h3 className="text-base font-bold text-text mb-1">{ql.label}</h3>
+                  <p className="text-base font-bold text-text mb-1">
+                    {ql.label}
+                  </p>
                   <p className="text-xs text-text-muted">{ql.desc}</p>
                 </div>
               </Link>

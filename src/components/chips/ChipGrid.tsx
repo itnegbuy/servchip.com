@@ -1,10 +1,25 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Cpu, List, LayoutGrid } from "lucide-react";
 import { ChipCard } from "./ChipCard";
 import { ChipFilters, type ChipFiltersState } from "./ChipFilters";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import type { ChipProduct } from "@/types";
+
+const statusStyles: Record<
+  ChipProduct["status"],
+  { label: string; variant: "green" | "cyan" | "amber" | "purple" | "default" }
+> = {
+  in_stock: { label: "In Stock", variant: "green" },
+  on_order: { label: "On Order", variant: "cyan" },
+  limited: { label: "Limited", variant: "amber" },
+  pre_order: { label: "Pre-Order", variant: "purple" },
+  discontinued: { label: "Discontinued", variant: "default" },
+};
 
 interface ChipGridProps {
   chips: ChipProduct[];
@@ -31,7 +46,10 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
       )
         return false;
     }
-    if (filters.architecture.length && !filters.architecture.includes(chip.architecture))
+    if (
+      filters.architecture.length &&
+      !filters.architecture.includes(chip.architecture)
+    )
       return false;
     if (filters.series.length && !filters.series.includes(chip.series))
       return false;
@@ -82,15 +100,64 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
           </div>
         ) : (
           <div className="space-y-3">
-            {filtered.map((chip, i) => (
-              <ChipCard key={chip.id} chip={chip} index={i} />
+            {filtered.map((chip) => (
+              <motion.div
+                key={chip.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-xl border border-border bg-surface p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-4 hover:border-primary/30 transition-colors"
+              >
+                <div className="flex items-center gap-4 flex-1 min-w-0">
+                  <div className="w-14 h-14 rounded-lg border border-primary/30 bg-surface flex items-center justify-center shrink-0">
+                    <span className="text-xs font-mono font-bold text-primary">
+                      {chip.series.slice(0, 4)}
+                    </span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <Link
+                      href={`/products/${chip.slug}`}
+                      className="text-sm font-bold text-text hover:text-primary transition-colors line-clamp-1"
+                    >
+                      {chip.name}
+                    </Link>
+                    <p className="text-xs text-text-dim mt-0.5 line-clamp-1">
+                      {chip.description}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2 mt-2 text-[11px] font-mono text-text-muted">
+                      <span>{chip.architecture}</span>
+                      <span>·</span>
+                      <span>{chip.specifications.memory}</span>
+                      <span>·</span>
+                      <span>{chip.specifications.tdp}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 shrink-0">
+                  <Badge variant={statusStyles[chip.status].variant} size="sm">
+                    {statusStyles[chip.status].label}
+                  </Badge>
+                  <Link href={`/products/${chip.slug}`}>
+                    <Button variant="outline" size="sm">
+                      Details
+                    </Button>
+                  </Link>
+                  <Link href={`/rfq?chip=${chip.slug}`}>
+                    <Button variant="solid" size="sm">
+                      Get Quote
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
             ))}
           </div>
         )}
 
         {!loading && filtered.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-text-dim text-sm">No chips match your filters.</p>
+            <p className="text-text-dim text-sm">
+              No chips match your filters.
+            </p>
           </div>
         )}
       </div>

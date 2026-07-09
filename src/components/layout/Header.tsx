@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,7 +14,9 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/constants";
+import { MANUFACTURERS } from "@/data/manufacturers";
 import { MegaMenu } from "./MegaMenu";
+import { TopBar } from "./TopBar";
 import { SearchModal } from "@/components/interactive/SearchModal";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
@@ -29,13 +31,14 @@ interface NavLink {
 
 interface NavColumn {
   title: string;
+  href?: string;
   links: NavLink[];
 }
 
 interface MegaNavItem {
   label: string;
   columns: NavColumn[];
-  href?: never;
+  href?: string;
 }
 
 interface SimpleNavItem {
@@ -46,60 +49,26 @@ interface SimpleNavItem {
 
 type NavItem = MegaNavItem | SimpleNavItem;
 
-const CHIP_COLUMNS: NavColumn[] = [
-  {
-    title: "Architecture",
-    links: [
-      {
-        label: "Blackwell Series",
-        href: "/products?arch=blackwell",
-        description: "Next-gen AI & HPC",
-        badge: "New",
-      },
-      {
-        label: "Hopper Series",
-        href: "/products?arch=hopper",
-        description: "Enterprise AI training",
-      },
-      {
-        label: "Ada Lovelace",
-        href: "/products?arch=ada",
-        description: "Professional graphics",
-      },
-      {
-        label: "Ampere Series",
-        href: "/products?arch=ampere",
-        description: "Proven performance",
-      },
-    ],
-  },
-  {
-    title: "Use Case",
-    links: [
-      { label: "AI Training GPUs", href: "/products?use=ai-training" },
-      { label: "AI Inference GPUs", href: "/products?use=ai-inference" },
-      { label: "HPC Accelerators", href: "/products?use=hpc" },
-      { label: "Professional RTX", href: "/products?use=professional" },
-    ],
-  },
-  {
-    title: "Series",
-    links: [
-      { label: "B200 / B100", href: "/products?series=b200" },
-      { label: "H200 / H100", href: "/products?series=h200" },
-      { label: "RTX 6000 Ada", href: "/products?series=rtx6000" },
-      { label: "GH200 Grace Hopper", href: "/products?series=gh200" },
-    ],
-  },
-  {
-    title: "More",
-    links: [
-      { label: "All Products", href: "/products" },
-      { label: "Comparison Tool", href: "/comparison" },
-      { label: "Bulk Orders", href: "/rfq" },
-    ],
-  },
-];
+const MANUFACTURER_COLUMNS: NavColumn[] = MANUFACTURERS.map((m) => ({
+  title: m.name,
+  href: `/manufacturers/${m.slug}`,
+  links: [
+    {
+      label: `All ${m.name} Products`,
+      href: `/products?manufacturer=${m.slug}`,
+      description: `Browse all ${m.name} products`,
+    },
+    ...m.categories.slice(0, 3).map((cat) => ({
+      label: cat.name,
+      href: `/manufacturers/${m.slug}/${cat.slug}`,
+    })),
+    {
+      label: `View All`,
+      href: `/manufacturers/${m.slug}`,
+      description: `Complete ${m.name} portfolio`,
+    },
+  ],
+}));
 
 const CATEGORY_COLUMNS = [
   {
@@ -116,8 +85,13 @@ const CATEGORY_COLUMNS = [
         description: "Specialized AI processing",
       },
       {
-        label: "HPC & Grace",
-        href: "/categories/hpc-grace",
+        label: "Server CPUs",
+        href: "/categories/server-cpus",
+        description: "Enterprise processors",
+      },
+      {
+        label: "HPC Solutions",
+        href: "/categories/hpc-solutions",
         description: "Supercomputing",
       },
     ],
@@ -125,10 +99,10 @@ const CATEGORY_COLUMNS = [
   {
     title: "Professional",
     links: [
-      { label: "Professional RTX", href: "/categories/professional-rtx" },
+      { label: "Professional GPUs", href: "/categories/professional-graphics" },
       {
-        label: "Cloud & Virtualization",
-        href: "/categories/cloud-virtualization",
+        label: "FPGAs & Adaptive SoCs",
+        href: "/categories/fpgas-adaptive-socs",
       },
       { label: "Edge AI & Embedded", href: "/categories/edge-ai-embedded" },
     ],
@@ -138,53 +112,17 @@ const CATEGORY_COLUMNS = [
     links: [
       { label: "Automotive", href: "/categories/automotive" },
       { label: "Networking", href: "/categories/networking" },
-      {
-        label: "Healthcare & Life Sci",
-        href: "/categories/healthcare-life-sci",
-      },
+      { label: "Network Processors", href: "/categories/network-processors" },
     ],
   },
   {
-    title: "Gaming",
-    links: [{ label: "Gaming & GeForce", href: "/categories/gaming-geforce" }],
-  },
-];
-
-const TECHNOLOGY_COLUMNS = [
-  {
-    title: "Architectures",
+    title: "Brands",
     links: [
-      {
-        label: "Hopper Architecture",
-        href: "/products?arch=hopper",
-        description: "AI training & HPC",
-      },
-      {
-        label: "Blackwell Platform",
-        href: "/products?arch=blackwell",
-        description: "Next-gen AI scale",
-        badge: "New",
-      },
-      {
-        label: "Ada Lovelace",
-        href: "/products?arch=ada",
-        description: "Professional graphics",
-      },
-      {
-        label: "Grace Hopper",
-        href: "/products?series=gh200",
-        description: "Supercomputing",
-      },
-    ],
-  },
-  {
-    title: "Tools",
-    links: [
-      {
-        label: "Comparison Tool",
-        href: "/comparison",
-        description: "Side-by-side chip specs",
-      },
+      ...MANUFACTURERS.map((m) => ({
+        label: m.name,
+        href: `/manufacturers/${m.slug}`,
+        description: m.description,
+      })),
     ],
   },
 ];
@@ -196,7 +134,7 @@ const SERVICES_COLUMNS = [
       {
         label: "Hardware Procurement",
         href: "/services/procurement",
-        description: "Global sourcing for NVIDIA chips",
+        description: "Global sourcing for enterprise chips",
       },
       {
         label: "Bulk & Wholesale",
@@ -206,7 +144,7 @@ const SERVICES_COLUMNS = [
       {
         label: "Hard-to-Find Parts",
         href: "/services/hard-to-find",
-        description: "Legacy &稀缺 chip sourcing",
+        description: "Legacy & scarce chip sourcing",
       },
     ],
   },
@@ -241,7 +179,7 @@ const SERVICES_COLUMNS = [
       {
         label: "Data Center Planning",
         href: "/consulting/datacenter",
-        description: "Scalable GPU cluster architecture",
+        description: "Scalable cluster architecture",
       },
       {
         label: "HPC Optimization",
@@ -272,11 +210,11 @@ const RESOURCE_COLUMNS = [
 ];
 
 const NAV_MEGA: MegaNavItem[] = [
-  { label: "Chips", columns: CHIP_COLUMNS },
-  { label: "Categories", columns: CATEGORY_COLUMNS },
-  { label: "Technology", columns: TECHNOLOGY_COLUMNS },
-  { label: "Services", columns: SERVICES_COLUMNS },
-  { label: "Resources", columns: RESOURCE_COLUMNS },
+  { label: "Chips", columns: MANUFACTURER_COLUMNS, href: "/products" },
+  { label: "Categories", columns: CATEGORY_COLUMNS, href: "/categories" },
+  { label: "Technology", columns: RESOURCE_COLUMNS, href: "/technology" },
+  { label: "Services", columns: SERVICES_COLUMNS, href: "/services" },
+  { label: "Resources", columns: RESOURCE_COLUMNS, href: "/resources" },
 ];
 
 const NAV_SIMPLE: SimpleNavItem[] = [
@@ -319,14 +257,24 @@ function NavLink({
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const prevScroll = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 50);
+      const currentY = window.scrollY;
+      setScrolled(currentY > 50);
+      if (currentY > 100) {
+        setHidden(currentY > prevScroll.current);
+      } else {
+        setHidden(false);
+      }
+      prevScroll.current = currentY;
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -351,100 +299,167 @@ export function Header() {
 
   return (
     <>
-      <header
+      <div
         className={cn(
-          "fixed top-0 lg:top-8 left-0 right-0 z-50 h-[72px] flex items-center justify-between px-4 sm:px-6 transition-all duration-300",
-          scrolled
-            ? "bg-surface/95 backdrop-blur-xl border-b border-primary/10 shadow-xl shadow-black/5"
-            : "bg-surface border-b border-border/50",
+          "fixed top-0 left-0 right-0 z-50 transition-transform duration-300",
+          hidden ? "-translate-y-full" : "translate-y-0",
         )}
       >
-        {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
-          <AnimatedLogo size={36} showText />
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-0.5">
-          <NavLink
-            href="/"
-            label="Home"
-            isActive={isActive("/") && pathname === "/"}
-          />
-          {NAV_MEGA.map((item) => (
-            <MegaMenu
-              key={item.label}
-              label={item.label}
-              columns={item.columns}
-            />
-          ))}
-          {NAV_SIMPLE.map((link) => (
-            <NavLink
-              key={link.href}
-              href={link.href}
-              label={link.label}
-              isActive={isActive(link.href)}
-            />
-          ))}
-        </nav>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2.5">
-          <ColorPicker />
-          <ThemeToggle />
-          <button
-            onClick={() => setSearchOpen((v) => !v)}
-            className="text-text-muted hover:text-text hover:bg-primary/[0.04] transition-all p-2 rounded-lg hidden sm:block"
-            aria-label="Search"
-          >
-            <Search className="w-[18px] h-[18px]" />
-          </button>
-          <Link
-            href="/contact"
-            className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-all px-3 py-2 rounded-lg"
-          >
-            <User className="w-4 h-4" />
-            Sign In
+        <TopBar />
+        <header
+          className={cn(
+            "h-[72px] flex items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/80 dark:border-border/80",
+            scrolled && "shadow-md shadow-black/5",
+          )}
+        >
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0">
+            <AnimatedLogo size={36} showText />
           </Link>
-          <Link
-            href="/rfq"
-            className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden"
+
+          {/* Desktop Nav */}
+          <div
+            className="hidden lg:block flex-1"
+            onMouseLeave={() => setActiveMenu(null)}
           >
-            <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
-            Get Quote
-            <span className="absolute inset-0 bg-white/10 translate-y-full group-hover/quote:translate-y-0 transition-transform duration-300" />
-          </Link>
-          {/* Hamburger */}
-          <button
-            onClick={() => setMobileOpen((v) => !v)}
-            className={cn(
-              "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-colors hover:bg-primary/[0.04]",
-              mobileOpen && "active",
-            )}
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-          >
-            <span
-              className={cn(
-                "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
-                mobileOpen && "translate-y-[7px] rotate-45",
+            <nav className="flex items-center justify-center gap-0.5">
+              <NavLink
+                href="/"
+                label="Home"
+                isActive={isActive("/") && pathname === "/"}
+              />
+              {NAV_MEGA.map((item) => (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => setActiveMenu(item.label)}
+                >
+                  <button
+                    className={cn(
+                      "relative flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 group",
+                      activeMenu === item.label
+                        ? "text-primary"
+                        : "text-text-muted hover:text-text",
+                    )}
+                  >
+                    <span className="relative">
+                      {item.label}
+                      <span
+                        className={cn(
+                          "absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full transition-transform duration-300 origin-left",
+                          activeMenu === item.label
+                            ? "bg-primary scale-x-100"
+                            : "bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100",
+                        )}
+                      />
+                    </span>
+                    <ChevronDown
+                      className={cn(
+                        "w-3.5 h-3.5 transition-all duration-200",
+                        activeMenu === item.label && "rotate-180",
+                      )}
+                    />
+                  </button>
+                </div>
+              ))}
+              {NAV_SIMPLE.map((link) => (
+                <NavLink
+                  key={link.href}
+                  href={link.href}
+                  label={link.label}
+                  isActive={isActive(link.href)}
+                />
+              ))}
+            </nav>
+
+            {/* Mega Menu Dropdown */}
+            <AnimatePresence>
+              {activeMenu && NAV_MEGA.find((m) => m.label === activeMenu) && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 right-0 top-full mt-0 flex justify-center"
+                  onMouseEnter={() => setActiveMenu(activeMenu)}
+                >
+                  <div className="w-[min(1100px,calc(100vw-2rem))]">
+                    {(() => {
+                      const item = NAV_MEGA.find(
+                        (m) => m.label === activeMenu,
+                      )!;
+                      return (
+                        <MegaMenu
+                          label={item.label}
+                          columns={item.columns}
+                          href={item.href}
+                        />
+                      );
+                    })()}
+                  </div>
+                </motion.div>
               )}
-            />
-            <span
+            </AnimatePresence>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-2.5">
+            <ColorPicker />
+            <ThemeToggle />
+            <button
+              onClick={() => setSearchOpen((v) => !v)}
+              className="text-text-muted hover:text-text hover:bg-primary/[0.04] transition-all p-2 rounded-lg hidden sm:block"
+              aria-label="Search"
+            >
+              <Search className="w-[18px] h-[18px]" />
+            </button>
+            <Link
+              href="/contact"
+              className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-all px-3 py-2 rounded-lg"
+            >
+              <User className="w-4 h-4" />
+              Sign In
+            </Link>
+            <Link
+              href="/rfq"
+              className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden"
+            >
+              <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
+              Get Quote
+              <span className="absolute inset-0 bg-white/10 translate-y-full group-hover/quote:translate-y-0 transition-transform duration-300" />
+            </Link>
+            {/* Hamburger */}
+            <button
+              onClick={() => setMobileOpen((v) => !v)}
               className={cn(
-                "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
-                mobileOpen && "opacity-0",
+                "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-colors hover:bg-primary/[0.04]",
+                mobileOpen && "active",
               )}
-            />
-            <span
-              className={cn(
-                "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
-                mobileOpen && "-translate-y-[7px] -rotate-45",
-              )}
-            />
-          </button>
-        </div>
-      </header>
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+            >
+              <span
+                className={cn(
+                  "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                  mobileOpen && "translate-y-[7px] rotate-45",
+                )}
+              />
+              <span
+                className={cn(
+                  "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                  mobileOpen && "opacity-0",
+                )}
+              />
+              <span
+                className={cn(
+                  "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                  mobileOpen && "-translate-y-[7px] -rotate-45",
+                )}
+              />
+            </button>
+          </div>
+        </header>
+      </div>
 
       <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
 
@@ -589,7 +604,7 @@ export function Header() {
                     SERV<span className="text-primary">CHIP</span>
                   </span>
                   <span className="text-[8px] font-mono text-text-dim tracking-widest">
-                    NVIDIA COMPUTING
+                    ENTERPRISE CHIPS
                   </span>
                 </div>
               </Link>

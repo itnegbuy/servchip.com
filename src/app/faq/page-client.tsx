@@ -4,17 +4,35 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const FAQS = [
-  { q: "Are your NVIDIA chips authentic?", a: "Yes. We source directly from NVIDIA and authorized partners. Every chip includes full traceability documentation." },
-  { q: "What is your minimum order quantity?", a: "There is no minimum order quantity. We serve startups to Fortune 500 enterprises." },
-  { q: "How fast can you deliver?", a: "Standard orders ship within 5-7 business days. Express shipping available for urgent requirements." },
-  { q: "Do you offer technical support?", a: "Yes. Our team of NVIDIA-certified engineers provides pre-sales consultation and post-sales support." },
-  { q: "What payment methods do you accept?", a: "We accept wire transfers, Letters of Credit, and net terms for qualified enterprises." },
-  { q: "Can I return a chip?", a: "Returns accepted within 30 days for unopened items. Defective items covered by manufacturer warranty." },
+  {
+    q: "Are your chips authentic?",
+    a: "Yes. We source directly from manufacturers and authorized partners. Every chip includes full traceability documentation.",
+  },
+  {
+    q: "What is your minimum order quantity?",
+    a: "There is no minimum order quantity. We serve startups to Fortune 500 enterprises.",
+  },
+  {
+    q: "How fast can you deliver?",
+    a: "Standard orders ship within 5-7 business days. Express shipping available for urgent requirements.",
+  },
+  {
+    q: "Do you offer technical support?",
+    a: "Yes. Our team of multi-vendor certified engineers provides pre-sales consultation and post-sales support across all major platforms.",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "We accept wire transfers, Letters of Credit, and net terms for qualified enterprises.",
+  },
+  {
+    q: "Can I return a chip?",
+    a: "Returns accepted within 30 days for unopened items. Defective items covered by manufacturer warranty.",
+  },
 ];
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-bg-dark pt-20">
+    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
       <div className="max-w-3xl mx-auto px-4">
         <SectionHeading
           label="FAQ"
@@ -28,7 +46,10 @@ export default function FAQPage() {
           className="space-y-4 mt-10"
         >
           {FAQS.map((faq, i) => (
-            <div key={i} className="bg-surface border border-border rounded-xl p-5">
+            <div
+              key={i}
+              className="bg-surface border border-border rounded-xl p-5"
+            >
               <h3 className="text-text text-sm font-semibold mb-2">{faq.q}</h3>
               <p className="text-text-muted text-sm">{faq.a}</p>
             </div>

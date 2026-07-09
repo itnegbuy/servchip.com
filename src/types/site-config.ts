@@ -1,3 +1,37 @@
+export interface Manufacturer {
+  id: string;
+  name: string;
+  slug: string;
+  logo?: string;
+  description: string;
+  longDescription: string;
+  website: string;
+  founded: string;
+  headquarters: string;
+  categories: ManufacturerCategory[];
+  seo: {
+    metaTitle: string;
+    metaDescription: string;
+  };
+}
+
+export interface ManufacturerCategory {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+  subcategories: ManufacturerSubCategory[];
+}
+
+export interface ManufacturerSubCategory {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  chipIds: string[];
+}
+
 export interface SiteConfig {
   id: string;
   siteName: string;

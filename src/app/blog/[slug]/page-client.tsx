@@ -6,7 +6,14 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { ArrowLeft, Clock, Tag, User, ArrowRight, Lightbulb } from "lucide-react";
+import {
+  ArrowLeft,
+  Clock,
+  Tag,
+  User,
+  ArrowRight,
+  Lightbulb,
+} from "lucide-react";
 
 interface BlogPost {
   slug: string;
@@ -30,7 +37,8 @@ const posts: BlogPost[] = [
   {
     slug: "nvidia-blackwell-architecture-deep-dive",
     title: "NVIDIA Blackwell Architecture: A Deep Dive into B200 and Beyond",
-    excerpt: "Exploring the architectural innovations powering NVIDIA's next-generation GPUs.",
+    excerpt:
+      "Exploring the architectural innovations powering NVIDIA's next-generation GPUs.",
     category: "Architecture",
     categoryVariant: "purple",
     date: "June 15, 2025",
@@ -71,7 +79,8 @@ const posts: BlogPost[] = [
   {
     slug: "h100-vs-h200-comparison-guide",
     title: "H100 vs H200: Which NVIDIA GPU Is Right for Your Workload?",
-    excerpt: "A detailed comparison of memory bandwidth, capacity, and real-world performance.",
+    excerpt:
+      "A detailed comparison of memory bandwidth, capacity, and real-world performance.",
     category: "Comparisons",
     categoryVariant: "amber",
     date: "May 28, 2025",
@@ -111,7 +120,8 @@ const posts: BlogPost[] = [
   },
   {
     slug: "nvidia-grace-hopper-superchip-deployment",
-    title: "Deploying NVIDIA Grace Hopper Superchips for Large Language Model Training",
+    title:
+      "Deploying NVIDIA Grace Hopper Superchips for Large Language Model Training",
     excerpt: "Practical guidance on integrating GH200 into AI infrastructure.",
     category: "Deployment",
     categoryVariant: "green",
@@ -154,7 +164,8 @@ const posts: BlogPost[] = [
   {
     slug: "ai-inference-optimization-nvidia-tensorrt",
     title: "Optimizing AI Inference with NVIDIA TensorRT and TensorRT-LLM",
-    excerpt: "Techniques for maximizing throughput and minimizing latency on NVIDIA GPUs.",
+    excerpt:
+      "Techniques for maximizing throughput and minimizing latency on NVIDIA GPUs.",
     category: "Optimization",
     categoryVariant: "cyan",
     date: "June 8, 2025",
@@ -196,7 +207,8 @@ const posts: BlogPost[] = [
   {
     slug: "nvidia-omniverse-digital-twins-industrial",
     title: "Building Industrial Digital Twins with NVIDIA Omniverse",
-    excerpt: "How OpenUSD and Omniverse are transforming simulation-driven design.",
+    excerpt:
+      "How OpenUSD and Omniverse are transforming simulation-driven design.",
     category: "Enterprise",
     categoryVariant: "purple",
     date: "June 1, 2025",
@@ -238,7 +250,8 @@ const posts: BlogPost[] = [
   {
     slug: "nvidia-jetpack-embedded-systems-guide",
     title: "Deploying AI at the Edge with NVIDIA JetPack and Jetson Orin",
-    excerpt: "A practical guide to building embedded AI systems with NVIDIA's edge platform.",
+    excerpt:
+      "A practical guide to building embedded AI systems with NVIDIA's edge platform.",
     category: "Embedded",
     categoryVariant: "green",
     date: "May 20, 2025",
@@ -280,13 +293,20 @@ const posts: BlogPost[] = [
   {
     slug: "data-center-cooling-nvidia-gpu",
     title: "Data Center Cooling Strategies for High-Power NVIDIA GPUs",
-    excerpt: "From air to liquid cooling, managing thermal density in AI clusters.",
+    excerpt:
+      "From air to liquid cooling, managing thermal density in AI clusters.",
     category: "Infrastructure",
     categoryVariant: "cyan",
     date: "June 18, 2025",
     readTime: 8,
     author: "Servchip Engineering Team",
-    tags: ["Cooling", "Data Center", "Thermal", "Liquid Cooling", "Infrastructure"],
+    tags: [
+      "Cooling",
+      "Data Center",
+      "Thermal",
+      "Liquid Cooling",
+      "Infrastructure",
+    ],
     sections: [
       {
         heading: "The Thermal Density Challenge",
@@ -345,7 +365,7 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] flex items-center justify-center">
         <div className="text-center px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -354,10 +374,14 @@ export default function BlogPostPage() {
           >
             <h1 className="text-6xl font-black text-primary mb-4">404</h1>
             <p className="text-text-muted text-lg mb-8">
-              Article not found. The page you are looking for does not exist or has been moved.
+              Article not found. The page you are looking for does not exist or
+              has been moved.
             </p>
             <Link href="/blog">
-              <Button variant="outline" icon={<ArrowLeft className="w-4 h-4" />}>
+              <Button
+                variant="outline"
+                icon={<ArrowLeft className="w-4 h-4" />}
+              >
                 Back to Blog
               </Button>
             </Link>
@@ -368,7 +392,7 @@ export default function BlogPostPage() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-20">
+    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
       <motion.div
         className="max-w-4xl mx-auto px-4 pb-20"
         variants={containerVariants}
@@ -408,7 +432,9 @@ export default function BlogPostPage() {
           </div>
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-primary" />
-            <span>{post.date} &middot; {post.readTime} min read</span>
+            <span>
+              {post.date} &middot; {post.readTime} min read
+            </span>
           </div>
         </motion.div>
 
@@ -487,7 +513,11 @@ export default function BlogPostPage() {
               {relatedPosts.map((rp) => (
                 <Link key={rp.slug} href={`/blog/${rp.slug}`}>
                   <div className="group p-5 rounded-xl border border-border bg-surface hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
-                    <Badge variant={rp.categoryVariant} size="sm" className="mb-3">
+                    <Badge
+                      variant={rp.categoryVariant}
+                      size="sm"
+                      className="mb-3"
+                    >
                       {rp.category}
                     </Badge>
                     <h4 className="font-bold text-text text-sm leading-snug mb-2 group-hover:text-primary transition-colors duration-200">
@@ -515,8 +545,8 @@ export default function BlogPostPage() {
             Need Help Choosing the Right Chip?
           </h3>
           <p className="text-text-muted text-sm mb-6 max-w-lg mx-auto">
-            Our engineering team provides free technical consultations to help you select
-            and deploy the optimal NVIDIA solution for your workload.
+            Our engineering team provides free technical consultations to help
+            you select and deploy the optimal NVIDIA solution for your workload.
           </p>
           <Link href="/contact">
             <Button

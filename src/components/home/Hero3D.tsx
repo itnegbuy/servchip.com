@@ -3,8 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { HERO_PHRASES, HERO_STATS, HERO_METRICS_LOG } from "@/data/home";
 
@@ -70,6 +69,21 @@ const customStyles = `
     33% { transform: translate(-60px, -50px) rotate(-120deg); }
     66% { transform: translate(70px, 40px) rotate(-240deg); }
   }
+  @keyframes neonRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes neonPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+  @keyframes blobMorph {
+    0% { d: path("M 90 210 C 90 180 90 150 150 150 C 150 150 180 150 180 150 C 180 150 300 150 300 150 C 300 150 330 150 390 150 C 390 180 390 210 390 210 C 390 240 390 270 330 270 C 330 270 300 270 300 270 C 300 270 180 270 180 270 C 180 270 150 270 90 270 C 90 240 90 210 90 210"); }
+    25% { d: path("M 90 210 C 90 180 110 160 130 160 C 160 160 180 140 200 130 C 230 120 270 100 290 140 C 310 170 340 100 360 140 C 370 160 390 180 390 210 C 390 240 380 290 350 280 C 330 270 300 280 280 290 C 260 300 230 300 220 290 C 200 270 160 310 140 280 C 130 260 90 240 90 210"); transform: rotate(-5deg); }
+    50% { d: path("M 90 210 C 90 180 100 150 120 130 C 150 100 180 140 200 130 C 230 120 270 100 290 140 C 300 160 330 130 360 140 C 390 150 390 180 390 210 C 390 240 380 300 350 280 C 330 270 320 230 280 260 C 260 280 220 310 200 290 C 180 270 160 280 140 280 C 110 280 90 240 90 210"); }
+    75% { d: path("M 90 210 C 90 180 110 180 130 170 C 150 160 170 130 200 130 C 240 130 260 150 290 140 C 310 130 340 120 360 140 C 380 160 390 180 390 210 C 390 240 380 260 350 270 C 320 280 290 270 270 260 C 240 250 230 280 210 290 C 180 310 130 300 110 280 C 90 260 90 240 90 210"); transform: rotate(5deg); }
+    100% { d: path("M 90 210 C 90 180 90 150 150 150 C 150 150 180 150 180 150 C 180 150 300 150 300 150 C 300 150 330 150 390 150 C 390 180 390 210 390 210 C 390 240 390 270 330 270 C 330 270 300 270 300 270 C 300 270 180 270 180 270 C 180 270 150 270 90 270 C 90 240 90 210 90 210"); }
+  }
   .tech-grid {
     background-image: 
       linear-gradient(color-mix(in srgb, var(--hero-primary) 8%, transparent) 1px, transparent 1px),
@@ -100,7 +114,9 @@ function InteractiveDataStream() {
     let height = (canvas.height = window.innerHeight);
 
     function getCSSVar(name: string) {
-      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return getComputedStyle(document.documentElement)
+        .getPropertyValue(name)
+        .trim();
     }
 
     // Particles array
@@ -125,7 +141,7 @@ function InteractiveDataStream() {
     // Target coordinates: Around where the 3D chip sits (Right side center)
     const getTargetPos = () => ({
       x: width * 0.75,
-      y: height * 0.5
+      y: height * 0.5,
     });
 
     const spawnParticle = () => {
@@ -134,13 +150,17 @@ function InteractiveDataStream() {
       const fromLeft = Math.random() > 0.3;
       return {
         x: fromLeft ? -20 : Math.random() * width * 0.5,
-        y: fromLeft ? Math.random() * height : (Math.random() > 0.5 ? -20 : height + 20),
+        y: fromLeft
+          ? Math.random() * height
+          : Math.random() > 0.5
+            ? -20
+            : height + 20,
         targetX: target.x + (Math.random() * 60 - 30),
         targetY: target.y + (Math.random() * 80 - 40),
         speed: 2 + Math.random() * 4,
         size: 1 + Math.random() * 2,
         alpha: 0.1 + Math.random() * 0.7,
-        length: 10 + Math.random() * 30
+        length: 10 + Math.random() * 30,
       };
     };
 
@@ -169,16 +189,19 @@ function InteractiveDataStream() {
 
         // Draw streaming lasers (Data Vectors)
         ctx.beginPath();
-        const primaryHex = getCSSVar('--hero-primary') || '#76FF03';
+        const primaryHex = getCSSVar("--hero-primary") || "#76FF03";
         ctx.strokeStyle = hexToRgba(primaryHex, p.alpha * (distance / 400));
         ctx.lineWidth = p.size;
         ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p.x - Math.cos(angle) * p.length, p.y - Math.sin(angle) * p.length);
+        ctx.lineTo(
+          p.x - Math.cos(angle) * p.length,
+          p.y - Math.sin(angle) * p.length,
+        );
         ctx.stroke();
 
         // Binary packet tip node
         ctx.beginPath();
-        const secondaryHex = getCSSVar('--hero-secondary') || '#00E5FF';
+        const secondaryHex = getCSSVar("--hero-secondary") || "#00E5FF";
         ctx.fillStyle = hexToRgba(secondaryHex, p.alpha + 0.2);
         ctx.arc(p.x, p.y, p.size + 0.5, 0, Math.PI * 2);
         ctx.fill();
@@ -186,11 +209,15 @@ function InteractiveDataStream() {
 
       // Matrix scrolling hex blocks on the far left side
       ctx.font = "9px monospace";
-      const hexPrimary = getCSSVar('--hero-primary') || '#76FF03';
+      const hexPrimary = getCSSVar("--hero-primary") || "#76FF03";
       ctx.fillStyle = hexToRgba(hexPrimary, 0.15);
       for (let i = 0; i < 8; i++) {
         const hex = Math.random().toString(16).substr(2, 6).toUpperCase();
-        ctx.fillText(`0x${hex}`, 20 + i * 45, (Date.now() * 0.05 + i * 120) % (height + 50));
+        ctx.fillText(
+          `0x${hex}`,
+          20 + i * 45,
+          (Date.now() * 0.05 + i * 120) % (height + 50),
+        );
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -204,24 +231,66 @@ function InteractiveDataStream() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+    />
+  );
 }
 
 // Internal Glowing Circuit Micro-bus of the GPU
 function InternalCircuit() {
   return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 20 H50 L70 50 H130 L150 90 H190 M10 120 H60 L80 90 H120 L140 50 H190" stroke="var(--hero-primary)" strokeWidth="1.5" strokeDasharray="6 120" className="opacity-90" style={{ animation: "dataPulse 3s linear infinite" }} />
-      <path d="M30 70 H170" stroke="var(--hero-secondary)" strokeWidth="1" strokeDasharray="4 8" opacity="0.3" />
-      
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 200 140"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 20 H50 L70 50 H130 L150 90 H190 M10 120 H60 L80 90 H120 L140 50 H190"
+        stroke="var(--hero-primary)"
+        strokeWidth="1.5"
+        strokeDasharray="6 120"
+        className="opacity-90"
+        style={{ animation: "dataPulse 3s linear infinite" }}
+      />
+      <path
+        d="M30 70 H170"
+        stroke="var(--hero-secondary)"
+        strokeWidth="1"
+        strokeDasharray="4 8"
+        opacity="0.3"
+      />
+
       {/* Central Processing Core Node */}
-      <rect x="82" y="52" width="36" height="36" rx="6" fill="#0B0F17" stroke="var(--hero-primary)" strokeWidth="2" />
-      <text x="100" y="74" textAnchor="middle" fill="var(--hero-primary)" fontSize="7" fontFamily="monospace" fontWeight="black" letterSpacing="1">GH200</text>
+      <rect
+        x="82"
+        y="52"
+        width="36"
+        height="36"
+        rx="6"
+        fill="#0B0F17"
+        stroke="var(--hero-primary)"
+        strokeWidth="2"
+      />
+      <text
+        x="100"
+        y="74"
+        textAnchor="middle"
+        fill="var(--hero-primary)"
+        fontSize="7"
+        fontFamily="monospace"
+        fontWeight="black"
+        letterSpacing="1"
+      >
+        GH200
+      </text>
     </svg>
   );
 }
 
-// Hardware-Accelerated 3D Matte Obsidian GPU Architecture
 function Chip3D() {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
@@ -238,79 +307,214 @@ function Chip3D() {
   }
 
   return (
-    <div 
+    <div
       className="relative w-full h-full flex items-center justify-center cursor-pointer select-none perspective-1000"
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
+      onMouseLeave={() => {
+        mouseX.set(0);
+        mouseY.set(0);
+      }}
     >
       {/* Outer Halo Core Glow */}
-      <div className="absolute w-[360px] h-[360px] blur-[60px] rounded-full animate-pulse pointer-events-none" style={{ backgroundColor: "color-mix(in srgb, var(--hero-primary) 6%, transparent)" }} />
+      <div
+        className="absolute w-[360px] h-[360px] blur-[60px] rounded-full animate-pulse pointer-events-none"
+        style={{
+          backgroundColor: "color-mix(in srgb, #dd8448 8%, transparent)",
+        }}
+      />
 
       <motion.div
         ref={cardRef}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d", borderColor: "color-mix(in srgb, var(--hero-primary) 30%, transparent)" }}
-        className="relative w-[320px] h-[400px] rounded-2xl bg-gradient-to-b from-[#141A24] via-[#0E131B] to-[#070A0E] border shadow-[0_30px_70px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300"
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative w-[320px] h-[400px]"
       >
-        {/* Silicon Pattern Core */}
-          <div className="absolute inset-4 rounded-xl border bg-[#090D14] overflow-hidden" style={{ borderColor: "color-mix(in srgb, var(--hero-primary) 20%, transparent)" }}>
-            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(var(--hero-primary) 1px, transparent 1px)", backgroundSize: "10px 10px" }} />
-          
-          <InternalCircuit />
+        {/* Running Neon Border - conic gradient rotates 360deg */}
+        <div
+          className="absolute -inset-[2px] rounded-2xl animate-[neonRotate_3s_linear_infinite] pointer-events-none"
+          style={{
+            background:
+              "conic-gradient(from 0deg, #dd8448, #dd844800 25%, #dd844800 75%, #dd8448, #dd844800)",
+            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+            maskComposite: "exclude",
+            WebkitMask:
+              "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+            WebkitMaskComposite: "xor",
+            padding: "2px",
+          }}
+        />
 
-          {/* Premium Branding Foil */}
-          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-10 pointer-events-none translate-z-30">
-            <div>
-              <h2 className="text-2xl font-black tracking-tighter text-white">NVIDIA</h2>
-              <p className="text-[6px] font-mono tracking-[0.4em] font-bold uppercase" style={{ color: "var(--hero-primary)" }}>Grace Hopper Ecosystem</p>
+        {/* Neon glow - wide outer blur */}
+        <div
+          className="absolute -inset-[10px] rounded-2xl blur-2xl opacity-40 pointer-events-none animate-[neonPulse_2s_ease-in-out_infinite]"
+          style={{ background: "#dd8448" }}
+        />
+
+        {/* Neon glow - medium blur */}
+        <div
+          className="absolute -inset-[5px] rounded-2xl blur-lg opacity-60 pointer-events-none"
+          style={{ background: "#dd8448" }}
+        />
+
+        {/* Background ambient glow */}
+        <div
+          className="absolute inset-0 rounded-2xl blur-3xl opacity-20 scale-110 pointer-events-none"
+          style={{ background: "#dd8448" }}
+        />
+
+        {/* Card content */}
+        <div className="relative w-full h-full rounded-2xl bg-gradient-to-b from-[#141A24] via-[#0E131B] to-[#070A0E] shadow-[0_30px_70px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300">
+          {/* Silicon Pattern Core */}
+          <div
+            className="absolute inset-4 rounded-xl border bg-[#090D14] overflow-hidden"
+            style={{
+              borderColor: "color-mix(in srgb, #dd8448 20%, transparent)",
+            }}
+          >
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage:
+                  "radial-gradient(#dd8448 1px, transparent 1px)",
+                backgroundSize: "10px 10px",
+              }}
+            />
+
+            <InternalCircuit />
+
+            {/* Premium Branding Foil */}
+            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-10 pointer-events-none translate-z-30">
+              <div>
+                <h2 className="text-2xl font-black tracking-tighter text-white">
+                  SERVCHIP
+                </h2>
+                <p
+                  className="text-[6px] font-mono tracking-[0.4em] font-bold uppercase"
+                  style={{ color: "#dd8448" }}
+                >
+                  Enterprise Chip Ecosystem
+                </p>
+              </div>
+              <span className="text-[8px] font-mono text-slate-500 border border-slate-800 rounded px-1 py-0.5 bg-black/40">
+                SECURE_HW
+              </span>
             </div>
-            <span className="text-[8px] font-mono text-slate-500 border border-slate-800 rounded px-1 py-0.5 bg-black/40">SECURE_HW</span>
           </div>
-        </div>
 
-        {/* Dynamic Telemetry log inside the hardware asset */}
-        <div className="absolute top-6 left-6 right-6 flex justify-between text-[6px] font-mono" style={{ color: "color-mix(in srgb, var(--hero-primary) 50%, transparent)" }}>
-          <span>MODULE_01 // OK</span>
-          <span>LN2_COOLING: ACTIVE</span>
-        </div>
+          {/* Dynamic Telemetry log inside the hardware asset */}
+          <div
+            className="absolute top-6 left-6 right-6 flex justify-between text-[6px] font-mono"
+            style={{ color: "color-mix(in srgb, #dd8448 50%, transparent)" }}
+          >
+            <span>MODULE_01 // OK</span>
+            <span>LN2_COOLING: ACTIVE</span>
+          </div>
 
-        {/* Polished Gold Matrix Bus Pins */}
-        <div className="absolute -bottom-1 left-12 right-12 flex justify-between">
-          {[...Array(16)].map((_, i) => (
-            <span key={i} className="w-[3px] h-3.5 bg-gradient-to-t from-amber-600 via-yellow-500 to-transparent rounded-t shadow-[0_0_8px_#D4A843]" />
-          ))}
+          {/* Polished Gold Matrix Bus Pins */}
+          <div className="absolute -bottom-1 left-12 right-12 flex justify-between">
+            {[...Array(16)].map((_, i) => (
+              <span
+                key={i}
+                className="w-[3px] h-3.5 bg-gradient-to-t from-amber-600 via-yellow-500 to-transparent rounded-t shadow-[0_0_8px_#D4A843]"
+              />
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>
   );
 }
 
+// Gooey Blob Background Effect
+const blobConfigs = [
+  { w: 45, h: 55, left: 15, top: 12, anim: 1, dur: 14, delay: 0.3 },
+  { w: 60, h: 35, left: 70, top: 45, anim: 2, dur: 18, delay: 2.1 },
+  { w: 35, h: 50, left: 45, top: 70, anim: 3, dur: 16, delay: 1.2 },
+  { w: 55, h: 40, left: 85, top: 20, anim: 1, dur: 20, delay: 3.5 },
+  { w: 40, h: 60, left: 25, top: 55, anim: 2, dur: 12, delay: 0.8 },
+  { w: 65, h: 45, left: 55, top: 15, anim: 3, dur: 15, delay: 4.0 },
+  { w: 30, h: 40, left: 10, top: 80, anim: 1, dur: 19, delay: 1.8 },
+  { w: 50, h: 50, left: 90, top: 75, anim: 2, dur: 13, delay: 2.7 },
+];
+
+function GooeyBlobs() {
+  return (
+    <>
+      <svg className="absolute w-0 h-0">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9"
+              result="goo"
+            />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{ filter: "url(#goo)", zIndex: 0 }}
+      >
+        {blobConfigs.map((b, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: `${b.w}px`,
+              height: `${b.h}px`,
+              background: "var(--hero-primary)",
+              opacity: 0.08,
+              left: `${b.left}%`,
+              top: `${b.top}%`,
+              animation: `orbFloat${b.anim} ${b.dur}s ease-in-out infinite`,
+              animationDelay: `${b.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
 // Floating ambient aurora glow orbs
 function GlowOrbs() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+    <div
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      style={{ zIndex: 0 }}
+    >
       {/* Left massive orb */}
       <div
-        className="absolute -top-[20%] -left-[20%] w-[1200px] h-[1200px] rounded-full opacity-[0.18]"
+        className="absolute -top-[20%] -left-[20%] w-[1200px] h-[1200px] rounded-full opacity-[0.06]"
         style={{
-          background: "radial-gradient(circle at 30% 30%, var(--hero-primary) 0%, var(--hero-secondary) 25%, #7B2FBE 50%, transparent 70%)",
+          background:
+            "radial-gradient(circle at 30% 30%, var(--hero-primary) 0%, var(--hero-secondary) 25%, #7B2FBE 50%, transparent 70%)",
           filter: "blur(120px)",
           animation: "orbFloat1 22s ease-in-out infinite",
         }}
       />
       {/* Right massive orb */}
       <div
-        className="absolute -bottom-[30%] -right-[20%] w-[1100px] h-[1100px] rounded-full opacity-[0.15]"
+        className="absolute -bottom-[30%] -right-[20%] w-[1100px] h-[1100px] rounded-full opacity-[0.05]"
         style={{
-          background: "radial-gradient(circle at 70% 70%, var(--hero-secondary) 0%, #D4A843 25%, var(--hero-primary) 50%, transparent 70%)",
+          background:
+            "radial-gradient(circle at 70% 70%, var(--hero-secondary) 0%, #D4A843 25%, var(--hero-primary) 50%, transparent 70%)",
           filter: "blur(120px)",
           animation: "orbFloat2 26s ease-in-out infinite",
         }}
       />
       {/* Center-bottom ambient glow */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] opacity-[0.1]"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] opacity-[0.04]"
         style={{
-          background: "radial-gradient(ellipse at center bottom, var(--hero-primary) 0%, transparent 70%)",
+          background:
+            "radial-gradient(ellipse at center bottom, var(--hero-primary) 0%, transparent 70%)",
           filter: "blur(100px)",
           animation: "orbFloat3 18s ease-in-out infinite",
         }}
@@ -322,11 +526,15 @@ function GlowOrbs() {
 // Animated aurora light waves sweeping across the background
 function AuroraWave() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+    <div
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      style={{ zIndex: 0 }}
+    >
       <div
         className="absolute top-[15%] left-0 w-[200%] h-[300px] opacity-[0.06]"
         style={{
-          background: "linear-gradient(90deg, transparent, var(--hero-primary), var(--hero-secondary), var(--hero-primary), transparent)",
+          background:
+            "linear-gradient(90deg, transparent, var(--hero-primary), var(--hero-secondary), var(--hero-primary), transparent)",
           filter: "blur(60px)",
           animation: "auroraWave 12s ease-in-out infinite",
         }}
@@ -334,7 +542,8 @@ function AuroraWave() {
       <div
         className="absolute top-[55%] left-0 w-[200%] h-[200px] opacity-[0.04]"
         style={{
-          background: "linear-gradient(90deg, transparent, var(--hero-secondary), #7B2FBE, var(--hero-secondary), transparent)",
+          background:
+            "linear-gradient(90deg, transparent, var(--hero-secondary), #7B2FBE, var(--hero-secondary), transparent)",
           filter: "blur(50px)",
           animation: "auroraWave2 16s ease-in-out infinite 3s",
         }}
@@ -346,32 +555,39 @@ function AuroraWave() {
 // Subtle light beams from edges
 function LightBeams() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+    <div
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      style={{ zIndex: 0 }}
+    >
       <div
         className="absolute top-0 left-[10%] w-[2px] h-full opacity-[0.05]"
         style={{
-          background: "linear-gradient(180deg, transparent, var(--hero-primary), transparent)",
+          background:
+            "linear-gradient(180deg, transparent, var(--hero-primary), transparent)",
           animation: "beamPulse 4s ease-in-out infinite",
         }}
       />
       <div
         className="absolute top-0 right-[15%] w-[2px] h-full opacity-[0.05]"
         style={{
-          background: "linear-gradient(180deg, transparent, var(--hero-secondary), transparent)",
+          background:
+            "linear-gradient(180deg, transparent, var(--hero-secondary), transparent)",
           animation: "beamPulse 5s ease-in-out infinite 1s",
         }}
       />
       <div
         className="absolute top-0 left-[30%] w-[1px] h-full opacity-[0.03]"
         style={{
-          background: "linear-gradient(180deg, transparent, var(--hero-primary), transparent)",
+          background:
+            "linear-gradient(180deg, transparent, var(--hero-primary), transparent)",
           animation: "beamPulse 6s ease-in-out infinite 2s",
         }}
       />
       <div
         className="absolute top-0 right-[35%] w-[1px] h-full opacity-[0.03]"
         style={{
-          background: "linear-gradient(180deg, transparent, var(--hero-secondary), transparent)",
+          background:
+            "linear-gradient(180deg, transparent, var(--hero-secondary), transparent)",
           animation: "beamPulse 5.5s ease-in-out infinite 0.5s",
         }}
       />
@@ -394,11 +610,18 @@ function ConstellationField() {
     let height = (canvas.height = window.innerHeight);
 
     function getCSSVar(name: string) {
-      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return getComputedStyle(document.documentElement)
+        .getPropertyValue(name)
+        .trim();
     }
 
     interface Node {
-      x: number; y: number; vx: number; vy: number; size: number; alpha: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      alpha: number;
     }
 
     const nodes: Node[] = [];
@@ -424,8 +647,8 @@ function ConstellationField() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      const primaryHex = getCSSVar('--hero-primary') || '#76FF03';
-      const secondaryHex = getCSSVar('--hero-secondary') || '#00E5FF';
+      const primaryHex = getCSSVar("--hero-primary") || "#76FF03";
+      const secondaryHex = getCSSVar("--hero-secondary") || "#00E5FF";
 
       // Update positions
       for (const n of nodes) {
@@ -483,22 +706,85 @@ function ConstellationField() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 0 }}
+    />
+  );
 }
 
 // Floating tech geometric shapes
 function FloatingTechShapes() {
   const shapes = [
-    { id: 1, size: 80, top: "12%", left: "8%", color: "var(--hero-primary)", opacity: 0.1, anim: "hexFloat1", d: "M0-40L35-20L35 20L0 40L-35 20L-35-20Z" },
-    { id: 2, size: 55, top: "72%", left: "88%", color: "var(--hero-secondary)", opacity: 0.08, anim: "hexFloat2", d: "M0-28L24-14L24 14L0 28L-24 14L-24-14Z" },
-    { id: 3, size: 65, top: "65%", left: "2%", color: "var(--hero-primary)", opacity: 0.07, anim: "hexFloat3", d: "M0-32L28-16L28 16L0 32L-28 16L-28-16Z" },
-    { id: 4, size: 45, top: "18%", left: "85%", color: "var(--hero-secondary)", opacity: 0.1, anim: "hexFloat1", d: "M0-22L19-11L19 11L0 22L-19 11L-19-11Z" },
-    { id: 5, size: 35, top: "45%", left: "92%", color: "#7B2FBE", opacity: 0.07, anim: "hexFloat2", d: "M0-18L16-9L16 9L0 18L-16 9L-16-9Z" },
-    { id: 6, size: 70, top: "85%", left: "45%", color: "var(--hero-primary)", opacity: 0.06, anim: "hexFloat3", d: "M0-35L30-18L30 18L0 35L-30 18L-30-18Z" },
+    {
+      id: 1,
+      size: 80,
+      top: "12%",
+      left: "8%",
+      color: "var(--hero-primary)",
+      opacity: 0.1,
+      anim: "hexFloat1",
+      d: "M0-40L35-20L35 20L0 40L-35 20L-35-20Z",
+    },
+    {
+      id: 2,
+      size: 55,
+      top: "72%",
+      left: "88%",
+      color: "var(--hero-secondary)",
+      opacity: 0.08,
+      anim: "hexFloat2",
+      d: "M0-28L24-14L24 14L0 28L-24 14L-24-14Z",
+    },
+    {
+      id: 3,
+      size: 65,
+      top: "65%",
+      left: "2%",
+      color: "var(--hero-primary)",
+      opacity: 0.07,
+      anim: "hexFloat3",
+      d: "M0-32L28-16L28 16L0 32L-28 16L-28-16Z",
+    },
+    {
+      id: 4,
+      size: 45,
+      top: "18%",
+      left: "85%",
+      color: "var(--hero-secondary)",
+      opacity: 0.1,
+      anim: "hexFloat1",
+      d: "M0-22L19-11L19 11L0 22L-19 11L-19-11Z",
+    },
+    {
+      id: 5,
+      size: 35,
+      top: "45%",
+      left: "92%",
+      color: "#7B2FBE",
+      opacity: 0.07,
+      anim: "hexFloat2",
+      d: "M0-18L16-9L16 9L0 18L-16 9L-16-9Z",
+    },
+    {
+      id: 6,
+      size: 70,
+      top: "85%",
+      left: "45%",
+      color: "var(--hero-primary)",
+      opacity: 0.06,
+      anim: "hexFloat3",
+      d: "M0-35L30-18L30 18L0 35L-30 18L-30-18Z",
+    },
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+    <div
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      style={{ zIndex: 0 }}
+    >
       {shapes.map((s) => (
         <svg
           key={s.id}
@@ -515,8 +801,55 @@ function FloatingTechShapes() {
           fill="none"
         >
           <path d={s.d} stroke={s.color} strokeWidth="1" opacity="0.6" />
-          <path d={s.d} stroke={s.color} strokeWidth="0.5" opacity="0.3" transform="scale(1.5)" />
+          <path
+            d={s.d}
+            stroke={s.color}
+            strokeWidth="0.5"
+            opacity="0.3"
+            transform="scale(1.5)"
+          />
         </svg>
+      ))}
+    </div>
+  );
+}
+
+const HERO_BG_IMAGES = [
+  "https://images.unsplash.com/photo-1775410631936-7de96322df0b?w=1920&q=80&fm=webp",
+  "https://images.unsplash.com/photo-1754928200374-2e6e869d6c58?w=1920&q=80&fm=webp",
+  "https://images.unsplash.com/photo-1767800766429-7179fd80948f?w=1920&q=80&fm=webp",
+  "https://images.unsplash.com/photo-1761131745229-763bffe31248?w=1920&q=80&fm=webp",
+  "https://images.unsplash.com/photo-1762219214808-154d74e0d761?w=1920&q=80&fm=webp",
+  "https://images.unsplash.com/photo-1760623227551-2eae8f9cb675?w=1920&q=80&fm=webp",
+  "https://images.unsplash.com/photo-1758159234965-9d259875cf35?w=1920&q=80&fm=webp",
+  "https://static.vecteezy.com/system/resources/previews/080/914/586/non_2x/clean-metallic-central-processing-unit-installed-on-green-circuit-motherboard-photo.jpeg",
+];
+
+function HeroBgSlider() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    HERO_BG_IMAGES.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % HERO_BG_IMAGES.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute inset-0">
+      {HERO_BG_IMAGES.map((url, i) => (
+        <div
+          key={i}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out"
+          style={{
+            backgroundImage: `url(${url})`,
+            opacity: i === current ? 1 : 0,
+          }}
+        />
       ))}
     </div>
   );
@@ -524,16 +857,49 @@ function FloatingTechShapes() {
 
 export function Hero3D() {
   const displayText = useTypewriter(HERO_PHRASES, 40, 2500);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[length:200%_200%] animate-[gradientShift_18s_ease_infinite] pt-[72px] lg:pt-[104px]" style={{ backgroundImage: "linear-gradient(-45deg, #0B0F19 0%, #0F1430 20%, #1A0F2E 40%, #0B1530 60%, #0F1430 80%, #0B0F19 100%)" }}>
+    <section
+      className="relative min-h-screen flex items-center overflow-hidden pt-[72px] lg:pt-[104px]"
+      style={{ backgroundColor: "#070B15" }}
+    >
+      {/* Hero background image slider */}
+      <HeroBgSlider />
+
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
+
+      {/* Deep gradient canvas background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#070B15]/40 via-[#0B1020]/30 to-[#050810]/40" />
+
+      {/* Animated radial glow center */}
+      <div
+        className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-[0.08]"
+        style={{
+          background:
+            "radial-gradient(circle, var(--hero-primary) 0%, transparent 70%)",
+          filter: "blur(100px)",
+          animation: "orbFloat1 20s ease-in-out infinite",
+        }}
+      />
+
+      {/* Gooey blob background */}
+      <GooeyBlobs />
 
       {/* Ambient glow orbs */}
       <GlowOrbs />
 
-      {/* Constellation particle network */}
-      <ConstellationField />
+      {/* Constellation particle network (desktop only) */}
+      {isDesktop && <ConstellationField />}
 
       {/* Aurora light waves */}
       <AuroraWave />
@@ -545,17 +911,18 @@ export function Hero3D() {
       <FloatingTechShapes />
 
       {/* Structured Circuit Grid Base Layer */}
-      <div className="absolute inset-0 pointer-events-none tech-grid opacity-[0.08]" />
+      <div className="absolute inset-0 pointer-events-none tech-grid opacity-[0.06]" />
 
-      {/* Real-time Custom Canvas Streams */}
-      <InteractiveDataStream />
+      {/* Real-time Custom Canvas Streams (desktop only) */}
+      {isDesktop && <InteractiveDataStream />}
 
       {/* Radar Scanline Laser Overlay */}
-      <div 
+      <div
         className="absolute left-0 right-0 h-[2px] opacity-[0.06] pointer-events-none"
         style={{
-          background: "linear-gradient(90deg, transparent, var(--hero-primary), transparent)",
-          animation: "scanlineMove 6s linear infinite"
+          background:
+            "linear-gradient(90deg, transparent, var(--hero-primary), transparent)",
+          animation: "scanlineMove 6s linear infinite",
         }}
       />
 
@@ -564,7 +931,6 @@ export function Hero3D() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
           {/* Typography Panel */}
           <div className="max-w-xl">
             <motion.div
@@ -572,40 +938,129 @@ export function Hero3D() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-2 rounded px-3 py-1 text-[11px] font-mono font-bold mb-6 tracking-wide uppercase" style={{ backgroundColor: "color-mix(in srgb, var(--hero-primary) 10%, transparent)", borderColor: "color-mix(in srgb, var(--hero-primary) 30%, transparent)", color: "var(--hero-primary)" }}>
-                <span className="w-1.5 h-1.5 rounded-full inline-block animate-ping" style={{ backgroundColor: "var(--hero-secondary)" }} />
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-mono font-bold mb-6 tracking-wide uppercase"
+                style={{
+                  backgroundColor:
+                    "color-mix(in srgb, var(--hero-primary) 12%, transparent)",
+                  border:
+                    "1px solid color-mix(in srgb, var(--hero-primary) 35%, transparent)",
+                  color: "var(--hero-primary)",
+                }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full inline-block animate-ping"
+                  style={{ backgroundColor: "var(--hero-secondary)" }}
+                />
                 SYSTEM_BUS: CONNECTED // LIVE FLOW
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-black text-white leading-[1.05] mb-5 tracking-tight">
-                Powering the Future of <span className="text-transparent bg-clip-text filter" style={{ backgroundImage: "linear-gradient(to right, var(--hero-primary), var(--hero-secondary))", filter: "drop-shadow(0 0 15px color-mix(in srgb, var(--hero-primary) 40%, transparent))" }}>AI Computing</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-black text-white leading-[1.05] mb-5 tracking-tight [text-shadow:0_0_40px_rgba(118,255,3,0.15)]">
+                Powering the Future of{" "}
+                <span
+                  className="text-transparent bg-clip-text"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(135deg, var(--hero-primary), var(--hero-secondary))",
+                    filter:
+                      "drop-shadow(0 0 20px color-mix(in srgb, var(--hero-primary) 50%, transparent))",
+                  }}
+                >
+                  AI Computing
+                </span>
               </h1>
 
-              <p className="text-slate-400 font-mono text-xs sm:text-sm leading-relaxed mb-8 min-h-[3.5rem] bg-black/20 p-3 rounded border border-slate-900/60 shadow-inner">
-                <span className="text-slate-600 mr-1">&gt;</span> {displayText}
-                <span className="inline-block w-[6px] h-[12px] ml-1 align-middle animate-pulse" style={{ backgroundColor: "var(--hero-primary)" }} />
+              <p className="text-slate-300 font-mono text-xs sm:text-sm leading-relaxed mb-8 min-h-[3.5rem] bg-white/[0.03] backdrop-blur-sm p-4 rounded-xl border border-white/[0.06] shadow-xl">
+                <span className="text-slate-500 mr-1">&gt;</span> {displayText}
+                <span
+                  className="inline-block w-[6px] h-[12px] ml-1 align-middle animate-pulse"
+                  style={{ backgroundColor: "var(--hero-primary)" }}
+                />
               </p>
 
               <div className="flex flex-wrap gap-4 mb-10">
                 <Link href="/products">
-                  <Button variant="solid" size="lg" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right" className="text-black font-bold transition-all" style={{ backgroundColor: "var(--hero-primary)", boxShadow: "0 0 20px color-mix(in srgb, var(--hero-primary) 30%, transparent)" }} onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "color-mix(in srgb, var(--hero-primary) 80%, black)" } } onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "var(--hero-primary)" } }>
-                    Explore Chips
-                  </Button>
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm text-black transition-all shadow-lg"
+                    style={{
+                      backgroundColor: "var(--hero-primary)",
+                      boxShadow: "0 0 30px rgba(118,255,3,0.25)",
+                    }}
+                  >
+                    Explore Chips <ArrowRight className="w-4 h-4" />
+                  </motion.button>
                 </Link>
                 <Link href="/rfq">
-                  <Button variant="outline" size="lg" className="border-slate-800 text-slate-300 bg-transparent hover:bg-slate-900 hover:text-white">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border bg-white/[0.03] backdrop-blur-sm transition-all"
+                    style={{
+                      borderColor:
+                        "color-mix(in srgb, var(--hero-primary) 40%, transparent)",
+                      color:
+                        "color-mix(in srgb, var(--hero-primary) 80%, white)",
+                    }}
+                  >
                     Request Quotation
-                  </Button>
+                  </motion.button>
                 </Link>
               </div>
 
-              {/* Live Telemetry Metrics instead of just flat numbers */}
-              <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-900">
-                {HERO_STATS.map(({ value, label }) => (
-                  <div key={label} className="flex flex-col">
-                    <span className="text-xl sm:text-2xl font-black text-white font-mono tracking-tight">{value}</span>
-                    <span className="text-[10px] font-mono mt-0.5 uppercase tracking-widest font-semibold" style={{ color: "var(--hero-primary)" }}>{label}</span>
-                  </div>
+              {/* Quick brand flags */}
+              <div className="flex flex-wrap items-center gap-2 mb-8">
+                {[
+                  "NVIDIA",
+                  "AMD",
+                  "Intel",
+                  "Nokia",
+                  "Broadcom",
+                  "Qualcomm",
+                ].map((brand, i) => (
+                  <motion.span
+                    key={brand}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.08 }}
+                    className="text-[10px] font-mono tracking-wider text-slate-400 px-3 py-1.5 rounded-full border bg-white/[0.03]"
+                    style={{
+                      borderColor:
+                        "color-mix(in srgb, var(--hero-primary) 15%, transparent)",
+                    }}
+                  >
+                    {brand}
+                  </motion.span>
+                ))}
+              </div>
+
+              {/* Live Telemetry Metrics */}
+              <div
+                className="grid grid-cols-3 gap-8 pt-6"
+                style={{
+                  borderTop:
+                    "1px solid color-mix(in srgb, var(--hero-primary) 15%, transparent)",
+                }}
+              >
+                {HERO_STATS.map(({ value, label }, i) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + i * 0.1 }}
+                    className="flex flex-col"
+                  >
+                    <span className="text-xl sm:text-2xl font-black text-white font-mono tracking-tight [text-shadow:0_0_20px_rgba(118,255,3,0.1)]">
+                      {value}
+                    </span>
+                    <span
+                      className="text-[10px] font-mono mt-0.5 uppercase tracking-widest font-semibold"
+                      style={{ color: "var(--hero-primary)" }}
+                    >
+                      {label}
+                    </span>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -620,15 +1075,21 @@ export function Hero3D() {
           >
             <div className="relative w-[450px] aspect-square">
               {/* Telemetry log boxes floating near the chip */}
-              <div className="absolute top-4 left-0 bg-black/60 border border-slate-900 p-2 rounded font-mono text-[8px] text-slate-500 z-20 backdrop-blur-sm max-w-[110px] space-y-0.5">
-                <div className="font-bold" style={{ color: "var(--hero-secondary)" }}>NODE_STATUS:</div>
-                {HERO_METRICS_LOG.slice(0, 4).map(m => <div key={m}>{m}</div>)}
+              <div className="absolute top-4 left-0 bg-black/70 border border-slate-700 p-2 rounded font-mono text-[8px] text-slate-400 z-20 backdrop-blur-sm max-w-[110px] space-y-0.5">
+                <div
+                  className="font-bold"
+                  style={{ color: "var(--hero-secondary)" }}
+                >
+                  NODE_STATUS:
+                </div>
+                {HERO_METRICS_LOG.slice(0, 4).map((m) => (
+                  <div key={m}>{m}</div>
+                ))}
               </div>
 
               <Chip3D />
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

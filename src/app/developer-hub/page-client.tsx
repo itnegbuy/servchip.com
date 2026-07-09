@@ -19,14 +19,46 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const API_ENDPOINTS = [
-  { method: "GET", path: "/api/v1/chips", desc: "List all chips with filters (category, architecture, status)" },
-  { method: "GET", path: "/api/v1/chips/:slug", desc: "Get full chip details including specs by slug" },
-  { method: "GET", path: "/api/v1/chips/featured", desc: "Get featured NVIDIA chips" },
-  { method: "GET", path: "/api/v1/categories", desc: "List all chip categories with product counts" },
-  { method: "GET", path: "/api/v1/blog", desc: "List blog posts with category/tag filters" },
-  { method: "POST", path: "/api/v1/rfq", desc: "Submit a request for quote (auth required)" },
-  { method: "POST", path: "/api/v1/contact", desc: "Submit a contact form message" },
-  { method: "POST", path: "/api/v1/newsletter", desc: "Subscribe to the Servchip newsletter" },
+  {
+    method: "GET",
+    path: "/api/v1/chips",
+    desc: "List all chips with filters (category, architecture, status)",
+  },
+  {
+    method: "GET",
+    path: "/api/v1/chips/:slug",
+    desc: "Get full chip details including specs by slug",
+  },
+  {
+    method: "GET",
+    path: "/api/v1/chips/featured",
+    desc: "Get featured NVIDIA chips",
+  },
+  {
+    method: "GET",
+    path: "/api/v1/categories",
+    desc: "List all chip categories with product counts",
+  },
+  {
+    method: "GET",
+    path: "/api/v1/blog",
+    desc: "List blog posts with category/tag filters",
+  },
+  {
+    method: "POST",
+    path: "/api/v1/rfq",
+    desc: "Submit a request for quote (auth required)",
+  },
+  {
+    method: "POST",
+    path: "/api/v1/contact",
+    desc: "Submit a contact form message",
+  },
+  {
+    method: "POST",
+    path: "/api/v1/newsletter",
+    desc: "Subscribe to the Servchip newsletter",
+  },
 ];
 
 const DEV_FEATURES = [
@@ -167,7 +199,11 @@ console.log(data[0].name); // "NVIDIA H100 Tensor Core GPU"`;
 
 const INLINED_ENDPOINTS = [
   { method: "GET", path: "/api/v1/chips", desc: "List all chips with filters" },
-  { method: "GET", path: "/api/v1/chips/:slug", desc: "Get chip details by slug" },
+  {
+    method: "GET",
+    path: "/api/v1/chips/:slug",
+    desc: "Get chip details by slug",
+  },
   { method: "GET", path: "/api/v1/categories", desc: "List all categories" },
   { method: "POST", path: "/api/v1/rfq", desc: "Submit request for quote" },
   { method: "GET", path: "/api/v1/blog", desc: "List blog posts" },
@@ -177,22 +213,26 @@ const INLINED_FEATURES = [
   {
     icon: Code2,
     title: "REST API",
-    description: "Full programmatic access to our chip catalog, specs, and inventory. JSON responses with comprehensive filtering.",
+    description:
+      "Full programmatic access to our chip catalog, specs, and inventory. JSON responses with comprehensive filtering.",
   },
   {
     icon: Key,
     title: "API Keys",
-    description: "Generate and manage API keys for your applications. Rate-limited endpoints with usage analytics.",
+    description:
+      "Generate and manage API keys for your applications. Rate-limited endpoints with usage analytics.",
   },
   {
     icon: FileJson,
     title: "SDKs & Libraries",
-    description: "Official SDKs for Python, JavaScript/TypeScript, and Go. Auto-generated from OpenAPI specs.",
+    description:
+      "Official SDKs for Python, JavaScript/TypeScript, and Go. Auto-generated from OpenAPI specs.",
   },
   {
     icon: Terminal,
     title: "Interactive Playground",
-    description: "Test API calls directly in your browser with our interactive playground. No setup required.",
+    description:
+      "Test API calls directly in your browser with our interactive playground. No setup required.",
   },
 ];
 
@@ -202,17 +242,14 @@ export default function DeveloperHubPage() {
       <PageHero
         label="Developer Hub"
         title="Build with the Servchip API"
-        subtitle="Programmatic access to our complete chip catalog, specs, and inventory. Integrate NVIDIA product data into your procurement, planning, or analytics systems with our REST API and official SDKs."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Developer Hub" },
-        ]}
+        subtitle="Programmatic access to our complete multi-vendor chip catalog, specs, and inventory. Integrate product data into your procurement, planning, or analytics systems with our REST API and official SDKs."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Developer Hub" }]}
       />
 
       {/* Inlined DeveloperHub section */}
       <section
         id="developer"
-        className="relative py-20 md:py-28 bg-surface overflow-hidden scroll-mt-20"
+        className="relative py-20 md:py-28 bg-bg-body overflow-hidden scroll-mt-20"
       >
         <div className="absolute inset-0 bg-dot-grid opacity-15" />
         <div className="absolute w-96 h-96 bg-primary/5 rounded-full blur-[100px] top-20 right-0" />
@@ -220,7 +257,7 @@ export default function DeveloperHubPage() {
           <SectionHeading
             label="Developer Hub"
             title="Build with the Servchip API"
-            subtitle="Programmatic access to our complete chip catalog. Integrate NVIDIA product data into your procurement, planning, or analytics systems."
+            subtitle="Programmatic access to our complete multi-vendor chip catalog. Integrate product data into your procurement, planning, or analytics systems."
           />
 
           <div className="grid lg:grid-cols-2 gap-8 items-start">
@@ -239,7 +276,9 @@ export default function DeveloperHubPage() {
                   <div className="w-3 h-3 rounded-full bg-[#FFD600]/60" />
                   <div className="w-3 h-3 rounded-full bg-[#00FF88]/60" />
                 </div>
-                <span className="ml-2 text-xs font-mono text-text-dim">api-example.ts</span>
+                <span className="ml-2 text-xs font-mono text-text-dim">
+                  api-example.ts
+                </span>
               </div>
               {/* Code */}
               <pre className="p-4 md:p-5 text-xs md:text-[13px] font-mono leading-relaxed overflow-x-auto scrollbar-neon">
@@ -253,15 +292,27 @@ export default function DeveloperHubPage() {
                         {line.includes("//") ? (
                           <>
                             {line.split("//")[0]}
-                            <span className="text-text-dim italic">{"//"}{line.split("//")[1]}</span>
+                            <span className="text-text-dim italic">
+                              {"//"}
+                              {line.split("//")[1]}
+                            </span>
                           </>
                         ) : (
                           <span
                             dangerouslySetInnerHTML={{
                               __html: line
-                                .replace(/(".*?")/g, '<span style="color:#76FF03">$1</span>')
-                                .replace(/\b(const|await|fetch|console|log)\b/g, '<span style="color:#00E5FF">$1</span>')
-                                .replace(/\b(response|data)\b/g, '<span style="color:#AA00FF">$1</span>'),
+                                .replace(
+                                  /(".*?")/g,
+                                  '<span style="color:#76FF03">$1</span>',
+                                )
+                                .replace(
+                                  /\b(const|await|fetch|console|log)\b/g,
+                                  '<span style="color:#00E5FF">$1</span>',
+                                )
+                                .replace(
+                                  /\b(response|data)\b/g,
+                                  '<span style="color:#AA00FF">$1</span>',
+                                ),
                             }}
                           />
                         )}
@@ -287,8 +338,12 @@ export default function DeveloperHubPage() {
                     <feat.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-text mb-1">{feat.title}</h4>
-                    <p className="text-xs text-text-muted leading-relaxed">{feat.description}</p>
+                    <h4 className="text-sm font-bold text-text mb-1">
+                      {feat.title}
+                    </h4>
+                    <p className="text-xs text-text-muted leading-relaxed">
+                      {feat.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -308,19 +363,26 @@ export default function DeveloperHubPage() {
             </div>
             <div className="divide-y divide-border">
               {INLINED_ENDPOINTS.map((ep) => (
-                <div key={ep.path} className="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/5 transition-colors">
+                <div
+                  key={ep.path}
+                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/5 transition-colors"
+                >
                   <span
                     className={cn(
                       "px-2 py-0.5 rounded text-[10px] font-mono font-bold w-12 text-center",
                       ep.method === "GET"
                         ? "bg-[#00E5FF]/10 text-[#00E5FF]"
-                        : "bg-primary/10 text-primary"
+                        : "bg-primary/10 text-primary",
                     )}
                   >
                     {ep.method}
                   </span>
-                  <code className="text-xs font-mono text-text flex-1">{ep.path}</code>
-                  <span className="text-xs text-text-muted hidden sm:block">{ep.desc}</span>
+                  <code className="text-xs font-mono text-text flex-1">
+                    {ep.path}
+                  </code>
+                  <span className="text-xs text-text-muted hidden sm:block">
+                    {ep.desc}
+                  </span>
                 </div>
               ))}
             </div>
@@ -333,7 +395,12 @@ export default function DeveloperHubPage() {
             className="text-center mt-8"
           >
             <Link href="/contact">
-              <Button variant="outline" size="md" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+              <Button
+                variant="outline"
+                size="md"
+                icon={<ArrowRight className="w-4 h-4" />}
+                iconPosition="right"
+              >
                 Request API Access
               </Button>
             </Link>
@@ -353,7 +420,10 @@ export default function DeveloperHubPage() {
               Full Endpoint Reference
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              All REST endpoints. Base URL: <code className="px-1.5 py-0.5 rounded bg-surface-2 border border-border text-primary font-mono text-sm">https://api.servchip.com/v1</code>
+              All REST endpoints. Base URL:{" "}
+              <code className="px-1.5 py-0.5 rounded bg-surface-2 border border-border text-primary font-mono text-sm">
+                https://api.servchip.com/v1
+              </code>
             </p>
           </div>
 
@@ -392,7 +462,7 @@ export default function DeveloperHubPage() {
       </section>
 
       {/* Dev features grid */}
-      <section className="py-20 md:py-28 bg-surface border-t border-border">
+      <section className="py-20 md:py-28 bg-bg-body border-t border-border">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono font-medium tracking-widest uppercase mb-3">
@@ -403,7 +473,8 @@ export default function DeveloperHubPage() {
               Everything You Need to Integrate
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              A complete developer platform with SDKs, webhooks, and bulk data access.
+              A complete developer platform with SDKs, webhooks, and bulk data
+              access.
             </p>
           </div>
 
@@ -416,8 +487,12 @@ export default function DeveloperHubPage() {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                   <f.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-base font-bold text-text mb-2">{f.title}</h3>
-                <p className="text-sm text-text-muted leading-relaxed">{f.description}</p>
+                <h3 className="text-base font-bold text-text mb-2">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-text-muted leading-relaxed">
+                  {f.description}
+                </p>
               </div>
             ))}
           </div>
@@ -454,7 +529,13 @@ export default function DeveloperHubPage() {
                       <div className="w-3 h-3 rounded-full bg-[#00FF88]/60" />
                     </div>
                     <span className="ml-2 text-xs font-mono text-text-dim uppercase tracking-wider">
-                      {lang === "javascript" ? "example.js" : lang === "python" ? "example.py" : lang === "go" ? "main.go" : "request.sh"}
+                      {lang === "javascript"
+                        ? "example.js"
+                        : lang === "python"
+                          ? "example.py"
+                          : lang === "go"
+                            ? "main.go"
+                            : "request.sh"}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -477,7 +558,9 @@ export default function DeveloperHubPage() {
               <div className="text-xs font-mono text-text-dim uppercase tracking-wider mb-1">
                 Standard Tier
               </div>
-              <div className="text-2xl font-black text-text font-mono">1,000/min</div>
+              <div className="text-2xl font-black text-text font-mono">
+                1,000/min
+              </div>
               <p className="text-xs text-text-muted mt-2">
                 Free for all API key holders. Suitable for most applications.
               </p>
@@ -487,7 +570,9 @@ export default function DeveloperHubPage() {
               <div className="text-xs font-mono text-primary uppercase tracking-wider mb-1">
                 Enterprise Tier
               </div>
-              <div className="text-2xl font-black text-text font-mono">10,000/min</div>
+              <div className="text-2xl font-black text-text font-mono">
+                10,000/min
+              </div>
               <p className="text-xs text-text-muted mt-2">
                 Higher rate limits, dedicated support, and SLA guarantees.
               </p>
@@ -497,7 +582,9 @@ export default function DeveloperHubPage() {
               <div className="text-xs font-mono text-text-dim uppercase tracking-wider mb-1">
                 Auth
               </div>
-              <div className="text-2xl font-black text-text font-mono">Bearer</div>
+              <div className="text-2xl font-black text-text font-mono">
+                Bearer
+              </div>
               <p className="text-xs text-text-muted mt-2">
                 All requests require an API key in the Authorization header.
               </p>
@@ -507,7 +594,12 @@ export default function DeveloperHubPage() {
           {/* CTA */}
           <div className="text-center mt-12">
             <Link href="/contact">
-              <Button variant="solid" size="lg" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+              <Button
+                variant="solid"
+                size="lg"
+                icon={<ArrowRight className="w-4 h-4" />}
+                iconPosition="right"
+              >
                 Request API Access
               </Button>
             </Link>

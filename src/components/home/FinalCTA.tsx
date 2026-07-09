@@ -27,19 +27,28 @@ export function FinalCTA() {
             ?
           </h2>
           <p className="text-text-muted text-sm md:text-base mb-8 max-w-2xl mx-auto">
-            Get authentic NVIDIA chips delivered fast with enterprise support.
-            No minimum order quantity. Request a quote today and our team will
-            respond within 24 hours.
+            Get authentic enterprise chips delivered fast with support across
+            all brands. No minimum order quantity. Request a quote today and our
+            team will respond within 24 hours.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/rfq">
-              <Button variant="solid" size="lg" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+              <Button
+                variant="solid"
+                size="lg"
+                icon={<ArrowRight className="w-4 h-4" />}
+                iconPosition="right"
+              >
                 Request a Quote
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" size="lg" icon={<MessageSquare className="w-4 h-4" />}>
+              <Button
+                variant="outline"
+                size="lg"
+                icon={<MessageSquare className="w-4 h-4" />}
+              >
                 Talk to an Expert
               </Button>
             </Link>
@@ -48,7 +57,7 @@ export function FinalCTA() {
           <div className="flex flex-wrap justify-center gap-6 text-xs text-text-dim">
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-              100% Authentic NVIDIA Products
+              100% Authentic Products
             </span>
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-primary" />

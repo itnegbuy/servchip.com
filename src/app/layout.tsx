@@ -27,24 +27,31 @@ const baseUrl = "https://servchip.com";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    template: "%s | Servchip — Authorized NVIDIA Distributor",
+    template: "%s | Servchip — Enterprise Chip Distributor",
     default:
-      "Servchip — Authorized NVIDIA Chip Distributor & Technology Partner",
+      "Servchip — Enterprise Chip Distributor & Technology Partner for AI, HPC & Data Centers",
   },
   description:
-    "Premium distributor of authentic NVIDIA chips — H100, H200, B200, RTX 6000 Ada, AI accelerators, networking & more. Global delivery, enterprise support.",
+    "Premium distributor of authentic chips — NVIDIA, AMD, Intel, Nokia & more. H100, MI300X, Xeon, Gaudi 3, AI accelerators, networking & more. Global delivery, enterprise support.",
   keywords: [
+    "chip distributor",
     "NVIDIA distributor",
-    "NVIDIA chips",
+    "AMD distributor",
+    "Intel distributor",
+    "Nokia semiconductor",
+    "AI chips",
     "H100",
-    "H200",
-    "B200",
-    "RTX 6000 Ada",
+    "MI300X",
+    "Xeon",
+    "Gaudi 3",
     "AI GPUs",
     "data center GPUs",
     "GPU distributor",
     "enterprise GPU",
     "AI hardware",
+    "server processors",
+    "FPGA distributor",
+    "network processors",
   ],
   authors: [{ name: "Servchip Inc." }],
   creator: "Servchip Inc.",
@@ -54,17 +61,17 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: baseUrl,
     siteName: "Servchip",
-    title: "Servchip — Authorized NVIDIA Chip Distributor",
+    title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
     description:
-      "Premium distributor of authentic NVIDIA chips. Global delivery, enterprise support.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+      "Premium distributor of authentic chips from NVIDIA, AMD, Intel, Nokia & more. Global delivery, enterprise support.",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Servchip — Authorized NVIDIA Distributor",
+    title: "Servchip — Enterprise Chip Distributor",
     description:
-      "Premium distributor of authentic NVIDIA chips. Global delivery, enterprise support.",
-    images: ["/og-image.png"],
+      "Premium distributor of authentic chips from NVIDIA, AMD, Intel, Nokia & more. Global delivery, enterprise support.",
+    images: ["/og-image.svg"],
   },
   robots: {
     index: true,
@@ -79,7 +86,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/favicon.svg",
   },
 };
 
@@ -101,7 +108,7 @@ export default function RootLayout({
               url: "https://servchip.com",
               logo: "https://servchip.com/favicon.svg",
               description:
-                "Authorized distributor of authentic NVIDIA chips and enterprise GPU solutions.",
+                "Authorized distributor of authentic enterprise chips from NVIDIA, AMD, Intel, Nokia and other leading manufacturers. AI GPUs, server CPUs, FPGAs, and networking solutions.",
               foundingDate: "2018",
               contactPoint: {
                 "@type": "ContactPoint",
@@ -159,7 +166,6 @@ export default function RootLayout({
         <ThemeProvider>
           <ColorProvider>
             <QueryProvider>
-              <TopBar />
               <Header />
               <main>{children}</main>
               <Footer />

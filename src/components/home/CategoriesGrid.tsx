@@ -2,13 +2,57 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Server, Brain, Monitor, Microchip, Network, Car, Zap, Gamepad2, Cloud, HeartPulse } from "lucide-react";
+import {
+  ArrowRight,
+  Server,
+  Brain,
+  Monitor,
+  Microchip,
+  Network,
+  Car,
+  Zap,
+  Gamepad2,
+  Cloud,
+  HeartPulse,
+} from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { CATEGORIES } from "@/data/categories";
+import { CHIPS } from "@/data/chips";
+
+const CATEGORY_CHIP_MAP: Record<string, string[]> = {
+  "data-center-gpus": ["Data Center GPUs"],
+  "ai-accelerators": ["Intel Gaudi AI"],
+  "professional-graphics": [
+    "Professional RTX",
+    "AMD Radeon Pro",
+    "Intel Arc GPUs",
+  ],
+  "server-cpus": ["AMD EPYC Processors", "Intel Xeon Processors"],
+  "edge-ai": [],
+  networking: [],
+  automotive: [],
+  hpc: ["HPC & Grace"],
+  fpgas: [],
+  "network-processors": [],
+};
+
+function getProductCount(slug: string): number {
+  const names = CATEGORY_CHIP_MAP[slug] || [];
+  return CHIPS.filter((c) => names.includes(c.categoryName)).length;
+}
 
 const ICON_MAP: Record<string, typeof Server> = {
-  Server, Brain, Monitor, Microchip, Network, Car, Zap, Gamepad2, Cloud, HeartPulse,
+  Server,
+  Brain,
+  Monitor,
+  Microchip,
+  Network,
+  Car,
+  Zap,
+  Gamepad2,
+  Cloud,
+  HeartPulse,
 };
 
 export function CategoriesGrid() {
@@ -40,9 +84,15 @@ export function CategoriesGrid() {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="text-sm font-bold text-text mb-1">{cat.name}</h3>
-                  <p className="text-xs text-text-dim mb-3">{cat.description}</p>
-                  <Badge variant="green" size="sm">{cat.count} chips</Badge>
+                  <h3 className="text-sm font-bold text-text mb-1">
+                    {cat.name}
+                  </h3>
+                  <p className="text-xs text-text-dim mb-3">
+                    {cat.description}
+                  </p>
+                  <Badge variant="green" size="sm">
+                    {getProductCount(cat.slug)} chips
+                  </Badge>
                 </Link>
               </motion.div>
             );

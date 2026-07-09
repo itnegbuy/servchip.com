@@ -1,80 +1,101 @@
-export interface UseCase {
-  id: string;
-  label: string;
-  description: string;
-  icon: string;
-  suggestedChips: string[];
-}
+import type { UseCaseOption } from "@/types";
 
-export const USE_CASES: UseCase[] = [
+export const USE_CASES: UseCaseOption[] = [
   {
     id: "ai-training",
-    label: "AI / ML Training",
-    description: "Training large language models, computer vision models, and recommendation systems from scratch.",
+    label: "AI Training",
+    description:
+      "Large-scale AI model training with GPU clusters and AI accelerators",
     icon: "Brain",
-    suggestedChips: ["3", "2", "1", "5"],
+    suggestedChips: [
+      "nvidia-h100",
+      "nvidia-h200",
+      "nvidia-b200",
+      "amd-mi300x",
+      "intel-gaudi-3",
+    ],
   },
   {
     id: "ai-inference",
     label: "AI Inference",
-    description: "Production inference serving for LLMs, recommendation engines, and real-time AI applications.",
+    description: "Real-time AI inference and serving at scale",
     icon: "Zap",
-    suggestedChips: ["9", "10", "2", "1"],
+    suggestedChips: [
+      "nvidia-h200",
+      "nvidia-l40s",
+      "amd-mi300x",
+      "intel-gaudi-3",
+      "intel-xeon-8490h",
+    ],
   },
   {
     id: "hpc",
-    label: "High-Performance Computing",
-    description: "Scientific simulations, computational fluid dynamics, molecular dynamics, and weather modeling.",
-    icon: "Gauge",
-    suggestedChips: ["5", "1", "2", "6"],
+    label: "HPC",
+    description:
+      "High-performance computing for scientific simulations and research",
+    icon: "Server",
+    suggestedChips: [
+      "nvidia-h100",
+      "nvidia-gh200",
+      "amd-mi300a",
+      "amd-mi250",
+      "intel-xeon-6980p",
+      "amd-epyc-9654",
+    ],
   },
   {
     id: "data-analytics",
     label: "Data Analytics",
-    description: "Large-scale data processing, graph analytics, and business intelligence with RAPIDS.",
+    description: "Big data processing, analytics, and business intelligence",
     icon: "BarChart3",
-    suggestedChips: ["6", "1", "9"],
+    suggestedChips: ["nvidia-a100", "amd-epyc-9654", "intel-xeon-8490h"],
   },
   {
     id: "edge-computing",
     label: "Edge Computing",
-    description: "On-device AI inference for IoT, smart cameras, and industrial automation.",
+    description:
+      "Edge AI inference and local processing for IoT and industrial applications",
     icon: "Radio",
-    suggestedChips: ["7", "10"],
+    suggestedChips: ["nvidia-rtx5000"],
   },
   {
-    id: "robotics",
-    label: "Robotics",
-    description: "Autonomous mobile robots, manipulators, and real-time perception systems.",
-    icon: "Bot",
-    suggestedChips: ["7"],
+    id: "healthcare",
+    label: "Healthcare",
+    description: "Medical imaging, drug discovery, and healthcare AI",
+    icon: "HeartPulse",
+    suggestedChips: ["nvidia-rtx6000", "nvidia-rtx5000", "amd-w7900"],
   },
   {
     id: "autonomous-vehicles",
     label: "Autonomous Vehicles",
-    description: "Self-driving perception, planning, and control with DRIVE platform.",
+    description: "Self-driving car computing platforms and ADAS systems",
     icon: "Car",
-    suggestedChips: ["12", "7"],
+    suggestedChips: [],
   },
   {
     id: "virtualization",
-    label: "Virtualization / vGPU",
-    description: "VDI, cloud gaming, and AI-as-a-Service with MIG partitioning.",
-    icon: "Layers",
-    suggestedChips: ["1", "6", "9"],
-  },
-  {
-    id: "healthcare",
-    label: "Healthcare & Life Sciences",
-    description: "Medical imaging, genomics, drug discovery, and biomedical AI applications.",
-    icon: "HeartPulse",
-    suggestedChips: ["1", "2", "9"],
+    label: "Virtualization",
+    description: "Virtual desktop infrastructure and GPU virtualization",
+    icon: "Monitor",
+    suggestedChips: [
+      "nvidia-rtx6000",
+      "nvidia-l40s",
+      "amd-w7900",
+      "intel-arc-a770",
+    ],
   },
   {
     id: "gaming",
-    label: "Gaming & Creation",
-    description: "Game streaming, content creation, and professional visualization workloads.",
+    label: "Gaming",
+    description: "Consumer and professional gaming GPU solutions",
     icon: "Gamepad2",
-    suggestedChips: ["11", "4"],
+    suggestedChips: [],
+  },
+  {
+    id: "robotics",
+    label: "Robotics",
+    description: "Autonomous robotics and intelligent machine control",
+    icon: "Bot",
+    suggestedChips: [],
   },
 ];

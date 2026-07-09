@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/data/blog";
 import PageClient from "./page-client";
 
-export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await props.params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return {};
@@ -23,6 +25,11 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   };
 }
 
-export default function Page() {
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await props.params;
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  if (!post) notFound();
   return <PageClient />;
 }

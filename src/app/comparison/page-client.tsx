@@ -24,14 +24,24 @@ const STATUS_STYLES: Record<
   discontinued: { label: "Discontinued", variant: "default" },
 };
 
-const SPEC_GROUPS: { label: string; keys: (keyof ChipProduct["specifications"])[] }[] = [
+const SPEC_GROUPS: {
+  label: string;
+  keys: (keyof ChipProduct["specifications"])[];
+}[] = [
   {
     label: "Memory",
     keys: ["memory", "memoryBandwidth"],
   },
   {
     label: "Compute",
-    keys: ["tensorCores", "cudaCores", "fp8TFLOPS", "fp16TFLOPS", "tf32TFLOPS", "fp64TFLOPS"],
+    keys: [
+      "tensorCores",
+      "cudaCores",
+      "fp8TFLOPS",
+      "fp16TFLOPS",
+      "tf32TFLOPS",
+      "fp64TFLOPS",
+    ],
   },
   {
     label: "Connectivity",
@@ -39,7 +49,13 @@ const SPEC_GROUPS: { label: string; keys: (keyof ChipProduct["specifications"])[
   },
   {
     label: "Physical",
-    keys: ["tdp", "formFactor", "cooling", "launchDate", "manufacturingProcess"],
+    keys: [
+      "tdp",
+      "formFactor",
+      "cooling",
+      "launchDate",
+      "manufacturingProcess",
+    ],
   },
 ];
 
@@ -64,19 +80,19 @@ export default function ComparisonPage() {
   const defaultIds = useMemo(
     () =>
       CHIPS.filter((c) => DEFAULT_SERIES.includes(c.series)).map((c) => c.id),
-    []
+    [],
   );
 
   const [selectedIds, setSelectedIds] = useState<string[]>(defaultIds);
 
   const selectedChips = useMemo(
     () => CHIPS.filter((c) => selectedIds.includes(c.id)),
-    [selectedIds]
+    [selectedIds],
   );
 
   function toggleChip(id: string) {
     setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   }
 
@@ -85,8 +101,8 @@ export default function ComparisonPage() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Compare"
-          title="Compare NVIDIA Chips"
-          subtitle="Select chips below to view a detailed side-by-side specification comparison"
+          title="Compare Enterprise Chips"
+          subtitle="Select chips to view a detailed side-by-side specification comparison across all manufacturers"
           align="center"
         />
 
@@ -142,7 +158,8 @@ export default function ComparisonPage() {
               No Chips Selected
             </h3>
             <p className="text-sm text-text-muted max-w-md mx-auto">
-              Click on any chip above to add it to the comparison table and view specifications side by side.
+              Click on any chip above to add it to the comparison table and view
+              specifications side by side.
             </p>
           </motion.div>
         ) : (
@@ -194,10 +211,7 @@ export default function ComparisonPage() {
                       </span>
                     </div>
                     {selectedChips.map((chip) => (
-                      <div
-                        key={chip.id}
-                        className="bg-surface-2 px-4 py-2"
-                      />
+                      <div key={chip.id} className="bg-surface-2 px-4 py-2" />
                     ))}
                   </div>
 

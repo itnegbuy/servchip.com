@@ -4,74 +4,86 @@
    LIGHT THEME (default)
    ============================================================ */
 :root {
-  --bg-body: #F5F5F8;
-  --bg-dark: #EBECF2;
-  --surface: #FFFFFF;
-  --surface-2: #F4F5FA;
-  --surface-3: #EDEEF5;
-  --primary: #5AD000;
-  --primary-dark: #4AB800;
-  --primary-glow: rgba(90, 208, 0, 0.20);
-  --primary-subtle: rgba(90, 208, 0, 0.06);
-  --primary-subtle-2: rgba(90, 208, 0, 0.12);
-  --secondary: #0088B0;
-  --accent: #7B2FBE;
-  --text: #16162C;
-  --text-muted: #4A4A6E;
-  --text-dim: #6E6E95;
-  --border: #D0D2DE;
-  --border-subtle: #E0E2EE;
-  --success: #00A855;
-  --warning: #B8860B;
-  --error: #C62828;
-  --gradient-hero: linear-gradient(135deg, #E2EAE8 0%, #E8EEF2 35%, #F0F2F6 70%, #F4F5F9 100%);
-  --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #F7F8FA 100%);
-  --gradient-cta: linear-gradient(135deg, #5AD000 0%, #0088B0 100%);
-  --hero-primary: #76FF03;
-  --hero-secondary: #00E5FF;
+  --bg-body: #f0f1f5;
+  --bg-dark: #e6e8ef;
+  --surface: #ffffff;
+  --surface-2: #f8f9fc;
+  --surface-3: #edeef5;
+  --primary: #76ff03;
+  --primary-dark: #5ad000;
+  --primary-glow: rgba(118, 255, 3, 0.4);
+  --primary-subtle: rgba(118, 255, 3, 0.08);
+  --primary-subtle-2: rgba(118, 255, 3, 0.15);
+  --secondary: #0088b0;
+  --accent: #7b2fbe;
+  --text: #16162c;
+  --text-muted: #3a3a5c;
+  --text-dim: #55557a;
+  --border: #d0d2de;
+  --border-subtle: #e0e2ee;
+  --success: #00a855;
+  --warning: #b8860b;
+  --error: #c62828;
+  --gradient-hero: linear-gradient(
+    135deg,
+    #e2eae8 0%,
+    #e8eef2 35%,
+    #f0f2f6 70%,
+    #f4f5f9 100%
+  );
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f7f8fa 100%);
+  --gradient-cta: linear-gradient(135deg, #76ff03 0%, #0088b0 100%);
+  --hero-primary: #76ff03;
+  --hero-secondary: #00e5ff;
 
   /* Grid / circuit pattern */
-  --grid-line: rgba(90, 208, 0, 0.10);
-  --grid-dot: rgba(90, 208, 0, 0.14);
-  --hero-from: #F5F5F8;
-  --hero-to: #E8F5E0;
+  --grid-line: rgba(118, 255, 3, 0.12);
+  --grid-dot: rgba(118, 255, 3, 0.16);
+  --hero-from: #f5f5f8;
+  --hero-to: #d4edc9;
 }
 
 /* ============================================================
    DARK THEME
    ============================================================ */
 .dark {
-  --bg-body: #0A0A0F;
-  --bg-dark: #0A0A0F;
-  --surface: #12121A;
-  --surface-2: #1A1A2E;
-  --surface-3: #22223A;
-  --primary: #76FF03;
-  --primary-dark: #5AD000;
+  --bg-body: #0a0a0f;
+  --bg-dark: #0a0a0f;
+  --surface: #12121a;
+  --surface-2: #1a1a2e;
+  --surface-3: #22223a;
+  --primary: #76ff03;
+  --primary-dark: #5ad000;
   --primary-glow: rgba(118, 255, 3, 0.4);
   --primary-subtle: rgba(118, 255, 3, 0.08);
   --primary-subtle-2: rgba(118, 255, 3, 0.15);
-  --secondary: #00E5FF;
-  --accent: #AA00FF;
-  --text: #FFFFFF;
-  --text-muted: #8888AA;
+  --secondary: #00e5ff;
+  --accent: #aa00ff;
+  --text: #ffffff;
+  --text-muted: #8888aa;
   --text-dim: #555577;
-  --border: #2A2A3E;
-  --border-subtle: #1E1E32;
-  --success: #00FF88;
-  --warning: #FFD600;
-  --error: #FF1744;
-  --gradient-hero: linear-gradient(135deg, #0A0A0F 0%, #0A0A2E 40%, #0D0A22 70%, #0A0A12 100%);
-  --gradient-card: linear-gradient(145deg, #12121A 0%, #1A1A2E 100%);
-  --gradient-cta: linear-gradient(135deg, #76FF03 0%, #00E5FF 100%);
-  --hero-primary: #76FF03;
-  --hero-secondary: #00E5FF;
+  --border: #2a2a3e;
+  --border-subtle: #1e1e32;
+  --success: #00ff88;
+  --warning: #ffd600;
+  --error: #ff1744;
+  --gradient-hero: linear-gradient(
+    135deg,
+    #0a0a0f 0%,
+    #0a0a2e 40%,
+    #0d0a22 70%,
+    #0a0a12 100%
+  );
+  --gradient-card: linear-gradient(145deg, #12121a 0%, #1a1a2e 100%);
+  --gradient-cta: linear-gradient(135deg, #76ff03 0%, #00e5ff 100%);
+  --hero-primary: #76ff03;
+  --hero-secondary: #00e5ff;
 
   /* Grid / circuit pattern */
   --grid-line: rgba(118, 255, 3, 0.06);
-  --grid-dot: rgba(118, 255, 3, 0.10);
-  --hero-from: #0A0A0F;
-  --hero-to: #0D0D2E;
+  --grid-dot: rgba(118, 255, 3, 0.1);
+  --hero-from: #0a0a0f;
+  --hero-to: #0d0d2e;
 }
 
 /* Tailwind v4 theme mapping */
@@ -112,7 +124,9 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 ::selection {
@@ -120,10 +134,20 @@ body {
   color: var(--text);
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-body); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-body);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
 
 /* ============================================================
    UTILITY CLASSES
@@ -149,7 +173,13 @@ body {
 }
 
 .gradient-border {
-  background: linear-gradient(270deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+  background: linear-gradient(
+    270deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent),
+    var(--primary)
+  );
   background-size: 400% 400%;
   animation: gradientShift 6s ease infinite;
 }
@@ -163,14 +193,27 @@ body {
    ANIMATIONS
    ============================================================ */
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes neonPulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 20px var(--primary-glow); }
-  50% { opacity: 0.8; box-shadow: 0 0 40px var(--primary-glow); }
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px var(--primary-glow);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 40px var(--primary-glow);
+  }
 }
 
 .neon-pulse {
@@ -178,18 +221,33 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-16px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-24px) rotate(2deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-24px) rotate(2deg);
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .animate-blink {
@@ -197,44 +255,104 @@ body {
 }
 
 @keyframes circuit-flow {
-  0% { stroke-dashoffset: 200; }
-  100% { stroke-dashoffset: 0; }
+  0% {
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes data-packet {
-  0% { offset-distance: 0%; opacity: 0; }
-  10% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
 }
 
 @keyframes scan-line {
-  0% { top: -2px; opacity: 0; }
-  5% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+  0% {
+    top: -2px;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
 }
 
 @keyframes data-float {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  5% { opacity: var(--fo); }
-  90% { opacity: var(--fo); }
-  100% { transform: translateY(-120px) translateX(var(--fx, 20px)); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: var(--fo);
+  }
+  90% {
+    opacity: var(--fo);
+  }
+  100% {
+    transform: translateY(-120px) translateX(var(--fx, 20px));
+    opacity: 0;
+  }
 }
 
 @keyframes node-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 var(--node-color, var(--primary-glow)); opacity: 0.4; }
-  50% { box-shadow: 0 0 0 8px var(--node-color, var(--primary-glow)); opacity: 0.8; }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--node-color, var(--primary-glow));
+    opacity: 0.4;
+  }
+  50% {
+    box-shadow: 0 0 0 8px var(--node-color, var(--primary-glow));
+    opacity: 0.8;
+  }
 }
 
 @keyframes line-glow {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.3; }
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
 @keyframes circuit-draw {
-  0% { stroke-dashoffset: 100; }
-  100% { stroke-dashoffset: 0; }
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Neon rotating gradient border */
+@keyframes neonBorderRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
 }
 
 /* Background pattern utilities (from Servchip ZAI) */
@@ -250,9 +368,21 @@ body {
 }
 .bg-circuit {
   background-image:
-    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--primary) 8%, transparent) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--secondary) 7%, transparent) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 50%);
+    radial-gradient(
+      circle at 20% 30%,
+      color-mix(in srgb, var(--primary) 8%, transparent) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      color-mix(in srgb, var(--secondary) 7%, transparent) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      color-mix(in srgb, var(--accent) 6%, transparent) 0%,
+      transparent 50%
+    );
 }
 .bg-hero-gradient {
   background: linear-gradient(180deg, var(--hero-from) 0%, var(--hero-to) 100%);
@@ -260,7 +390,10 @@ body {
 
 /* Card hover lift */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 .card-hover:hover {
   transform: translateY(-4px);
@@ -294,7 +427,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

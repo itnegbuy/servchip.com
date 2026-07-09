@@ -25,15 +25,15 @@ interface ColorTheme {
 const colorThemes: ColorTheme[] = [
   {
     id: "green",
-    name: "NVIDIA Green",
-    primary: "#5AD000",
-    primaryDark: "#4AB800",
-    primaryGlow: "rgba(90, 208, 0, 0.25)",
-    primarySubtle: "rgba(90, 208, 0, 0.08)",
-    primarySubtle2: "rgba(90, 208, 0, 0.15)",
+    name: "Neon Green",
+    primary: "#76FF03",
+    primaryDark: "#5AD000",
+    primaryGlow: "rgba(118, 255, 3, 0.40)",
+    primarySubtle: "rgba(118, 255, 3, 0.08)",
+    primarySubtle2: "rgba(118, 255, 3, 0.15)",
     secondary: "#0088B0",
     accent: "#7B2FBE",
-    chipLabel: "NVIDIA",
+    chipLabel: "GREEN",
   },
   {
     id: "blue",

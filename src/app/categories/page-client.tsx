@@ -5,7 +5,7 @@ import { CategoriesGrid } from "@/components/home/CategoriesGrid";
 
 export default function CategoriesPage() {
   return (
-    <div className="min-h-screen bg-bg-dark pt-20">
+    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Categories"

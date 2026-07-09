@@ -56,7 +56,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-24 pb-20">
+    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Contact Us"
@@ -198,6 +198,7 @@ export default function ContactPage() {
                       Email <span className="text-primary">*</span>
                     </label>
                     <input
+                      suppressHydrationWarning
                       type="email"
                       required
                       value={form.email}

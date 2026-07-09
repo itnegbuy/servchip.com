@@ -20,32 +20,66 @@ import {
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { TESTIMONIALS } from "@/data/testimonials";
+import { TESTIMONIALS_DATA } from "@/data/testimonials";
+
+const TESTIMONIALS = TESTIMONIALS_DATA.map((t, i) => ({
+  id: `t${i}`,
+  quote: t.content,
+  name: t.author.name,
+  role: t.author.role,
+  company: t.company,
+  avatar: t.author.avatar,
+  rating: t.rating,
+}));
 
 const SOLUTIONS_INLINE = [
   {
     icon: "Building2",
     title: "Enterprise AI",
-    description: "Build and scale enterprise AI platforms with H100/H200 clusters, MLOps pipelines, and production-grade infrastructure.",
-    points: ["LLM training & serving", "RAG pipelines", "MLOps automation", "Hybrid cloud"],
+    description:
+      "Build and scale enterprise AI platforms with H100/H200 clusters, MLOps pipelines, and production-grade infrastructure.",
+    points: [
+      "LLM training & serving",
+      "RAG pipelines",
+      "MLOps automation",
+      "Hybrid cloud",
+    ],
   },
   {
     icon: "FlaskConical",
     title: "Research & HPC",
-    description: "Power scientific discovery with Grace Hopper superchips and exascale computing for simulations and data analysis.",
-    points: ["Climate modeling", "Drug discovery", "Genomics", "Computational chemistry"],
+    description:
+      "Power scientific discovery with Grace Hopper superchips and exascale computing for simulations and data analysis.",
+    points: [
+      "Climate modeling",
+      "Drug discovery",
+      "Genomics",
+      "Computational chemistry",
+    ],
   },
   {
     icon: "Rocket",
     title: "Startups & Scaleups",
-    description: "Accelerate your AI startup with cost-effective L40S/L4 inference clusters and flexible procurement options.",
-    points: ["Inference at scale", "Cost optimization", "Rapid deployment", "Growth scaling"],
+    description:
+      "Accelerate your AI startup with cost-effective L40S/L4 inference clusters and flexible procurement options.",
+    points: [
+      "Inference at scale",
+      "Cost optimization",
+      "Rapid deployment",
+      "Growth scaling",
+    ],
   },
   {
     icon: "HeartPulse",
     title: "Healthcare & Life Sci",
-    description: "Deploy Clara-enabled medical imaging, genomics analysis, and biomedical AI on certified NVIDIA hardware.",
-    points: ["Medical imaging AI", "Genomics sequencing", "Drug discovery", "Clinical NLP"],
+    description:
+      "Deploy AI-powered medical imaging, genomics analysis, and biomedical AI on certified hardware.",
+    points: [
+      "Medical imaging AI",
+      "Genomics sequencing",
+      "Drug discovery",
+      "Clinical NLP",
+    ],
   },
 ];
 
@@ -55,7 +89,12 @@ const INDUSTRY_SOLUTIONS = [
     title: "Enterprise AI",
     description:
       "Build and scale enterprise AI platforms with H100/H200 clusters, MLOps pipelines, and production-grade infrastructure.",
-    points: ["LLM training & serving", "RAG pipelines", "MLOps automation", "Hybrid cloud"],
+    points: [
+      "LLM training & serving",
+      "RAG pipelines",
+      "MLOps automation",
+      "Hybrid cloud",
+    ],
     recommendedChips: ["H100", "H200", "L40S"],
   },
   {
@@ -63,7 +102,12 @@ const INDUSTRY_SOLUTIONS = [
     title: "Research & HPC",
     description:
       "Power scientific discovery with Grace Hopper superchips and exascale computing for simulations and data analysis.",
-    points: ["Climate modeling", "Drug discovery", "Genomics", "Computational chemistry"],
+    points: [
+      "Climate modeling",
+      "Drug discovery",
+      "Genomics",
+      "Computational chemistry",
+    ],
     recommendedChips: ["GH200", "H100", "B200"],
   },
   {
@@ -71,7 +115,12 @@ const INDUSTRY_SOLUTIONS = [
     title: "Startups & Scaleups",
     description:
       "Accelerate your AI startup with cost-effective L40S/L4 inference clusters and flexible procurement options.",
-    points: ["Inference at scale", "Cost optimization", "Rapid deployment", "Growth scaling"],
+    points: [
+      "Inference at scale",
+      "Cost optimization",
+      "Rapid deployment",
+      "Growth scaling",
+    ],
     recommendedChips: ["L40S", "L4", "A100"],
   },
   {
@@ -79,7 +128,12 @@ const INDUSTRY_SOLUTIONS = [
     title: "Healthcare & Life Sci",
     description:
       "Deploy Clara-enabled medical imaging, genomics analysis, and biomedical AI on certified NVIDIA hardware.",
-    points: ["Medical imaging AI", "Genomics sequencing", "Drug discovery", "Clinical NLP"],
+    points: [
+      "Medical imaging AI",
+      "Genomics sequencing",
+      "Drug discovery",
+      "Clinical NLP",
+    ],
     recommendedChips: ["H100", "GH200", "L40S"],
   },
   {
@@ -87,7 +141,12 @@ const INDUSTRY_SOLUTIONS = [
     title: "Automotive",
     description:
       "Develop autonomous driving systems with DRIVE Thor and DRIVE Orin SoCs — ASIL-D safety, multi-modal AI.",
-    points: ["ADAS / AD stack", "Multi-modal perception", "Digital twins", "Fleet AI"],
+    points: [
+      "ADAS / AD stack",
+      "Multi-modal perception",
+      "Digital twins",
+      "Fleet AI",
+    ],
     recommendedChips: ["DRIVE Thor", "Jetson AGX Orin"],
   },
   {
@@ -95,7 +154,12 @@ const INDUSTRY_SOLUTIONS = [
     title: "Financial Services",
     description:
       "Accelerate quant modeling, risk analytics, and fraud detection with low-latency GPU clusters and NVLink fabrics.",
-    points: ["Quant modeling", "Risk analytics", "Fraud detection", "High-frequency trading"],
+    points: [
+      "Quant modeling",
+      "Risk analytics",
+      "Fraud detection",
+      "High-frequency trading",
+    ],
     recommendedChips: ["H100", "H200", "ConnectX-7"],
   },
   {
@@ -103,15 +167,25 @@ const INDUSTRY_SOLUTIONS = [
     title: "Education & Research",
     description:
       "Equip academic labs and universities with shared GPU clusters, MIG partitioning, and EduKit learning paths.",
-    points: ["Shared GPU clusters", "MIG partitioning", "Research compute", "Curriculum kits"],
+    points: [
+      "Shared GPU clusters",
+      "MIG partitioning",
+      "Research compute",
+      "Curriculum kits",
+    ],
     recommendedChips: ["A100", "H100", "L40S"],
   },
   {
     icon: Shield,
     title: "Government & Defense",
     description:
-      "Secure, on-prem NVIDIA deployments for defense AI, intelligence analysis, and sovereign cloud infrastructure.",
-    points: ["Sovereign cloud", "Air-gapped deploy", "Confidential computing", "Multi-level security"],
+      "Secure, on-prem deployments for defense AI, intelligence analysis, and sovereign cloud infrastructure using certified hardware.",
+    points: [
+      "Sovereign cloud",
+      "Air-gapped deploy",
+      "Confidential computing",
+      "Multi-level security",
+    ],
     recommendedChips: ["H100", "B200", "ConnectX-7"],
   },
 ];
@@ -148,7 +222,8 @@ const CASE_STUDIES = [
 
 export default function SolutionsPage() {
   useEffect(() => {
-    document.title = "Industry Solutions | Servchip — Authorized NVIDIA Distributor";
+    document.title =
+      "Industry Solutions | Servchip — Enterprise Chip Distributor";
   }, []);
 
   return (
@@ -156,11 +231,8 @@ export default function SolutionsPage() {
       <PageHero
         label="Solutions"
         title="Industry-Specific AI Computing Solutions"
-        subtitle="From enterprise AI to healthcare, automotive, and government — we architect complete NVIDIA-based solutions tailored to your industry's unique compute, compliance, and scale requirements."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Solutions" },
-        ]}
+        subtitle="From enterprise AI to healthcare, automotive, and government — we architect complete solutions tailored to your industry's unique compute, compliance, and scale requirements across all leading chip manufacturers."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Solutions" }]}
       />
 
       {/* Inlined Solutions component */}
@@ -173,12 +245,15 @@ export default function SolutionsPage() {
           <SectionHeading
             label="Solutions"
             title="Industry-Specific AI Computing Solutions"
-            subtitle="From enterprise AI to healthcare and research — we architect complete NVIDIA-based solutions tailored to your industry needs."
+            subtitle="From enterprise AI to healthcare and research — we architect complete solutions tailored to your industry needs across all leading chip manufacturers."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {SOLUTIONS_INLINE.map((sol, i) => {
-              const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[sol.icon] || Icons.Circle;
+              const Icon =
+                (Icons as unknown as Record<string, Icons.LucideIcon>)[
+                  sol.icon
+                ] || Icons.Circle;
               return (
                 <motion.div
                   key={sol.title}
@@ -193,13 +268,18 @@ export default function SolutionsPage() {
                       <Icon className="w-7 h-7 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-text mb-2">{sol.title}</h3>
+                      <h3 className="text-lg font-bold text-text mb-2">
+                        {sol.title}
+                      </h3>
                       <p className="text-sm text-text-muted leading-relaxed mb-4">
                         {sol.description}
                       </p>
                       <div className="grid grid-cols-2 gap-2">
                         {sol.points.map((point) => (
-                          <div key={point} className="flex items-center gap-1.5 text-xs text-text-muted">
+                          <div
+                            key={point}
+                            className="flex items-center gap-1.5 text-xs text-text-muted"
+                          >
                             <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
                             {point}
                           </div>
@@ -225,7 +305,10 @@ export default function SolutionsPage() {
             className="text-center mt-10"
           >
             <Link href="#contact">
-              <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 hover:border-primary">
+              <Button
+                variant="outline"
+                className="border-primary/40 text-primary hover:bg-primary/10 hover:border-primary"
+              >
                 Discuss Your Solution <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
@@ -302,7 +385,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* Case studies */}
-      <section className="py-20 md:py-28 bg-surface border-t border-border">
+      <section className="py-20 md:py-28 bg-bg-body border-t border-border">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono font-medium tracking-widest uppercase mb-3">
@@ -313,7 +396,8 @@ export default function SolutionsPage() {
               Proven in Production
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              Real-world deployments from leading Indian enterprises and research institutions.
+              Real-world deployments from leading Indian enterprises and
+              research institutions.
             </p>
           </div>
 
@@ -337,7 +421,9 @@ export default function SolutionsPage() {
                     <div className="text-[10px] font-mono text-text-dim uppercase tracking-wider">
                       {cs.metricLabel}
                     </div>
-                    <div className="text-lg font-black text-primary font-mono">{cs.metric}</div>
+                    <div className="text-lg font-black text-primary font-mono">
+                      {cs.metric}
+                    </div>
                   </div>
                   <div className="text-right">
                     <div className="text-[10px] font-mono text-text-dim uppercase tracking-wider">
@@ -363,7 +449,9 @@ export default function SolutionsPage() {
                 >
                   <div className="flex items-center gap-1 mb-3 text-[#FFD600]">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <span key={i} className="text-xs">★</span>
+                      <span key={i} className="text-xs">
+                        ★
+                      </span>
                     ))}
                   </div>
                   <p className="text-xs text-text-muted leading-relaxed mb-4 flex-1 line-clamp-4">
@@ -394,7 +482,8 @@ export default function SolutionsPage() {
               </h3>
               <p className="text-sm text-text-muted max-w-2xl">
                 Our NVIDIA-certified engineers will design a complete reference
-                architecture tailored to your industry and workload — at no cost.
+                architecture tailored to your industry and workload — at no
+                cost.
               </p>
             </div>
             <div className="flex gap-3 shrink-0">
@@ -404,7 +493,10 @@ export default function SolutionsPage() {
                 </Button>
               </Link>
               <Link href="/configurator">
-                <Button variant="outline" className="border-border text-text-muted hover:text-text">
+                <Button
+                  variant="outline"
+                  className="border-border text-text-muted hover:text-text"
+                >
                   Try Configurator
                 </Button>
               </Link>

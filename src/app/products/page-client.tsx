@@ -6,12 +6,12 @@ import { ChipGrid } from "@/components/chips/ChipGrid";
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-bg-dark pt-24 pb-20">
+    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Products"
-          title="All NVIDIA Products"
-          subtitle="Browse our complete catalog of authentic NVIDIA chips and accelerators"
+          title="All Enterprise Chips"
+          subtitle="Browse our complete multi-vendor catalog of authentic chips and accelerators"
           align="center"
         />
         <div className="mt-10">

@@ -20,12 +20,12 @@ export function FeaturedChips() {
   const featured = CHIPS.filter((c) => FEATURED_CHIP_IDS.includes(c.id));
 
   return (
-    <section className="py-20 bg-surface">
+    <section className="py-20 bg-bg-body">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Featured Products"
           title="Explore Our Premium Chip Collection"
-          subtitle="Authentic NVIDIA GPUs for AI, HPC, and Enterprise workloads"
+          subtitle="Authentic enterprise chips for AI, HPC, and Enterprise workloads"
           align="center"
         />
 
@@ -39,7 +39,12 @@ export function FeaturedChips() {
 
         <div className="text-center mt-10">
           <Link href="/products">
-            <Button variant="outline" size="lg" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+            <Button
+              variant="outline"
+              size="lg"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="right"
+            >
               View All Products
             </Button>
           </Link>

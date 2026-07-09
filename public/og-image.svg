@@ -1,0 +1,12 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B0F17"/>
+      <stop offset="100%" style="stop-color:#1A1F2E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="600" y="280" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="64" fontWeight="900" fill="white">SERVCHIP</text>
+  <text x="600" y="350" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="24" fill="#dd8448">Enterprise Chip Distributor</text>
+  <text x="600" y="400" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="16" fill="#666">AI · HPC · Data Center · Gaming</text>
+</svg>

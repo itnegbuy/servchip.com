@@ -22,7 +22,7 @@ const badgeVariantMap: Record<string, "green" | "cyan" | "purple"> = {
 
 export function ComparisonPreview() {
   return (
-    <section className="py-20 bg-surface">
+    <section className="py-20 bg-bg-body">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Compare Chips"
@@ -49,7 +49,7 @@ export function ComparisonPreview() {
                   <span
                     className={cn(
                       "font-mono text-sm font-medium",
-                      chip.winner ? "text-primary" : "text-text"
+                      chip.winner ? "text-primary" : "text-text",
                     )}
                   >
                     {value}
@@ -58,7 +58,10 @@ export function ComparisonPreview() {
               ))}
 
               <div className="mt-4">
-                <Badge variant={badgeVariantMap[chip.badge] ?? "green"} size="sm">
+                <Badge
+                  variant={badgeVariantMap[chip.badge] ?? "green"}
+                  size="sm"
+                >
                   {badgeEmojis[chip.badge] ?? ""} {chip.badge}
                 </Badge>
               </div>

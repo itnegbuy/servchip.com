@@ -2,8 +2,9 @@
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "Developer Hub — NVIDIA SDK, API Docs & Integration Guides",
-  description: "Access NVIDIA CUDA, TensorRT, and Triton Inference Server integration guides. SDK documentation, API reference, and code samples for developers.",
+  title: "Developer Hub — SDK, API Docs & Integration Guides",
+  description:
+    "Access integration guides for NVIDIA CUDA, AMD ROCm, Intel oneAPI and more. SDK documentation, API reference, and code samples for developers across all major chip platforms.",
   alternates: { canonical: "https://servchip.com/developer-hub" },
 };
 

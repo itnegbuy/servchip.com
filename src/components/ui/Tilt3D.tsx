@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface Tilt3DProps {
@@ -14,12 +14,12 @@ interface Tilt3DProps {
   className?: string;
 }
 
-export function Tilt3D({
-  children,
-  options = {},
-  className,
-}: Tilt3DProps) {
+export function Tilt3D({ children, options = {}, className }: Tilt3DProps) {
   const { glare = true, scale = 1.02, speed = 15, maxAngle = 15 } = options;
+  const [isTouch] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  });
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0.5);
@@ -37,17 +37,21 @@ export function Tilt3D({
   const glareX = useTransform(x, [0, 1], [0, 100]);
   const glareY = useTransform(y, [0, 1], [0, 100]);
 
-  const handleMouse = (e: React.MouseEvent) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    x.set((e.clientX - rect.left) / rect.width);
-    y.set((e.clientY - rect.top) / rect.height);
-  };
+  const handleMouse = !isTouch
+    ? (e: React.MouseEvent) => {
+        const rect = ref.current?.getBoundingClientRect();
+        if (!rect) return;
+        x.set((e.clientX - rect.left) / rect.width);
+        y.set((e.clientY - rect.top) / rect.height);
+      }
+    : undefined;
 
-  const handleLeave = () => {
-    x.set(0.5);
-    y.set(0.5);
-  };
+  const handleLeave = !isTouch
+    ? () => {
+        x.set(0.5);
+        y.set(0.5);
+      }
+    : undefined;
 
   return (
     <motion.div
@@ -55,7 +59,7 @@ export function Tilt3D({
       onMouseMove={handleMouse}
       onMouseLeave={handleLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      whileHover={{ scale }}
+      whileHover={!isTouch ? { scale } : undefined}
       className={`relative ${className ?? ""}`}
     >
       {children}
