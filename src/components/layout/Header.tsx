@@ -20,6 +20,7 @@ import { TopBar } from "./TopBar";
 import { SearchModal } from "@/components/interactive/SearchModal";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
+import { ChipToggle } from "@/components/ui/ChipToggle";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 
 interface NavLink {
@@ -49,70 +50,93 @@ interface SimpleNavItem {
 
 type NavItem = MegaNavItem | SimpleNavItem;
 
-const MANUFACTURER_COLUMNS: NavColumn[] = MANUFACTURERS.map((m) => ({
-  title: m.name,
-  href: `/manufacturers/${m.slug}`,
-  links: [
-    {
-      label: `All ${m.name} Products`,
-      href: `/products?manufacturer=${m.slug}`,
-      description: `Browse all ${m.name} products`,
-    },
-    ...m.categories.slice(0, 3).map((cat) => ({
-      label: cat.name,
-      href: `/manufacturers/${m.slug}/${cat.slug}`,
-    })),
-    {
-      label: `View All`,
-      href: `/manufacturers/${m.slug}`,
-      description: `Complete ${m.name} portfolio`,
-    },
-  ],
-}));
+const PRODUCT_COLUMNS: NavColumn[] = [
+  {
+    title: "AI Accelerators",
+    href: "/categories/ai-gpus-accelerators",
+    links: [
+      { label: "NVIDIA", href: "/manufacturers/nvidia", description: "H100, H200, B200, GB200" },
+      { label: "AMD", href: "/manufacturers/amd", description: "Instinct MI300X, MI325X, MI350X" },
+      { label: "Intel", href: "/manufacturers/intel", description: "Gaudi 2, Gaudi 3" },
+      { label: "Google", href: "/manufacturers/google", description: "TPU v6, TPU v7" },
+      { label: "Amazon", href: "/manufacturers/amazon", description: "Trainium 2, Inferentia 2" },
+    ],
+  },
+  {
+    title: "Server CPUs",
+    href: "/categories/server-cpus",
+    links: [
+      { label: "AMD EPYC", href: "/manufacturers/amd", description: "EPYC 9005 Turin" },
+      { label: "Intel Xeon", href: "/manufacturers/intel", description: "Xeon 6 Granite Rapids" },
+      { label: "Ampere", href: "/manufacturers/ampere", description: "AmpereOne ARM" },
+      { label: "Qualcomm", href: "/manufacturers/qualcomm", description: "DC server CPUs" },
+      { label: "NVIDIA Grace", href: "/manufacturers/nvidia", description: "ARM superchip" },
+    ],
+  },
+  {
+    title: "AI Servers",
+    href: "/categories/ai-servers-platforms",
+    links: [
+      { label: "Dell", href: "/manufacturers/dell-technologies", description: "PowerEdge XE9680" },
+      { label: "HPE", href: "/manufacturers/hewlett-packard-enterprise", description: "Cray XD670" },
+      { label: "Supermicro", href: "/manufacturers/supermicro", description: "AS-8125GS" },
+      { label: "Lenovo", href: "/manufacturers/lenovo", description: "ThinkSystem SR780A" },
+      { label: "Gigabyte", href: "/manufacturers/gigabyte", description: "G593" },
+      { label: "ASUS", href: "/manufacturers/asus", description: "ESC N8" },
+      { label: "Inspur", href: "/manufacturers/inspur", description: "NF5688" },
+      { label: "Quanta", href: "/manufacturers/quanta" },
+      { label: "Foxconn", href: "/manufacturers/foxconn" },
+      { label: "Wiwynn", href: "/manufacturers/wiwynn" },
+    ],
+  },
+  {
+    title: "Networking",
+    href: "/categories/networking-interconnects",
+    links: [
+      { label: "Broadcom", href: "/manufacturers/broadcom", description: "Tomahawk 6" },
+      { label: "Marvell", href: "/manufacturers/marvell", description: "Teralynx 10" },
+      { label: "Cisco", href: "/manufacturers/cisco", description: "Silicon One" },
+    ],
+  },
+  {
+    title: "Memory & Storage",
+    href: "/categories/ai-memory-hbm",
+    links: [
+      { label: "SK hynix", href: "/manufacturers/sk-hynix", description: "HBM3E" },
+      { label: "Samsung", href: "/manufacturers/samsung", description: "HBM3E, DDR5, SSD" },
+      { label: "Micron", href: "/manufacturers/micron", description: "HBM3E, DDR5, SSD" },
+      { label: "Solidigm", href: "/manufacturers/solidigm", description: "D7-P5810" },
+      { label: "Kioxia", href: "/manufacturers/kioxia", description: "CM7-V3" },
+      { label: "Western Digital", href: "/manufacturers/western-digital", description: "Ultrastar SSD" },
+      { label: "Seagate", href: "/manufacturers/seagate", description: "Nytro 3530" },
+    ],
+  },
+];
 
 const CATEGORY_COLUMNS = [
   {
     title: "Computing",
     links: [
-      {
-        label: "Data Center GPUs",
-        href: "/categories/data-center-gpus",
-        description: "Enterprise AI & HPC",
-      },
-      {
-        label: "AI Accelerators",
-        href: "/categories/ai-accelerators",
-        description: "Specialized AI processing",
-      },
-      {
-        label: "Server CPUs",
-        href: "/categories/server-cpus",
-        description: "Enterprise processors",
-      },
-      {
-        label: "HPC Solutions",
-        href: "/categories/hpc-solutions",
-        description: "Supercomputing",
-      },
+      { label: "NVIDIA Data Center GPUs", href: "/categories/nvidia-data-center-gpus", description: "H100, H200, B200, GB200, L40S" },
+      { label: "AMD Instinct Accelerators", href: "/categories/amd-instinct-accelerators", description: "MI300X, MI325X, MI350X" },
+      { label: "Intel Gaudi AI", href: "/categories/intel-gaudi-ai-accelerators", description: "Gaudi 2, Gaudi 3" },
+      { label: "Google TPU", href: "/categories/google-tpu-accelerators", description: "TPU v6, TPU v7" },
+      { label: "Amazon AI Chips", href: "/categories/amazon-ai-chips", description: "Trainium 2, Inferentia 2" },
     ],
   },
   {
-    title: "Professional",
+    title: "Infrastructure",
     links: [
-      { label: "Professional GPUs", href: "/categories/professional-graphics" },
-      {
-        label: "FPGAs & Adaptive SoCs",
-        href: "/categories/fpgas-adaptive-socs",
-      },
-      { label: "Edge AI & Embedded", href: "/categories/edge-ai-embedded" },
+      { label: "Server CPUs", href: "/categories/server-cpus", description: "AMD EPYC, Intel Xeon, Ampere" },
+      { label: "AI Servers & Platforms", href: "/categories/ai-servers-platforms", description: "Dell, HPE, Supermicro, Lenovo" },
+      { label: "Networking", href: "/categories/networking-interconnects", description: "Broadcom, Marvell, Cisco" },
     ],
   },
   {
-    title: "Vertical",
+    title: "Components",
     links: [
-      { label: "Automotive", href: "/categories/automotive" },
-      { label: "Networking", href: "/categories/networking" },
-      { label: "Network Processors", href: "/categories/network-processors" },
+      { label: "AI Memory & HBM", href: "/categories/ai-memory-hbm", description: "HBM3E, DDR5, MRDIMM, CXL" },
+      { label: "Enterprise Storage", href: "/categories/enterprise-storage", description: "NVMe SSDs for data centers" },
     ],
   },
   {
@@ -210,7 +234,7 @@ const RESOURCE_COLUMNS = [
 ];
 
 const NAV_MEGA: MegaNavItem[] = [
-  { label: "Chips", columns: MANUFACTURER_COLUMNS, href: "/products" },
+  { label: "Products", columns: PRODUCT_COLUMNS, href: "/products" },
   { label: "Categories", columns: CATEGORY_COLUMNS, href: "/categories" },
   { label: "Technology", columns: RESOURCE_COLUMNS, href: "/technology" },
   { label: "Services", columns: SERVICES_COLUMNS, href: "/services" },
@@ -263,6 +287,7 @@ export function Header() {
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const prevScroll = useRef(0);
+  const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -292,6 +317,16 @@ export function Header() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape" && activeMenu) {
+        setActiveMenu(null);
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [activeMenu]);
+
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
@@ -319,8 +354,10 @@ export function Header() {
 
           {/* Desktop Nav */}
           <div
-            className="hidden lg:block flex-1"
-            onMouseLeave={() => setActiveMenu(null)}
+            className="hidden lg:block flex-1 relative"
+            onMouseLeave={() => {
+              menuCloseTimer.current = setTimeout(() => setActiveMenu(null), 100);
+            }}
           >
             <nav className="flex items-center justify-center gap-0.5">
               <NavLink
@@ -332,7 +369,10 @@ export function Header() {
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => setActiveMenu(item.label)}
+                  onMouseEnter={() => {
+                    if (menuCloseTimer.current) clearTimeout(menuCloseTimer.current);
+                    setActiveMenu(item.label);
+                  }}
                 >
                   <button
                     className={cn(
@@ -381,9 +421,15 @@ export function Header() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
                   className="absolute left-0 right-0 top-full mt-0 flex justify-center"
-                  onMouseEnter={() => setActiveMenu(activeMenu)}
+                  onClick={() => setActiveMenu(null)}
+                  onMouseEnter={() => {
+                    if (menuCloseTimer.current) clearTimeout(menuCloseTimer.current);
+                  }}
                 >
-                  <div className="w-[min(1100px,calc(100vw-2rem))]">
+                  <div
+                    className="w-[min(1100px,calc(100vw-2rem))]"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     {(() => {
                       const item = NAV_MEGA.find(
                         (m) => m.label === activeMenu,
@@ -405,6 +451,7 @@ export function Header() {
           {/* Actions */}
           <div className="flex items-center gap-2.5">
             <ColorPicker />
+            <ChipToggle />
             <ThemeToggle />
             <button
               onClick={() => setSearchOpen((v) => !v)}
@@ -682,9 +729,19 @@ export function Header() {
                               {mega.columns.map((col) => (
                                 <div key={col.title} className="py-2">
                                   <h4 className="text-[10px] font-semibold uppercase tracking-wider text-primary/60 px-3 mb-2">
-                                    {col.title}
+                                    {col.href ? (
+                                      <Link
+                                        href={col.href}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="hover:text-primary transition-colors"
+                                      >
+                                        {col.title}
+                                      </Link>
+                                    ) : (
+                                      col.title
+                                    )}
                                   </h4>
-                                  {col.links.map((link) => (
+                                  {col.links.slice(0, 5).map((link) => (
                                     <Link
                                       key={link.label}
                                       href={link.href}
@@ -700,6 +757,15 @@ export function Header() {
                                       )}
                                     </Link>
                                   ))}
+                                  {col.links.length > 5 && (
+                                    <Link
+                                      href={col.href ?? "/products"}
+                                      onClick={() => setMobileOpen(false)}
+                                      className="block text-[11px] font-medium text-primary/70 hover:text-primary px-3 py-1.5 transition-colors"
+                                    >
+                                      +{col.links.length - 5} more →
+                                    </Link>
+                                  )}
                                 </div>
                               ))}
                             </div>

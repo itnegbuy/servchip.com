@@ -1,26 +1,39 @@
 "use client";
 
 import { TRUST_BAR_ITEMS } from "@/data/home";
+import { getManufacturerColor } from "@/data/manufacturer-colors";
+
+const MANUFACTURER_NAMES = new Set([
+  "NVIDIA", "Intel", "AMD", "Broadcom", "Marvell", "Cisco",
+  "Qualcomm", "Samsung", "Micron", "SK hynix", "Seagate",
+  "Dell", "HPE", "Supermicro", "Lenovo",
+]);
 
 export function TrustBar() {
   return (
     <section className="py-4 bg-surface border-y border-border-subtle" aria-label="Trusted partners and certifications">
       <div className="overflow-hidden mask-image-gradient">
-        <div className="flex items-center gap-8 animate-scroll" style={{ width: "max-content" }}>
-          {[...TRUST_BAR_ITEMS, ...TRUST_BAR_ITEMS].map((item, i) => (
-            <div
-              key={`trust-${i}`}
-              className="flex-shrink-0 flex items-center gap-3"
-            >
-              <span className="text-lg" aria-hidden="true">{item.icon}</span>
-              <span className="text-text-muted text-sm font-medium whitespace-nowrap tracking-wide">
-                {item.text}
-              </span>
-              {item.badge && (
-                <span className="badge-trust">{item.badge}</span>
-              )}
-            </div>
-          ))}
+        <div className="flex items-center gap-10 animate-scroll" style={{ width: "max-content" }}>
+          {[...TRUST_BAR_ITEMS, ...TRUST_BAR_ITEMS].map((item, i) => {
+            const isMfr = MANUFACTURER_NAMES.has(item.text);
+            const color = getManufacturerColor(item.text);
+            return (
+              <div key={`trust-${i}`} className="flex-shrink-0 flex items-center gap-3">
+                {isMfr ? (
+                  <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+                ) : (
+                  <span className="text-lg" aria-hidden="true">{item.icon}</span>
+                )}
+                <span
+                  className="text-sm font-bold whitespace-nowrap tracking-wide uppercase"
+                  style={{ color: isMfr ? color : undefined }}
+                >
+                  {item.text}
+                </span>
+                {item.badge && <span className="badge-trust">{item.badge}</span>}
+              </div>
+            );
+          })}
         </div>
       </div>
       <style jsx>{`

@@ -1,0 +1,102 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { MANUFACTURERS } from "@/data/manufacturers";
+import { MANUFACTURER_COLORS } from "@/data/manufacturer-colors";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+const DISPLAY_MANUFACTURERS = MANUFACTURERS.filter(m =>
+  m.id !== "google-cloud" && m.id !== "amazon-web-services"
+);
+
+const colorVarName = (name: string) => {
+  const color = MANUFACTURER_COLORS[name] || "#6B7280";
+  return color;
+};
+
+function LogoItem({ name, slug }: { name: string; slug: string }) {
+  const color = colorVarName(name);
+  const initials = name
+    .split(/[\s-]+/)
+    .map(w => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  return (
+    <Link
+      href={`/manufacturers/${slug}`}
+      className="flex-shrink-0 w-[150px] h-[80px] mx-3 rounded-xl bg-surface border border-border flex items-center justify-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group"
+    >
+      <div className="flex items-center gap-3 px-3">
+        <div
+          className="w-8 h-8 rounded-lg flex items-center justify-center text-[10px] font-black font-mono transition-transform group-hover:scale-110"
+          style={{ backgroundColor: `${color}22`, color }}
+        >
+          {initials}
+        </div>
+        <span className="text-[11px] font-bold text-text-muted group-hover:text-text transition-colors leading-tight">
+          {name}
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+export function ClientLogos() {
+  const manufacturers = DISPLAY_MANUFACTURERS;
+
+  const row1 = manufacturers.slice(0, Math.ceil(manufacturers.length / 2));
+  const row2 = manufacturers.slice(Math.ceil(manufacturers.length / 2));
+
+  return (
+    <section className="py-20 bg-surface overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 mb-10">
+        <SectionHeading
+          label="Manufacturer Partners"
+          title="Trusted by Leading Brands Worldwide"
+          subtitle="Authorized partnerships with the world's top chip manufacturers"
+          align="center"
+        />
+      </div>
+
+      <div className="relative">
+        {/* Gradient fades on edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-surface to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-surface to-transparent z-10 pointer-events-none" />
+
+        {/* Row 1 - scroll left */}
+        <div className="flex mb-4 animate-scroll-left hover:[animation-play-state:paused]">
+          {[...row1, ...row1].map((m, i) => (
+            <LogoItem key={`${m.id}-${i}`} name={m.name} slug={m.slug} />
+          ))}
+        </div>
+
+        {/* Row 2 - scroll right */}
+        <div className="flex animate-scroll-right hover:[animation-play-state:paused]">
+          {[...row2, ...row2].map((m, i) => (
+            <LogoItem key={`${m.id}-${i}`} name={m.name} slug={m.slug} />
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-scroll-left {
+          animation: scroll-left 50s linear infinite;
+        }
+        .animate-scroll-right {
+          animation: scroll-right 50s linear infinite;
+        }
+      `}</style>
+    </section>
+  );
+}

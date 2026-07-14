@@ -1,4 +1,15 @@
-export type { ChipProduct, UseCase, UseCaseOption, ConfigParams } from "./chip";
+export type {
+  ChipProduct,
+  ServerProduct,
+  NetworkingProduct,
+  MemoryProduct,
+  StorageProduct,
+  AnyProduct,
+  ProductType,
+  UseCase,
+  UseCaseOption,
+  ConfigParams,
+} from "./chip";
 export type { ChipCategory } from "./category";
 export type { BlogPost, BlogCategory, BlogTag, BlogFilters } from "./blog";
 export type { RFQFormData, RFQResponse } from "./rfq";

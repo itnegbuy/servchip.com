@@ -3,19 +3,40 @@
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Cpu, Globe, Calendar, MapPin } from "lucide-react";
+import { ArrowRight, Cpu, Globe, Calendar, MapPin, Server, Network, MemoryStick, HardDrive } from "lucide-react";
 import { MANUFACTURERS, getManufacturerBySlug } from "@/data/manufacturers";
-import { getChipsByManufacturer } from "@/data/chips";
+import { getProductsByManufacturer } from "@/data/products";
+import { getManufacturerColor } from "@/data/manufacturer-colors";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/shared/PageHero";
-import { ChipGrid } from "@/components/chips/ChipGrid";
+import { ProductCard } from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/Button";
+import type { ProductType } from "@/types";
+
+const TYPE_ICON: Record<string, typeof Cpu> = {
+  chip: Cpu,
+  server: Server,
+  networking: Network,
+  memory: MemoryStick,
+  storage: HardDrive,
+};
 
 export default function ManufacturerPage() {
   const params = useParams();
   const slug = params.slug as string;
   const manufacturer = getManufacturerBySlug(slug);
-  const chips = getChipsByManufacturer(manufacturer?.id ?? "");
+  const products = getProductsByManufacturer(manufacturer?.id ?? "");
+  const color = manufacturer ? getManufacturerColor(manufacturer.name) : undefined;
+
+  const grouped = products.reduce<Record<string, typeof products>>((acc, p) => {
+    const type = "specifications" in p ? "chip" :
+      "gpuSupport" in p ? "server" :
+      "specs" in p && "ports" in p ? "networking" :
+      "specs" in p && "capacity" in p ? "memory" : "storage";
+    if (!acc[type]) acc[type] = [];
+    acc[type].push(p);
+    return acc;
+  }, {});
 
   if (!manufacturer) {
     return (
@@ -36,11 +57,11 @@ export default function ManufacturerPage() {
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label={manufacturer.name}
-        title={`${manufacturer.name} — Enterprise Chip Solutions`}
+        title={`${manufacturer.name} — Enterprise Hardware Solutions`}
         subtitle={manufacturer.longDescription}
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Manufacturers", href: "/products" },
+          { label: "Products", href: "/products" },
           { label: manufacturer.name },
         ]}
       />
@@ -129,33 +150,49 @@ export default function ManufacturerPage() {
         </div>
       </section>
 
-      {/* Products */}
-      <section className="py-20 bg-bg-dark">
-        <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading
-            label="Products"
-            title={`Available ${manufacturer.name} Chips`}
-            subtitle="Browse in-stock and available products"
-            align="center"
-          />
-          <div className="mt-10">
-            <ChipGrid chips={chips} />
-          </div>
-          {chips.length === 0 && (
-            <div className="text-center py-12">
-              <Cpu className="w-12 h-12 text-text-dim mx-auto mb-4" />
-              <p className="text-text-muted">
-                No products currently listed. Contact us for availability.
-              </p>
-              <Link href="/contact">
-                <Button variant="solid" size="sm" className="mt-4">
-                  Contact Sales
-                </Button>
-              </Link>
+      {/* Products by type */}
+      {Object.entries(grouped).map(([type, typeProducts]) => {
+        const Icon = TYPE_ICON[type] || Cpu;
+        const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
+        return (
+          <section key={type} className="py-16 even:bg-bg-body odd:bg-bg-dark">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Icon className="w-4 h-4 text-primary" />
+                </span>
+                <div>
+                  <h2 className="text-xl font-bold text-text">{typeLabel}s</h2>
+                  <p className="text-sm text-text-muted">
+                    {typeProducts.length} product{typeProducts.length !== 1 ? "s" : ""}
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {typeProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
             </div>
-          )}
-        </div>
-      </section>
+          </section>
+        );
+      })}
+
+      {products.length === 0 && (
+        <section className="py-20 bg-bg-dark">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <Cpu className="w-12 h-12 text-text-dim mx-auto mb-4" />
+            <p className="text-text-muted">
+              No products currently listed. Contact us for availability.
+            </p>
+            <Link href="/contact">
+              <Button variant="solid" size="sm" className="mt-4">
+                Contact Sales
+              </Button>
+            </Link>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

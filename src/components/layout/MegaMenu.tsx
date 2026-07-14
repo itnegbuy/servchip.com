@@ -54,15 +54,20 @@ const ICON_MAP: Record<string, typeof Cpu> = {
   Consulting: Wrench,
   Learn: Cpu,
   Company: Server,
+  "AI Accelerators": Microchip,
+  "Server CPUs": Cpu,
+  "AI Servers": Server,
+  Networking: Layers,
+  "Memory & Storage": Cpu,
 };
 
 export function MegaMenu({ columns, featured }: MegaMenuProps) {
   return (
-    <div className="rounded-2xl border border-primary/15 bg-surface shadow-2xl shadow-black/50 p-5">
+    <div className="rounded-2xl border border-primary/15 bg-surface shadow-2xl shadow-black/50 p-5 max-h-[75vh] overflow-y-auto scrollbar-neon">
       <div
         className="grid gap-0"
         style={{
-          gridTemplateColumns: `repeat(${Math.min(columns.length, 4)}, 1fr)`,
+          gridTemplateColumns: `repeat(${Math.min(columns.length, 5)}, 1fr)`,
         }}
       >
         {columns.map((col, colIndex) => {

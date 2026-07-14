@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Cpu, List, LayoutGrid } from "lucide-react";
 import { ChipCard } from "./ChipCard";
@@ -29,6 +29,7 @@ interface ChipGridProps {
 export function ChipGrid({ chips, loading = false }: ChipGridProps) {
   const [filters, setFilters] = useState<ChipFiltersState>({
     search: "",
+    manufacturer: [],
     architecture: [],
     series: [],
     status: [],
@@ -36,27 +37,35 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
   });
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-  const filtered = chips.filter((chip) => {
-    if (filters.search) {
-      const q = filters.search.toLowerCase();
+  const filtered = useMemo(() => {
+    return chips.filter((chip) => {
+      if (filters.search) {
+        const q = filters.search.toLowerCase();
+        if (
+          !chip.name.toLowerCase().includes(q) &&
+          !chip.series.toLowerCase().includes(q) &&
+          !chip.architecture.toLowerCase().includes(q) &&
+          !chip.manufacturer.toLowerCase().includes(q)
+        )
+          return false;
+      }
       if (
-        !chip.name.toLowerCase().includes(q) &&
-        !chip.series.toLowerCase().includes(q) &&
-        !chip.architecture.toLowerCase().includes(q)
+        filters.manufacturer.length &&
+        !filters.manufacturer.includes(chip.manufacturer)
       )
         return false;
-    }
-    if (
-      filters.architecture.length &&
-      !filters.architecture.includes(chip.architecture)
-    )
-      return false;
-    if (filters.series.length && !filters.series.includes(chip.series))
-      return false;
-    if (filters.status.length && !filters.status.includes(chip.status))
-      return false;
-    return true;
-  });
+      if (
+        filters.architecture.length &&
+        !filters.architecture.includes(chip.architecture)
+      )
+        return false;
+      if (filters.series.length && !filters.series.includes(chip.series))
+        return false;
+      if (filters.status.length && !filters.status.includes(chip.status))
+        return false;
+      return true;
+    });
+  }, [chips, filters]);
 
   return (
     <div className="grid lg:grid-cols-[240px_1fr] gap-8">
@@ -125,6 +134,10 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
                       {chip.description}
                     </p>
                     <div className="flex flex-wrap items-center gap-2 mt-2 text-[11px] font-mono text-text-muted">
+                      <span className="text-primary text-[10px] font-bold uppercase tracking-wider">
+                        {chip.manufacturer}
+                      </span>
+                      <span>·</span>
                       <span>{chip.architecture}</span>
                       <span>·</span>
                       <span>{chip.specifications.memory}</span>
@@ -168,10 +181,10 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
           <summary className="flex items-center justify-between text-sm text-primary font-semibold cursor-pointer">
             Filters
             {filters.search ||
+            filters.manufacturer.length ||
             filters.architecture.length ||
             filters.series.length ||
-            filters.status.length ||
-            filters.memory.length
+            filters.status.length
               ? " (active)"
               : ""}
           </summary>

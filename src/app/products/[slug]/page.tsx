@@ -1,23 +1,63 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CHIPS } from "@/data/chips";
+import { ALL_PRODUCTS } from "@/data/products";
+import type { AnyProduct } from "@/types";
 import PageClient from "./page-client";
 
 const baseUrl = "https://servchip.com";
+
+function getPriceCurrency() {
+  return "USD";
+}
+
+const AVAILABILITY_MAP: Record<string, string> = {
+  in_stock: "https://schema.org/InStock",
+  on_order: "https://schema.org/PreOrder",
+  limited: "https://schema.org/LimitedAvailability",
+  pre_order: "https://schema.org/PreOrder",
+  discontinued: "https://schema.org/Discontinued",
+};
+
+function getProductName(product: AnyProduct): string {
+  if ("specifications" in product) return `${product.name} — Specifications, Pricing & Availability`;
+  if ("formFactor" in product) return `${product.name} — AI Server Specs & Pricing`;
+  return `${product.name} — Product Details & Pricing`;
+}
+
+function getProductDescription(product: AnyProduct): string {
+  return product.description;
+}
+
+function getProductCategory(product: AnyProduct): string {
+  return product.categoryName;
+}
+
+function getProductBrand(product: AnyProduct): string {
+  return product.manufacturer;
+}
+
+function getProductStatus(product: AnyProduct): string {
+  return product.status;
+}
+
+function getProductImages(product: AnyProduct): string[] {
+  return product.images || [];
+}
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await props.params;
-  const chip = CHIPS.find((c) => c.slug === slug);
-  if (!chip) return {};
+  const product = ALL_PRODUCTS.find((p) => p.slug === slug);
+  if (!product) return {};
+
   return {
-    title: `${chip.name} — Specifications, Pricing & Availability`,
-    description: chip.description,
+    title: getProductName(product),
+    description: getProductDescription(product),
     alternates: { canonical: `${baseUrl}/products/${slug}` },
     openGraph: {
-      title: `${chip.name} — Servchip`,
-      description: chip.description,
+      title: `${product.name} — Servchip`,
+      description: getProductDescription(product),
     },
   };
 }
@@ -26,12 +66,14 @@ export default async function Page(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
-  const chip = CHIPS.find((c) => c.slug === slug);
-  if (!chip) notFound();
+  const product = ALL_PRODUCTS.find((p) => p.slug === slug);
+  if (!product) notFound();
+
+  const images = getProductImages(product);
 
   return (
     <>
-      {chip && (
+      {product && (
         <>
           <script
             type="application/ld+json"
@@ -40,24 +82,9 @@ export default async function Page(props: {
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 itemListElement: [
-                  {
-                    "@type": "ListItem",
-                    position: 1,
-                    name: "Home",
-                    item: `${baseUrl}/`,
-                  },
-                  {
-                    "@type": "ListItem",
-                    position: 2,
-                    name: "Products",
-                    item: `${baseUrl}/products`,
-                  },
-                  {
-                    "@type": "ListItem",
-                    position: 3,
-                    name: chip.name,
-                    item: `${baseUrl}/products/${slug}`,
-                  },
+                  { "@type": "ListItem", position: 1, name: "Home", item: `${baseUrl}/` },
+                  { "@type": "ListItem", position: 2, name: "Products", item: `${baseUrl}/products` },
+                  { "@type": "ListItem", position: 3, name: product.name, item: `${baseUrl}/products/${slug}` },
                 ],
               }),
             }}
@@ -68,25 +95,20 @@ export default async function Page(props: {
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Product",
-                name: chip.name,
-                description: chip.description,
-                sku: chip.id,
-                mpn: chip.id,
-                brand: { "@type": "Brand", name: chip.manufacturer },
-                manufacturer: {
-                  "@type": "Organization",
-                  name: chip.manufacturer,
-                },
-                category: chip.categoryName,
+                name: product.name,
+                description: getProductDescription(product),
+                sku: product.id,
+                mpn: product.id,
+                brand: { "@type": "Brand", name: getProductBrand(product) },
+                manufacturer: { "@type": "Organization", name: getProductBrand(product) },
+                category: getProductCategory(product),
                 url: `${baseUrl}/products/${slug}`,
-                ...(chip.images.length > 0 ? { image: chip.images[0] } : {}),
+                ...(images.length > 0 ? { image: images[0] } : {}),
                 offers: {
                   "@type": "Offer",
                   url: `${baseUrl}/products/${slug}`,
-                  availability:
-                    AVAILABILITY_MAP[chip.status] ??
-                    "https://schema.org/InStock",
-                  priceCurrency: "USD",
+                  availability: AVAILABILITY_MAP[getProductStatus(product)] ?? "https://schema.org/InStock",
+                  priceCurrency: getPriceCurrency(),
                 },
               }),
             }}
@@ -97,11 +119,3 @@ export default async function Page(props: {
     </>
   );
 }
-
-const AVAILABILITY_MAP: Record<string, string> = {
-  in_stock: "https://schema.org/InStock",
-  on_order: "https://schema.org/PreOrder",
-  limited: "https://schema.org/LimitedAvailability",
-  pre_order: "https://schema.org/PreOrder",
-  discontinued: "https://schema.org/Discontinued",
-};

@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import { Hero3D } from "@/components/home/Hero3D";
 import { TrustBar } from "@/components/home/TrustBar";
-import { QuickLinks } from "@/components/home/QuickLinks";
-import { GamingChips } from "@/components/home/GamingChips";
+import { BrandSpotlight } from "@/components/home/BrandSpotlight";
 import { StatsCounter } from "@/components/home/StatsCounter";
+import { ClientLogos } from "@/components/home/ClientLogos";
+import { CategoriesGrid } from "@/components/home/CategoriesGrid";
+import { WorkloadSolutions } from "@/components/home/WorkloadSolutions";
+import { ServicesShowcase } from "@/components/home/ServicesShowcase";
 import { FeaturedChips } from "@/components/home/FeaturedChips";
 import { Technology } from "@/components/home/Technology";
-import { CategoriesGrid } from "@/components/home/CategoriesGrid";
 import { WhyServchip } from "@/components/home/WhyServchip";
 import { ComparisonPreview } from "@/components/home/ComparisonPreview";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { SuccessStories } from "@/components/home/SuccessStories";
+import { FAQAccordion } from "@/components/home/FAQAccordion";
 import { LatestInsights } from "@/components/home/LatestInsights";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
@@ -32,16 +35,19 @@ export default function HomePage() {
     <>
       <Hero3D />
       <TrustBar />
-      <QuickLinks />
-      <GamingChips />
+      <BrandSpotlight />
       <StatsCounter />
+      <ClientLogos />
+      <CategoriesGrid />
+      <WorkloadSolutions />
+      <ServicesShowcase />
       <FeaturedChips />
       <Technology />
-      <CategoriesGrid />
       <WhyServchip />
       <ComparisonPreview />
       <HowItWorks />
       <SuccessStories />
+      <FAQAccordion />
       <LatestInsights />
       <FinalCTA />
     </>

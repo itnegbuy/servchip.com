@@ -6,53 +6,25 @@ import {
   ArrowRight,
   Server,
   Brain,
-  Monitor,
-  Microchip,
+  Cpu,
   Network,
-  Car,
-  Zap,
-  Gamepad2,
+  HardDrive,
+  MemoryStick,
   Cloud,
-  HeartPulse,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { CATEGORIES } from "@/data/categories";
-import { CHIPS } from "@/data/chips";
-
-const CATEGORY_CHIP_MAP: Record<string, string[]> = {
-  "data-center-gpus": ["Data Center GPUs"],
-  "ai-accelerators": ["Intel Gaudi AI"],
-  "professional-graphics": [
-    "Professional RTX",
-    "AMD Radeon Pro",
-    "Intel Arc GPUs",
-  ],
-  "server-cpus": ["AMD EPYC Processors", "Intel Xeon Processors"],
-  "edge-ai": [],
-  networking: [],
-  automotive: [],
-  hpc: ["HPC & Grace"],
-  fpgas: [],
-  "network-processors": [],
-};
-
-function getProductCount(slug: string): number {
-  const names = CATEGORY_CHIP_MAP[slug] || [];
-  return CHIPS.filter((c) => names.includes(c.categoryName)).length;
-}
+import { getProductsByParentCategory } from "@/data/products";
 
 const ICON_MAP: Record<string, typeof Server> = {
   Server,
   Brain,
-  Monitor,
-  Microchip,
+  Cpu,
   Network,
-  Car,
-  Zap,
-  Gamepad2,
+  HardDrive,
+  MemoryStick,
   Cloud,
-  HeartPulse,
 };
 
 export function CategoriesGrid() {
@@ -67,8 +39,9 @@ export function CategoriesGrid() {
         />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {CATEGORIES.map((cat, index) => {
+          {CATEGORIES.slice(0, 10).map((cat, index) => {
             const Icon = ICON_MAP[cat.icon] || Server;
+            const count = getProductsByParentCategory(cat.id).length;
             return (
               <motion.div
                 key={cat.slug}
@@ -87,11 +60,11 @@ export function CategoriesGrid() {
                   <h3 className="text-sm font-bold text-text mb-1">
                     {cat.name}
                   </h3>
-                  <p className="text-xs text-text-dim mb-3">
+                  <p className="text-xs text-text-dim mb-3 line-clamp-2">
                     {cat.description}
                   </p>
                   <Badge variant="green" size="sm">
-                    {getProductCount(cat.slug)} chips
+                    {count > 0 ? `${count} products` : "In Stock"}
                   </Badge>
                 </Link>
               </motion.div>

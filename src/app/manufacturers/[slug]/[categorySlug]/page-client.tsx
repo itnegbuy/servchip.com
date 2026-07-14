@@ -3,9 +3,9 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { MANUFACTURERS } from "@/data/manufacturers";
-import { CHIPS } from "@/data/chips";
+import { getProductsByManufacturer } from "@/data/products";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ChipGrid } from "@/components/chips/ChipGrid";
+import { ProductCard } from "@/components/products/ProductCard";
 
 export default function ManufacturerCategoryPage() {
   const params = useParams();
@@ -32,8 +32,11 @@ export default function ManufacturerCategoryPage() {
     );
   }
 
+  const allProducts = getProductsByManufacturer(manufacturer.id);
   const allChipIds = category.subcategories.flatMap((s) => s.chipIds);
-  const categoryChips = CHIPS.filter((c) => allChipIds.includes(c.id));
+  const categoryProducts = allProducts.filter((p) =>
+    allChipIds.length > 0 ? allChipIds.includes(p.id) : p.categoryId === category.id
+  );
 
   return (
     <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
@@ -68,7 +71,11 @@ export default function ManufacturerCategoryPage() {
           ))}
         </div>
 
-        <ChipGrid chips={categoryChips} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {categoryProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
     </div>
   );

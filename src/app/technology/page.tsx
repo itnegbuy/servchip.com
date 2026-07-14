@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { Float, OrbitControls } from "@react-three/drei";
 import {
   ArrowRight,
   Check,
@@ -17,7 +15,7 @@ import {
 } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ChipModel } from "@/components/3d/ChipModel";
+import { ChipScene } from "@/components/shared/ChipScene";
 import { Button } from "@/components/ui/Button";
 import { TECHNOLOGY_FEATURES } from "@/data/home";
 
@@ -242,34 +240,9 @@ const TECH_CARDS = [
 
 function MiniScene() {
   return (
-    <Canvas
-      camera={{ position: [0, 1.2, 4.6], fov: 40 }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true }}
-      style={{ background: "transparent" }}
-    >
-      <ambientLight intensity={0.35} />
-      <spotLight
-        position={[3, 4, 3]}
-        angle={0.3}
-        penumbra={1}
-        intensity={2}
-        color="#76FF03"
-      />
-      <pointLight position={[-3, 2, -3]} intensity={1.5} color="#00E5FF" />
-      <directionalLight position={[0, 2, 5]} intensity={0.5} color="#ffffff" />
-      <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.5}>
-        <ChipModel scale={0.9} autoRotate />
-      </Float>
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        autoRotate
-        autoRotateSpeed={1}
-        minPolarAngle={Math.PI / 3}
-        maxPolarAngle={Math.PI / 1.8}
-      />
-    </Canvas>
+    <div className="w-full h-full">
+      <ChipScene />
+    </div>
   );
 }
 
@@ -347,7 +320,7 @@ export default function TechnologyPage() {
               <ul className="space-y-3.5">
                 {TECHNOLOGY_FEATURES.map((feature, i) => (
                   <motion.li
-                    key={feature}
+                    key={feature.title}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -357,9 +330,10 @@ export default function TechnologyPage() {
                     <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
                       <Check className="w-3 h-3 text-primary" />
                     </div>
-                    <span className="text-sm md:text-base text-text-muted leading-relaxed">
-                      {feature}
-                    </span>
+                    <div>
+                      <span className="text-sm font-bold text-text">{feature.title}</span>
+                      <p className="text-xs text-text-muted mt-0.5">{feature.desc}</p>
+                    </div>
                   </motion.li>
                 ))}
               </ul>
@@ -563,13 +537,14 @@ export default function TechnologyPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
               {TECHNOLOGY_FEATURES.map((feature) => (
-                <div key={feature} className="flex items-start gap-3">
+                <div key={feature.title} className="flex items-start gap-3">
                   <span className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
                     <Check className="w-3 h-3 text-primary" />
                   </span>
-                  <span className="text-sm text-text-muted leading-relaxed">
-                    {feature}
-                  </span>
+                  <div>
+                    <span className="text-sm font-bold text-text">{feature.title}</span>
+                    <p className="text-xs text-text-muted mt-0.5">{feature.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>

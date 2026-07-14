@@ -2,9 +2,13 @@
 
 import { useMemo } from "react";
 import { Search, X } from "lucide-react";
+import type { ChipProduct } from "@/types";
+import { CHIPS } from "@/data/chips";
+import { getManufacturerColor } from "@/data/manufacturer-colors";
 
 export interface ChipFiltersState {
   search: string;
+  manufacturer: string[];
   architecture: string[];
   series: string[];
   status: string[];
@@ -16,16 +20,34 @@ interface ChipFiltersProps {
   onChange: (filters: ChipFiltersState) => void;
 }
 
-const ARCHITECTURES = [
-  "Blackwell", "Hopper", "Ada Lovelace", "Ampere", "Turing", "Volta",
-];
-const SERIES = ["B200", "H200", "H100", "RTX 6000", "GH200", "A100", "L40S"];
 const STATUSES = ["in_stock", "on_order", "limited", "pre_order"];
-const MEMORY_OPTIONS = ["80GB", "141GB", "384GB", "48GB", "96GB"];
+
+function getUniqueValues(key: keyof ChipProduct): string[] {
+  const values = new Set<string>();
+  CHIPS.forEach((chip) => {
+    const val = chip[key];
+    if (typeof val === "string" && val) values.add(val);
+  });
+  return Array.from(values).sort();
+}
+
+function getUniqueSpecValues(key: keyof ChipProduct["specifications"]): string[] {
+  const values = new Set<string>();
+  CHIPS.forEach((chip) => {
+    const val = chip.specifications[key];
+    if (val && val !== "—") values.add(val);
+  });
+  return Array.from(values).sort();
+}
 
 export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
+  const MANUFACTURERS = useMemo(() => getUniqueValues("manufacturer"), []);
+  const ARCHITECTURES = useMemo(() => getUniqueValues("architecture"), []);
+  const SERIES = useMemo(() => getUniqueValues("series"), []);
+
   const activeCount = useMemo(
     () =>
+      filters.manufacturer.length +
       filters.architecture.length +
       filters.series.length +
       filters.status.length +
@@ -38,7 +60,7 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
     onChange({ ...filters, [key]: values });
 
   const toggle = (
-    key: "architecture" | "series" | "status" | "memory",
+    key: "manufacturer" | "architecture" | "series" | "status" | "memory",
     val: string
   ) => {
     const arr = filters[key];
@@ -46,16 +68,18 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
   };
 
   const clearAll = () =>
-    onChange({ search: "", architecture: [], series: [], status: [], memory: [] });
+    onChange({ search: "", manufacturer: [], architecture: [], series: [], status: [], memory: [] });
 
   const Checkbox = ({
     label,
     checked,
     onToggle,
+    color,
   }: {
     label: string;
     checked: boolean;
     onToggle: () => void;
+    color?: string;
   }) => (
     <label className="flex items-center gap-2 cursor-pointer py-1" onClick={onToggle}>
       <div
@@ -65,6 +89,9 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
       >
         {checked && <span className="text-bg-dark text-[10px] font-bold">✓</span>}
       </div>
+      {color && (
+        <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+      )}
       <span className="text-sm text-text-muted">{label}</span>
     </label>
   );
@@ -91,12 +118,30 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
         )}
       </div>
 
+      {/* Manufacturer */}
+      <div>
+        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
+          Manufacturer
+        </h4>
+        <div className="space-y-0.5 max-h-40 overflow-y-auto">
+          {MANUFACTURERS.map((m) => (
+            <Checkbox
+              key={m}
+              label={m}
+              color={getManufacturerColor(m)}
+              checked={filters.manufacturer.includes(m)}
+              onToggle={() => toggle("manufacturer", m)}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Architecture */}
       <div>
         <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
           Architecture
         </h4>
-        <div className="space-y-0.5">
+        <div className="space-y-0.5 max-h-40 overflow-y-auto">
           {ARCHITECTURES.map((arch) => (
             <Checkbox
               key={arch}
@@ -113,7 +158,7 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
         <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
           Series
         </h4>
-        <div className="space-y-0.5">
+        <div className="space-y-0.5 max-h-40 overflow-y-auto">
           {SERIES.map((s) => (
             <Checkbox
               key={s}
@@ -137,23 +182,6 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
               label={s.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase())}
               checked={filters.status.includes(s)}
               onToggle={() => toggle("status", s)}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Memory */}
-      <div>
-        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
-          Memory
-        </h4>
-        <div className="space-y-0.5">
-          {MEMORY_OPTIONS.map((mem) => (
-            <Checkbox
-              key={mem}
-              label={mem}
-              checked={filters.memory.includes(mem)}
-              onToggle={() => toggle("memory", mem)}
             />
           ))}
         </div>
