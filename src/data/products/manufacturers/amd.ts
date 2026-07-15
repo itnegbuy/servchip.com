@@ -370,6 +370,123 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
   },
 ];
 
+export const AMD_RADEON_PRO: ChipProduct[] = [
+  {
+    id: "amd-w7900",
+    name: "AMD Radeon Pro W7900",
+    slug: "amd-radeon-pro-w7900",
+    manufacturer: "AMD",
+    manufacturerId: "amd",
+    series: "Radeon Pro W7900",
+    architecture: "RDNA 3",
+    categoryId: "amd-pro-w7000",
+    parentCategoryId: "amd-radeon-pro",
+    categoryName: "Radeon Pro",
+    images: [],
+    description:
+      "Flagship workstation GPU with 48GB GDDR6 ECC for professional AI, rendering, and visualization.",
+    longDescription:
+      "The AMD Radeon Pro W7900 is the flagship professional workstation GPU, featuring 48GB of GDDR6 ECC memory and the advanced RDNA 3 architecture. Designed for demanding AI development, product design, scientific visualization, and content creation, it delivers exceptional compute and graphics performance with comprehensive ISV certification for leading professional applications.",
+    keyFeatures: [
+      "48GB GDDR6 ECC memory with 864 GB/s bandwidth",
+      "RDNA 3 architecture with dual compute units",
+      "96 MB Infinity Cache for reduced latency",
+      "DisplayPort 2.1 with 8K display support",
+      "ISV certified for CAD, DCC, and medical imaging",
+    ],
+    useCases: [
+      "healthcare",
+      "virtualization",
+      "ai-inference",
+      "data-analytics",
+    ],
+    bestFor: "Professional Visualization & AI",
+    specifications: {
+      memory: "48GB GDDR6 ECC",
+      memoryBandwidth: "864 GB/s",
+      tensorCores: "— (AI Accelerators)",
+      cudaCores: "— (12288 Stream Processors)",
+      fp8TFLOPS: "—",
+      fp16TFLOPS: "—",
+      tf32TFLOPS: "—",
+      fp64TFLOPS: "—",
+      interconnect: "PCIe 4.0 x16",
+      tdp: "295W",
+      formFactor: "PCIe 4.0 dual-slot",
+      cooling: "Active Fan",
+      launchDate: "Q2 2023",
+      manufacturingProcess: "5nm + 6nm",
+    },
+    status: "in_stock",
+    sortOrder: 1,
+    isFeatured: true,
+    isPopular: false,
+    seo: {
+      metaTitle: "AMD Radeon Pro W7900 | Servchip",
+      metaDescription:
+        "Flagship workstation GPU with 48GB GDDR6 ECC for professional AI and visualization.",
+    },
+    createdAt: "2023-04-01",
+    updatedAt: "2024-06-01",
+  },
+];
+
+export const AMD_INSTINCT_MI250: ChipProduct[] = [
+  {
+    id: "amd-mi250",
+    name: "AMD Instinct MI250 Accelerator",
+    slug: "amd-instinct-mi250",
+    manufacturer: "AMD",
+    manufacturerId: "amd",
+    series: "MI250",
+    architecture: "CDNA 2",
+    categoryId: "amd-instinct-mi250",
+    parentCategoryId: "amd-instinct",
+    categoryName: "AMD Instinct Accelerators",
+    images: [],
+    description:
+      "HPC-optimized accelerator with 128GB HBM2e memory for scientific computing and simulation workloads.",
+    longDescription:
+      "The AMD Instinct MI250 accelerator is built on the CDNA 2 architecture, featuring 128GB of HBM2e memory with 3.2 TB/s bandwidth. Designed for HPC, scientific simulation, and large-scale computational workloads, it delivers exceptional double-precision performance and energy efficiency for the most demanding research and enterprise computing environments.",
+    keyFeatures: [
+      "128GB HBM2e memory with 3.2 TB/s bandwidth",
+      "CDNA 2 architecture optimized for HPC",
+      "Infinity Fabric interconnect for multi-GPU scaling",
+      "ROCm open-source software ecosystem",
+      "OAM form factor for dense server integration",
+    ],
+    useCases: ["hpc", "data-analytics"],
+    bestFor: "Scientific Computing & HPC",
+    specifications: {
+      memory: "128GB HBM2e",
+      memoryBandwidth: "3.2 TB/s",
+      tensorCores: "—",
+      cudaCores: "— (14080 Stream Processors)",
+      fp8TFLOPS: "—",
+      fp16TFLOPS: "184.6 (FP16 Matrix)",
+      tf32TFLOPS: "—",
+      fp64TFLOPS: "95.7",
+      interconnect: "Infinity Fabric 4.0",
+      tdp: "500W",
+      formFactor: "OAM",
+      cooling: "Liquid Cooled",
+      launchDate: "Q1 2022",
+      manufacturingProcess: "6nm",
+    },
+    status: "limited",
+    sortOrder: 5,
+    isFeatured: false,
+    isPopular: false,
+    seo: {
+      metaTitle: "AMD Instinct MI250 | Servchip",
+      metaDescription:
+        "HPC-optimized accelerator with 128GB HBM2e for scientific computing.",
+    },
+    createdAt: "2022-01-01",
+    updatedAt: "2024-06-01",
+  },
+];
+
 export const AMD_PENSANDO: ChipProduct[] = [
   {
     id: "amd-pensando-dpu",
@@ -427,6 +544,8 @@ export const AMD_PENSANDO: ChipProduct[] = [
 
 export const AMD_PRODUCTS = [
   ...AMD_INSTINCT_GPUS,
+  ...AMD_INSTINCT_MI250,
   ...AMD_EPYC_CPUS,
+  ...AMD_RADEON_PRO,
   ...AMD_PENSANDO,
 ];

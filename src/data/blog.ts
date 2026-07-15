@@ -13,7 +13,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     name: "Comparison",
     slug: "comparison",
     description: "Side-by-side chip comparisons",
-    postCount: 2,
+    postCount: 1,
   },
   {
     id: "deployment",

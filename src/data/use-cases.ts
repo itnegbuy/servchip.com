@@ -48,7 +48,7 @@ export const USE_CASES: UseCaseOption[] = [
     label: "Data Analytics",
     description: "Big data processing, analytics, and business intelligence",
     icon: "BarChart3",
-    suggestedChips: ["nvidia-a100", "amd-epyc-9654", "intel-xeon-8490h"],
+    suggestedChips: ["nvidia-h100", "amd-epyc-9654", "intel-xeon-8490h"],
   },
   {
     id: "edge-computing",

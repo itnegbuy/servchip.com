@@ -43,4 +43,26 @@ export const TESTIMONIALS_DATA = [
     rating: 5,
     company: "TechFrontier KK",
   },
+  {
+    content:
+      "Servchip helped us migrate from legacy inference hardware to NVIDIA L40S GPUs. The perf-per-watt improvement was 3x, and their engineering team handled the entire CUDA migration. Saved us months of trial and error.",
+    author: {
+      name: "Dr. Priya Sharma",
+      role: "Director of AI, MedCore Diagnostics",
+      avatar: "PS",
+    },
+    rating: 5,
+    company: "MedCore Diagnostics",
+  },
+  {
+    content:
+      "As a cloud provider, we needed reliable access to AMD EPYC processors and Instinct accelerators. Servchip's volume pricing and consistent supply chain have been instrumental in scaling our AI cloud infrastructure across three continents.",
+    author: {
+      name: "James Okonkwo",
+      role: "CEO, CloudAfrica Technologies",
+      avatar: "JO",
+    },
+    rating: 5,
+    company: "CloudAfrica Technologies",
+  },
 ];
