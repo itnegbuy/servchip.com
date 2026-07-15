@@ -2,27 +2,55 @@
 
 import { TRUST_BAR_ITEMS } from "@/data/home";
 import { getManufacturerColor } from "@/data/manufacturer-colors";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const MANUFACTURER_NAMES = new Set([
-  "NVIDIA", "Intel", "AMD", "Broadcom", "Marvell", "Cisco",
-  "Qualcomm", "Samsung", "Micron", "SK hynix", "Seagate",
-  "Dell", "HPE", "Supermicro", "Lenovo",
+  "NVIDIA",
+  "Intel",
+  "AMD",
+  "Broadcom",
+  "Marvell",
+  "Cisco",
+  "Qualcomm",
+  "Samsung",
+  "Micron",
+  "SK hynix",
+  "Seagate",
+  "Dell",
+  "HPE",
+  "Supermicro",
+  "Lenovo",
 ]);
 
 export function TrustBar() {
   return (
-    <section className="py-4 bg-surface border-y border-border-subtle" aria-label="Trusted partners and certifications">
+    <section
+      className="py-4 bg-surface border-y border-border-subtle"
+      aria-label="Trusted partners and certifications"
+    >
       <div className="overflow-hidden mask-image-gradient">
-        <div className="flex items-center gap-10 animate-scroll" style={{ width: "max-content" }}>
+        <div
+          className="flex items-center gap-10 animate-scroll"
+          style={{ width: "max-content" }}
+        >
           {[...TRUST_BAR_ITEMS, ...TRUST_BAR_ITEMS].map((item, i) => {
             const isMfr = MANUFACTURER_NAMES.has(item.text);
             const color = getManufacturerColor(item.text);
             return (
-              <div key={`trust-${i}`} className="flex-shrink-0 flex items-center gap-3">
+              <div
+                key={`trust-${i}`}
+                className="flex-shrink-0 flex items-center gap-3"
+              >
                 {isMfr ? (
-                  <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+                  <BrandLogo
+                    name={item.text}
+                    className="w-6 h-6 shrink-0"
+                    compact
+                  />
                 ) : (
-                  <span className="text-lg" aria-hidden="true">{item.icon}</span>
+                  <span className="text-lg" aria-hidden="true">
+                    {item.icon}
+                  </span>
                 )}
                 <span
                   className="text-sm font-bold whitespace-nowrap tracking-wide uppercase"
@@ -30,7 +58,9 @@ export function TrustBar() {
                 >
                   {item.text}
                 </span>
-                {item.badge && <span className="badge-trust">{item.badge}</span>}
+                {item.badge && (
+                  <span className="badge-trust">{item.badge}</span>
+                )}
               </div>
             );
           })}
@@ -38,8 +68,12 @@ export function TrustBar() {
       </div>
       <style jsx>{`
         @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
         .animate-scroll {
           animation: scroll 30s linear infinite;

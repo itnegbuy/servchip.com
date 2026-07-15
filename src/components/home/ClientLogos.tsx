@@ -5,9 +5,10 @@ import Link from "next/link";
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { MANUFACTURER_COLORS } from "@/data/manufacturer-colors";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
-const DISPLAY_MANUFACTURERS = MANUFACTURERS.filter(m =>
-  m.id !== "google-cloud" && m.id !== "amazon-web-services"
+const DISPLAY_MANUFACTURERS = MANUFACTURERS.filter(
+  (m) => m.id !== "google-cloud" && m.id !== "amazon-web-services",
 );
 
 const colorVarName = (name: string) => {
@@ -17,12 +18,6 @@ const colorVarName = (name: string) => {
 
 function LogoItem({ name, slug }: { name: string; slug: string }) {
   const color = colorVarName(name);
-  const initials = name
-    .split(/[\s-]+/)
-    .map(w => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
 
   return (
     <Link
@@ -30,12 +25,7 @@ function LogoItem({ name, slug }: { name: string; slug: string }) {
       className="flex-shrink-0 w-[150px] h-[80px] mx-3 rounded-xl bg-surface border border-border flex items-center justify-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group"
     >
       <div className="flex items-center gap-3 px-3">
-        <div
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-[10px] font-black font-mono transition-transform group-hover:scale-110"
-          style={{ backgroundColor: `${color}22`, color }}
-        >
-          {initials}
-        </div>
+        <BrandLogo name={name} className="w-8 h-8 shrink-0" />
         <span className="text-[11px] font-bold text-text-muted group-hover:text-text transition-colors leading-tight">
           {name}
         </span>
