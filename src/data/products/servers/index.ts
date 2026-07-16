@@ -11,7 +11,9 @@ export const DELL_SERVERS: ServerProduct[] = [
     categoryId: "dell-ai-servers",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
+    ],
     description:
       "Enterprise AI server with 8-way GPU support for large-scale model training and inference.",
     longDescription:
@@ -55,7 +57,9 @@ export const DELL_SERVERS: ServerProduct[] = [
     categoryId: "dell-ai-servers",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    ],
     description:
       "Scalable 4-way GPU server for enterprise AI and accelerated compute workloads.",
     longDescription:
@@ -102,7 +106,9 @@ export const HPE_SERVERS: ServerProduct[] = [
     categoryId: "hpe-ai-servers",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://datacenters.microsoft.com/tour/assets/images/meta/server.jpg",
+    ],
     description:
       "Supercomputing-class AI server with 8x GPU support and liquid cooling readiness.",
     longDescription:
@@ -146,7 +152,9 @@ export const HPE_SERVERS: ServerProduct[] = [
     categoryId: "hpe-proliant",
     parentCategoryId: "ai-servers",
     categoryName: "General Purpose Servers",
-    images: [],
+    images: [
+      "https://www.racksolutions.com/news//app/uploads/blog_datacenter_2_22-e1708629161331.png",
+    ],
     description:
       "Versatile enterprise server with next-gen Intel Xeon and expansive memory capacity.",
     longDescription:
@@ -193,7 +201,9 @@ export const SUPERMICRO_SERVERS: ServerProduct[] = [
     categoryId: "supermicro-gpu",
     parentCategoryId: "ai-servers",
     categoryName: "GPU Servers",
-    images: [],
+    images: [
+      "https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp",
+    ],
     description:
       "Maximum GPU density server supporting 10 double-width GPUs in a 4U form factor.",
     longDescription:
@@ -237,7 +247,9 @@ export const SUPERMICRO_SERVERS: ServerProduct[] = [
     categoryId: "supermicro-gpu",
     parentCategoryId: "ai-servers",
     categoryName: "GPU Servers",
-    images: [],
+    images: [
+      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
+    ],
     description:
       "Dense 2U server with 4x GPU support for accelerated AI and compute workloads.",
     longDescription:
@@ -284,7 +296,9 @@ export const LENOVO_SERVERS: ServerProduct[] = [
     categoryId: "lenovo-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    ],
     description:
       "Flagship 6U AI server with 8x GPU support for enterprise deep learning workloads.",
     longDescription:
@@ -328,7 +342,9 @@ export const LENOVO_SERVERS: ServerProduct[] = [
     categoryId: "lenovo-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://datacenters.microsoft.com/tour/assets/images/meta/server.jpg",
+    ],
     description:
       "Versatile 4-way GPU server powered by AMD EPYC for AI and accelerated analytics.",
     longDescription:
@@ -375,7 +391,9 @@ export const GIGABYTE_SERVERS: ServerProduct[] = [
     categoryId: "gigabyte-gpu",
     parentCategoryId: "ai-servers",
     categoryName: "GPU Servers",
-    images: [],
+    images: [
+      "https://www.racksolutions.com/news//app/uploads/blog_datacenter_2_22-e1708629161331.png",
+    ],
     description:
       "High-density 4U AI server with 8x GPU support for accelerated computing.",
     longDescription:
@@ -422,7 +440,9 @@ export const ASUS_SERVERS: ServerProduct[] = [
     categoryId: "asus-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp",
+    ],
     description:
       "Purpose-built AI server with 8x GPU support for enterprise deep learning.",
     longDescription:
@@ -469,7 +489,9 @@ export const INSPUR_SERVERS: ServerProduct[] = [
     categoryId: "inspur-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
+    ],
     description:
       "High-performance AI server with 8x GPU support for large-scale model training.",
     longDescription:
@@ -516,7 +538,9 @@ export const QUANTA_SERVERS: ServerProduct[] = [
     categoryId: "quanta-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    ],
     description:
       "Open-standard AI server with 8x GPU support for scalable deep learning.",
     longDescription:
@@ -563,7 +587,9 @@ export const FOXCONN_SERVERS: ServerProduct[] = [
     categoryId: "foxconn-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://datacenters.microsoft.com/tour/assets/images/meta/server.jpg",
+    ],
     description:
       "High-performance AI acceleration platform with 8x GPU support.",
     longDescription:
@@ -610,7 +636,9 @@ export const WIWYNN_SERVERS: ServerProduct[] = [
     categoryId: "wiwynn-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: [],
+    images: [
+      "https://www.racksolutions.com/news//app/uploads/blog_datacenter_2_22-e1708629161331.png",
+    ],
     description:
       "Cloud-optimized AI server with 8x GPU support for hyperscale workloads.",
     longDescription:

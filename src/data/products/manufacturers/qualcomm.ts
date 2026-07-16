@@ -12,10 +12,20 @@ export const QUALCOMM_DC: ChipProduct[] = [
     categoryId: "qualcomm-dc",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: [],
-    description: "Qualcomm's emerging data center CPU based on Oryon architecture for cloud workloads.",
-    longDescription: "Qualcomm is developing a data center CPU based on its high-performance Oryon architecture, bringing the power efficiency and performance of custom Arm cores to the cloud. Designed for cloud-native workloads, edge computing, and AI inference, it aims to deliver industry-leading performance-per-watt for data center deployments.",
-    keyFeatures: ["Oryon Architecture", "Arm Ecosystem", "High Performance/Watt", "Cloud Native", "Emerging Platform"],
+    images: [
+      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
+    ],
+    description:
+      "Qualcomm's emerging data center CPU based on Oryon architecture for cloud workloads.",
+    longDescription:
+      "Qualcomm is developing a data center CPU based on its high-performance Oryon architecture, bringing the power efficiency and performance of custom Arm cores to the cloud. Designed for cloud-native workloads, edge computing, and AI inference, it aims to deliver industry-leading performance-per-watt for data center deployments.",
+    keyFeatures: [
+      "Oryon Architecture",
+      "Arm Ecosystem",
+      "High Performance/Watt",
+      "Cloud Native",
+      "Emerging Platform",
+    ],
     useCases: ["virtualization", "edge-computing", "ai-inference"],
     bestFor: "Cloud-Native & Edge Workloads",
     specifications: {
@@ -38,7 +48,10 @@ export const QUALCOMM_DC: ChipProduct[] = [
     sortOrder: 1,
     isFeatured: false,
     isPopular: false,
-    seo: { metaTitle: "Qualcomm Data Center CPU | Servchip", metaDescription: "Qualcomm's Oryon-based DC CPU for cloud workloads." },
+    seo: {
+      metaTitle: "Qualcomm Data Center CPU | Servchip",
+      metaDescription: "Qualcomm's Oryon-based DC CPU for cloud workloads.",
+    },
     createdAt: "2025-06-01",
     updatedAt: "2026-06-01",
   },

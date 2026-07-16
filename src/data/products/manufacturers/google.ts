@@ -12,10 +12,20 @@ export const GOOGLE_TPU: ChipProduct[] = [
     categoryId: "google-tpu",
     parentCategoryId: "google-tpu",
     categoryName: "AI Accelerators",
-    images: [],
-    description: "Google's 6th-generation Tensor Processing Unit for AI training and inference in Google Cloud.",
-    longDescription: "The Google TPU v6 is Google's latest custom AI accelerator, designed for internal and cloud-based AI workloads. Offering significant performance improvements over TPU v5 for both training and inference of large language models and generative AI workloads, it is available exclusively through Google Cloud Platform.",
-    keyFeatures: ["Custom AI Accelerator", "Cloud Only", "LLM Optimized", "High Bandwidth Memory", "Google Cloud Integrated"],
+    images: [
+      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
+    ],
+    description:
+      "Google's 6th-generation Tensor Processing Unit for AI training and inference in Google Cloud.",
+    longDescription:
+      "The Google TPU v6 is Google's latest custom AI accelerator, designed for internal and cloud-based AI workloads. Offering significant performance improvements over TPU v5 for both training and inference of large language models and generative AI workloads, it is available exclusively through Google Cloud Platform.",
+    keyFeatures: [
+      "Custom AI Accelerator",
+      "Cloud Only",
+      "LLM Optimized",
+      "High Bandwidth Memory",
+      "Google Cloud Integrated",
+    ],
     useCases: ["ai-training", "ai-inference"],
     bestFor: "Google Cloud AI Workloads",
     specifications: {
@@ -38,7 +48,10 @@ export const GOOGLE_TPU: ChipProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: false,
-    seo: { metaTitle: "Google TPU v6 | Servchip", metaDescription: "Google's 6th-gen TPU for AI workloads in Google Cloud." },
+    seo: {
+      metaTitle: "Google TPU v6 | Servchip",
+      metaDescription: "Google's 6th-gen TPU for AI workloads in Google Cloud.",
+    },
     createdAt: "2025-01-01",
     updatedAt: "2025-06-01",
   },
@@ -53,10 +66,18 @@ export const GOOGLE_TPU: ChipProduct[] = [
     categoryId: "google-tpu",
     parentCategoryId: "google-tpu",
     categoryName: "AI Accelerators",
-    images: [],
-    description: "Google's 7th-generation TPU with breakthrough AI performance for next-gen models.",
-    longDescription: "The Google TPU v7 represents Google's latest custom AI accelerator, designed specifically for next-generation AI models. Available exclusively through Google Cloud, it delivers breakthrough performance for trillion-parameter model training and real-time inference at scale.",
-    keyFeatures: ["Next-Gen AI Performance", "Trillion-Parameter Models", "Cloud Exclusive", "Google Infrastructure", "Custom Interconnect"],
+    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
+    description:
+      "Google's 7th-generation TPU with breakthrough AI performance for next-gen models.",
+    longDescription:
+      "The Google TPU v7 represents Google's latest custom AI accelerator, designed specifically for next-generation AI models. Available exclusively through Google Cloud, it delivers breakthrough performance for trillion-parameter model training and real-time inference at scale.",
+    keyFeatures: [
+      "Next-Gen AI Performance",
+      "Trillion-Parameter Models",
+      "Cloud Exclusive",
+      "Google Infrastructure",
+      "Custom Interconnect",
+    ],
     useCases: ["ai-training", "ai-inference"],
     bestFor: "Google Cloud AI Training",
     specifications: {
@@ -79,7 +100,10 @@ export const GOOGLE_TPU: ChipProduct[] = [
     sortOrder: 2,
     isFeatured: false,
     isPopular: false,
-    seo: { metaTitle: "Google TPU v7 | Servchip", metaDescription: "Google's 7th-gen TPU for next-gen AI models." },
+    seo: {
+      metaTitle: "Google TPU v7 | Servchip",
+      metaDescription: "Google's 7th-gen TPU for next-gen AI models.",
+    },
     createdAt: "2026-01-01",
     updatedAt: "2026-06-01",
   },

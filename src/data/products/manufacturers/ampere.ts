@@ -12,10 +12,20 @@ export const AMPERE_CPUS: ChipProduct[] = [
     categoryId: "ampere-server",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: [],
-    description: "192-core cloud-native Arm server processor with DDR5 and PCIe 5.0 for hyperscale data centers.",
-    longDescription: "The AmpereOne is a 192-core cloud-native server processor based on Ampere's custom Arm architecture. Designed for hyperscale cloud data centers, it features DDR5 memory, PCIe 5.0, and industry-leading core density. With predictable performance and linear scalability, it excels in cloud-native, microservices, and web-tier workloads.",
-    keyFeatures: ["192 Arm Cores", "Cloud Native", "DDR5 Support", "PCIe 5.0", "Linear Scalability"],
+    images: [
+      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
+    ],
+    description:
+      "192-core cloud-native Arm server processor with DDR5 and PCIe 5.0 for hyperscale data centers.",
+    longDescription:
+      "The AmpereOne is a 192-core cloud-native server processor based on Ampere's custom Arm architecture. Designed for hyperscale cloud data centers, it features DDR5 memory, PCIe 5.0, and industry-leading core density. With predictable performance and linear scalability, it excels in cloud-native, microservices, and web-tier workloads.",
+    keyFeatures: [
+      "192 Arm Cores",
+      "Cloud Native",
+      "DDR5 Support",
+      "PCIe 5.0",
+      "Linear Scalability",
+    ],
     useCases: ["virtualization", "data-analytics"],
     bestFor: "Cloud-Native & Hyperscale Workloads",
     specifications: {
@@ -38,7 +48,11 @@ export const AMPERE_CPUS: ChipProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: false,
-    seo: { metaTitle: "AmpereOne CPU | Servchip", metaDescription: "192-core Arm server processor for cloud-native workloads." },
+    seo: {
+      metaTitle: "AmpereOne CPU | Servchip",
+      metaDescription:
+        "192-core Arm server processor for cloud-native workloads.",
+    },
     createdAt: "2024-06-01",
     updatedAt: "2025-01-01",
   },

@@ -11,10 +11,20 @@ export const SK_HYNIX_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: [],
-    description: "Industry-leading HBM3E memory with 1.18 TB/s bandwidth per stack for AI accelerators.",
-    longDescription: "SK hynix HBM3E is the latest high-bandwidth memory designed for AI and HPC accelerators. Offering 1.18 TB/s bandwidth per stack with capacities up to 36GB per stack, it is the preferred memory for NVIDIA, AMD, and other AI accelerator vendors. Built on advanced 1b nm process technology, it delivers the highest performance for AI training and inference.",
-    keyFeatures: ["1.18 TB/s Bandwidth per Stack", "Up to 36GB Capacity", "1b nm Process", "8-Hi / 12-Hi Stacks", "TSV Technology"],
+    images: [
+      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
+    ],
+    description:
+      "Industry-leading HBM3E memory with 1.18 TB/s bandwidth per stack for AI accelerators.",
+    longDescription:
+      "SK hynix HBM3E is the latest high-bandwidth memory designed for AI and HPC accelerators. Offering 1.18 TB/s bandwidth per stack with capacities up to 36GB per stack, it is the preferred memory for NVIDIA, AMD, and other AI accelerator vendors. Built on advanced 1b nm process technology, it delivers the highest performance for AI training and inference.",
+    keyFeatures: [
+      "1.18 TB/s Bandwidth per Stack",
+      "Up to 36GB Capacity",
+      "1b nm Process",
+      "8-Hi / 12-Hi Stacks",
+      "TSV Technology",
+    ],
     useCases: ["ai-training", "ai-inference", "hpc"],
     bestFor: "AI Accelerator Memory",
     specs: {
@@ -29,7 +39,10 @@ export const SK_HYNIX_MEMORY: MemoryProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: true,
-    seo: { metaTitle: "SK hynix HBM3E | Servchip", metaDescription: "Industry-leading HBM3E memory for AI accelerators." },
+    seo: {
+      metaTitle: "SK hynix HBM3E | Servchip",
+      metaDescription: "Industry-leading HBM3E memory for AI accelerators.",
+    },
     createdAt: "2024-06-01",
     updatedAt: "2025-01-01",
   },
@@ -46,10 +59,20 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: [],
-    description: "Samsung HBM3E with 1.2 TB/s bandwidth for next-generation AI processors.",
-    longDescription: "Samsung HBM3E memory delivers 1.2 TB/s bandwidth per stack with capacities up to 36GB. Built on Samsung's advanced fabrication technology, it powers the latest AI accelerators from leading vendors. Features include advanced thermal management and industry-leading power efficiency.",
-    keyFeatures: ["1.2 TB/s Bandwidth", "36GB per Stack", "Advanced Thermal Management", "Low Power", "12-Hi Stack Support"],
+    images: [
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    ],
+    description:
+      "Samsung HBM3E with 1.2 TB/s bandwidth for next-generation AI processors.",
+    longDescription:
+      "Samsung HBM3E memory delivers 1.2 TB/s bandwidth per stack with capacities up to 36GB. Built on Samsung's advanced fabrication technology, it powers the latest AI accelerators from leading vendors. Features include advanced thermal management and industry-leading power efficiency.",
+    keyFeatures: [
+      "1.2 TB/s Bandwidth",
+      "36GB per Stack",
+      "Advanced Thermal Management",
+      "Low Power",
+      "12-Hi Stack Support",
+    ],
     useCases: ["ai-training", "hpc"],
     bestFor: "AI Accelerator Memory",
     specs: {
@@ -64,7 +87,10 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: true,
-    seo: { metaTitle: "Samsung HBM3E | Servchip", metaDescription: "Samsung HBM3E memory for AI processors." },
+    seo: {
+      metaTitle: "Samsung HBM3E | Servchip",
+      metaDescription: "Samsung HBM3E memory for AI processors.",
+    },
     createdAt: "2024-07-01",
     updatedAt: "2025-01-01",
   },
@@ -78,10 +104,20 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: [],
-    description: "Enterprise DDR5 RDIMM for server platforms with up to 5600 Mbps speed.",
-    longDescription: "Samsung DDR5 RDIMM delivers high-performance memory for enterprise servers and data centers. With speeds up to 5600 Mbps, ECC support, and On-Die ECC, it provides reliable operation for mission-critical workloads including virtualization, databases, and AI inference.",
-    keyFeatures: ["5600 Mbps Speed", "ECC Support", "On-Die ECC", "Low Power", "32GB/64GB/128GB"],
+    images: [
+      "https://datacenters.microsoft.com/tour/assets/images/meta/server.jpg",
+    ],
+    description:
+      "Enterprise DDR5 RDIMM for server platforms with up to 5600 Mbps speed.",
+    longDescription:
+      "Samsung DDR5 RDIMM delivers high-performance memory for enterprise servers and data centers. With speeds up to 5600 Mbps, ECC support, and On-Die ECC, it provides reliable operation for mission-critical workloads including virtualization, databases, and AI inference.",
+    keyFeatures: [
+      "5600 Mbps Speed",
+      "ECC Support",
+      "On-Die ECC",
+      "Low Power",
+      "32GB/64GB/128GB",
+    ],
     useCases: ["virtualization", "data-analytics", "ai-inference"],
     bestFor: "Enterprise Server Memory",
     specs: {
@@ -96,7 +132,10 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     sortOrder: 2,
     isFeatured: false,
     isPopular: true,
-    seo: { metaTitle: "Samsung DDR5 RDIMM | Servchip", metaDescription: "Enterprise DDR5 RDIMM for server platforms." },
+    seo: {
+      metaTitle: "Samsung DDR5 RDIMM | Servchip",
+      metaDescription: "Enterprise DDR5 RDIMM for server platforms.",
+    },
     createdAt: "2023-09-01",
     updatedAt: "2024-06-01",
   },
@@ -113,10 +152,20 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: [],
-    description: "Micron HBM3E with industry-leading 1.2+ TB/s bandwidth for AI and HPC.",
-    longDescription: "Micron HBM3E memory delivers over 1.2 TB/s bandwidth per stack for the most demanding AI and HPC workloads. Available in 8-Hi and 12-Hi configurations, Micron's HBM3E offers the highest bandwidth density for AI accelerators in data centers worldwide.",
-    keyFeatures: ["1.2+ TB/s Bandwidth", "Up to 36GB Stack", "Advanced Node", "Low Latency", "12-Hi Support"],
+    images: [
+      "https://www.racksolutions.com/news//app/uploads/blog_datacenter_2_22-e1708629161331.png",
+    ],
+    description:
+      "Micron HBM3E with industry-leading 1.2+ TB/s bandwidth for AI and HPC.",
+    longDescription:
+      "Micron HBM3E memory delivers over 1.2 TB/s bandwidth per stack for the most demanding AI and HPC workloads. Available in 8-Hi and 12-Hi configurations, Micron's HBM3E offers the highest bandwidth density for AI accelerators in data centers worldwide.",
+    keyFeatures: [
+      "1.2+ TB/s Bandwidth",
+      "Up to 36GB Stack",
+      "Advanced Node",
+      "Low Latency",
+      "12-Hi Support",
+    ],
     useCases: ["ai-training", "hpc"],
     bestFor: "AI Accelerator Memory",
     specs: {
@@ -131,7 +180,10 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: true,
-    seo: { metaTitle: "Micron HBM3E | Servchip", metaDescription: "Micron HBM3E for AI and HPC accelerators." },
+    seo: {
+      metaTitle: "Micron HBM3E | Servchip",
+      metaDescription: "Micron HBM3E for AI and HPC accelerators.",
+    },
     createdAt: "2024-06-01",
     updatedAt: "2025-01-01",
   },
@@ -145,10 +197,19 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: [],
+    images: [
+      "https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp",
+    ],
     description: "Enterprise DDR5 RDIMM for next-generation server platforms.",
-    longDescription: "Micron DDR5 RDIMM provides enterprise-grade memory performance and reliability for data center servers. With speeds up to 5600 MT/s and capacities from 16GB to 128GB, it supports the most demanding virtualization, database, and AI workloads with industry-leading power efficiency.",
-    keyFeatures: ["5600 MT/s Speed", "ECC + On-Die ECC", "16GB-128GB", "1.1V Operation", "PMIC Integration"],
+    longDescription:
+      "Micron DDR5 RDIMM provides enterprise-grade memory performance and reliability for data center servers. With speeds up to 5600 MT/s and capacities from 16GB to 128GB, it supports the most demanding virtualization, database, and AI workloads with industry-leading power efficiency.",
+    keyFeatures: [
+      "5600 MT/s Speed",
+      "ECC + On-Die ECC",
+      "16GB-128GB",
+      "1.1V Operation",
+      "PMIC Integration",
+    ],
     useCases: ["virtualization", "data-analytics"],
     bestFor: "Enterprise Memory Upgrade",
     specs: {
@@ -163,7 +224,10 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     sortOrder: 2,
     isFeatured: false,
     isPopular: true,
-    seo: { metaTitle: "Micron DDR5 RDIMM | Servchip", metaDescription: "Enterprise DDR5 RDIMM for next-gen servers." },
+    seo: {
+      metaTitle: "Micron DDR5 RDIMM | Servchip",
+      metaDescription: "Enterprise DDR5 RDIMM for next-gen servers.",
+    },
     createdAt: "2023-09-01",
     updatedAt: "2024-06-01",
   },
@@ -180,10 +244,20 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: [],
-    description: "Next-generation multiplexed rank DIMM for 8800+ MT/s server memory performance.",
-    longDescription: "MRDIMM is the next-generation server memory standard that multiplexes multiple DDR5 DIMM ranks for 8800+ MT/s effective speed. Designed for Intel Xeon 6 and future platforms, it doubles memory bandwidth without requiring new memory controller changes. Available in 128GB, 256GB, and higher capacities.",
-    keyFeatures: ["8800+ MT/s", "Multiplexed Ranks", "Backward Compatible", "Up to 256GB", "Improved Bandwidth"],
+    images: [
+      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
+    ],
+    description:
+      "Next-generation multiplexed rank DIMM for 8800+ MT/s server memory performance.",
+    longDescription:
+      "MRDIMM is the next-generation server memory standard that multiplexes multiple DDR5 DIMM ranks for 8800+ MT/s effective speed. Designed for Intel Xeon 6 and future platforms, it doubles memory bandwidth without requiring new memory controller changes. Available in 128GB, 256GB, and higher capacities.",
+    keyFeatures: [
+      "8800+ MT/s",
+      "Multiplexed Ranks",
+      "Backward Compatible",
+      "Up to 256GB",
+      "Improved Bandwidth",
+    ],
     useCases: ["hpc", "ai-training", "virtualization"],
     bestFor: "High-Performance Server Memory",
     specs: {
@@ -198,7 +272,10 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: false,
-    seo: { metaTitle: "MRDIMM | Servchip", metaDescription: "Next-gen multiplexed rank DIMM for 8800+ MT/s." },
+    seo: {
+      metaTitle: "MRDIMM | Servchip",
+      metaDescription: "Next-gen multiplexed rank DIMM for 8800+ MT/s.",
+    },
     createdAt: "2025-01-01",
     updatedAt: "2025-06-01",
   },
@@ -212,10 +289,20 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     categoryId: "memory-cxl",
     parentCategoryId: "ai-memory",
     categoryName: "CXL Memory",
-    images: [],
-    description: "CXL-attached memory module for memory expansion beyond traditional DIMM slots.",
-    longDescription: "CXL Memory Modules provide memory expansion and pooling for CXL-enabled servers. Based on the Compute Express Link standard, these modules allow servers to access far memory beyond their local DIMM capacity, enabling higher memory capacity for in-memory databases, AI training, and large-scale virtualization.",
-    keyFeatures: ["CXL 2.0 Interface", "Memory Expansion", "Pooling Support", "Hot Plug", "Up to 512GB"],
+    images: [
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    ],
+    description:
+      "CXL-attached memory module for memory expansion beyond traditional DIMM slots.",
+    longDescription:
+      "CXL Memory Modules provide memory expansion and pooling for CXL-enabled servers. Based on the Compute Express Link standard, these modules allow servers to access far memory beyond their local DIMM capacity, enabling higher memory capacity for in-memory databases, AI training, and large-scale virtualization.",
+    keyFeatures: [
+      "CXL 2.0 Interface",
+      "Memory Expansion",
+      "Pooling Support",
+      "Hot Plug",
+      "Up to 512GB",
+    ],
     useCases: ["virtualization", "data-analytics", "ai-training"],
     bestFor: "Server Memory Expansion",
     specs: {
@@ -230,7 +317,10 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     sortOrder: 1,
     isFeatured: false,
     isPopular: false,
-    seo: { metaTitle: "CXL Memory Module | Servchip", metaDescription: "CXL-attached memory for server expansion." },
+    seo: {
+      metaTitle: "CXL Memory Module | Servchip",
+      metaDescription: "CXL-attached memory for server expansion.",
+    },
     createdAt: "2024-09-01",
     updatedAt: "2025-01-01",
   },

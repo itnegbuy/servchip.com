@@ -12,7 +12,9 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-blackwell",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: [],
+    images: [
+      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
+    ],
     description:
       "Flagship superchip combining Grace CPU with dual Blackwell GPUs via NVLink 5.0 for trillion-parameter AI workloads.",
     longDescription:
@@ -65,7 +67,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-blackwell",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: [],
+    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
     description:
       "Next-generation Blackwell GPU with 288GB HBM3e memory and native FP4 tensor core support for generative AI.",
     longDescription:
@@ -118,7 +120,9 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-blackwell",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: [],
+    images: [
+      "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/amd-launches-new-ai-chips-to-take-on-leader-nvidia-1024x585.jpg",
+    ],
     description:
       "Flagship Blackwell GPU with 384GB HBM3e memory and 10 TB/s bandwidth for extreme-scale AI.",
     longDescription:
@@ -171,7 +175,9 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: [],
+    images: [
+      "https://bizfortune.com/story_image_upload/article/businessfortune-new-nvidia-ai-chips-face-issue-with-overheating-servers-report.webp",
+    ],
     description:
       "Advanced Hopper GPU with 141GB HBM3e memory and 4.8 TB/s bandwidth for large model inference.",
     longDescription:
@@ -224,7 +230,9 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: [],
+    images: [
+      "https://thesun.my/wp-content/uploads/2026/01/AMD-unveils-AI-server-powers-OpenAI-with-latest-chips.jpg",
+    ],
     description:
       "Industry-standard AI training GPU with 80GB HBM3 and 3.35 TB/s bandwidth in SXM5 form factor.",
     longDescription:
@@ -277,7 +285,9 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ada",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: [],
+    images: [
+      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
+    ],
     description:
       "Versatile data center GPU with 48GB GDDR6 ECC memory for AI inference, graphics, and video.",
     longDescription:
@@ -335,7 +345,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ada",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: [],
+    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
     description:
       "Energy-efficient data center GPU with 24GB GDDR6 for AI inference, edge computing, and video.",
     longDescription:
@@ -391,7 +401,9 @@ export const NVIDIA_PROFESSIONAL: ChipProduct[] = [
     categoryId: "nvidia-pro-rtx6000",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: [],
+    images: [
+      "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/amd-launches-new-ai-chips-to-take-on-leader-nvidia-1024x585.jpg",
+    ],
     description:
       "Flagship professional GPU with 48GB GDDR6 ECC memory for AI, rendering, and scientific visualization.",
     longDescription:
@@ -444,7 +456,9 @@ export const NVIDIA_PROFESSIONAL: ChipProduct[] = [
     categoryId: "nvidia-pro-rtx5000",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: [],
+    images: [
+      "https://bizfortune.com/story_image_upload/article/businessfortune-new-nvidia-ai-chips-face-issue-with-overheating-servers-report.webp",
+    ],
     description:
       "Mid-range professional GPU with 32GB GDDR6 ECC for workstation AI and graphics.",
     longDescription:
@@ -502,7 +516,9 @@ export const NVIDIA_PROFESSIONAL: ChipProduct[] = [
     categoryId: "nvidia-hpc-grace",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "HPC & Grace",
-    images: [],
+    images: [
+      "https://thesun.my/wp-content/uploads/2026/01/AMD-unveils-AI-server-powers-OpenAI-with-latest-chips.jpg",
+    ],
     description:
       "Integrated superchip combining Grace CPU with Hopper GPU via NVLink-C2C for HPC and AI convergence.",
     longDescription:
@@ -557,7 +573,9 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: [],
+    images: [
+      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
+    ],
     description:
       "AI-optimized Ethernet switch with 51.2 Tbps throughput and Spectrum-4 ASIC for RoCEv2 workloads.",
     longDescription:
@@ -600,7 +618,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: [],
+    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
     description:
       "Next-gen InfiniBand switch with 51.2 Tbps and SHARP v5 in-network computing for AI supercomputing.",
     longDescription:
@@ -643,7 +661,9 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: [],
+    images: [
+      "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/amd-launches-new-ai-chips-to-take-on-leader-nvidia-1024x585.jpg",
+    ],
     description:
       "400GbE dual-port SmartNIC with PCIe Gen 6.0 for AI fabric and cloud infrastructure.",
     longDescription:
@@ -686,7 +706,9 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: [],
+    images: [
+      "https://bizfortune.com/story_image_upload/article/businessfortune-new-nvidia-ai-chips-face-issue-with-overheating-servers-report.webp",
+    ],
     description:
       "400GbE data processing unit with Arm cores for infrastructure offload and zero-trust security.",
     longDescription:
@@ -733,7 +755,9 @@ export const NVIDIA_GRACE_CPU: ChipProduct[] = [
     categoryId: "nvidia-hpc-grace",
     parentCategoryId: "server-cpus",
     categoryName: "HPC & Grace",
-    images: [],
+    images: [
+      "https://thesun.my/wp-content/uploads/2026/01/AMD-unveils-AI-server-powers-OpenAI-with-latest-chips.jpg",
+    ],
     description:
       "72-core ARM-based server CPU with 480GB LPDDR5X and NVLink-C2C for HPC and AI convergence.",
     longDescription:

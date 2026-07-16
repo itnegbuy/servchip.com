@@ -12,10 +12,20 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: [],
-    description: "Amazon's 2nd-generation AI training chip for EC2 Trn2 instances with ultra-high performance.",
-    longDescription: "Amazon Trainium 2 is AWS's second-generation machine learning training chip, delivering up to 4x faster training than Trainium 1. Designed for large language models and generative AI, Trainium 2 powers Amazon EC2 Trn2 instances with up to 100 Gbps networking and ultra-high memory bandwidth for distributed AI training at scale.",
-    keyFeatures: ["AWS EC2 Exclusive", "4x vs Trainium 1", "100 Gbps Networking", "LLM Optimized", "Ultra-Wide Memory"],
+    images: [
+      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
+    ],
+    description:
+      "Amazon's 2nd-generation AI training chip for EC2 Trn2 instances with ultra-high performance.",
+    longDescription:
+      "Amazon Trainium 2 is AWS's second-generation machine learning training chip, delivering up to 4x faster training than Trainium 1. Designed for large language models and generative AI, Trainium 2 powers Amazon EC2 Trn2 instances with up to 100 Gbps networking and ultra-high memory bandwidth for distributed AI training at scale.",
+    keyFeatures: [
+      "AWS EC2 Exclusive",
+      "4x vs Trainium 1",
+      "100 Gbps Networking",
+      "LLM Optimized",
+      "Ultra-Wide Memory",
+    ],
     useCases: ["ai-training", "ai-inference"],
     bestFor: "AWS AI Training",
     specifications: {
@@ -38,7 +48,10 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: false,
-    seo: { metaTitle: "Amazon Trainium 2 | Servchip", metaDescription: "AWS's 2nd-gen AI training chip for EC2." },
+    seo: {
+      metaTitle: "Amazon Trainium 2 | Servchip",
+      metaDescription: "AWS's 2nd-gen AI training chip for EC2.",
+    },
     createdAt: "2025-01-01",
     updatedAt: "2025-06-01",
   },
@@ -53,10 +66,18 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: [],
-    description: "AWS's 2nd-generation AI inference chip for cost-effective, low-latency model deployment.",
-    longDescription: "Amazon Inferentia 2 is AWS's second-generation inference chip, designed to deliver high-performance, cost-effective AI inference for EC2 Inf2 instances. With support for large language models, computer vision, and recommendation systems, Inferentia 2 offers up to 3x higher throughput and 4x lower latency than Inferentia 1.",
-    keyFeatures: ["AWS EC2 Exclusive", "3x Throughput vs Inferentia 1", "Low Latency", "LLM Support", "Cost Optimized"],
+    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
+    description:
+      "AWS's 2nd-generation AI inference chip for cost-effective, low-latency model deployment.",
+    longDescription:
+      "Amazon Inferentia 2 is AWS's second-generation inference chip, designed to deliver high-performance, cost-effective AI inference for EC2 Inf2 instances. With support for large language models, computer vision, and recommendation systems, Inferentia 2 offers up to 3x higher throughput and 4x lower latency than Inferentia 1.",
+    keyFeatures: [
+      "AWS EC2 Exclusive",
+      "3x Throughput vs Inferentia 1",
+      "Low Latency",
+      "LLM Support",
+      "Cost Optimized",
+    ],
     useCases: ["ai-inference"],
     bestFor: "AWS AI Inference",
     specifications: {
@@ -79,7 +100,11 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     sortOrder: 2,
     isFeatured: true,
     isPopular: false,
-    seo: { metaTitle: "Amazon Inferentia 2 | Servchip", metaDescription: "AWS's 2nd-gen AI inference chip for cost-effective deployment." },
+    seo: {
+      metaTitle: "Amazon Inferentia 2 | Servchip",
+      metaDescription:
+        "AWS's 2nd-gen AI inference chip for cost-effective deployment.",
+    },
     createdAt: "2024-03-01",
     updatedAt: "2024-09-01",
   },

@@ -11,10 +11,20 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [],
-    description: "PCIe Gen5 enterprise SSD with 13 GB/s sequential read for data center workloads.",
-    longDescription: "The Samsung PM1743 is a PCIe Gen5 enterprise SSD delivering up to 13 GB/s sequential read and 6.6 GB/s write performance. Built with Samsung's 7th-gen V-NAND and a proprietary controller, it offers up to 15.36TB capacity with enterprise-grade reliability, security, and power-loss protection for the most demanding data center and AI storage workloads.",
-    keyFeatures: ["PCIe Gen5 x4", "13 GB/s Read", "7th-Gen V-NAND", "Up to 15.36TB", "SPDM Security"],
+    images: [
+      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
+    ],
+    description:
+      "PCIe Gen5 enterprise SSD with 13 GB/s sequential read for data center workloads.",
+    longDescription:
+      "The Samsung PM1743 is a PCIe Gen5 enterprise SSD delivering up to 13 GB/s sequential read and 6.6 GB/s write performance. Built with Samsung's 7th-gen V-NAND and a proprietary controller, it offers up to 15.36TB capacity with enterprise-grade reliability, security, and power-loss protection for the most demanding data center and AI storage workloads.",
+    keyFeatures: [
+      "PCIe Gen5 x4",
+      "13 GB/s Read",
+      "7th-Gen V-NAND",
+      "Up to 15.36TB",
+      "SPDM Security",
+    ],
     useCases: ["ai-training", "hpc", "data-analytics"],
     bestFor: "Enterprise & AI Storage",
     specs: {
@@ -30,7 +40,10 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: true,
-    seo: { metaTitle: "Samsung PM1743 NVMe SSD | Servchip", metaDescription: "PCIe Gen5 enterprise SSD with 13 GB/s reads." },
+    seo: {
+      metaTitle: "Samsung PM1743 NVMe SSD | Servchip",
+      metaDescription: "PCIe Gen5 enterprise SSD with 13 GB/s reads.",
+    },
     createdAt: "2024-03-01",
     updatedAt: "2025-01-01",
   },
@@ -44,10 +57,20 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [],
-    description: "PCIe Gen5 mainstream enterprise SSD with balanced performance and power efficiency.",
-    longDescription: "The Samsung PM9D3 is a mainstream PCIe Gen5 enterprise SSD offering an optimized balance of performance, power efficiency, and cost. With sequential reads up to 6 GB/s and capacities up to 7.68TB, it is ideal for read-intensive workloads, cloud storage, and virtualization environments.",
-    keyFeatures: ["PCIe Gen5", "6 GB/s Read", "Power Efficient", "Up to 7.68TB", "Read Intensive"],
+    images: [
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    ],
+    description:
+      "PCIe Gen5 mainstream enterprise SSD with balanced performance and power efficiency.",
+    longDescription:
+      "The Samsung PM9D3 is a mainstream PCIe Gen5 enterprise SSD offering an optimized balance of performance, power efficiency, and cost. With sequential reads up to 6 GB/s and capacities up to 7.68TB, it is ideal for read-intensive workloads, cloud storage, and virtualization environments.",
+    keyFeatures: [
+      "PCIe Gen5",
+      "6 GB/s Read",
+      "Power Efficient",
+      "Up to 7.68TB",
+      "Read Intensive",
+    ],
     useCases: ["virtualization", "data-analytics"],
     bestFor: "Mainstream Enterprise Storage",
     specs: {
@@ -63,7 +86,10 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     sortOrder: 2,
     isFeatured: false,
     isPopular: false,
-    seo: { metaTitle: "Samsung PM9D3 NVMe SSD | Servchip", metaDescription: "PCIe Gen5 mainstream enterprise NVMe SSD." },
+    seo: {
+      metaTitle: "Samsung PM9D3 NVMe SSD | Servchip",
+      metaDescription: "PCIe Gen5 mainstream enterprise NVMe SSD.",
+    },
     createdAt: "2024-06-01",
     updatedAt: "2025-01-01",
   },
@@ -80,10 +106,20 @@ export const MICRON_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [],
-    description: "PCIe Gen5 data center SSD with up to 14 GB/s read for AI and HPC workloads.",
-    longDescription: "The Micron 9550 is a PCIe Gen5 data center SSD delivering up to 14 GB/s sequential reads and 10 GB/s writes, making it the fastest NVMe SSD for AI training, HPC, and data-intensive applications. Available in capacities up to 30.72TB with OCP 2.0 compliance and advanced security features.",
-    keyFeatures: ["14 GB/s Read", "10 GB/s Write", "Up to 30.72TB", "OCP 2.0 Compliant", "PCIe Gen5 x4"],
+    images: [
+      "https://datacenters.microsoft.com/tour/assets/images/meta/server.jpg",
+    ],
+    description:
+      "PCIe Gen5 data center SSD with up to 14 GB/s read for AI and HPC workloads.",
+    longDescription:
+      "The Micron 9550 is a PCIe Gen5 data center SSD delivering up to 14 GB/s sequential reads and 10 GB/s writes, making it the fastest NVMe SSD for AI training, HPC, and data-intensive applications. Available in capacities up to 30.72TB with OCP 2.0 compliance and advanced security features.",
+    keyFeatures: [
+      "14 GB/s Read",
+      "10 GB/s Write",
+      "Up to 30.72TB",
+      "OCP 2.0 Compliant",
+      "PCIe Gen5 x4",
+    ],
     useCases: ["ai-training", "hpc", "data-analytics"],
     bestFor: "AI & HPC Storage",
     specs: {
@@ -99,7 +135,10 @@ export const MICRON_STORAGE: StorageProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: true,
-    seo: { metaTitle: "Micron 9550 NVMe SSD | Servchip", metaDescription: "PCIe Gen5 SSD with 14 GB/s for AI workloads." },
+    seo: {
+      metaTitle: "Micron 9550 NVMe SSD | Servchip",
+      metaDescription: "PCIe Gen5 SSD with 14 GB/s for AI workloads.",
+    },
     createdAt: "2024-06-01",
     updatedAt: "2025-01-01",
   },
@@ -116,10 +155,20 @@ export const SOLIDIGM_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [],
-    description: "High-capacity PCIe Gen5 NVMe SSD for AI data pipelines and content delivery.",
-    longDescription: "The Solidigm D7-P5810 is a high-capacity PCIe Gen5 NVMe SSD optimized for AI data pipelines, content delivery, and cloud storage. Leveraging Solidigm's 192-layer QLC NAND, it offers up to 61.44TB capacity with optimized read performance and TCO for read-intensive workloads.",
-    keyFeatures: ["Up to 61.44TB", "PCIe Gen5", "192-Layer QLC", "High Read Performance", "Optimized TCO"],
+    images: [
+      "https://www.racksolutions.com/news//app/uploads/blog_datacenter_2_22-e1708629161331.png",
+    ],
+    description:
+      "High-capacity PCIe Gen5 NVMe SSD for AI data pipelines and content delivery.",
+    longDescription:
+      "The Solidigm D7-P5810 is a high-capacity PCIe Gen5 NVMe SSD optimized for AI data pipelines, content delivery, and cloud storage. Leveraging Solidigm's 192-layer QLC NAND, it offers up to 61.44TB capacity with optimized read performance and TCO for read-intensive workloads.",
+    keyFeatures: [
+      "Up to 61.44TB",
+      "PCIe Gen5",
+      "192-Layer QLC",
+      "High Read Performance",
+      "Optimized TCO",
+    ],
     useCases: ["ai-inference", "data-analytics"],
     bestFor: "Read-Intensive & AI Data Pipelines",
     specs: {
@@ -135,7 +184,10 @@ export const SOLIDIGM_STORAGE: StorageProduct[] = [
     sortOrder: 1,
     isFeatured: true,
     isPopular: false,
-    seo: { metaTitle: "Solidigm D7-P5810 | Servchip", metaDescription: "PCIe Gen5 QLC NVMe SSD up to 61.44TB." },
+    seo: {
+      metaTitle: "Solidigm D7-P5810 | Servchip",
+      metaDescription: "PCIe Gen5 QLC NVMe SSD up to 61.44TB.",
+    },
     createdAt: "2024-06-01",
     updatedAt: "2025-01-01",
   },
@@ -152,10 +204,20 @@ export const KIOXIA_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [],
-    description: "PCIe Gen5 enterprise NVMe SSD with BiCS FLASH for data center workloads.",
-    longDescription: "The Kioxia CM7-V3 is a PCIe Gen5 enterprise NVMe SSD featuring Kioxia's BiCS FLASH 3D NAND technology. Designed for data centers, it delivers sequential reads up to 12 GB/s and writes up to 7 GB/s with capacities up to 15.36TB for demanding enterprise workloads.",
-    keyFeatures: ["PCIe Gen5", "12 GB/s Read", "BiCS FLASH 3D NAND", "Up to 15.36TB", "Dual Port"],
+    images: [
+      "https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp",
+    ],
+    description:
+      "PCIe Gen5 enterprise NVMe SSD with BiCS FLASH for data center workloads.",
+    longDescription:
+      "The Kioxia CM7-V3 is a PCIe Gen5 enterprise NVMe SSD featuring Kioxia's BiCS FLASH 3D NAND technology. Designed for data centers, it delivers sequential reads up to 12 GB/s and writes up to 7 GB/s with capacities up to 15.36TB for demanding enterprise workloads.",
+    keyFeatures: [
+      "PCIe Gen5",
+      "12 GB/s Read",
+      "BiCS FLASH 3D NAND",
+      "Up to 15.36TB",
+      "Dual Port",
+    ],
     useCases: ["virtualization", "data-analytics", "hpc"],
     bestFor: "Enterprise Data Center",
     specs: {
@@ -171,7 +233,10 @@ export const KIOXIA_STORAGE: StorageProduct[] = [
     sortOrder: 1,
     isFeatured: false,
     isPopular: false,
-    seo: { metaTitle: "Kioxia CM7-V3 NVMe SSD | Servchip", metaDescription: "PCIe Gen5 enterprise NVMe SSD up to 15.36TB." },
+    seo: {
+      metaTitle: "Kioxia CM7-V3 NVMe SSD | Servchip",
+      metaDescription: "PCIe Gen5 enterprise NVMe SSD up to 15.36TB.",
+    },
     createdAt: "2024-03-01",
     updatedAt: "2024-09-01",
   },
@@ -188,10 +253,20 @@ export const WD_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [],
-    description: "PCIe Gen4 enterprise NVMe SSD optimized for read-intensive cloud workloads.",
-    longDescription: "The WD Ultrastar DC SN655 is a PCIe Gen4 enterprise NVMe SSD optimized for read-intensive cloud and data center workloads. With capacities up to 15.36TB and proven reliability, it delivers excellent TCO for content delivery, object storage, and big data analytics.",
-    keyFeatures: ["PCIe Gen4", "6.8 GB/s Read", "Up to 15.36TB", "Read Intensive", "Enterprise Reliability"],
+    images: [
+      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
+    ],
+    description:
+      "PCIe Gen4 enterprise NVMe SSD optimized for read-intensive cloud workloads.",
+    longDescription:
+      "The WD Ultrastar DC SN655 is a PCIe Gen4 enterprise NVMe SSD optimized for read-intensive cloud and data center workloads. With capacities up to 15.36TB and proven reliability, it delivers excellent TCO for content delivery, object storage, and big data analytics.",
+    keyFeatures: [
+      "PCIe Gen4",
+      "6.8 GB/s Read",
+      "Up to 15.36TB",
+      "Read Intensive",
+      "Enterprise Reliability",
+    ],
     useCases: ["virtualization", "data-analytics"],
     bestFor: "Cloud & Read-Intensive Storage",
     specs: {
@@ -207,7 +282,10 @@ export const WD_STORAGE: StorageProduct[] = [
     sortOrder: 1,
     isFeatured: false,
     isPopular: true,
-    seo: { metaTitle: "WD Ultrastar DC SN655 | Servchip", metaDescription: "PCIe Gen4 enterprise NVMe SSD for cloud workloads." },
+    seo: {
+      metaTitle: "WD Ultrastar DC SN655 | Servchip",
+      metaDescription: "PCIe Gen4 enterprise NVMe SSD for cloud workloads.",
+    },
     createdAt: "2023-09-01",
     updatedAt: "2024-06-01",
   },
@@ -224,10 +302,20 @@ export const SEAGATE_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [],
-    description: "PCIe Gen4 NVMe SSD with advanced security for enterprise storage.",
-    longDescription: "The Seagate Nytro 3530 is a PCIe Gen4 NVMe SSD offering proven performance, security, and reliability for enterprise data centers. With capacities up to 15.36TB and Seagate's Secure Technology, it provides hardware-based security and encryption for sensitive enterprise data.",
-    keyFeatures: ["PCIe Gen4", "6.4 GB/s Read", "Up to 15.36TB", "Hardware Security", "Enterprise Reliability"],
+    images: [
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    ],
+    description:
+      "PCIe Gen4 NVMe SSD with advanced security for enterprise storage.",
+    longDescription:
+      "The Seagate Nytro 3530 is a PCIe Gen4 NVMe SSD offering proven performance, security, and reliability for enterprise data centers. With capacities up to 15.36TB and Seagate's Secure Technology, it provides hardware-based security and encryption for sensitive enterprise data.",
+    keyFeatures: [
+      "PCIe Gen4",
+      "6.4 GB/s Read",
+      "Up to 15.36TB",
+      "Hardware Security",
+      "Enterprise Reliability",
+    ],
     useCases: ["data-analytics", "virtualization"],
     bestFor: "Secure Enterprise Storage",
     specs: {
@@ -243,7 +331,10 @@ export const SEAGATE_STORAGE: StorageProduct[] = [
     sortOrder: 1,
     isFeatured: false,
     isPopular: false,
-    seo: { metaTitle: "Seagate Nytro 3530 NVMe SSD | Servchip", metaDescription: "PCIe Gen4 enterprise NVMe SSD with security." },
+    seo: {
+      metaTitle: "Seagate Nytro 3530 NVMe SSD | Servchip",
+      metaDescription: "PCIe Gen4 enterprise NVMe SSD with security.",
+    },
     createdAt: "2023-12-01",
     updatedAt: "2024-06-01",
   },
