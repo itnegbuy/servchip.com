@@ -171,7 +171,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-4.webp"],
+    images: ["/images/products/nvidia-h200.jpg"],
     description:
       "Advanced Hopper GPU with 141GB HBM3e memory and 4.8 TB/s bandwidth for large model inference.",
     longDescription:
@@ -224,7 +224,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/products/nvidia-h100.jpg"],
     description:
       "Industry-standard AI training GPU with 80GB HBM3 and 3.35 TB/s bandwidth in SXM5 form factor.",
     longDescription:

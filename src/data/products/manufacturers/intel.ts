@@ -12,7 +12,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/products/intel-xeon.jpg"],
     description:
       "Intel Xeon 6900 Series processors deliver up to 128 performance cores with Granite Rapids architecture for the most demanding enterprise workloads.",
     longDescription:
@@ -74,7 +74,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/products/intel-xeon.jpg"],
     description:
       "Intel Xeon 6700 Series processors combine Granite Rapids performance cores with balanced efficiency for scalable enterprise computing.",
     longDescription:
@@ -136,7 +136,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-max",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon Max",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/products/intel-xeon.jpg"],
     description:
       "Intel Xeon Max 9480 integrates 64 GB of HBM2e memory on-package for memory-bandwidth-intensive HPC and AI workloads.",
     longDescription:
@@ -196,7 +196,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/ai-chip-4.webp"],
+    images: ["/images/products/intel-xeon.jpg"],
     description:
       "Intel Xeon 6980P is a flagship 128-core Granite Rapids processor designed for ultra-dense data center compute.",
     longDescription:
@@ -257,7 +257,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-4",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 4",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/products/intel-xeon.jpg"],
     description:
       "Intel Xeon 8490H offers 60 Sapphire Rapids cores with built-in AMX AI acceleration for enterprise and cloud workloads.",
     longDescription:
@@ -321,7 +321,7 @@ export const INTEL_GAUDI: ChipProduct[] = [
     categoryId: "intel-gaudi-3",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Gaudi 3",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/products/intel-gaudi3-accelerator.jpg"],
     description:
       "Intel Gaudi 3 AI accelerator delivers 144 GB HBM2e memory and 600W TDP for large-scale AI training and inference.",
     longDescription:
@@ -382,7 +382,7 @@ export const INTEL_GAUDI: ChipProduct[] = [
     categoryId: "intel-gaudi-2",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Gaudi 2",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/products/intel-gaudi3-pcie.jpg"],
     description:
       "Intel Gaudi 2 AI accelerator with 96 GB HBM2e delivers efficient deep-learning training and inference at scale.",
     longDescription:

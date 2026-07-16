@@ -116,7 +116,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi300",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/products/amd-mi300x.jpg"],
     description:
       "Purpose-built AI accelerator with 192GB HBM3 memory, 5.2 TB/s bandwidth, and 750W TDP for HPC and AI.",
     longDescription:

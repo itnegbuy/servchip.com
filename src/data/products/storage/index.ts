@@ -11,7 +11,7 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/products/samsung-pm1743.jpg"],
     description:
       "PCIe Gen5 enterprise SSD with 13 GB/s sequential read for data center workloads.",
     longDescription:
@@ -102,7 +102,7 @@ export const MICRON_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/products/micron-9550.jpg"],
     description:
       "PCIe Gen5 data center SSD with up to 14 GB/s read for AI and HPC workloads.",
     longDescription:

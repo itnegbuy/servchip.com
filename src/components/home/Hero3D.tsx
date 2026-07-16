@@ -485,8 +485,8 @@ export function Hero3D() {
 
       <HeroBgSlider />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#070B15]/60 via-[#070B15]/30 to-[#070B15]/10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#070B15]/50 via-transparent to-[#070B15]/10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#070B15]/20 via-[#070B15]/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#070B15]/15 via-transparent to-transparent" />
 
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -510,7 +510,7 @@ export function Hero3D() {
       <FloatingOrbs />
       {isDesktop && <ParticleField />}
 
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,7,11,0.6)_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,7,11,0.25)_100%)] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
