@@ -2,10 +2,16 @@
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "All Chip Products — NVIDIA, AMD, Intel & More",
+  title:
+    "Enterprise Chip Products — NVIDIA H100, AMD MI300X, Intel Xeon & More",
   description:
-    "Browse the complete catalog of authentic enterprise chips from NVIDIA, AMD, Intel, Nokia and more. AI accelerators, data center GPUs, server CPUs, professional graphics, and networking solutions.",
+    "Browse authentic enterprise chips — NVIDIA data center GPUs, AMD Instinct accelerators, Intel Xeon processors, AI servers, networking, memory & storage. ISO 9001 certified distributor.",
   alternates: { canonical: "https://servchip.com/products" },
+  openGraph: {
+    title: "Enterprise Chip Products | Servchip — AI Hardware Distributor",
+    description:
+      "Browse authentic enterprise chips from NVIDIA, AMD, Intel & more. Data center GPUs, AI accelerators, server CPUs.",
+  },
 };
 
 export default function Page() {

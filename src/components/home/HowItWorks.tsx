@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -21,14 +20,7 @@ export function HowItWorks() {
           <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-px bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0" />
 
           {HOW_IT_WORKS_STEPS.map((step, index) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.15 }}
-              className="text-center relative"
-            >
+            <div key={step.number} className="text-center relative">
               <div className="w-20 h-20 mx-auto rounded-full bg-surface border-2 border-primary/20 flex items-center justify-center mb-5 relative z-10">
                 <span className="text-2xl font-black text-primary">
                   {step.number}
@@ -41,13 +33,18 @@ export function HowItWorks() {
               <p className="text-text-muted text-sm leading-relaxed max-w-xs mx-auto">
                 {step.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         <div className="text-center mt-10">
           <Link href="/rfq">
-            <Button variant="solid" size="lg" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+            <Button
+              variant="solid"
+              size="lg"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="right"
+            >
               Start Your Order
             </Button>
           </Link>

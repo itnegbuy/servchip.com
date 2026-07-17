@@ -2,10 +2,17 @@
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "Enterprise Solutions — AI, HPC, Data Center & Edge Computing",
+  title:
+    "Enterprise AI & HPC Solutions — Data Center, Edge & Cloud Infrastructure",
   description:
-    "Explore multi-vendor solutions for AI training, HPC, data center acceleration, edge computing, and professional visualization. Enterprise deployment guides featuring NVIDIA, AMD, Intel and more.",
+    "Multi-vendor enterprise solutions for AI training, HPC, data center acceleration, edge computing & professional visualization. NVIDIA, AMD, Intel hardware for enterprise deployments.",
   alternates: { canonical: "https://servchip.com/solutions" },
+  openGraph: {
+    title:
+      "Enterprise AI & HPC Solutions | Servchip — Data Center GPU Distributor",
+    description:
+      "Multi-vendor enterprise solutions for AI training, HPC, and data center workloads featuring NVIDIA, AMD, and Intel hardware.",
+  },
 };
 
 export default function Page() {

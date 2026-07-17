@@ -1,22 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SERVICES } from "@/data/home";
 import type { ServiceItem } from "@/data/home";
 
-function ServiceCard({ service, index }: { service: ServiceItem; index: number }) {
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: ServiceItem;
+  index: number;
+}) {
   const Icon = service.icon;
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group relative"
-    >
+    <div className="group relative">
       <div className="relative h-full rounded-2xl border border-border bg-surface p-6 card-hover overflow-hidden">
         <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-all" />
 
@@ -32,7 +31,10 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
 
           <ul className="space-y-1.5 mb-4">
             {service.features.map((f) => (
-              <li key={f} className="flex items-center gap-2 text-xs text-text-dim">
+              <li
+                key={f}
+                className="flex items-center gap-2 text-xs text-text-dim"
+              >
                 <span className="w-1 h-1 rounded-full bg-primary/60 flex-shrink-0" />
                 {f}
               </li>
@@ -43,11 +45,12 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
             href="/contact"
             className="inline-flex items-center gap-1 text-primary text-xs font-semibold group/link"
           >
-            Learn More <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
+            Learn More{" "}
+            <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
           </Link>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

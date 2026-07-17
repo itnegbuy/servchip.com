@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, MessageSquare, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -14,11 +13,7 @@ export function FinalCTA() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
+        <div>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
             Ready to{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -68,7 +63,7 @@ export function FinalCTA() {
               Ships to 150+ Countries
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

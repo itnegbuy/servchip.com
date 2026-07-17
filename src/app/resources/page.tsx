@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "Resources | Servchip — Authorized NVIDIA Distributor",
+  title: "Resources — Enterprise AI Hardware Guides, Blog & Technical Insights",
   description:
-    "Explore our library of technical guides, blog articles, case studies, whitepapers, and webinars on AI computing, GPU architectures, HPC deployments, and enterprise chip solutions from NVIDIA-certified engineers.",
+    "Technical guides, blog articles, case studies & whitepapers on AI computing, GPU architectures, HPC deployments, and enterprise chip solutions from Servchip's certified engineers.",
   alternates: { canonical: "https://servchip.com/resources" },
   openGraph: {
-    title: "Resources | Servchip — Authorized NVIDIA Distributor",
+    title: "Resources & Guides | Servchip — Enterprise Chip Distributor",
     description:
-      "Explore our library of technical guides, blog articles, case studies, whitepapers, and webinars on AI computing, GPU architectures, HPC deployments, and enterprise chip solutions.",
+      "Technical guides, case studies & whitepapers on AI computing, GPU architectures & enterprise chip solutions.",
   },
 };
 

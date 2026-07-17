@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+
 import { Star, Quote } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TESTIMONIALS } from "@/data/home";
@@ -21,12 +21,8 @@ export function SuccessStories() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {TESTIMONIALS.map((t, index) => (
-            <motion.div
+            <div
               key={t.author.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
               className="bg-surface border border-border rounded-xl p-6 relative"
             >
               <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10" />
@@ -63,7 +59,7 @@ export function SuccessStories() {
                   <div className="text-text-dim text-xs">{t.author.role}</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

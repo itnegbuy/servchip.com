@@ -25,33 +25,34 @@ const jetbrainsMono = JetBrains_Mono({
 const baseUrl = "https://servchip.com";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL("https://servchip.com"),
   title: {
     template: "%s | Servchip — Enterprise Chip Distributor",
     default:
-      "Servchip — Enterprise Chip Distributor & Technology Partner for AI, HPC & Data Centers",
+      "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers | NVIDIA H100, AMD MI300X, Intel Xeon",
   },
   description:
-    "Premium distributor of authentic chips — NVIDIA, AMD, Intel, Nokia & more. H100, MI300X, Xeon, Gaudi 3, AI accelerators, networking & more. Global delivery, enterprise support.",
+    "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators. India's trusted data center GPU distributor for AI infrastructure with global shipping.",
   keywords: [
-    "chip distributor",
+    "enterprise chip distributor",
+    "NVIDIA H100 distributor India",
+    "AMD Instinct distributor",
+    "data center GPU distributor",
+    "AI infrastructure provider",
+    "enterprise IT hardware supplier",
+    "HPC hardware solutions",
+    "server components wholesale",
+    "enterprise AI hardware India",
+    "data center solutions provider",
+    "high-performance computing hardware",
     "NVIDIA distributor",
     "AMD distributor",
     "Intel distributor",
-    "Nokia semiconductor",
-    "AI chips",
-    "H100",
-    "MI300X",
-    "Xeon",
-    "Gaudi 3",
-    "AI GPUs",
+    "AI accelerators",
     "data center GPUs",
-    "GPU distributor",
-    "enterprise GPU",
-    "AI hardware",
     "server processors",
-    "FPGA distributor",
-    "network processors",
+    "enterprise GPU",
+    "ISO 9001 certified IT distributor",
   ],
   authors: [{ name: "Servchip Inc." }],
   creator: "Servchip Inc.",
@@ -59,18 +60,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: baseUrl,
+    url: "https://servchip.com",
     siteName: "Servchip",
     title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
     description:
-      "Premium distributor of authentic chips from NVIDIA, AMD, Intel, Nokia & more. Global delivery, enterprise support.",
+      "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3. India's trusted data center GPU distributor with global shipping.",
     images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Servchip — Enterprise Chip Distributor",
+    title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
     description:
-      "Premium distributor of authentic chips from NVIDIA, AMD, Intel, Nokia & more. Global delivery, enterprise support.",
+      "ISO 9001 certified enterprise chip distributor. NVIDIA H100, AMD MI300X, Intel Xeon. India's trusted data center GPU distributor.",
     images: ["/og-image.svg"],
   },
   robots: {
@@ -108,7 +109,7 @@ export default function RootLayout({
               url: "https://servchip.com",
               logo: "https://servchip.com/favicon.svg",
               description:
-                "Authorized distributor of authentic enterprise chips from NVIDIA, AMD, Intel, Nokia and other leading manufacturers. AI GPUs, server CPUs, FPGAs, and networking solutions.",
+                "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators. Authorized distribution partner for AI, HPC & data center hardware.",
               foundingDate: "2018",
               contactPoint: {
                 "@type": "ContactPoint",
@@ -116,6 +117,11 @@ export default function RootLayout({
                 contactType: "sales",
                 email: "sales@servchip.com",
                 availableLanguage: ["English"],
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "IN",
+                addressRegion: "New Delhi",
               },
               sameAs: [
                 "https://www.linkedin.com/company/servchip",

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -43,13 +42,7 @@ export function CategoriesGrid() {
             const Icon = ICON_MAP[cat.icon] || Server;
             const count = getProductsByParentCategory(cat.id).length;
             return (
-              <motion.div
-                key={cat.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-              >
+              <div key={cat.slug}>
                 <Link
                   href={`/categories/${cat.slug}`}
                   className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group"
@@ -67,7 +60,7 @@ export function CategoriesGrid() {
                     {count > 0 ? `${count} products` : "In Stock"}
                   </Badge>
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
         </div>

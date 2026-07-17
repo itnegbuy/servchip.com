@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+
 import { Cpu, Sparkles, Layers, BookOpen, ArrowUpRight } from "lucide-react";
 
 const QUICK_LINKS = [
@@ -37,13 +37,7 @@ export function QuickLinks() {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {QUICK_LINKS.map((ql, i) => (
-            <motion.div
-              key={ql.href}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-            >
+            <div key={ql.href}>
               <Link
                 href={ql.href}
                 className="group relative flex flex-col gap-3 p-5 md:p-6 rounded-2xl border border-border-subtle bg-surface card-hover overflow-hidden h-full"
@@ -64,7 +58,7 @@ export function QuickLinks() {
                   <p className="text-xs text-text-muted">{ql.desc}</p>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

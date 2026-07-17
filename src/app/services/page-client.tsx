@@ -199,8 +199,7 @@ export default function ServicesPage() {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
           >
             {SERVICES.map((service) => (
@@ -258,14 +257,7 @@ export default function ServicesPage() {
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {HOW_IT_WORKS.map((step, i) => (
-                <motion.div
-                  key={step.step}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className="relative"
-                >
+                <div key={step.step} className="relative">
                   <div className="rounded-2xl border border-border bg-bg-dark p-6 md:p-8 text-center">
                     <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
                       <span className="text-xs font-mono font-bold text-primary">
@@ -285,7 +277,7 @@ export default function ServicesPage() {
                   {i < HOW_IT_WORKS.length - 1 && (
                     <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-primary/40 to-transparent" />
                   )}
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -305,8 +297,7 @@ export default function ServicesPage() {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate="visible"
             className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 max-w-4xl mx-auto"
           >
             {STATS.map((stat) => (
@@ -333,8 +324,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12"
           >

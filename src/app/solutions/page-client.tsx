@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import * as Icons from "lucide-react";
 import {
@@ -255,12 +254,8 @@ export default function SolutionsPage() {
                   sol.icon
                 ] || Icons.Circle;
               return (
-                <motion.div
+                <div
                   key={sol.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
                   className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden"
                 >
                   <div className="flex items-start gap-5">
@@ -293,17 +288,12 @@ export default function SolutionsPage() {
                   >
                     Explore solution <ArrowRight className="w-4 h-4" />
                   </a>
-                </motion.div>
+                </div>
               );
             })}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-10"
-          >
+          <div className="text-center mt-10">
             <Link href="#contact">
               <Button
                 variant="outline"
@@ -312,7 +302,7 @@ export default function SolutionsPage() {
                 Discuss Your Solution <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 

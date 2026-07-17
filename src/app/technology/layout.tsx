@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Technology — Multi-Vendor Chip Architecture & Enterprise Solutions",
+  title:
+    "Technology — Multi-Vendor AI Chip Architecture & Enterprise Solutions",
   description:
-    "Explore our technology portfolio — NVIDIA Hopper, AMD CDNA 3, Intel Granite Rapids, and more. Enterprise-grade AI, HPC, and data center solutions across all major chip architectures.",
+    "Explore enterprise chip technology — NVIDIA Hopper, AMD CDNA 3, Intel Granite Rapids. AI acceleration, HBM memory, NVLink interconnects & more for data center deployments.",
   alternates: { canonical: "https://servchip.com/technology" },
   openGraph: {
-    title: "Technology — Servchip Enterprise Chip Solutions",
+    title:
+      "Technology Portfolio | Servchip — Enterprise AI Hardware Distributor",
     description:
-      "Multi-vendor chip architecture expertise across NVIDIA, AMD, Intel, and leading manufacturers for AI, HPC, and data center workloads.",
+      "Multi-vendor chip architecture expertise across NVIDIA, AMD, Intel for enterprise AI, HPC & data center workloads.",
   },
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+
 import Link from "next/link";
 
 import { ArrowRight, Cpu } from "lucide-react";
@@ -66,12 +66,8 @@ export function BrandSpotlight() {
             const rowChips = getChipsForRow(row.chips);
 
             return (
-              <motion.div
+              <div
                 key={row.manufacturer}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 items-center`}
               >
                 {/* Image with zigzag mask */}
@@ -167,17 +163,12 @@ export function BrandSpotlight() {
                     </Link>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12">
           <Link
             href="/products"
             className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/30 px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-primary/20 transition-all"
@@ -186,7 +177,7 @@ export function BrandSpotlight() {
             Browse All Enterprise Products
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

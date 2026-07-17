@@ -107,21 +107,14 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {STATS.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
+              <div key={stat.label} className="text-center">
                 <div className="text-3xl md:text-4xl font-black text-primary mb-1">
                   {stat.value}
                 </div>
                 <div className="text-xs text-text-dim uppercase tracking-wider">
                   {stat.label}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -131,11 +124,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <SectionHeading
                 label="Our Mission"
                 title="Democratizing Access to World-Class Computing"
@@ -159,13 +148,8 @@ export default function AboutPage() {
                   Zero compromise on quality or service.
                 </span>
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-surface border border-border rounded-2xl p-8"
-            >
+            </div>
+            <div className="bg-surface border border-border rounded-2xl p-8">
               <h3 className="text-lg font-bold text-text mb-4">
                 Our Commitment
               </h3>
@@ -178,20 +162,16 @@ export default function AboutPage() {
                   "Multi-vendor certified engineering support team",
                   "Secure global logistics with real-time tracking",
                 ].map((item, i) => (
-                  <motion.li
+                  <li
                     key={item}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
                     className="flex items-center gap-2 text-sm text-text-muted"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                     {item}
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -206,13 +186,7 @@ export default function AboutPage() {
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VALUES.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <div key={v.title}>
                 <Card variant="elevated" className="h-full text-center">
                   <div className="w-12 h-12 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <v.icon className="w-6 h-6 text-primary" />
@@ -222,7 +196,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-text-muted text-sm">{v.desc}</p>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -238,14 +212,7 @@ export default function AboutPage() {
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TEAM.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
+              <div key={member.name} className="text-center">
                 <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center mb-4">
                   <span className="text-primary text-xl font-black">
                     {member.avatar}
@@ -256,7 +223,7 @@ export default function AboutPage() {
                 <p className="text-xs text-text-dim max-w-[200px] mx-auto">
                   {member.desc}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

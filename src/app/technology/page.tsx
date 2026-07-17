@@ -274,13 +274,7 @@ export default function TechnologyPage() {
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16">
             {/* Left: 3D Scene */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative h-[320px] md:h-[420px] rounded-2xl border border-border bg-surface overflow-hidden"
-            >
+            <div className="relative h-[320px] md:h-[420px] rounded-2xl border border-border bg-surface overflow-hidden">
               <div className="absolute inset-0 bg-dot-grid opacity-20" />
               <MiniScene />
               {/* Floating stat */}
@@ -308,23 +302,14 @@ export default function TechnologyPage() {
                   Blackwell
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
 
             {/* Right: Feature list */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <ul className="space-y-3.5">
                 {TECHNOLOGY_FEATURES.map((feature, i) => (
-                  <motion.li
+                  <li
                     key={feature.title}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.08 }}
                     className="flex items-start gap-3 group"
                   >
                     <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -338,21 +323,17 @@ export default function TechnologyPage() {
                         {feature.desc}
                       </p>
                     </div>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
 
           {/* Tech cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {TECH_CARDS.map((card, i) => (
-              <motion.div
+              <div
                 key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="rounded-xl border border-border bg-surface p-5 card-hover"
               >
                 <card.icon className="w-7 h-7 text-primary mb-3" />
@@ -370,7 +351,7 @@ export default function TechnologyPage() {
                     {card.statLabel}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

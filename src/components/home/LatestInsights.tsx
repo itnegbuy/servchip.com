@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+
 import Link from "next/link";
 import { ArrowRight, Clock, Tag, ImageIcon } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -23,13 +23,7 @@ export function LatestInsights() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {INSIGHT_POSTS.map((post, index) => (
-            <motion.div
-              key={post.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
+            <div key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
                 className="block bg-surface border border-border rounded-xl h-full hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 overflow-hidden"
@@ -74,7 +68,7 @@ export function LatestInsights() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 

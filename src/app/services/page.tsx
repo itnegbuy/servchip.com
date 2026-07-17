@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "Services | Servchip — Authorized NVIDIA Distributor",
+  title: "Enterprise Hardware Services — Procurement, Integration & Support",
   description:
-    "End-to-end NVIDIA computing services — hardware procurement, bulk & wholesale, technical support, warranty & RMA, AI infrastructure design, data center planning, and HPC optimization. Certified engineering, global delivery.",
+    "End-to-end enterprise chip services — custom hardware sourcing, system integration, technical support, AI infrastructure consulting, and warranty & RMA. ISO 9001 certified IT distributor with global delivery.",
   alternates: { canonical: "https://servchip.com/services" },
   openGraph: {
-    title: "Services | Servchip — Authorized NVIDIA Distributor",
+    title: "Enterprise Hardware Services | Servchip — Chip Distributor",
     description:
-      "End-to-end NVIDIA computing services — hardware procurement, bulk & wholesale, technical support, warranty & RMA, AI infrastructure design, data center planning, and HPC optimization.",
+      "Custom chip sourcing, system integration, AI infrastructure consulting, and enterprise warranty services from an ISO 9001 certified distributor.",
   },
 };
 

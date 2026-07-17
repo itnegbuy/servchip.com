@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   Code2,
@@ -262,13 +261,7 @@ export default function DeveloperHubPage() {
 
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Left: Code sample */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="rounded-2xl border border-border bg-bg-dark overflow-hidden"
-            >
+            <div className="rounded-2xl border border-border bg-bg-dark overflow-hidden">
               {/* Window chrome */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-surface">
                 <div className="flex gap-1.5">
@@ -321,17 +314,13 @@ export default function DeveloperHubPage() {
                   ))}
                 </code>
               </pre>
-            </motion.div>
+            </div>
 
             {/* Right: Features */}
             <div className="space-y-4">
               {INLINED_FEATURES.map((feat, i) => (
-                <motion.div
+                <div
                   key={feat.title}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
                   className="flex gap-4 p-4 rounded-xl border border-border bg-surface card-hover"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
@@ -345,18 +334,13 @@ export default function DeveloperHubPage() {
                       {feat.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
           {/* API endpoints preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-10 rounded-2xl border border-border bg-surface overflow-hidden max-w-4xl mx-auto"
-          >
+          <div className="mt-10 rounded-2xl border border-border bg-surface overflow-hidden max-w-4xl mx-auto">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-surface">
               <Book className="w-4 h-4 text-primary" />
               <span className="text-sm font-mono text-text">API Endpoints</span>
@@ -386,14 +370,9 @@ export default function DeveloperHubPage() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-8"
-          >
+          <div className="text-center mt-8">
             <Link href="/contact">
               <Button
                 variant="outline"
@@ -404,7 +383,7 @@ export default function DeveloperHubPage() {
                 Request API Access
               </Button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 

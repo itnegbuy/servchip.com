@@ -52,11 +52,16 @@ export interface Stat {
 }
 
 export const STATS: Stat[] = [
-  { value: 10000, suffix: "+", label: "Chips Supplied", icon: "Cpu" },
+  {
+    value: 10000,
+    suffix: "+",
+    label: "Enterprise Chips Supplied",
+    icon: "Cpu",
+  },
   { value: 500, suffix: "+", label: "Enterprise Clients", icon: "Building2" },
   {
     value: 27,
-    suffix: "",
+    suffix: "+",
     label: "Manufacturer Partnerships",
     icon: "Handshake",
   },
@@ -124,33 +129,33 @@ export interface WhyFeature {
 export const WHY_FEATURES: WhyFeature[] = [
   {
     icon: ShieldCheck,
-    title: "100% Authentic",
-    desc: "Every chip sourced directly from manufacturers and authorized partners. Zero counterfeit policy with full chain of custody across all brands.",
+    title: "100% Authentic Chips",
+    desc: "Every chip sourced directly from manufacturers and authorized distribution partners. Zero counterfeit policy with full chain of custody documentation across all enterprise hardware — NVIDIA, AMD, Intel, Broadcom, and more.",
   },
   {
     icon: Award,
-    title: "Certified Quality",
-    desc: "ISO 9001:2015 certified. Rigorous testing, full traceability, and complete documentation with every shipment.",
+    title: "ISO 9001 Certified Operations",
+    desc: "ISO 9001:2015 certified quality management system governs procurement, warehousing, and fulfillment. An enterprise chip distributor you can audit with confidence.",
   },
   {
     icon: Globe,
-    title: "Global Delivery",
-    desc: "Ship to 150+ countries with secure, insured logistics. Express shipping options available for urgent needs.",
+    title: "Global Delivery from India & UAE",
+    desc: "Ship enterprise AI hardware to 150+ countries from facilities in New Delhi and Sharjah. Secure, insured logistics with express options for urgent data center deployments.",
   },
   {
     icon: Zap,
-    title: "Enterprise Support",
-    desc: "Dedicated account managers for every client. Technical team with deep multi-vendor architecture expertise.",
+    title: "Enterprise IT Hardware Support",
+    desc: "Dedicated account managers and 24/7 engineering access for every enterprise client. Multi-vendor architecture expertise across NVIDIA, AMD, Intel, and leading chip platforms.",
   },
   {
     icon: Wrench,
     title: "Expert Engineering Team",
-    desc: "Certified engineers with hands-on experience across NVIDIA, AMD, Intel, and other leading platforms for AI, HPC, and data center deployments.",
+    desc: "Certified engineers match workload requirements to the right accelerator, memory configuration, and interconnect topology. Architecture reviews and workload benchmarking included.",
   },
   {
     icon: Rocket,
-    title: "Fast Turnaround",
-    desc: "24-hour quote response guaranteed. Express shipping available for time-critical projects.",
+    title: "Fast Turnaround & Bulk Pricing",
+    desc: "24-hour quote response guaranteed. Volume discounts for server components wholesale orders. Express shipping available for time-critical AI infrastructure projects.",
   },
 ];
 
@@ -208,19 +213,19 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     icon: Search,
     number: "1",
     title: "Browse & Select",
-    desc: "Explore our complete multi-vendor chip catalog with detailed specifications and expert recommendations.",
+    desc: "Explore our complete multi-vendor enterprise chip catalog — AI accelerators, server CPUs, networking, memory & storage — with detailed specs and expert recommendations.",
   },
   {
     icon: FileText,
     number: "2",
     title: "Request a Quote",
-    desc: "Submit your requirements and get a personalized quote within 24 hours.",
+    desc: "Submit your enterprise hardware requirements and get a personalized quote with volume pricing within 24 hours. No minimum order quantity.",
   },
   {
     icon: Package,
     number: "3",
     title: "Receive & Deploy",
-    desc: "Fast delivery worldwide with full traceability and enterprise-level support.",
+    desc: "Fast global delivery with full traceability, ISO-certified packaging, and enterprise-level technical support. Ship to 150+ countries.",
   },
 ];
 
@@ -234,8 +239,8 @@ export interface ServiceItem {
 export const SERVICES: ServiceItem[] = [
   {
     icon: Search,
-    title: "Custom Sourcing",
-    desc: "Hard-to-find or end-of-life chips sourced through our global manufacturer partnerships.",
+    title: "Enterprise Chip Sourcing",
+    desc: "Hard-to-find or end-of-life enterprise chips sourced through our global manufacturer partnership network. AI accelerators, server CPUs, and data center GPUs at competitive pricing.",
     features: [
       "End-of-life procurement",
       "Hard-to-find components",
@@ -245,8 +250,8 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     icon: Headphones,
-    title: "Technical Support",
-    desc: "Multi-vendor engineering support for integration, tuning, and deployment of enterprise chips.",
+    title: "Technical Support & Integration",
+    desc: "24/7 multi-vendor engineering support for AI infrastructure deployment. From chip selection to system integration across NVIDIA, AMD, and Intel platforms.",
     features: [
       "24/7 engineering access",
       "Multi-vendor expertise",
@@ -256,8 +261,8 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     icon: Cpu,
-    title: "System Integration",
-    desc: "Pre-configured rack-level integration with full testing and validation before shipping.",
+    title: "Data Center Solutions",
+    desc: "Pre-configured rack-level integration with full testing and validation. Complete data center solutions provider for AI training clusters and HPC deployments.",
     features: [
       "Rack integration services",
       "Pre-shipment testing",
@@ -267,8 +272,8 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     icon: ClipboardCheck,
-    title: "Engineering Consulting",
-    desc: "Architecture review and workload optimization across all major chip platforms.",
+    title: "AI Infrastructure Consulting",
+    desc: "Architecture review and workload optimization across all major chip platforms. Free technical consultations for enterprise AI hardware procurement decisions.",
     features: [
       "Architecture planning",
       "Workload benchmarking",
@@ -279,7 +284,7 @@ export const SERVICES: ServiceItem[] = [
   {
     icon: ShieldCheck,
     title: "Warranty & RMA",
-    desc: "Comprehensive warranty coverage with advanced replacement and depot repair services.",
+    desc: "Comprehensive 3-year manufacturer warranty with advanced replacement and depot repair. ISO-certified warranty process for enterprise hardware.",
     features: [
       "3-year base warranty",
       "Advanced replacement",
@@ -308,7 +313,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Are all chips 100% authentic?",
         answer:
-          "Yes. Every chip is sourced directly from manufacturers or authorized distributors. We maintain full chain of custody documentation and each shipment includes a certificate of authenticity. Zero counterfeit policy is enforced across all 27+ manufacturer partnerships.",
+          "Yes. Every chip is sourced directly from manufacturers or authorized distribution partners. We maintain full chain of custody documentation and each shipment includes a certificate of authenticity. As an enterprise chip distributor with a zero counterfeit policy enforced across all 27+ manufacturer partnerships, we guarantee 100% authentic enterprise hardware.",
       },
       {
         question: "Can you help me choose the right chip?",
@@ -318,7 +323,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "What brands do you carry?",
         answer:
-          "We carry products from 27+ manufacturers including NVIDIA, AMD, Intel, Broadcom, Marvell, Cisco, Qualcomm, Samsung, SK hynix, Micron, Seagate, Dell, HPE, Supermicro, Lenovo, and more. Our catalog covers AI accelerators, server CPUs, AI servers, networking, and memory & storage.",
+          "We carry AI accelerators, data center GPUs, server CPUs, and enterprise IT hardware from 27+ manufacturers including NVIDIA, AMD, Intel, Broadcom, Marvell, Cisco, Qualcomm, Samsung, SK hynix, Micron, Seagate, Dell, HPE, Supermicro, Lenovo, and more. Our catalog covers the full spectrum of enterprise computing infrastructure.",
       },
       {
         question: "Do you sell both new and refurbished?",
@@ -360,7 +365,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "How fast can you deliver?",
         answer:
-          "Standard delivery is 3-5 business days for in-stock items. Express shipping is available for urgent needs. We ship to 150+ countries with secure, insured logistics and real-time tracking.",
+          "Standard delivery is 3-5 business days for in-stock items. Express shipping is available for urgent data center deployments. We ship to 150+ countries with global shipping from India and UAE, secure insured logistics, and real-time tracking.",
       },
       {
         question: "Do you support international shipping?",
@@ -386,7 +391,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "What kind of technical support do you offer?",
         answer:
-          "Our engineering team provides 24/7 technical support across all brands. Services include architecture consultation, performance tuning, remote diagnostics, and deployment assistance for AI, HPC, and data center workloads.",
+          "Our engineering team provides 24/7 technical support across all brands for AI infrastructure, HPC, and data center workloads. Services include architecture consultation, performance tuning, remote diagnostics, and deployment assistance across NVIDIA, AMD, and Intel platforms.",
       },
       {
         question: "How does the RMA process work?",
@@ -492,9 +497,9 @@ export interface InsightPost {
 
 export const INSIGHT_POSTS: InsightPost[] = [
   {
-    title: "AI Chip Landscape 2026: NVIDIA vs AMD vs Intel",
+    title: "Enterprise AI Chip Landscape 2026: NVIDIA vs AMD vs Intel",
     excerpt:
-      "A comprehensive analysis of the current AI chip landscape and how each manufacturer's architecture stacks up for enterprise workloads.",
+      "A comprehensive comparison of NVIDIA H100, AMD Instinct MI300X, and Intel Gaudi 3 for enterprise AI training, inference, and HPC workloads.",
     date: "Jun 15, 2026",
     category: "Architecture",
     slug: "ai-chip-landscape-2026-comparison",
@@ -502,9 +507,10 @@ export const INSIGHT_POSTS: InsightPost[] = [
       "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=250&fit=crop",
   },
   {
-    title: "H100 vs MI300X vs Gaudi 3: Choosing the Right AI Accelerator",
+    title:
+      "NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3: Enterprise Accelerator Guide",
     excerpt:
-      "A side-by-side comparison of the leading AI accelerators for training, inference, and HPC workloads.",
+      "Side-by-side comparison of leading enterprise AI accelerators for data center GPU deployments — memory, bandwidth, TDP, and pricing breakdown.",
     date: "Jun 10, 2026",
     category: "Comparison",
     slug: "h100-vs-mi300x-vs-gaudi3-comparison",
@@ -512,9 +518,10 @@ export const INSIGHT_POSTS: InsightPost[] = [
       "https://images.unsplash.com/photo-1555618561-5b0e7a3f7b9a?w=400&h=250&fit=crop",
   },
   {
-    title: "Multi-Vendor GPU Deployments: Best Practices for Enterprise",
+    title:
+      "Multi-Vendor GPU Deployments: Enterprise Best Practices for AI Infrastructure",
     excerpt:
-      "How to build and manage heterogeneous GPU infrastructure with chips from different manufacturers.",
+      "How to build and manage heterogeneous GPU infrastructure with chips from different manufacturers for AI training clusters and data center workloads.",
     date: "Jun 5, 2026",
     category: "Deployment",
     slug: "multi-vendor-gpu-deployments-best-practices",
@@ -524,9 +531,9 @@ export const INSIGHT_POSTS: InsightPost[] = [
 ];
 
 export const HERO_PHRASES: string[] = [
-  "Enterprise Chips for AI, ML & HPC workloads — all brands",
-  "Your trusted source for authentic computing solutions across all manufacturers",
-  "From data centers to research labs — we drive innovation",
+  "Enterprise chip distributor — NVIDIA H100, AMD MI300X, Intel Xeon & more",
+  "ISO 9001 certified AI infrastructure provider — global shipping from India",
+  "Your trusted data center GPU distributor for AI, HPC & enterprise workloads",
 ];
 
 export interface HeroStat {
@@ -535,9 +542,9 @@ export interface HeroStat {
 }
 
 export const HERO_STATS: HeroStat[] = [
-  { value: "500+", label: "Chips Delivered" },
-  { value: "200+", label: "Enterprise Clients" },
-  { value: "99.9%", label: "Authenticity Rate" },
+  { value: "10,000+", label: "Enterprise Chips Supplied" },
+  { value: "500+", label: "Enterprise Clients Worldwide" },
+  { value: "99.9%", label: "Authenticity Guarantee" },
 ];
 
 export const HERO_METRICS_LOG: string[] = [

@@ -64,7 +64,7 @@ export const GOOGLE_TPU: ChipProduct[] = [
     categoryId: "google-tpu",
     parentCategoryId: "google-tpu",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-4.jpg"],
+    images: ["/images/ai-chip-4.webp"],
     description:
       "High-performance Google TPU v5p for large-scale AI training with 4x TPU v5e performance.",
     longDescription:

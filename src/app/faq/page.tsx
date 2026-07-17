@@ -2,10 +2,15 @@
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "FAQ — Frequently Asked Questions About Enterprise Chip Purchasing",
+  title: "FAQ — Enterprise Chip Distributor Questions & Answers",
   description:
-    "Answers to common questions about enterprise chip purchasing, shipping, warranty, authenticity verification, and support from Servchip across all manufacturers.",
+    "Answers about enterprise chip purchasing, authenticity verification, shipping, warranty, and support from Servchip — ISO 9001 certified distributor for NVIDIA, AMD, Intel & more.",
   alternates: { canonical: "https://servchip.com/faq" },
+  openGraph: {
+    title: "FAQ | Servchip — Enterprise Chip Distributor",
+    description:
+      "Common questions about enterprise chip purchasing, shipping, warranty & support from an ISO 9001 certified distributor.",
+  },
 };
 
 export default function Page() {

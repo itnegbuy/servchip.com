@@ -1,9 +1,18 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Cpu, Globe, Calendar, MapPin, Server, Network, MemoryStick, HardDrive } from "lucide-react";
+import {
+  ArrowRight,
+  Cpu,
+  Globe,
+  Calendar,
+  MapPin,
+  Server,
+  Network,
+  MemoryStick,
+  HardDrive,
+} from "lucide-react";
 import { MANUFACTURERS, getManufacturerBySlug } from "@/data/manufacturers";
 import { getProductsByManufacturer } from "@/data/products";
 import { getManufacturerColor } from "@/data/manufacturer-colors";
@@ -26,13 +35,21 @@ export default function ManufacturerPage() {
   const slug = params.slug as string;
   const manufacturer = getManufacturerBySlug(slug);
   const products = getProductsByManufacturer(manufacturer?.id ?? "");
-  const color = manufacturer ? getManufacturerColor(manufacturer.name) : undefined;
+  const color = manufacturer
+    ? getManufacturerColor(manufacturer.name)
+    : undefined;
 
   const grouped = products.reduce<Record<string, typeof products>>((acc, p) => {
-    const type = "specifications" in p ? "chip" :
-      "gpuSupport" in p ? "server" :
-      "specs" in p && "ports" in p ? "networking" :
-      "specs" in p && "capacity" in p ? "memory" : "storage";
+    const type =
+      "specifications" in p
+        ? "chip"
+        : "gpuSupport" in p
+          ? "server"
+          : "specs" in p && "ports" in p
+            ? "networking"
+            : "specs" in p && "capacity" in p
+              ? "memory"
+              : "storage";
     if (!acc[type]) acc[type] = [];
     acc[type].push(p);
     return acc;
@@ -113,13 +130,7 @@ export default function ManufacturerPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {manufacturer.categories.map((cat, i) => (
-              <motion.div
-                key={cat.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-              >
+              <div key={cat.id}>
                 <Link
                   href={`/manufacturers/${manufacturer.slug}/${cat.slug}`}
                   className="block group rounded-2xl border border-border bg-surface p-6 card-hover h-full"
@@ -144,7 +155,7 @@ export default function ManufacturerPage() {
                     View Products <ArrowRight className="w-3 h-3" />
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -164,7 +175,8 @@ export default function ManufacturerPage() {
                 <div>
                   <h2 className="text-xl font-bold text-text">{typeLabel}s</h2>
                   <p className="text-sm text-text-muted">
-                    {typeProducts.length} product{typeProducts.length !== 1 ? "s" : ""}
+                    {typeProducts.length} product
+                    {typeProducts.length !== 1 ? "s" : ""}
                   </p>
                 </div>
               </div>

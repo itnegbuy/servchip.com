@@ -17,7 +17,7 @@ export function FAQAccordion() {
   const [activeCategory, setActiveCategory] = useState(FAQ_CATEGORIES[0].id);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const currentCategory = FAQ_CATEGORIES.find(c => c.id === activeCategory)!;
+  const currentCategory = FAQ_CATEGORIES.find((c) => c.id === activeCategory)!;
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -143,12 +143,7 @@ export function FAQAccordion() {
         </AnimatePresence>
 
         {/* Can't Find Your Answer CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 relative"
-        >
+        <div className="mt-12 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/[0.02] to-transparent rounded-2xl" />
           <div className="relative rounded-2xl border border-primary/20 bg-surface/50 backdrop-blur-sm p-8 text-center">
             <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
@@ -176,7 +171,7 @@ export function FAQAccordion() {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

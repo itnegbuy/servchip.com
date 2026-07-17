@@ -146,8 +146,7 @@ export default function ResourcesPage() {
             <motion.div
               variants={containerVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              animate="visible"
               className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
             >
               {featuredPosts.map((post) => {
@@ -200,12 +199,7 @@ export default function ResourcesPage() {
               })}
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center mt-10"
-            >
+            <div className="text-center mt-10">
               <Link href="/blog">
                 <Button
                   variant="outline"
@@ -214,7 +208,7 @@ export default function ResourcesPage() {
                   View All Articles <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
-            </motion.div>
+            </div>
           </div>
         </section>
       )}
@@ -233,8 +227,7 @@ export default function ResourcesPage() {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
           >
             {RESOURCE_CATEGORIES.map((cat) => (
@@ -278,8 +271,7 @@ export default function ResourcesPage() {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12"
           >
@@ -331,13 +323,7 @@ export default function ResourcesPage() {
             subtitle="Our team is ready to help with personalized assistance and expert guidance."
             align="center"
           />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
-          >
+          <div className="max-w-3xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Link
                 href="/contact"
@@ -387,7 +373,7 @@ export default function ResourcesPage() {
                 <ExternalLink className="w-4 h-4 text-text-dim shrink-0" />
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

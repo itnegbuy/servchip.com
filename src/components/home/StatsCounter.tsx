@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import * as Icons from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { STATS } from "@/data/home";
@@ -18,16 +18,12 @@ function StatCard({
 }) {
   const decimals = "decimals" in stat ? stat.decimals : 0;
   const value = useCountUp(stat.value, 2000, start, decimals);
-  const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[stat.icon] || Icons.Circle;
+  const Icon =
+    (Icons as unknown as Record<string, Icons.LucideIcon>)[stat.icon] ||
+    Icons.Circle;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative group"
-    >
+    <div className="relative group">
       <div className="relative rounded-2xl border border-border bg-surface p-6 md:p-8 card-hover overflow-hidden">
         <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-all" />
 
@@ -44,7 +40,7 @@ function StatCard({
 
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
