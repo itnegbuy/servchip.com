@@ -43,6 +43,7 @@ export function SuccessStories() {
                   <img
                     src={t.author.image}
                     alt={t.author.name}
+                    loading="lazy"
                     onError={() =>
                       setFailedAvatars((prev) =>
                         new Set(prev).add(t.author.name),

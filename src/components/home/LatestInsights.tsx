@@ -39,6 +39,7 @@ export function LatestInsights() {
                     <img
                       src={post.image}
                       alt={post.title}
+                      loading="lazy"
                       onError={() =>
                         setFailedImgs((prev) => new Set(prev).add(post.slug))
                       }

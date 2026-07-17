@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -171,17 +171,6 @@ function ParticleField() {
   );
 }
 
-const BRANDS = [
-  "NVIDIA",
-  "AMD",
-  "Intel",
-  "Broadcom",
-  "Qualcomm",
-  "Marvell",
-  "Samsung",
-  "Micron",
-];
-
 const LOGOS = [
   { src: "/images/logos/nvidia.svg", label: "NVIDIA" },
   { src: "/images/logos/amd.svg", label: "AMD" },
@@ -203,18 +192,15 @@ const LOGOS = [
 
 export function Hero3D() {
   const displayText = useTypewriter(HERO_PHRASES, 40, 2500);
-  const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== "undefined"
-      ? window.matchMedia("(hover: hover) and (pointer: fine)").matches
-      : false,
+  const isDesktop = useSyncExternalStore(
+    (cb) => {
+      const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+    () => false,
   );
-
-  useEffect(() => {
-    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   return (
     <section
@@ -396,6 +382,7 @@ export function Hero3D() {
                 <img
                   src={logo.src}
                   alt={logo.label}
+                  loading="lazy"
                   className="max-h-full max-w-full object-contain"
                 />
               </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
@@ -23,7 +24,10 @@ interface ChipCardProps {
   index?: number;
 }
 
-export function ChipCard({ chip, index = 0 }: ChipCardProps) {
+export const ChipCard = React.memo(function ChipCard({
+  chip,
+  index = 0,
+}: ChipCardProps) {
   const status = statusStyles[chip.status];
 
   return (
@@ -265,4 +269,4 @@ export function ChipCard({ chip, index = 0 }: ChipCardProps) {
       </Tilt3D>
     </motion.div>
   );
-}
+});

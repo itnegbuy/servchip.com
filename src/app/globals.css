@@ -9,11 +9,12 @@
   --surface: #ffffff;
   --surface-2: #f8f9fc;
   --surface-3: #edeef5;
-  --primary: #00bcd4;
+  --primary: #00d4e8;
   --primary-dark: #00838f;
-  --primary-glow: rgba(0, 188, 212, 0.4);
-  --primary-subtle: rgba(0, 188, 212, 0.08);
-  --primary-subtle-2: rgba(0, 188, 212, 0.15);
+  --primary-glow: rgba(0, 212, 232, 0.4);
+  --primary-subtle: rgba(0, 212, 232, 0.08);
+  --primary-subtle-2: rgba(0, 212, 232, 0.15);
+  --primary-neon: #00ffff;
   --secondary: #0088b0;
   --accent: #7b2fbe;
   --text: #16162c;
@@ -32,13 +33,13 @@
     #f4f5f9 100%
   );
   --gradient-card: linear-gradient(145deg, #ffffff 0%, #f7f8fa 100%);
-  --gradient-cta: linear-gradient(135deg, #00bcd4 0%, #0088b0 100%);
-  --hero-primary: #00bcd4;
+  --gradient-cta: linear-gradient(135deg, #00d4e8 0%, #0088b0 100%);
+  --hero-primary: #00d4e8;
   --hero-secondary: #00e5ff;
 
   /* Grid / circuit pattern */
-  --grid-line: rgba(0, 188, 212, 0.12);
-  --grid-dot: rgba(0, 188, 212, 0.16);
+  --grid-line: rgba(0, 212, 232, 0.12);
+  --grid-dot: rgba(0, 212, 232, 0.16);
   --hero-from: #f5f5f8;
   --hero-to: #d4edc9;
 }
@@ -47,16 +48,17 @@
    DARK THEME
    ============================================================ */
 .dark {
-  --bg-body: #0a0a0f;
-  --bg-dark: #0a0a0f;
+  --bg-body: #060a12;
+  --bg-dark: #060a12;
   --surface: #12121a;
   --surface-2: #1a1a2e;
   --surface-3: #22223a;
-  --primary: #00bcd4;
+  --primary: #00d4e8;
   --primary-dark: #00838f;
-  --primary-glow: rgba(0, 188, 212, 0.4);
-  --primary-subtle: rgba(0, 188, 212, 0.08);
-  --primary-subtle-2: rgba(0, 188, 212, 0.15);
+  --primary-glow: rgba(0, 212, 232, 0.5);
+  --primary-subtle: rgba(0, 212, 232, 0.1);
+  --primary-subtle-2: rgba(0, 212, 232, 0.18);
+  --primary-neon: #00ffff;
   --secondary: #00e5ff;
   --accent: #aa00ff;
   --text: #ffffff;
@@ -69,20 +71,20 @@
   --error: #ff1744;
   --gradient-hero: linear-gradient(
     135deg,
-    #0a0a0f 0%,
+    #060a12 0%,
     #0a0a2e 40%,
     #0d0a22 70%,
-    #0a0a12 100%
+    #080c18 100%
   );
   --gradient-card: linear-gradient(145deg, #12121a 0%, #1a1a2e 100%);
-  --gradient-cta: linear-gradient(135deg, #00bcd4 0%, #00e5ff 100%);
-  --hero-primary: #00bcd4;
+  --gradient-cta: linear-gradient(135deg, #00d4e8 0%, #00e5ff 100%);
+  --hero-primary: #00d4e8;
   --hero-secondary: #00e5ff;
 
   /* Grid / circuit pattern */
-  --grid-line: rgba(0, 188, 212, 0.06);
-  --grid-dot: rgba(0, 188, 212, 0.1);
-  --hero-from: #0a0a0f;
+  --grid-line: rgba(0, 212, 232, 0.08);
+  --grid-dot: rgba(0, 212, 232, 0.12);
+  --hero-from: #060a12;
   --hero-to: #0d0d2e;
 }
 
@@ -97,6 +99,7 @@
   --color-primary-dark: var(--primary-dark);
   --color-primary-glow: var(--primary-glow);
   --color-primary-subtle: var(--primary-subtle);
+  --color-primary-neon: var(--primary-neon);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-text: var(--text);

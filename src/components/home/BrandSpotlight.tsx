@@ -14,21 +14,24 @@ const ENTERPRISE_ROWS = [
   {
     manufacturer: "NVIDIA",
     chips: ["nvidia-h100", "nvidia-h200", "nvidia-b200", "nvidia-gb200"],
-    image: "https://images.unsplash.com/photo-1600267185393-e158a98703de?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600267185393-e158a98703de?w=600&q=80",
     desc: "Enterprise AI training and inference GPUs powering the world's largest AI clusters.",
     badge: "Data Center GPUs",
   },
   {
     manufacturer: "AMD",
     chips: ["amd-mi300x", "amd-mi325x", "amd-mi350x"],
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
     desc: "High-performance Instinct accelerators for AI training, HPC, and scientific computing.",
     badge: "Instinct Accelerators",
   },
   {
     manufacturer: "Intel",
     chips: ["intel-gaudi-3", "intel-xeon-6980p", "intel-xeon-8490h"],
-    image: "https://images.unsplash.com/photo-1555618561-5b0e7a3f7b9a?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1555618561-5b0e7a3f7b9a?w=600&q=80",
     desc: "Gaudi AI accelerators and Xeon processors for enterprise AI and data center workloads.",
     badge: "AI & Xeon",
   },
@@ -89,6 +92,7 @@ export function BrandSpotlight() {
                       <img
                         src={row.image}
                         alt={row.manufacturer}
+                        loading="lazy"
                         onError={() => handleImageError(row.manufacturer)}
                         className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-110"
                       />
@@ -135,7 +139,9 @@ export function BrandSpotlight() {
                               {chip.name}
                             </p>
                             <p className="text-[11px] font-mono text-text-dim mt-0.5">
-                              {chip.specifications.memory} · {chip.specifications.memoryBandwidth} · {chip.specifications.tdp}
+                              {chip.specifications.memory} ·{" "}
+                              {chip.specifications.memoryBandwidth} ·{" "}
+                              {chip.specifications.tdp}
                             </p>
                           </div>
                           <Link
