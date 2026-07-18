@@ -95,10 +95,10 @@ export function Technology() {
         <div className="text-center mt-12">
           <Link
             href="/about"
+            aria-label="Discover Servchip's semiconductor technology platform"
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
-            Learn More About Our Technology{" "}
-            <ArrowRight className="w-3.5 h-3.5" />
+            Discover Our Technology <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>

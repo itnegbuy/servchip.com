@@ -312,6 +312,7 @@ function NewsletterForm() {
       <button
         type="submit"
         disabled={status === "loading"}
+        aria-label="Subscribe to newsletter"
         className="px-4 py-2 bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-all disabled:opacity-50"
       >
         <Send className="w-4 h-4" />

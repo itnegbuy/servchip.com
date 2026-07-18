@@ -117,7 +117,7 @@
 /* ============================================================
    RESET & BASE
    ============================================================ */
-* {
+html {
   scrollbar-color: var(--border) transparent;
   scrollbar-width: thin;
 }
@@ -127,9 +127,6 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
 }
 
 ::selection {

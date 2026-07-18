@@ -52,6 +52,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
         source: "/(.*)",
         headers: [
           { key: "X-Frame-Options", value: "DENY" },
@@ -63,13 +72,21 @@ const nextConfig: NextConfig = {
             value: "max-age=63072000; includeSubDomains; preload",
           },
           {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
+          {
+            key: "Cross-Origin-Resource-Policy",
+            value: "cross-origin",
+          },
+          {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com https://i.pravatar.cc https://res.cloudinary.com data: blob:; font-src 'self' data:; connect-src 'self' ws: https://res.cloudinary.com; frame-src 'none'; object-src 'none'",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com https://i.pravatar.cc https://res.cloudinary.com data: blob:; font-src 'self' data:; connect-src 'self' ws: https://res.cloudinary.com; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'",
           },
         ],
       },

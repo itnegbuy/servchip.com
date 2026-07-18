@@ -42,11 +42,11 @@ const hexToRgba = (hex: string, alpha: number) => {
 };
 
 const DC_IMAGES = [
-  "/images/server-room-1.jpg",
-  "/images/server-room-2.jpg",
-  "/images/server-room-3.jpg",
-  "/images/server-room-4.png",
-  "/images/server-room-5.jpg",
+  "/images/server-room-1.webp",
+  "/images/server-room-2.webp",
+  "/images/server-room-3.webp",
+  "/images/server-room-4.webp",
+  "/images/server-room-5.webp",
 ];
 
 function HeroBgSlider() {

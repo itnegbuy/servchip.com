@@ -187,9 +187,10 @@ export default function ResourcesPage() {
                         </span>
                         <Link
                           href={`/blog/${post.slug}`}
+                          aria-label={`Read full article: ${post.title}`}
                           className="inline-flex items-center gap-1 text-xs font-semibold text-primary group/link"
                         >
-                          Read More
+                          Read Article
                           <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5" />
                         </Link>
                       </div>

@@ -43,9 +43,10 @@ function ServiceCard({
 
           <Link
             href="/contact"
+            aria-label="Contact Servchip for sourcing services"
             className="inline-flex items-center gap-1 text-primary text-xs font-semibold group/link"
           >
-            Learn More{" "}
+            Contact Us{" "}
             <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
           </Link>
         </div>
