@@ -102,7 +102,7 @@ export default function ComparisonPage() {
         <SectionHeading
           label="Compare"
           title="Compare Enterprise Chips"
-          subtitle="Select chips to view a detailed side-by-side specification comparison across all manufacturers"
+          subtitle="Compare NVIDIA, AMD, and Intel server chips side-by-side — view specifications, performance, and pricing across all enterprise accelerators"
           align="center"
         />
 

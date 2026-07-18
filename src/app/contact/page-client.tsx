@@ -30,7 +30,7 @@ export default function ContactPage() {
         <SectionHeading
           label="Contact Us"
           title="Enterprise Chip Pricing & Availability"
-          subtitle="Reach out for sales inquiries, technical support, or partnership opportunities"
+          subtitle="Ready to buy enterprise chips? Get pricing, lead times, and availability for NVIDIA, AMD, Intel, and all semiconductor components."
           align="center"
         />
 

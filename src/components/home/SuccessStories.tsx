@@ -16,7 +16,7 @@ export function SuccessStories() {
         <SectionHeading
           label="Client Stories"
           title="Trusted by Industry Leaders Worldwide"
-          subtitle="Hear from our clients about their experience working with Servchip"
+          subtitle="Hear from enterprises who source their AI chips and data center hardware through Servchip"
           align="center"
         />
 

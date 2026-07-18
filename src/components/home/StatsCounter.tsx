@@ -78,7 +78,8 @@ export function StatsCounter() {
         <div className="mb-12 md:mb-16">
           <SectionHeading
             label="Our Impact"
-            title="Trusted by Enterprises Worldwide"
+            title="Trusted by Data Center Teams Worldwide"
+            subtitle="Our numbers speak — from enterprise chip sourcing to global semiconductor delivery"
             align="center"
           />
         </div>

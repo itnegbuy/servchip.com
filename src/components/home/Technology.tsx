@@ -66,7 +66,7 @@ export function Technology() {
         <SectionHeading
           label="The Technology"
           title="Built for the Next Generation of AI Computing"
-          subtitle="Enterprise-grade architecture designed for the most demanding workloads"
+          subtitle="Enterprise-grade server architecture and semiconductor technology designed for the most demanding data center workloads"
           align="center"
         />
 

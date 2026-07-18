@@ -49,7 +49,7 @@ const SOLUTIONS_INLINE = [
     icon: "Building2",
     title: "Enterprise AI",
     description:
-      "Build and scale enterprise AI platforms with H100/H200 clusters, MLOps pipelines, and production-grade infrastructure.",
+      "Build and scale enterprise AI platforms with NVIDIA H100/H200 clusters, AMD MI300X, and production-grade data center infrastructure for LLM training and inference.",
     points: [
       "LLM training & serving",
       "RAG pipelines",
@@ -61,7 +61,7 @@ const SOLUTIONS_INLINE = [
     icon: "FlaskConical",
     title: "Research & HPC",
     description:
-      "Power scientific discovery with Grace Hopper superchips and exascale computing for simulations and data analysis.",
+      "Power scientific discovery with NVIDIA Grace Hopper superchips and exascale server computing for climate simulations, drug discovery, and genomics.",
     points: [
       "Climate modeling",
       "Drug discovery",
@@ -73,7 +73,7 @@ const SOLUTIONS_INLINE = [
     icon: "Rocket",
     title: "Startups & Scaleups",
     description:
-      "Accelerate your AI startup with cost-effective L40S/L4 inference clusters and flexible procurement options.",
+      "Accelerate your AI startup with cost-effective NVIDIA L40S/L4 and AMD MI210 inference server clusters and flexible semiconductor procurement options.",
     points: [
       "Inference at scale",
       "Cost optimization",
@@ -85,7 +85,7 @@ const SOLUTIONS_INLINE = [
     icon: "HeartPulse",
     title: "Healthcare & Life Sci",
     description:
-      "Deploy AI-powered medical imaging, genomics analysis, and biomedical AI on certified hardware.",
+      "Deploy AI-powered medical imaging, genomics analysis, and biomedical AI on certified NVIDIA and AMD enterprise hardware.",
     points: [
       "Medical imaging AI",
       "Genomics sequencing",
@@ -100,7 +100,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: Building2,
     title: "Enterprise AI",
     description:
-      "Build and scale enterprise AI platforms with H100/H200 clusters, MLOps pipelines, and production-grade infrastructure.",
+      "Build and scale enterprise AI platforms with NVIDIA H100/H200, AMD MI300X clusters, and production-grade data center infrastructure.",
     points: [
       "LLM training & serving",
       "RAG pipelines",
@@ -113,7 +113,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: FlaskConical,
     title: "Research & HPC",
     description:
-      "Power scientific discovery with Grace Hopper superchips and exascale computing for simulations and data analysis.",
+      "Power scientific discovery with NVIDIA Grace Hopper superchips and exascale server computing for simulations and data analysis.",
     points: [
       "Climate modeling",
       "Drug discovery",
@@ -126,7 +126,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: Rocket,
     title: "Startups & Scaleups",
     description:
-      "Accelerate your AI startup with cost-effective L40S/L4 inference clusters and flexible procurement options.",
+      "Accelerate your AI startup with cost-effective NVIDIA L40S/L4 and AMD inference server clusters and flexible procurement.",
     points: [
       "Inference at scale",
       "Cost optimization",
@@ -139,7 +139,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: HeartPulse,
     title: "Healthcare & Life Sci",
     description:
-      "Deploy Clara-enabled medical imaging, genomics analysis, and biomedical AI on certified NVIDIA hardware.",
+      "Deploy medical imaging AI, genomics analysis, and biomedical computing on certified NVIDIA and AMD enterprise hardware.",
     points: [
       "Medical imaging AI",
       "Genomics sequencing",
@@ -152,7 +152,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: Car,
     title: "Automotive",
     description:
-      "Develop autonomous driving systems with DRIVE Thor and DRIVE Orin SoCs — ASIL-D safety, multi-modal AI.",
+      "Develop autonomous driving systems with NVIDIA DRIVE Thor and DRIVE Orin server SoCs — ASIL-D safety, multi-modal AI.",
     points: [
       "ADAS / AD stack",
       "Multi-modal perception",
@@ -165,7 +165,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: Landmark,
     title: "Financial Services",
     description:
-      "Accelerate quant modeling, risk analytics, and fraud detection with low-latency GPU clusters and NVLink fabrics.",
+      "Accelerate quant modeling, risk analytics, and fraud detection with low-latency NVIDIA and AMD GPU server clusters and NVLink fabrics.",
     points: [
       "Quant modeling",
       "Risk analytics",
@@ -178,7 +178,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: GraduationCap,
     title: "Education & Research",
     description:
-      "Equip academic labs and universities with shared GPU clusters, MIG partitioning, and EduKit learning paths.",
+      "Equip academic labs and universities with shared NVIDIA and AMD GPU server clusters, MIG partitioning, and EduKit learning paths.",
     points: [
       "Shared GPU clusters",
       "MIG partitioning",
@@ -191,7 +191,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: Shield,
     title: "Government & Defense",
     description:
-      "Secure, on-prem deployments for defense AI, intelligence analysis, and sovereign cloud infrastructure using certified hardware.",
+      "Secure, on-prem NVIDIA and AMD server deployments for defense AI, intelligence analysis, and sovereign data center infrastructure.",
     points: [
       "Sovereign cloud",
       "Air-gapped deploy",
@@ -243,7 +243,7 @@ export default function SolutionsPage() {
       <PageHero
         label="Solutions"
         title="Industry-Specific AI Computing Solutions"
-        subtitle="From enterprise AI to healthcare, automotive, and government — we architect complete solutions tailored to your industry's unique compute, compliance, and scale requirements across all leading chip manufacturers."
+        subtitle="From enterprise AI to healthcare, automotive, and government — we architect complete solutions using NVIDIA, AMD, and Intel chips tailored to your industry's unique data center compute, compliance, and scale requirements."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Solutions" }]}
       />
 
@@ -257,7 +257,7 @@ export default function SolutionsPage() {
           <SectionHeading
             label="Solutions"
             title="Industry-Specific AI Computing Solutions"
-            subtitle="From enterprise AI to healthcare and research — we architect complete solutions tailored to your industry needs across all leading chip manufacturers."
+            subtitle="From enterprise AI to healthcare and research — we architect complete solutions using NVIDIA, AMD, and Intel chips tailored to your data center needs."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -328,8 +328,10 @@ export default function SolutionsPage() {
               Solutions by Industry
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              Eight specialized verticals, each backed by certified multi-vendor
-              engineering expertise and proven reference architectures.
+              Eight specialized verticals — from enterprise AI and HPC to
+              healthcare and defense — each backed by certified NVIDIA, AMD, and
+              Intel engineering expertise and proven data center reference
+              architectures.
             </p>
           </div>
 
@@ -396,8 +398,9 @@ export default function SolutionsPage() {
               Proven in Production
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              Real-world deployments from leading Indian enterprises and
-              research institutions.
+              Real-world enterprise chip deployments from leading Indian
+              enterprises and research institutions — featuring NVIDIA, AMD, and
+              Intel server hardware.
             </p>
           </div>
 

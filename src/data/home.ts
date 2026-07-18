@@ -66,11 +66,16 @@ export const STATS: Stat[] = [
   {
     value: 99.9,
     suffix: "%",
-    label: "Authenticity Rate",
+    label: "Chip Authenticity Rate",
     icon: "ShieldCheck",
     decimals: 1,
   },
-  { value: 24, suffix: "/7", label: "Engineering Support", icon: "Headphones" },
+  {
+    value: 24,
+    suffix: "/7",
+    label: "Server Support Engineers",
+    icon: "Headphones",
+  },
 ];
 
 export interface TechnologyFeature {
@@ -82,38 +87,38 @@ export interface TechnologyFeature {
 export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   {
     icon: "Cpu",
-    title: "Multi-Architecture",
-    desc: "NVIDIA Hopper, AMD CDNA 3/4, Intel Granite Rapids — all in one platform",
+    title: "Multi-Architecture Server Support",
+    desc: "NVIDIA Hopper, AMD CDNA 3/4, Intel Granite Rapids — all in one data center platform",
   },
   {
     icon: "Zap",
     title: "AI Acceleration",
-    desc: "Tensor Cores, Matrix Extensions, dedicated AI engines across all platforms",
+    desc: "Tensor Cores, Matrix Extensions, dedicated AI engines across all semiconductor platforms",
   },
   {
     icon: "HardDrive",
     title: "High-Bandwidth Memory",
-    desc: "HBM3, HBM3e, GDDR6 for the most memory-intensive workloads",
+    desc: "HBM3, HBM3e, GDDR6 server memory for the most memory-intensive enterprise workloads",
   },
   {
     icon: "Network",
     title: "Advanced Interconnects",
-    desc: "NVLink, Infinity Fabric, UPI, CXL for seamless multi-GPU scaling",
+    desc: "NVLink, Infinity Fabric, UPI, CXL for seamless multi-GPU data center scaling",
   },
   {
     icon: "Layers",
     title: "Open Ecosystems",
-    desc: "CUDA, ROCm, oneAPI — choose your development platform freely",
+    desc: "CUDA, ROCm, oneAPI — choose your semiconductor development platform freely",
   },
   {
     icon: "ShieldCheck",
     title: "Enterprise Reliability",
-    desc: "ECC memory, RAS features, multi-vendor certification for production deployments",
+    desc: "ECC memory, RAS features, multi-vendor server certification for production deployments",
   },
   {
     icon: "TrendingUp",
     title: "Scalable Architecture",
-    desc: "From edge to exascale — single GPU to GPU clusters of any size",
+    desc: "From edge servers to exascale data centers — single GPU to GPU clusters of any size",
   },
 ];
 

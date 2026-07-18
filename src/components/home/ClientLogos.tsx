@@ -52,7 +52,7 @@ export function ClientLogos() {
         <SectionHeading
           label="Manufacturer Partners"
           title="Trusted by Leading Brands Worldwide"
-          subtitle="Authorized partnerships with the world's top chip manufacturers"
+          subtitle="Authorized partnerships with NVIDIA, AMD, Intel, and the world's top semiconductor and server hardware manufacturers"
           align="center"
         />
       </div>

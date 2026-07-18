@@ -28,7 +28,7 @@ const SERVICES = [
     icon: Truck,
     title: "Hardware Procurement",
     description:
-      "End-to-end global sourcing for enterprise chips and AI accelerators with manufacturer-direct verification, secure logistics, and full compliance documentation across all major architectures.",
+      "Need to buy enterprise chips? We source NVIDIA, AMD, Intel, and semiconductor components globally — manufacturer-direct, with full compliance docs and secure logistics.",
     points: [
       "Global sourcing network",
       "Manufacturer verification",
@@ -40,7 +40,7 @@ const SERVICES = [
     icon: Package,
     title: "Bulk & Wholesale",
     description:
-      "Volume pricing for enterprises deploying at scale, with dedicated account management, tiered discount structures, and flexible delivery scheduling aligned to your project milestones.",
+      "Buying server hardware at scale? Get volume pricing on enterprise GPUs, AI accelerators, and data center equipment with dedicated account management and flexible delivery.",
     points: [
       "Competitive volume pricing",
       "Dedicated account management",
@@ -52,7 +52,7 @@ const SERVICES = [
     icon: Search,
     title: "Hard-to-Find Parts",
     description:
-      "Specialized sourcing for legacy, EOL, and scarce enterprise chips with certified refurbishment programs, verified inventory access, and comprehensive warranty coverage on every unit.",
+      "Looking for legacy NVIDIA chips, discontinued AMD accelerators, or scarce Intel components? We track down enterprise chips others can't find — with warranty on every unit.",
     points: [
       "Legacy & EOL chip sourcing",
       "Verified global inventory",
@@ -64,7 +64,7 @@ const SERVICES = [
     icon: Headphones,
     title: "Technical Support",
     description:
-      "Expert multi-vendor certified engineers available for setup, configuration, troubleshooting, and performance optimization across your entire computing stack — from driver tuning to cluster orchestration.",
+      "Our certified engineers help with setup, configuration, and performance tuning across NVIDIA, AMD, and Intel server platforms — from single GPUs to full clusters.",
     points: [
       "Multi-vendor certified engineers",
       "Remote & on-site support",
@@ -76,7 +76,7 @@ const SERVICES = [
     icon: ShieldCheck,
     title: "Warranty & RMA",
     description:
-      "Hassle-free warranty management with cross-shipment RMA options, advance replacement programs, extended warranty plans, and dedicated support coordinators for every case.",
+      "Every enterprise chip we sell comes with manufacturer warranty. Need an RMA? We handle cross-shipment replacements and extended coverage across all brands.",
     points: [
       "Cross-shipment RMA",
       "Advance replacement",
@@ -88,7 +88,7 @@ const SERVICES = [
     icon: Wrench,
     title: "Integration Services",
     description:
-      "Complete deployment assistance including system integration, cluster configuration, software stack setup, and infrastructure handover — ensuring your new hardware is production-ready from day one.",
+      "From racking servers to configuring GPU clusters — our team gets your new NVIDIA, AMD, or Intel hardware production-ready from day one.",
     points: [
       "System integration",
       "Cluster configuration",
@@ -100,7 +100,7 @@ const SERVICES = [
     icon: Cpu,
     title: "AI Infrastructure Design",
     description:
-      "End-to-end architecture design for AI training and inference infrastructure, from single-node workstations to exascale GPU clusters with NVLink fabrics and high-performance storage.",
+      "Planning an AI training or inference deployment? We design the full server architecture — from GPU selection and NVLink topology to storage and networking.",
     points: [
       "Full architecture design",
       "GPU cluster planning",
@@ -112,7 +112,7 @@ const SERVICES = [
     icon: Building2,
     title: "Data Center Planning",
     description:
-      "Comprehensive data center planning for GPU-accelerated workloads including rack layout optimization, power distribution design, cooling solutions, and structured cabling architecture.",
+      "Building or expanding a data center? We plan server rack layouts, power distribution, and cooling for GPU-accelerated workloads across NVIDIA, AMD, and Intel.",
     points: [
       "Rack layout optimization",
       "Power distribution design",
@@ -124,7 +124,7 @@ const SERVICES = [
     icon: Gauge,
     title: "HPC Optimization",
     description:
-      "Maximize workload performance with in-depth application profiling, kernel-level optimization, parallel computing tuning, and benchmark analysis across CPU and GPU architectures.",
+      "Maximizing server performance for HPC workloads? We profile applications, tune kernels, and benchmark across CPU and GPU architectures for optimal throughput.",
     points: [
       "Application profiling",
       "Kernel optimization",

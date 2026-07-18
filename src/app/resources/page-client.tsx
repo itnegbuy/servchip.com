@@ -56,7 +56,7 @@ const RESOURCE_CATEGORIES = [
     icon: FileJson,
     title: "Whitepapers",
     description:
-      "In-depth technical whitepapers covering NVIDIA architectures, AI infrastructure design patterns, HPC cluster architectures, and emerging computing paradigms.",
+      "In-depth technical whitepapers covering NVIDIA, AMD, and Intel server architectures, AI infrastructure design patterns, HPC cluster architectures, and emerging semiconductor computing paradigms.",
     href: "/blog",
     count: "Coming soon",
     color: "amber" as const,
@@ -65,7 +65,7 @@ const RESOURCE_CATEGORIES = [
     icon: Calendar,
     title: "Webinars & Events",
     description:
-      "Recorded sessions, product deep dives, and live Q&As with NVIDIA-certified engineers covering the latest in GPU computing and AI infrastructure.",
+      "Recorded sessions, product deep dives, and live Q&As with multi-vendor certified engineers covering the latest in GPU server computing, semiconductor technology, and AI infrastructure.",
     href: "/blog",
     count: "Coming soon",
     color: "green" as const,
@@ -128,7 +128,7 @@ export default function ResourcesPage() {
       <PageHero
         label="Resources"
         title="Knowledge Base for AI & HPC Computing"
-        subtitle="Explore our growing library of technical guides, case studies, whitepapers, and expert insights — all created by NVIDIA-certified engineers to help you make informed infrastructure decisions."
+        subtitle="Explore our growing library of technical guides, case studies, whitepapers, and expert insights — all created by multi-vendor certified engineers to help you make informed semiconductor and data center infrastructure decisions."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Resources" }]}
       />
 
@@ -288,9 +288,9 @@ export default function ResourcesPage() {
                 </h2>
                 <p className="text-sm md:text-base text-text-muted leading-relaxed">
                   Subscribe to our newsletter and receive the latest technical
-                  guides, architecture comparisons, and industry analysis from
-                  our NVIDIA-certified engineering team — delivered straight to
-                  your inbox.
+                  guides, architecture comparisons, and semiconductor industry
+                  analysis from our multi-vendor certified engineering team —
+                  delivered straight to your inbox.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
