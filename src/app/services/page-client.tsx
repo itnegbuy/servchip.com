@@ -181,7 +181,7 @@ export default function ServicesPage() {
       <PageHero
         label="Services"
         title="End-to-End Enterprise Chip Solutions"
-        subtitle="From semiconductor procurement to AI infrastructure design, we deliver comprehensive services backed by multi-vendor engineering expertise across NVIDIA, AMD, Intel and global supply chain capabilities."
+        subtitle="From finding the right chip to getting it deployed — we handle the full lifecycle so you can focus on building."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
 

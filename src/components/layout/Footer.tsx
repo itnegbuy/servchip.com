@@ -145,9 +145,8 @@ export function Footer() {
               />
             </Link>
             <p className="text-text-dim text-xs leading-relaxed mb-5 max-w-xs">
-              ISO 9001 certified enterprise chip distributor — authorized
-              partner for NVIDIA, AMD, Intel, and 27+ manufacturers. Buy AI
-              chips, semiconductor procurement & data center hardware globally.
+              Trusted enterprise chip distributor for NVIDIA, AMD, Intel and 27+
+              manufacturers. ISO 9001 certified, shipping worldwide.
             </p>
 
             {/* Social icons */}

@@ -90,17 +90,15 @@ export default function AboutPage() {
               Enterprise Chip Distributor — Est. 2018
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-text mb-4 tracking-tight">
-              Enterprise Chip Distributor &{" "}
+              The Team Behind{" "}
               <span className="gradient-text">
-                Semiconductor Procurement Partner
+                Your Enterprise Chip Distributor
               </span>
             </h1>
             <p className="text-text-muted text-base md:text-lg max-w-2xl mx-auto">
-              Servchip is the trusted bridge between the world&apos;s leading
-              chip manufacturers and the enterprises, researchers, and
-              innovators who need their technology most. We are an ISO 9001
-              certified enterprise chip distributor supplying NVIDIA, AMD, and
-              Intel hardware worldwide.
+              We help companies buy AI chips, server hardware, and data center
+              equipment from the brands they trust — NVIDIA, AMD, Intel and
+              more. ISO 9001 certified. 500+ clients. 150+ countries.
             </p>
           </motion.div>
         </div>
@@ -131,21 +129,19 @@ export default function AboutPage() {
             <div>
               <SectionHeading
                 label="Our Mission"
-                title="Democratizing Access to Enterprise AI Chips & Computing"
+                title="Making Semiconductor Procurement Simple"
               />
               <p className="text-text-muted text-sm leading-relaxed mb-4">
-                Founded in 2018, Servchip was built on a simple belief: every
-                organization should have access to authentic, enterprise-grade
-                computing solutions from all leading manufacturers without the
-                complexity and risk of traditional semiconductor procurement.
+                We started Servchip in 2018 because buying enterprise chips was
+                painful — too many middlemen, counterfeit risk, and way too much
+                paperwork. We thought there had to be a better way for companies
+                to source AI accelerators and data center hardware.
               </p>
               <p className="text-text-muted text-sm leading-relaxed mb-6">
-                Today, we serve over 500 enterprise clients across 150+
-                countries, delivering everything from single GPU shipments to
-                full data center deployments. As an authorized distribution
-                partner for NVIDIA, AMD, Intel, and 27+ manufacturers, we are
-                the go-to source for buy AI chips, HBM memory, data center GPUs,
-                and enterprise server hardware with white-glove support.
+                Today, over 500 companies across 150+ countries trust us for
+                semiconductor procurement. From a single NVIDIA H100 to an
+                entire AMD MI300X cluster build-out — we handle everything with
+                full traceability and manufacturer-direct sourcing.
               </p>
               <div className="flex items-center gap-2 text-sm">
                 <Target className="w-4 h-4 text-primary" />
@@ -242,9 +238,9 @@ export default function AboutPage() {
             Ready to Work with Us?
           </h2>
           <p className="text-text-muted text-sm mb-8 max-w-xl mx-auto">
-            Whether you need a single NVIDIA H100, AMD MI300X, or a full data
-            center deployment, our multi-vendor certified team is ready to help.
-            Get a semiconductor procurement quote within 24 hours.
+            Whether you need a single NVIDIA H100, a batch of AMD MI300Xs, or a
+            full data center deployment — let&apos;s talk. Get a quote within 24
+            hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/rfq">

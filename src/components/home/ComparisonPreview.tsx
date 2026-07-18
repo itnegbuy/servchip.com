@@ -26,7 +26,7 @@ export function ComparisonPreview() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Compare Chips"
-          title="AI Chip Comparison — NVIDIA vs AMD vs Intel"
+          title="NVIDIA vs AMD vs Intel — See the Difference"
           align="center"
         />
 

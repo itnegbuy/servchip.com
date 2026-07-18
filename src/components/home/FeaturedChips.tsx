@@ -24,8 +24,8 @@ export function FeaturedChips() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Featured Products"
-          title="Buy Enterprise AI Chips & Accelerators"
-          subtitle="Authentic NVIDIA, AMD & Intel chips for AI training, inference, HPC & data center workloads — from an ISO 9001 certified distributor"
+          title="Enterprise Chips Our Clients Actually Buy"
+          subtitle="Handpicked from NVIDIA, AMD & Intel — the AI accelerators and server CPUs companies trust most"
           align="center"
         />
 

@@ -220,6 +220,19 @@ Use builders from `src/lib/seo.ts` — never write raw JSON-LD strings.
 - Never use vendor-only language (e.g., "NVIDIA computing solutions") — always multi-vendor ("enterprise chip solutions")
 - FAQ answers must be 2-3 sentences minimum (thin content penalty risk)
 
+### Content Tone — Critical:
+
+- **Write like a human, not a robot.** No keyword stuffing, no awkward phrasing
+- **Keywords must fit naturally** into sentences that a real person would say out loud
+- Bad: "Enterprise AI Chips Matched to Your Workload" (stiff, keyword list)
+- Bad: "Picked for You" (no keywords at all)
+- Good: "Which Enterprise Chip Fits Your Workload?" (natural + keyword)
+- Good: "Enterprise Chips Our Clients Actually Buy" (natural + keyword)
+- **Never repeat the same keyword 3+ times in one sentence**
+- **Use contractions** (we're, you'll, it's, let's) — sounds human
+- **Section headings should provoke curiosity**, not read like a product spec sheet
+- **Body copy should answer a question** the visitor actually has, using keywords as part of the answer
+
 ### Constants:
 
 ```ts
