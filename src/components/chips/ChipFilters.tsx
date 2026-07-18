@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo } from "react";
 import { Search, X } from "lucide-react";
@@ -31,7 +31,9 @@ function getUniqueValues(key: keyof ChipProduct): string[] {
   return Array.from(values).sort();
 }
 
-function getUniqueSpecValues(key: keyof ChipProduct["specifications"]): string[] {
+function getUniqueSpecValues(
+  key: keyof ChipProduct["specifications"],
+): string[] {
   const values = new Set<string>();
   CHIPS.forEach((chip) => {
     const val = chip.specifications[key];
@@ -53,7 +55,7 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
       filters.status.length +
       filters.memory.length +
       (filters.search ? 1 : 0),
-    [filters]
+    [filters],
   );
 
   const update = (key: keyof ChipFiltersState, values: string[]) =>
@@ -61,14 +63,24 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
 
   const toggle = (
     key: "manufacturer" | "architecture" | "series" | "status" | "memory",
-    val: string
+    val: string,
   ) => {
     const arr = filters[key];
-    update(key, arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val]);
+    update(
+      key,
+      arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val],
+    );
   };
 
   const clearAll = () =>
-    onChange({ search: "", manufacturer: [], architecture: [], series: [], status: [], memory: [] });
+    onChange({
+      search: "",
+      manufacturer: [],
+      architecture: [],
+      series: [],
+      status: [],
+      memory: [],
+    });
 
   const Checkbox = ({
     label,
@@ -81,16 +93,24 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
     onToggle: () => void;
     color?: string;
   }) => (
-    <label className="flex items-center gap-2 cursor-pointer py-1" onClick={onToggle}>
+    <label
+      className="flex items-center gap-2 cursor-pointer py-1"
+      onClick={onToggle}
+    >
       <div
         className={`w-4 h-4 rounded border ${
           checked ? "bg-primary border-primary" : "border-border"
-        } flex items-center justify-center transition-colors`}
+        } flex items-center justify-center transition-transform`}
       >
-        {checked && <span className="text-bg-dark text-[10px] font-bold">✓</span>}
+        {checked && (
+          <span className="text-bg-dark text-[10px] font-bold">✓</span>
+        )}
       </div>
       {color && (
-        <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+        <span
+          className="w-2.5 h-2.5 rounded-full shrink-0"
+          style={{ backgroundColor: color }}
+        />
       )}
       <span className="text-sm text-text-muted">{label}</span>
     </label>
@@ -106,11 +126,13 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
           value={filters.search}
           onChange={(e) => update("search", [e.target.value])}
           placeholder="Search chips..."
-          className="w-full bg-surface border border-border rounded-lg pl-9 pr-3 py-2 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
+          aria-label="Search chips"
+          className="w-full bg-surface border border-border rounded-lg pl-9 pr-3 py-2 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-transform"
         />
         {filters.search && (
           <button
             onClick={() => update("search", [])}
+            aria-label="Clear search"
             className="absolute right-3 top-1/2 -translate-y-1/2 text-text-dim hover:text-text"
           >
             <X className="w-3.5 h-3.5" />
@@ -179,7 +201,9 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
           {STATUSES.map((s) => (
             <Checkbox
               key={s}
-              label={s.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+              label={s
+                .replace("_", " ")
+                .replace(/\b\w/g, (l) => l.toUpperCase())}
               checked={filters.status.includes(s)}
               onToggle={() => toggle("status", s)}
             />

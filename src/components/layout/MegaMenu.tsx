@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import {
@@ -84,7 +84,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
                 {col.href ? (
                   <Link
                     href={col.href}
-                    className="hover:text-primary-dark transition-colors"
+                    className="hover:text-primary-dark transition-transform"
                   >
                     {col.title}
                   </Link>
@@ -97,10 +97,10 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="group/link flex items-center justify-between py-1.5 px-2.5 rounded-lg text-sm text-text-muted hover:text-text hover:bg-primary/[0.06] transition-all duration-200"
+                      className="group/link flex items-center justify-between py-1.5 px-2.5 rounded-lg text-sm text-text-muted hover:text-text hover:bg-primary/[0.06] transition-transform duration-200"
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/link:bg-primary shrink-0 transition-colors duration-200" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/link:bg-primary shrink-0 transition-transform duration-200" />
                         <span className="font-medium truncate">
                           {link.label}
                         </span>
@@ -110,7 +110,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
                           </span>
                         )}
                       </div>
-                      <ChevronRight className="w-3 h-3 shrink-0 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200 text-primary" />
+                      <ChevronRight className="w-3 h-3 shrink-0 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-transform duration-200 text-primary" />
                     </Link>
                     {link.description && (
                       <p className="text-[11px] text-text-dim px-[26px] pb-1 leading-relaxed line-clamp-1">
@@ -151,7 +151,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
         </span>
         <Link
           href="/products"
-          className="flex items-center gap-1 text-primary/50 hover:text-primary/80 transition-colors"
+          className="flex items-center gap-1 text-primary/50 hover:text-primary/80 transition-transform"
         >
           View all <ArrowUpRight className="w-2.5 h-2.5" />
         </Link>

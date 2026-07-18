@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -99,6 +99,7 @@ export default function RFQPage() {
   return (
     <div className="min-h-screen bg-bg-dark pt-24 pb-20">
       <div className="max-w-5xl mx-auto px-4">
+        <h1 className="sr-only">Get a Personalized Quote</h1>
         <SectionHeading
           label="Request a Quote"
           title="Get a Personalized Quote"
@@ -130,7 +131,7 @@ export default function RFQPage() {
                         type="button"
                         key={chip.id}
                         onClick={() => toggleChip(chip.id)}
-                        className={`w-full flex items-center justify-between p-3 rounded-lg border text-left transition-all ${
+                        className={`w-full flex items-center justify-between p-3 rounded-lg border text-left transition-transform ${
                           selected
                             ? "border-primary/40 bg-primary/5"
                             : "border-border bg-bg-dark hover:border-border/80"
@@ -138,7 +139,7 @@ export default function RFQPage() {
                       >
                         <div className="flex items-center gap-3">
                           <div
-                            className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${
+                            className={`w-5 h-5 rounded border flex items-center justify-center transition-transform ${
                               selected
                                 ? "bg-primary border-primary"
                                 : "border-border"
@@ -197,7 +198,7 @@ export default function RFQPage() {
                   value={form.notes}
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
                   placeholder="e.g., Preferred memory configuration, cooling requirements, delivery timeline, etc."
-                  className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors resize-none"
+                  className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-transform resize-none"
                 />
               </Card>
             </motion.div>
@@ -225,7 +226,7 @@ export default function RFQPage() {
                         setForm({ ...form, name: e.target.value })
                       }
                       placeholder="John Doe"
-                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
+                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-transform"
                     />
                   </div>
                   <div>
@@ -240,7 +241,7 @@ export default function RFQPage() {
                         setForm({ ...form, email: e.target.value })
                       }
                       placeholder="john@company.com"
-                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
+                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-transform"
                     />
                   </div>
                   <div>
@@ -255,7 +256,7 @@ export default function RFQPage() {
                         setForm({ ...form, company: e.target.value })
                       }
                       placeholder="Acme Corp"
-                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
+                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-transform"
                     />
                   </div>
                   <div>
@@ -267,7 +268,7 @@ export default function RFQPage() {
                       onChange={(e) =>
                         setForm({ ...form, quantity: e.target.value })
                       }
-                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text outline-none focus:border-primary/50 transition-colors"
+                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text outline-none focus:border-primary/50 transition-transform"
                     >
                       {QUANTITIES.map((q) => (
                         <option key={q} value={q}>
@@ -285,7 +286,7 @@ export default function RFQPage() {
                       onChange={(e) =>
                         setForm({ ...form, timeframe: e.target.value })
                       }
-                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text outline-none focus:border-primary/50 transition-colors"
+                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text outline-none focus:border-primary/50 transition-transform"
                     >
                       {TIMEFRAMES.map((t) => (
                         <option key={t} value={t}>
@@ -303,7 +304,7 @@ export default function RFQPage() {
                       onChange={(e) =>
                         setForm({ ...form, region: e.target.value })
                       }
-                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text outline-none focus:border-primary/50 transition-colors"
+                      className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text outline-none focus:border-primary/50 transition-transform"
                     >
                       {REGIONS.map((r) => (
                         <option key={r} value={r}>

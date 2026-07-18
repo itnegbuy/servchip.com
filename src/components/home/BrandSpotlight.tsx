@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -152,7 +152,7 @@ export function BrandSpotlight() {
                           </div>
                           <Link
                             href={`/products/${chip.slug}`}
-                            className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:scale-105 shrink-0"
+                            className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-transform hover:scale-105 shrink-0"
                             style={{
                               backgroundColor: `${color}22`,
                               color: textColor,
@@ -168,7 +168,7 @@ export function BrandSpotlight() {
                   <div className="flex items-center pt-2">
                     <Link
                       href={`/manufacturers/${row.manufacturer.toLowerCase()}`}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-all duration-300 hover:scale-105"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-transform duration-300 hover:scale-105"
                       style={{ backgroundColor: textColor }}
                     >
                       View All {row.manufacturer} Products{" "}
@@ -184,7 +184,7 @@ export function BrandSpotlight() {
         <div className="text-center mt-12">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/30 px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-primary/20 transition-all"
+            className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/30 px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-primary/20 transition-transform"
           >
             <Cpu className="w-4 h-4" />
             Browse All Enterprise Products

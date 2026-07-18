@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -27,6 +27,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
       <div className="max-w-7xl mx-auto px-4">
+        <h1 className="sr-only">Enterprise Chip Pricing &amp; Availability</h1>
         <SectionHeading
           label="Contact Us"
           title="Enterprise Chip Pricing & Availability"
@@ -64,7 +65,7 @@ export default function ContactPage() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="text-sm text-text hover:text-primary transition-colors font-medium"
+                        className="text-sm text-text hover:text-primary transition-transform font-medium"
                       >
                         {item.value}
                       </a>

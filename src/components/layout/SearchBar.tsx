@@ -1,9 +1,18 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Search, X, Loader2, Cpu, Server, Network, MemoryStick, HardDrive } from "lucide-react";
+import {
+  Search,
+  X,
+  Loader2,
+  Cpu,
+  Server,
+  Network,
+  MemoryStick,
+  HardDrive,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { searchProducts } from "@/data/search";
 import type { ProductType } from "@/types";
@@ -62,7 +71,7 @@ export function SearchBar() {
       <button
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "p-2 rounded-lg transition-colors",
+          "p-2 rounded-lg transition-transform",
           open
             ? "text-primary bg-primary/10"
             : "text-text-muted hover:text-text hover:bg-surface",
@@ -89,6 +98,7 @@ export function SearchBar() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search products..."
+                aria-label="Search products"
                 className="flex-1 bg-transparent text-sm text-text placeholder-text-dim outline-none"
               />
               {loading && (
@@ -97,6 +107,7 @@ export function SearchBar() {
               {query && !loading && (
                 <button
                   onClick={() => setQuery("")}
+                  aria-label="Clear search"
                   className="text-text-dim hover:text-text"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -121,7 +132,7 @@ export function SearchBar() {
                       setQuery("");
                       setDebounced("");
                     }}
-                    className="flex items-center gap-3 px-4 py-3 hover:bg-bg-dark transition-colors"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-bg-dark transition-transform"
                   >
                     <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                       <Icon className="w-3.5 h-3.5 text-primary" />
@@ -131,10 +142,12 @@ export function SearchBar() {
                         <span className="text-sm text-text font-medium truncate">
                           {product.name}
                         </span>
-                        <span className={cn(
-                          "shrink-0 text-[8px] font-bold uppercase tracking-wider px-1 py-0.5 rounded",
-                          "bg-primary/15 text-primary"
-                        )}>
+                        <span
+                          className={cn(
+                            "shrink-0 text-[8px] font-bold uppercase tracking-wider px-1 py-0.5 rounded",
+                            "bg-primary/15 text-primary",
+                          )}
+                        >
                           {TYPE_LABEL[type]}
                         </span>
                       </div>
@@ -153,7 +166,7 @@ export function SearchBar() {
                     setQuery("");
                     setDebounced("");
                   }}
-                  className="block px-4 py-2.5 text-xs text-center text-primary hover:bg-bg-dark transition-colors border-t border-border"
+                  className="block px-4 py-2.5 text-xs text-center text-primary hover:bg-bg-dark transition-transform border-t border-border"
                 >
                   View all results
                 </Link>

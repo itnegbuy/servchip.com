@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
@@ -99,6 +99,7 @@ export default function ComparisonPage() {
   return (
     <div className="min-h-screen bg-bg-dark pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4">
+        <h1 className="sr-only">Compare Enterprise Chips</h1>
         <SectionHeading
           label="Compare"
           title="Compare Enterprise Chips"
@@ -118,7 +119,7 @@ export default function ComparisonPage() {
                 whileTap={{ scale: 0.97 }}
                 className={`
                   relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-sm font-semibold
-                  transition-all duration-200 cursor-pointer
+                  transition-transform duration-200 cursor-pointer
                   ${
                     selected
                       ? "bg-primary/10 border-primary text-primary shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_15%,transparent)]"
@@ -128,7 +129,7 @@ export default function ComparisonPage() {
               >
                 <span
                   className={`
-                    w-4 h-4 rounded border flex items-center justify-center transition-colors
+                    w-4 h-4 rounded border flex items-center justify-center transition-transform
                     ${selected ? "bg-primary border-primary" : "border-border"}
                   `}
                 >
@@ -191,7 +192,7 @@ export default function ComparisonPage() {
                     </p>
                     <button
                       onClick={() => toggleChip(chip.id)}
-                      className="mt-2 text-text-dim hover:text-error transition-colors"
+                      className="mt-2 text-text-dim hover:text-error transition-transform"
                       aria-label={`Remove ${chip.series}`}
                     >
                       <X className="w-3.5 h-3.5 mx-auto" />

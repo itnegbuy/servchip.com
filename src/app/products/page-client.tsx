@@ -1,9 +1,25 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Search, Cpu, Server, Network, MemoryStick, HardDrive, SlidersHorizontal, X } from "lucide-react";
-import { ALL_PRODUCTS, ALL_CHIP_PRODUCTS, ALL_SERVERS, ALL_NETWORKING_PRODUCTS, ALL_MEMORY, ALL_STORAGE } from "@/data/products";
+import {
+  Search,
+  Cpu,
+  Server,
+  Network,
+  MemoryStick,
+  HardDrive,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
+import {
+  ALL_PRODUCTS,
+  ALL_CHIP_PRODUCTS,
+  ALL_SERVERS,
+  ALL_NETWORKING_PRODUCTS,
+  ALL_MEMORY,
+  ALL_STORAGE,
+} from "@/data/products";
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { ProductCard } from "@/components/products/ProductCard";
 import type { ProductType } from "@/types";
@@ -23,33 +39,45 @@ export default function ProductsPage() {
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<FilterType>("all");
   const [manufacturerFilter, setManufacturerFilter] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<"name" | "manufacturer" | "status">("name");
+  const [sortBy, setSortBy] = useState<"name" | "manufacturer" | "status">(
+    "name",
+  );
 
   const filtered = useMemo(() => {
-    let products = typeFilter === "all" ? ALL_PRODUCTS
-      : typeFilter === "chip" ? ALL_CHIP_PRODUCTS
-      : typeFilter === "server" ? ALL_SERVERS
-      : typeFilter === "networking" ? ALL_NETWORKING_PRODUCTS
-      : typeFilter === "memory" ? ALL_MEMORY
-      : ALL_STORAGE;
+    let products =
+      typeFilter === "all"
+        ? ALL_PRODUCTS
+        : typeFilter === "chip"
+          ? ALL_CHIP_PRODUCTS
+          : typeFilter === "server"
+            ? ALL_SERVERS
+            : typeFilter === "networking"
+              ? ALL_NETWORKING_PRODUCTS
+              : typeFilter === "memory"
+                ? ALL_MEMORY
+                : ALL_STORAGE;
 
     if (manufacturerFilter !== "all") {
-      products = products.filter(p => p.manufacturerId === manufacturerFilter);
+      products = products.filter(
+        (p) => p.manufacturerId === manufacturerFilter,
+      );
     }
 
     if (search.trim().length >= 2) {
       const q = search.toLowerCase();
-      products = products.filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        p.manufacturer.toLowerCase().includes(q) ||
-        p.series.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q)
+      products = products.filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.manufacturer.toLowerCase().includes(q) ||
+          p.series.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q),
       );
     }
 
     return [...products].sort((a, b) => {
       if (sortBy === "name") return a.name.localeCompare(b.name);
-      if (sortBy === "manufacturer") return a.manufacturer.localeCompare(b.manufacturer);
+      if (sortBy === "manufacturer")
+        return a.manufacturer.localeCompare(b.manufacturer);
       return a.status.localeCompare(b.status);
     });
   }, [typeFilter, manufacturerFilter, search, sortBy]);
@@ -69,7 +97,8 @@ export default function ProductsPage() {
             All Products
           </h1>
           <p className="text-text-muted text-sm">
-            Browse {ALL_PRODUCTS.length} products across all categories and manufacturers
+            Browse {ALL_PRODUCTS.length} products across all categories and
+            manufacturers
           </p>
         </motion.div>
 
@@ -80,20 +109,27 @@ export default function ProductsPage() {
             <input
               type="text"
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, manufacturer, series..."
-              className="w-full pl-9 pr-4 py-2.5 text-sm bg-surface border border-border rounded-xl text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 transition-colors"
+              aria-label="Search products"
+              className="w-full pl-9 pr-4 py-2.5 text-sm bg-surface border border-border rounded-xl text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 transition-transform"
             />
             {search && (
-              <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-text-dim hover:text-text">
+              <button
+                onClick={() => setSearch("")}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-text-dim hover:text-text"
+              >
                 <X className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
           <button
-            onClick={() => setShowFilters(v => !v)}
-            className={`flex items-center gap-1.5 px-3 py-2.5 text-sm rounded-xl border transition-colors ${
-              showFilters ? "border-primary/50 text-primary bg-primary/5" : "border-border text-text-muted hover:text-text hover:border-primary/30"
+            onClick={() => setShowFilters((v) => !v)}
+            className={`flex items-center gap-1.5 px-3 py-2.5 text-sm rounded-xl border transition-transform ${
+              showFilters
+                ? "border-primary/50 text-primary bg-primary/5"
+                : "border-border text-text-muted hover:text-text hover:border-primary/30"
             }`}
           >
             <SlidersHorizontal className="w-4 h-4" />
@@ -103,11 +139,11 @@ export default function ProductsPage() {
 
         {/* Type tabs */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {TYPE_TABS.map(tab => (
+          {TYPE_TABS.map((tab) => (
             <button
               key={tab.type}
               onClick={() => setTypeFilter(tab.type)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border transition-transform ${
                 typeFilter === tab.type
                   ? "bg-primary/15 border-primary/40 text-primary"
                   : "border-border text-text-muted hover:text-text hover:border-primary/30"
@@ -122,7 +158,10 @@ export default function ProductsPage() {
         {/* Filter panel */}
         <motion.div
           initial={false}
-          animate={{ height: showFilters ? "auto" : 0, opacity: showFilters ? 1 : 0 }}
+          animate={{
+            height: showFilters ? "auto" : 0,
+            opacity: showFilters ? 1 : 0,
+          }}
           className="overflow-hidden mb-6"
         >
           <div className="flex flex-wrap items-center gap-4 p-4 rounded-xl border border-border bg-surface">
@@ -132,12 +171,14 @@ export default function ProductsPage() {
               </label>
               <select
                 value={manufacturerFilter}
-                onChange={e => setManufacturerFilter(e.target.value)}
+                onChange={(e) => setManufacturerFilter(e.target.value)}
                 className="px-3 py-1.5 text-sm bg-bg-dark border border-border rounded-lg text-text focus:outline-none focus:border-primary/50"
               >
                 <option value="all">All Manufacturers</option>
-                {MANUFACTURERS.map(m => (
-                  <option key={m.id} value={m.id}>{m.name}</option>
+                {MANUFACTURERS.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name}
+                  </option>
                 ))}
               </select>
             </div>
@@ -147,7 +188,7 @@ export default function ProductsPage() {
               </label>
               <select
                 value={sortBy}
-                onChange={e => setSortBy(e.target.value as typeof sortBy)}
+                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="px-3 py-1.5 text-sm bg-bg-dark border border-border rounded-lg text-text focus:outline-none focus:border-primary/50"
               >
                 <option value="name">Name</option>
@@ -162,7 +203,12 @@ export default function ProductsPage() {
         <p className="text-xs text-text-dim mb-4">
           {filtered.length} result{filtered.length !== 1 ? "s" : ""}
           {search && <> for &ldquo;{search}&rdquo;</>}
-          {manufacturerFilter !== "all" && <> · {MANUFACTURERS.find(m => m.id === manufacturerFilter)?.name}</>}
+          {manufacturerFilter !== "all" && (
+            <>
+              {" "}
+              · {MANUFACTURERS.find((m) => m.id === manufacturerFilter)?.name}
+            </>
+          )}
           {typeFilter !== "all" && <> · {typeFilter}</>}
         </p>
 
@@ -180,9 +226,15 @@ export default function ProductsPage() {
         {filtered.length === 0 && (
           <div className="text-center py-20">
             <Cpu className="w-12 h-12 text-text-dim mx-auto mb-4 opacity-50" />
-            <p className="text-text-muted text-sm">No products match your filters.</p>
+            <p className="text-text-muted text-sm">
+              No products match your filters.
+            </p>
             <button
-              onClick={() => { setSearch(""); setTypeFilter("all"); setManufacturerFilter("all"); }}
+              onClick={() => {
+                setSearch("");
+                setTypeFilter("all");
+                setManufacturerFilter("all");
+              }}
               className="text-primary text-sm hover:underline mt-2"
             >
               Clear all filters

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import dynamic from "next/dynamic";
 
@@ -49,11 +49,11 @@ function FeatureCard({
 }) {
   const Icon = ICON_MAP[feature.icon] || Cpu;
   return (
-    <div className="group bg-bg-dark rounded-xl border border-border p-5 hover:border-primary/30 transition-all">
-      <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+    <div className="group bg-bg-dark rounded-xl border border-border p-5 hover:border-primary/30 transition-transform">
+      <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-transform">
         <Icon className="w-5 h-5 text-primary" />
       </div>
-      <h4 className="text-sm font-bold text-text mb-1">{feature.title}</h4>
+      <h3 className="text-sm font-bold text-text mb-1">{feature.title}</h3>
       <p className="text-xs text-text-dim leading-relaxed">{feature.desc}</p>
     </div>
   );

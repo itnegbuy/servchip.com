@@ -23,7 +23,7 @@ export function Card({
     <div
       onClick={onClick}
       className={cn(
-        "rounded-xl border transition-all duration-200",
+        "rounded-xl border transition-transform duration-200",
         {
           "bg-surface border-border": variant === "default",
           "bg-surface-2 border-border shadow-lg": variant === "elevated",
@@ -37,7 +37,7 @@ export function Card({
         },
         hover &&
           "cursor-pointer hover:border-primary/30 hover:shadow-lg hover:-translate-y-0.5",
-        className
+        className,
       )}
     >
       {children}

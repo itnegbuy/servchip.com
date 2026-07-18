@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { Variants } from "framer-motion";
 import { motion } from "framer-motion";
@@ -161,7 +161,7 @@ export default function ResourcesPage() {
                     variants={itemVariants}
                     className="group relative rounded-2xl border border-border bg-bg-dark p-6 md:p-7 card-hover overflow-hidden flex flex-col"
                   >
-                    <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-all pointer-events-none" />
+                    <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                     <div className="relative flex-1 flex flex-col">
                       <div className="flex items-center gap-2 mb-3">
                         <Badge
@@ -175,7 +175,7 @@ export default function ResourcesPage() {
                           {readTime} min
                         </span>
                       </div>
-                      <h3 className="text-base font-bold text-text mb-2.5 leading-snug group-hover:text-primary transition-colors">
+                      <h3 className="text-base font-bold text-text mb-2.5 leading-snug group-hover:text-primary transition-transform">
                         {post.title}
                       </h3>
                       <p className="text-sm text-text-muted leading-relaxed mb-4 flex-1 line-clamp-3">
@@ -237,17 +237,17 @@ export default function ResourcesPage() {
                 variants={itemVariants}
                 className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden flex flex-col"
               >
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-all pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                 <div className="relative flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
                       <cat.icon className="w-6 h-6 text-primary" />
                     </div>
                     <Badge variant={cat.color} size="sm">
                       {cat.count}
                     </Badge>
                   </div>
-                  <h3 className="text-lg font-bold text-text mb-2.5 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-bold text-text mb-2.5 group-hover:text-primary transition-transform">
                     {cat.title}
                   </h3>
                   <p className="text-sm text-text-muted leading-relaxed mb-4 flex-1">
@@ -299,7 +299,8 @@ export default function ResourcesPage() {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full sm:w-64 px-4 py-3 rounded-lg bg-bg-dark border border-border text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
+                    aria-label="Email address for newsletter"
+                    className="w-full sm:w-64 px-4 py-3 rounded-lg bg-bg-dark border border-border text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-transform"
                   />
                 </div>
                 <Button
@@ -330,7 +331,7 @@ export default function ResourcesPage() {
                 href="/contact"
                 className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 card-hover group"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -347,7 +348,7 @@ export default function ResourcesPage() {
                 href="/faq"
                 className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 card-hover group"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
                   <HelpCircle className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -362,7 +363,7 @@ export default function ResourcesPage() {
                 href="/contact"
                 className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 card-hover group"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
                   <Headphones className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">

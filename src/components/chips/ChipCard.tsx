@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -33,7 +33,7 @@ export const ChipCard = React.memo(function ChipCard({
   return (
     <div>
       <Tilt3D>
-        <div className="bg-surface border border-primary/40 rounded-xl p-5 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+        <div className="bg-surface border border-primary/40 rounded-xl p-5 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-transform duration-300">
           {/* Chip visual - Product image or Processor SVG fallback */}
           <div className="relative w-full h-48 bg-gradient-to-br from-surface-2 to-bg-dark rounded-lg border border-border mb-4 flex items-center justify-center overflow-hidden">
             {chip.images && chip.images.length > 0 ? (

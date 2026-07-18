@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -159,7 +159,7 @@ export function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-surface border border-border flex items-center justify-center text-text-muted hover:text-primary hover:border-primary/40 hover:bg-primary/[0.04] hover:-translate-y-0.5 transition-all duration-200"
+                    className="w-9 h-9 rounded-xl bg-surface border border-border flex items-center justify-center text-text-muted hover:text-primary hover:border-primary/40 hover:bg-primary/[0.04] hover:-translate-y-0.5 transition-transform duration-200"
                     aria-label={s.name}
                   >
                     <Icon className="w-4 h-4" />
@@ -205,9 +205,9 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="group flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-colors"
+                      className="group flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-transform"
                     >
-                      <ChevronRight className="w-3 h-3 text-primary/30 group-hover:text-primary/70 -ml-0.5 transition-colors" />
+                      <ChevronRight className="w-3 h-3 text-primary/30 group-hover:text-primary/70 -ml-0.5 transition-transform" />
                       {link.color ? (
                         <span className="flex items-center gap-1.5">
                           <span
@@ -244,15 +244,22 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Servchip Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/privacy" className="hover:text-text transition-colors">
+            <Link
+              href="/privacy"
+              className="hover:text-text transition-transform"
+            >
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-text transition-colors">
+            <Link
+              href="/terms"
+              className="hover:text-text transition-transform"
+            >
               Terms
             </Link>
             <a
               href="mailto:sales@servchip.com"
-              className="hover:text-primary transition-colors flex items-center gap-1"
+              aria-label="Email sales team"
+              className="hover:text-primary transition-transform flex items-center gap-1"
             >
               <Mail className="w-3 h-3" /> Contact
             </a>
@@ -306,14 +313,14 @@ function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
-        className="w-56 px-3 py-2 text-sm bg-surface border border-border rounded-lg text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+        className="w-56 px-3 py-2 text-sm bg-surface border border-border rounded-lg text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform"
         required
       />
       <button
         type="submit"
         disabled={status === "loading"}
         aria-label="Subscribe to newsletter"
-        className="px-4 py-2 bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-all disabled:opacity-50"
+        className="px-4 py-2 bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-transform disabled:opacity-50"
       >
         <Send className="w-4 h-4" />
       </button>

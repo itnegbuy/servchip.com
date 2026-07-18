@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
@@ -395,7 +395,7 @@ function NavLink({
     <Link
       href={href}
       className={cn(
-        "relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 group",
+        "relative px-3 py-2 text-sm font-medium rounded-lg transition-transform duration-200 group",
         isActive ? "text-primary" : "text-text-muted hover:text-text",
       )}
     >
@@ -560,7 +560,7 @@ export function Header() {
                   <button
                     onClick={() => toggleMenu(item.label)}
                     className={cn(
-                      "relative flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 group",
+                      "relative flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-transform duration-200 group",
                       activeMenu === item.label
                         ? "text-primary"
                         : "text-text-muted hover:text-text",
@@ -579,7 +579,7 @@ export function Header() {
                     </span>
                     <ChevronDown
                       className={cn(
-                        "w-3.5 h-3.5 transition-all duration-200",
+                        "w-3.5 h-3.5 transition-transform duration-200",
                         activeMenu === item.label && "rotate-180",
                       )}
                     />
@@ -639,21 +639,21 @@ export function Header() {
             <ThemeToggle />
             <button
               onClick={() => setSearchOpen((v) => !v)}
-              className="text-text-muted hover:text-text hover:bg-primary/[0.04] transition-all p-2 rounded-lg hidden sm:block"
+              className="text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform p-2 rounded-lg hidden sm:block"
               aria-label="Search"
             >
               <Search className="w-[18px] h-[18px]" />
             </button>
             <Link
               href="/contact"
-              className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-all px-3 py-2 rounded-lg"
+              className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform px-3 py-2 rounded-lg"
             >
               <User className="w-4 h-4" />
               Sign In
             </Link>
             <Link
               href="/rfq"
-              className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden"
+              className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-transform duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden"
             >
               <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
               Get Quote
@@ -663,7 +663,7 @@ export function Header() {
             <button
               onClick={() => setMobileOpen((v) => !v)}
               className={cn(
-                "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-colors hover:bg-primary/[0.04]",
+                "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-transform hover:bg-primary/[0.04]",
                 mobileOpen && "active",
               )}
               aria-label="Toggle menu"
@@ -671,19 +671,19 @@ export function Header() {
             >
               <span
                 className={cn(
-                  "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                  "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
                   mobileOpen && "translate-y-[7px] rotate-45",
                 )}
               />
               <span
                 className={cn(
-                  "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                  "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
                   mobileOpen && "opacity-0",
                 )}
               />
               <span
                 className={cn(
-                  "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                  "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
                   mobileOpen && "-translate-y-[7px] -rotate-45",
                 )}
               />
@@ -710,7 +710,7 @@ export function Header() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "fixed top-0 right-0 z-[60] w-full max-w-[400px] h-screen bg-surface border-l border-border overflow-y-auto transition-all duration-500 lg:hidden",
+          "fixed top-0 right-0 z-[60] w-full max-w-[400px] h-screen bg-surface border-l border-border overflow-y-auto transition-transform duration-500 lg:hidden",
           mobileOpen ? "right-0" : "-right-full",
         )}
       >
@@ -841,7 +841,7 @@ export function Header() {
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}
-                className="text-text-muted hover:text-text hover:bg-primary/[0.04] p-2 rounded-lg transition-all"
+                className="text-text-muted hover:text-text hover:bg-primary/[0.04] p-2 rounded-lg transition-transform"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
@@ -855,13 +855,13 @@ export function Header() {
               href="/"
               onClick={() => setMobileOpen(false)}
               className={cn(
-                "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-colors group",
+                "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-transform group",
                 pathname === "/"
                   ? "text-primary"
                   : "text-text-muted hover:text-text",
               )}
             >
-              <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+              <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-transform" />
               Home
             </Link>
 
@@ -887,10 +887,10 @@ export function Header() {
                             mobileDropdown === item.label ? null : item.label,
                           )
                         }
-                        className="flex items-center justify-between w-full py-3.5 text-base font-medium border-b border-border/50 text-text-muted hover:text-text transition-colors group"
+                        className="flex items-center justify-between w-full py-3.5 text-base font-medium border-b border-border/50 text-text-muted hover:text-text transition-transform group"
                       >
                         <span className="flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+                          <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-transform" />
                           {item.label}
                         </span>
                         <ChevronDown
@@ -917,7 +917,7 @@ export function Header() {
                                       <Link
                                         href={col.href}
                                         onClick={() => setMobileOpen(false)}
-                                        className="hover:text-primary transition-colors"
+                                        className="hover:text-primary transition-transform"
                                       >
                                         {col.title}
                                       </Link>
@@ -930,7 +930,7 @@ export function Header() {
                                       key={link.label}
                                       href={link.href}
                                       onClick={() => setMobileOpen(false)}
-                                      className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-all"
+                                      className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-transform"
                                     >
                                       <span className="w-1 h-1 rounded-full bg-primary/20" />
                                       {link.label}
@@ -945,7 +945,7 @@ export function Header() {
                                     <Link
                                       href={col.href ?? "/products"}
                                       onClick={() => setMobileOpen(false)}
-                                      className="block text-[11px] font-medium text-primary/70 hover:text-primary px-3 py-1.5 transition-colors"
+                                      className="block text-[11px] font-medium text-primary/70 hover:text-primary px-3 py-1.5 transition-transform"
                                     >
                                       +{col.links.length - 5} more →
                                     </Link>
@@ -962,13 +962,13 @@ export function Header() {
                       href={simple.href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-colors group",
+                        "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-transform group",
                         simple.href && isActive(simple.href)
                           ? "text-primary"
                           : "text-text-muted hover:text-text",
                       )}
                     >
-                      <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+                      <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-transform" />
                       {item.label}
                     </Link>
                   )}
@@ -981,7 +981,7 @@ export function Header() {
               <Link
                 href="/rfq"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-all"
+                className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-transform"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 Get Quote <ExternalLink className="w-3.5 h-3.5" />
@@ -989,7 +989,7 @@ export function Header() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-medium text-text-muted border border-border rounded-lg hover:text-text hover:border-primary/30 transition-all"
+                className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-medium text-text-muted border border-border rounded-lg hover:text-text hover:border-primary/30 transition-transform"
               >
                 <User className="w-4 h-4" />
                 Sign In
@@ -1002,7 +1002,7 @@ export function Header() {
                 <span className="text-primary/60">📞</span>{" "}
                 <a
                   href="tel:+917982498712"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-transform"
                 >
                   +91 7982498712
                 </a>
@@ -1011,7 +1011,7 @@ export function Header() {
                 <span className="text-primary/60">✉️</span>{" "}
                 <a
                   href="mailto:sales@servchip.com"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-transform"
                 >
                   sales@servchip.com
                 </a>

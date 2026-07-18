@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -28,11 +28,11 @@ const LogoItem = React.memo(function LogoItem({
   return (
     <Link
       href={`/manufacturers/${slug}`}
-      className="flex-shrink-0 w-[150px] h-[80px] mx-3 rounded-xl bg-surface border border-border flex items-center justify-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group"
+      className="flex-shrink-0 w-[150px] h-[80px] mx-3 rounded-xl bg-surface border border-border flex items-center justify-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group"
     >
       <div className="flex items-center gap-3 px-3">
         <BrandLogo name={name} className="w-8 h-8 shrink-0" />
-        <span className="text-[11px] font-bold text-text-muted group-hover:text-text transition-colors leading-tight">
+        <span className="text-[11px] font-bold text-text-muted group-hover:text-text transition-transform leading-tight">
           {name}
         </span>
       </div>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +29,7 @@ export function PageHero({
     <section
       className={cn(
         "relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden bg-hero-gradient scroll-mt-20",
-        className
+        className,
       )}
     >
       <div className="absolute inset-0 bg-grid opacity-25 pointer-events-none" />
@@ -43,7 +43,7 @@ export function PageHero({
         <div
           className={cn(
             "flex flex-col gap-4 md:gap-5 max-w-4xl mx-auto",
-            isCenter ? "items-center text-center" : "items-start text-left"
+            isCenter ? "items-center text-center" : "items-start text-left",
           )}
         >
           {label && (
@@ -71,21 +71,31 @@ export function PageHero({
               aria-label="Breadcrumb"
               className={cn(
                 "flex flex-wrap items-center gap-1.5 text-xs text-text-dim font-mono",
-                isCenter && "justify-center"
+                isCenter && "justify-center",
               )}
             >
               {breadcrumbs.map((crumb, i) => {
                 const isLast = i === breadcrumbs.length - 1;
                 return (
-                  <span key={`${crumb.label}-${i}`} className="flex items-center gap-1.5">
+                  <span
+                    key={`${crumb.label}-${i}`}
+                    className="flex items-center gap-1.5"
+                  >
                     {crumb.href && !isLast ? (
-                      <Link href={crumb.href} className="hover:text-primary transition-colors">
+                      <Link
+                        href={crumb.href}
+                        className="hover:text-primary transition-transform"
+                      >
                         {crumb.label}
                       </Link>
                     ) : (
-                      <span className={isLast ? "text-text" : ""}>{crumb.label}</span>
+                      <span className={isLast ? "text-text" : ""}>
+                        {crumb.label}
+                      </span>
                     )}
-                    {!isLast && <ChevronRight className="w-3 h-3 text-text-dim/60" />}
+                    {!isLast && (
+                      <ChevronRight className="w-3 h-3 text-text-dim/60" />
+                    )}
                   </span>
                 );
               })}

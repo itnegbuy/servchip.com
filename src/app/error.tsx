@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 
@@ -23,13 +23,13 @@ export default function ErrorPage({
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <button
             onClick={reset}
-            className="px-6 py-3 bg-primary text-black font-semibold rounded-xl hover:opacity-90 transition-all text-sm"
+            className="px-6 py-3 bg-primary text-black font-semibold rounded-xl hover:opacity-90 transition-transform text-sm"
           >
             Try Again
           </button>
           <Link
             href="/"
-            className="px-6 py-3 border border-border text-text font-semibold rounded-xl hover:bg-surface transition-all text-sm"
+            className="px-6 py-3 border border-border text-text font-semibold rounded-xl hover:bg-surface transition-transform text-sm"
           >
             Go Home
           </Link>

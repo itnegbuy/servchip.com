@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
 import { Palette } from "lucide-react";
@@ -38,7 +38,7 @@ export function ColorPicker() {
       <button
         ref={btnRef}
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center justify-center w-9 h-9 rounded-lg text-text-muted hover:text-text hover:bg-primary/[0.04] transition-all duration-200 border border-border/50"
+        className="flex items-center justify-center w-9 h-9 rounded-lg text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform duration-200 border border-border/50"
         aria-label="Change color theme"
         title="Change color theme"
       >
@@ -71,10 +71,11 @@ export function ColorPicker() {
                     setOpen(false);
                   }}
                   className={`
-                    group relative w-full aspect-square rounded-md border-2 cursor-pointer transition-all duration-200
-                    ${isActive
-                      ? "border-text"
-                      : "border-border/50 hover:border-text-muted hover:scale-105"
+                    group relative w-full aspect-square rounded-md border-2 cursor-pointer transition-transform duration-200
+                    ${
+                      isActive
+                        ? "border-text"
+                        : "border-border/50 hover:border-text-muted hover:scale-105"
                     }
                   `}
                   style={{ background: theme.primary }}

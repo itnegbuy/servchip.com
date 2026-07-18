@@ -135,7 +135,7 @@ export default function ManufacturerPage() {
                   href={`/manufacturers/${manufacturer.slug}/${cat.slug}`}
                   className="block group rounded-2xl border border-border bg-surface p-6 card-hover h-full"
                 >
-                  <h3 className="text-lg font-bold text-text mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-bold text-text mb-2 group-hover:text-primary transition-transform">
                     {cat.name}
                   </h3>
                   <p className="text-sm text-text-muted mb-4">

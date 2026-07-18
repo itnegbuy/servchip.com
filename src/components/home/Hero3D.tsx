@@ -241,14 +241,14 @@ export function Hero3D() {
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
             transition={{ delay: 0.1 }}
             className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40 backdrop-blur-md"
             style={{
@@ -265,8 +265,8 @@ export function Hero3D() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight"
           >
@@ -277,8 +277,8 @@ export function Hero3D() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            animate={{ y: 0 }}
             transition={{ delay: 0.35 }}
             className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto min-h-[3.5rem]"
           >
@@ -291,8 +291,8 @@ export function Hero3D() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            animate={{ y: 0 }}
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-4 justify-center mb-12"
           >
@@ -300,7 +300,7 @@ export function Hero3D() {
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black transition-transform"
                 style={{
                   backgroundColor: "var(--hero-primary)",
                   boxShadow:
@@ -327,8 +327,8 @@ export function Hero3D() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            animate={{ y: 0 }}
             transition={{ delay: 0.65 }}
             className="grid grid-cols-3 gap-8 max-w-lg mx-auto py-6 border-t"
             style={{
@@ -339,8 +339,8 @@ export function Hero3D() {
             {HERO_STATS.map(({ value, label }, i) => (
               <motion.div
                 key={label}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 10 }}
+                animate={{ y: 0 }}
                 transition={{ delay: 0.8 + i * 0.1 }}
               >
                 <span
@@ -364,7 +364,7 @@ export function Hero3D() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 0.8 }}
         className="absolute bottom-0 left-0 right-0 overflow-hidden py-6"
       >
         <div className="relative overflow-hidden">

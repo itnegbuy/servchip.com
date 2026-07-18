@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -78,7 +78,7 @@ function ProductCard({
     >
       <Link
         href={`/products/${product.slug}`}
-        className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group h-full"
+        className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group h-full"
       >
         <div className="flex items-center gap-2 mb-3">
           <span
@@ -92,7 +92,7 @@ function ProductCard({
             {getProductTypeLabel(product)}
           </Badge>
         </div>
-        <h3 className="text-sm font-bold text-text mb-1.5 group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="text-sm font-bold text-text mb-1.5 group-hover:text-primary transition-transform line-clamp-2">
           {product.name}
         </h3>
         <p className="text-xs text-text-dim leading-relaxed line-clamp-2 mb-3">
@@ -140,7 +140,7 @@ export function WorkloadSolutions() {
                 onClick={() => setActiveTab(w.id)}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-transform duration-200 ${
                   isActive
                     ? "text-bg-dark shadow-lg"
                     : "text-text-muted border border-border bg-surface hover:border-primary/30 hover:text-text"

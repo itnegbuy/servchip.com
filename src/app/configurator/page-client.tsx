@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -222,7 +222,7 @@ export default function ConfiguratorPage() {
                 >
                   <div
                     className={cn(
-                      "w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold font-mono transition-all border-2",
+                      "w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold font-mono transition-transform border-2",
                       step >= s
                         ? "bg-primary text-bg-dark border-primary"
                         : "bg-surface text-text-dim border-border",
@@ -233,7 +233,7 @@ export default function ConfiguratorPage() {
                   {s < 4 && (
                     <div
                       className={cn(
-                        "h-0.5 flex-1 mx-2 transition-colors",
+                        "h-0.5 flex-1 mx-2 transition-transform",
                         step > s ? "bg-primary" : "bg-border",
                       )}
                     />
@@ -266,7 +266,7 @@ export default function ConfiguratorPage() {
                           key={uc.id}
                           onClick={() => setUseCase(uc.id)}
                           className={cn(
-                            "p-4 rounded-xl border text-left transition-all",
+                            "p-4 rounded-xl border text-left transition-transform",
                             selected
                               ? "border-primary bg-primary/10"
                               : "border-border bg-surface hover:border-primary/30",
@@ -328,7 +328,7 @@ export default function ConfiguratorPage() {
                             key={b.id}
                             onClick={() => setBudget(b.id)}
                             className={cn(
-                              "p-3 rounded-lg border text-left transition-all",
+                              "p-3 rounded-lg border text-left transition-transform",
                               budget === b.id
                                 ? "border-primary bg-primary/10"
                                 : "border-border hover:border-primary/30",
@@ -361,7 +361,7 @@ export default function ConfiguratorPage() {
                             key={p.id}
                             onClick={() => setPerformance(p.id)}
                             className={cn(
-                              "p-3 rounded-lg border text-left transition-all",
+                              "p-3 rounded-lg border text-left transition-transform",
                               performance === p.id
                                 ? "border-primary bg-primary/10"
                                 : "border-border hover:border-primary/30",
@@ -545,7 +545,7 @@ export default function ConfiguratorPage() {
             {step > 1 && (
               <button
                 onClick={reset}
-                className="mt-4 mx-auto flex items-center gap-1.5 text-xs text-text-dim hover:text-primary transition-colors"
+                className="mt-4 mx-auto flex items-center gap-1.5 text-xs text-text-dim hover:text-primary transition-transform"
               >
                 <RotateCcw className="w-3 h-3" />
                 Start over

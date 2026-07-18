@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -312,7 +312,7 @@ export function AnimatedLogo({
       {showText && (
         <div className="flex flex-col leading-none">
           <span
-            className={`font-black tracking-tight ${textClassName || "text-text group-hover:text-primary transition-colors duration-300"}`}
+            className={`font-black tracking-tight ${textClassName || "text-text group-hover:text-primary transition-transform duration-300"}`}
             style={{ fontSize: s * 0.42 }}
           >
             SERV<span className="text-primary">CHIP</span>

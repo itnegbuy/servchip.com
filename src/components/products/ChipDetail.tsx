@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -172,14 +172,14 @@ export function ChipDetail() {
           >
             <Link
               href="/"
-              className="text-text-dim hover:text-primary transition-colors"
+              className="text-text-dim hover:text-primary transition-transform"
             >
               Home
             </Link>
             <span className="text-text-dim">/</span>
             <Link
               href="/products"
-              className="text-text-dim hover:text-primary transition-colors"
+              className="text-text-dim hover:text-primary transition-transform"
             >
               Products
             </Link>

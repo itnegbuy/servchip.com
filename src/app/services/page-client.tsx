@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { Variants } from "framer-motion";
 import { motion } from "framer-motion";
@@ -208,12 +208,12 @@ export default function ServicesPage() {
                 variants={itemVariants}
                 className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden flex flex-col"
               >
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-all pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                 <div className="relative flex-1 flex flex-col">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform shrink-0">
                     <service.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-lg font-bold text-text mb-2.5 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-bold text-text mb-2.5 group-hover:text-primary transition-transform">
                     {service.title}
                   </h3>
                   <p className="text-sm text-text-muted leading-relaxed mb-4 flex-1">

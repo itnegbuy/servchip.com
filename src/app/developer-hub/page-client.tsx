@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import {
@@ -327,9 +327,9 @@ export default function DeveloperHubPage() {
                     <feat.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-text mb-1">
+                    <h3 className="text-sm font-bold text-text mb-1">
                       {feat.title}
-                    </h4>
+                    </h3>
                     <p className="text-xs text-text-muted leading-relaxed">
                       {feat.description}
                     </p>
@@ -349,7 +349,7 @@ export default function DeveloperHubPage() {
               {INLINED_ENDPOINTS.map((ep) => (
                 <div
                   key={ep.path}
-                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/5 transition-colors"
+                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/5 transition-transform"
                 >
                   <span
                     className={cn(
@@ -418,7 +418,7 @@ export default function DeveloperHubPage() {
               {API_ENDPOINTS.map((ep) => (
                 <div
                   key={ep.path}
-                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 px-5 py-3 hover:bg-primary/5 transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 px-5 py-3 hover:bg-primary/5 transition-transform"
                 >
                   <span
                     className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold w-16 text-center shrink-0 ${

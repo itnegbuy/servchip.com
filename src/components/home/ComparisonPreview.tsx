@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -34,7 +34,7 @@ export function ComparisonPreview() {
           {COMPARISON_CHIPS.map((chip) => (
             <div
               key={chip.name}
-              className="bg-surface rounded-xl p-6 border border-border-subtle shadow-sm transition-all duration-200 hover:border-primary/20 hover:shadow-lg hover:-translate-y-1"
+              className="bg-surface rounded-xl p-6 border border-border-subtle shadow-sm transition-transform duration-200 hover:border-primary/20 hover:shadow-lg hover:-translate-y-1"
             >
               <h3 className="font-bold text-lg text-text pb-3 border-b border-border-subtle mb-4">
                 {chip.name}
@@ -80,7 +80,7 @@ export function ComparisonPreview() {
         <div className="text-center mt-8">
           <Link
             href="/comparison"
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold text-text rounded-lg border border-primary hover:bg-primary/10 hover:neon-glow transition-all duration-200"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold text-text rounded-lg border border-primary hover:bg-primary/10 hover:neon-glow transition-transform duration-200"
           >
             Use Full Comparison Tool <ArrowRight className="w-3.5 h-3.5" />
           </Link>

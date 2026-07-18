@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -269,7 +269,7 @@ export default function SolutionsPage() {
                   className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden"
                 >
                   <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-transform">
                       <Icon className="w-7 h-7 text-primary" />
                     </div>
                     <div className="flex-1">
@@ -341,12 +341,12 @@ export default function SolutionsPage() {
                 key={sol.title}
                 className="group relative rounded-2xl border border-border bg-surface p-6 card-hover overflow-hidden flex flex-col"
               >
-                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-all" />
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-transform" />
                 <div className="relative flex-1 flex flex-col">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform">
                     <sol.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-base font-bold text-text mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-base font-bold text-text mb-2 group-hover:text-primary transition-transform">
                     {sol.title}
                   </h3>
                   <p className="text-xs text-text-muted leading-relaxed mb-4">
@@ -372,7 +372,7 @@ export default function SolutionsPage() {
                         <Link
                           key={c}
                           href="/products"
-                          className="px-2 py-0.5 rounded-md bg-surface-2 border border-border text-[10px] font-mono text-text hover:text-primary hover:border-primary/30 transition-colors"
+                          className="px-2 py-0.5 rounded-md bg-surface-2 border border-border text-[10px] font-mono text-text hover:text-primary hover:border-primary/30 transition-transform"
                         >
                           {c}
                         </Link>

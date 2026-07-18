@@ -1,9 +1,19 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Search, X, Command, Cpu, Server, Network, MemoryStick, HardDrive, Package } from "lucide-react";
+import {
+  Search,
+  X,
+  Command,
+  Cpu,
+  Server,
+  Network,
+  MemoryStick,
+  HardDrive,
+  Package,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { searchProducts } from "@/data/search";
 import type { ProductType } from "@/types";
@@ -128,16 +138,17 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
                 onChange={(e) => handleQueryChange(e.target.value)}
                 onKeyDown={handleInputKeyDown}
                 placeholder="Search products by name, manufacturer, or series..."
+                aria-label="Search products"
                 className="flex-1 bg-transparent text-base text-text placeholder-text-dim outline-none"
               />
               <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-[11px] font-medium text-text-dim bg-bg-dark rounded-md border border-border">
-                <Command className="w-3 h-3" />
-                K
+                <Command className="w-3 h-3" />K
               </kbd>
               {query && (
                 <button
                   onClick={() => handleQueryChange("")}
-                  className="text-text-dim hover:text-text transition-colors p-1"
+                  aria-label="Clear search"
+                  className="text-text-dim hover:text-text transition-transform p-1"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -152,17 +163,26 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
                 <div className="px-5 py-10 text-center">
                   <Package className="w-8 h-8 text-text-dim mx-auto mb-3 opacity-50" />
                   <p className="text-sm text-text-muted">
-                    No products found for &ldquo;<span className="text-text font-medium">{query}</span>&rdquo;
+                    No products found for &ldquo;
+                    <span className="text-text font-medium">{query}</span>
+                    &rdquo;
                   </p>
-                  <p className="text-xs text-text-dim mt-1">Try a different search term</p>
+                  <p className="text-xs text-text-dim mt-1">
+                    Try a different search term
+                  </p>
                 </div>
               )}
 
               {query.length < 2 && (
                 <div className="px-5 py-10 text-center">
                   <Search className="w-8 h-8 text-text-dim mx-auto mb-3 opacity-50" />
-                  <p className="text-sm text-text-muted">Type at least 2 characters to search</p>
-                  <p className="text-xs text-text-dim mt-1">Search across all chips, servers, networking, memory &amp; storage</p>
+                  <p className="text-sm text-text-muted">
+                    Type at least 2 characters to search
+                  </p>
+                  <p className="text-xs text-text-dim mt-1">
+                    Search across all chips, servers, networking, memory &amp;
+                    storage
+                  </p>
                 </div>
               )}
 
@@ -174,10 +194,10 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
                     href={`/products/${product.slug}`}
                     onClick={() => onOpenChange(false)}
                     className={cn(
-                      "flex items-center gap-4 px-5 py-3.5 transition-colors",
+                      "flex items-center gap-4 px-5 py-3.5 transition-transform",
                       i === selectedIndex
                         ? "bg-primary/10 text-text"
-                        : "text-text-muted hover:bg-bg-dark hover:text-text"
+                        : "text-text-muted hover:bg-bg-dark hover:text-text",
                     )}
                   >
                     <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -185,11 +205,15 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium truncate">{product.name}</span>
-                        <span className={cn(
-                          "shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded",
-                          "bg-primary/15 text-primary"
-                        )}>
+                        <span className="text-sm font-medium truncate">
+                          {product.name}
+                        </span>
+                        <span
+                          className={cn(
+                            "shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded",
+                            "bg-primary/15 text-primary",
+                          )}
+                        >
                           {TYPE_LABEL[type]}
                         </span>
                       </div>
@@ -208,16 +232,24 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
             {results.length > 0 && (
               <div className="flex items-center gap-4 px-5 py-2.5 border-t border-border bg-bg-dark/50">
                 <div className="flex items-center gap-1.5 text-[11px] text-text-dim">
-                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">&uarr;</kbd>
-                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">&darr;</kbd>
+                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">
+                    &uarr;
+                  </kbd>
+                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">
+                    &darr;
+                  </kbd>
                   <span>navigate</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-[11px] text-text-dim">
-                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">&crarr;</kbd>
+                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">
+                    &crarr;
+                  </kbd>
                   <span>select</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-[11px] text-text-dim ml-auto">
-                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">esc</kbd>
+                  <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-surface border border-border rounded">
+                    esc
+                  </kbd>
                   <span>close</span>
                 </div>
               </div>

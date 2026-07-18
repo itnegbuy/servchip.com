@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useState, useMemo } from "react";
@@ -88,12 +88,14 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
           <div className="flex gap-1">
             <button
               onClick={() => setViewMode("grid")}
+              aria-label="Grid view"
               className={`p-1.5 rounded ${viewMode === "grid" ? "bg-primary/10 text-primary" : "text-text-dim hover:text-text"}`}
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
             <button
               onClick={() => setViewMode("list")}
+              aria-label="List view"
               className={`p-1.5 rounded ${viewMode === "list" ? "bg-primary/10 text-primary" : "text-text-dim hover:text-text"}`}
             >
               <List className="w-4 h-4" />
@@ -115,7 +117,7 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-xl border border-border bg-surface p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-4 hover:border-primary/30 transition-colors"
+                className="rounded-xl border border-border bg-surface p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-4 hover:border-primary/30 transition-transform"
               >
                 <div className="flex items-center gap-4 flex-1 min-w-0">
                   <div className="w-14 h-14 rounded-lg border border-primary/30 bg-surface flex items-center justify-center shrink-0">
@@ -126,7 +128,7 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
                   <div className="min-w-0 flex-1">
                     <Link
                       href={`/products/${chip.slug}`}
-                      className="text-sm font-bold text-text hover:text-primary transition-colors line-clamp-1"
+                      className="text-sm font-bold text-text hover:text-primary transition-transform line-clamp-1"
                     >
                       {chip.name}
                     </Link>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, animate } from "framer-motion";
@@ -166,6 +166,7 @@ export default function DeveloperDashboardPage() {
   return (
     <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="sr-only">Developer Dashboard</h1>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -328,7 +329,7 @@ export default function DeveloperDashboardPage() {
                   {recentActivity.map((row, i) => (
                     <tr
                       key={i}
-                      className="border-b border-border/50 last:border-b-0 hover:bg-primary-subtle/5 transition-colors"
+                      className="border-b border-border/50 last:border-b-0 hover:bg-primary-subtle/5 transition-transform"
                     >
                       <td className="px-6 py-3 text-text-muted text-xs whitespace-nowrap">
                         {row.date}

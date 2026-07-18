@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -27,7 +27,7 @@ export function LatestInsights() {
             <div key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="block bg-surface border border-border rounded-xl h-full hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 overflow-hidden"
+                className="block bg-surface border border-border rounded-xl h-full hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 overflow-hidden"
               >
                 {post.image && !failedImgs.has(post.slug) ? (
                   <div className="relative h-48 overflow-hidden">

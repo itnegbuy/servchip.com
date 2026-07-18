@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,7 +10,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="relative p-2 rounded-lg text-text-muted hover:text-text hover:bg-surface transition-all duration-200"
+      className="relative p-2 rounded-lg text-text-muted hover:text-text hover:bg-surface transition-transform duration-200"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       <AnimatePresence mode="wait">

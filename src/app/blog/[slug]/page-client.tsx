@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -112,7 +112,7 @@ export default function BlogPostPage() {
         <motion.div variants={itemVariants}>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-text-muted hover:text-primary transition-colors duration-200 mb-8 group"
+            className="inline-flex items-center gap-2 text-text-muted hover:text-primary transition-transform duration-200 mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
             <span className="text-sm font-medium">Back to Blog</span>
@@ -155,9 +155,9 @@ export default function BlogPostPage() {
           <div className="space-y-10">
             {post.sections.map((section, idx) => (
               <motion.div key={idx} variants={itemVariants}>
-                <h3 className="text-xl lg:text-2xl font-bold text-text mb-4">
+                <h2 className="text-xl lg:text-2xl font-bold text-text mb-4">
                   {section.heading}
-                </h3>
+                </h2>
                 {section.paragraphs.map((p, i) => (
                   <p key={i} className="text-text-muted leading-relaxed mb-4">
                     {p}
@@ -233,14 +233,14 @@ export default function BlogPostPage() {
                 <Link
                   key={product!.id}
                   href={`/products/${product!.slug}`}
-                  className="group p-4 rounded-xl border border-border bg-surface hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
+                  className="group p-4 rounded-xl border border-border bg-surface hover:border-primary/40 transition-transform duration-300 hover:-translate-y-1"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
                     <Package className="w-5 h-5 text-primary" />
                   </div>
-                  <h4 className="font-bold text-text text-sm leading-snug mb-1 group-hover:text-primary transition-colors duration-200">
+                  <h3 className="font-bold text-text text-sm leading-snug mb-1 group-hover:text-primary transition-transform duration-200">
                     {product!.name}
-                  </h4>
+                  </h3>
                   <p className="text-text-muted text-xs line-clamp-2">
                     {getProductSpec(product!)}
                   </p>
@@ -263,7 +263,7 @@ export default function BlogPostPage() {
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               {relatedPosts.map((rp) => (
                 <Link key={rp.id} href={`/blog/${rp.slug}`}>
-                  <div className="group p-5 rounded-xl border border-border bg-surface hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
+                  <div className="group p-5 rounded-xl border border-border bg-surface hover:border-primary/40 transition-transform duration-300 hover:-translate-y-1">
                     <Badge
                       variant={CATEGORY_BADGE[rp.category.slug] || "default"}
                       size="sm"
@@ -271,9 +271,9 @@ export default function BlogPostPage() {
                     >
                       {rp.category.name}
                     </Badge>
-                    <h4 className="font-bold text-text text-sm leading-snug mb-2 group-hover:text-primary transition-colors duration-200">
+                    <h3 className="font-bold text-text text-sm leading-snug mb-2 group-hover:text-primary transition-transform duration-200">
                       {rp.title}
-                    </h4>
+                    </h3>
                     <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
                       {rp.excerpt}
                     </p>
@@ -292,9 +292,9 @@ export default function BlogPostPage() {
           variants={itemVariants}
           className="mt-16 p-8 rounded-xl border border-primary/30 bg-gradient-to-br from-primary/5 to-transparent text-center"
         >
-          <h3 className="text-xl font-bold text-text mb-3">
+          <h2 className="text-xl font-bold text-text mb-3">
             Need Help Choosing the Right Chip?
-          </h3>
+          </h2>
           <p className="text-text-muted text-sm mb-6 max-w-lg mx-auto">
             Our engineering team provides free technical consultations to help
             you select and deploy the optimal solution for your workload.

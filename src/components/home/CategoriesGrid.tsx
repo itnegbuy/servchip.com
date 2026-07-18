@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import {
@@ -45,9 +45,9 @@ export function CategoriesGrid() {
               <div key={cat.slug}>
                 <Link
                   href={`/categories/${cat.slug}`}
-                  className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group"
+                  className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-transform">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="text-sm font-bold text-text mb-1">

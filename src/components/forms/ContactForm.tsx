@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -32,7 +32,7 @@ const TOPICS = [
 type FormState = "idle" | "submitting" | "success";
 
 const inputClasses =
-  "w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-200";
+  "w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-transform duration-200";
 
 export function ContactForm() {
   const [formState, setFormState] = useState<FormState>("idle");

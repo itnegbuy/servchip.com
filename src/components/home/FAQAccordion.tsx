@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -47,7 +47,7 @@ export function FAQAccordion() {
                 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-transform duration-200 ${
                   isActive
                     ? "bg-primary text-bg-dark shadow-lg shadow-primary/25"
                     : "bg-surface border border-border text-text-muted hover:border-primary/30 hover:text-text"
@@ -77,7 +77,7 @@ export function FAQAccordion() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className={`rounded-xl border overflow-hidden transition-all duration-200 ${
+                  className={`rounded-xl border overflow-hidden transition-transform duration-200 ${
                     isOpen
                       ? "border-primary/40 bg-surface shadow-lg shadow-primary/5"
                       : "border-border bg-surface hover:border-primary/20 hover:shadow-md"
@@ -85,16 +85,16 @@ export function FAQAccordion() {
                 >
                   <button
                     onClick={() => toggle(index)}
-                    className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left transition-colors"
+                    className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left transition-transform"
                   >
                     <span className="text-sm font-semibold text-text flex items-center gap-3">
                       <span
-                        className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
+                        className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${
                           isOpen ? "bg-primary/20" : "bg-primary/10"
                         }`}
                       >
                         <HelpCircle
-                          className={`w-3.5 h-3.5 transition-colors ${
+                          className={`w-3.5 h-3.5 transition-transform ${
                             isOpen ? "text-primary" : "text-primary/80"
                           }`}
                         />
@@ -104,12 +104,12 @@ export function FAQAccordion() {
                     <motion.div
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
+                      className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-transform ${
                         isOpen ? "bg-primary/20" : "bg-border/50"
                       }`}
                     >
                       <ChevronDown
-                        className={`w-3.5 h-3.5 transition-colors ${
+                        className={`w-3.5 h-3.5 transition-transform ${
                           isOpen ? "text-primary" : "text-text-dim"
                         }`}
                       />
@@ -158,13 +158,13 @@ export function FAQAccordion() {
             <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/rfq"
-                className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-all shadow-lg shadow-primary/25"
+                className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
               >
                 Send Enquiry <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-all"
+                className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <Phone className="w-4 h-4" />
                 Talk to Sales

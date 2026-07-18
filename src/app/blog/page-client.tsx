@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -59,6 +59,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+        <h1 className="sr-only">Technical Insights &amp; Industry Analysis</h1>
         <SectionHeading
           label="Blog"
           title="Technical Insights & Industry Analysis"
@@ -72,7 +73,7 @@ export default function BlogPage() {
               key={slug}
               onClick={() => setActiveCategory(slug)}
               className={cn(
-                "px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 border",
+                "px-4 py-2 rounded-full text-sm font-semibold transition-transform duration-300 border",
                 activeCategory === slug
                   ? "bg-primary/15 border-primary text-primary shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_20%,transparent)]"
                   : "bg-surface border-border text-text-muted hover:border-primary/30 hover:text-text",
@@ -98,7 +99,7 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="group block h-full"
                 >
-                  <article className="h-full rounded-xl border border-border bg-surface p-6 transition-all duration-300 group-hover:border-primary/25 group-hover:shadow-[0_0_24px_color-mix(in_srgb,var(--primary)_8%,transparent)] group-hover:-translate-y-1 flex flex-col">
+                  <article className="h-full rounded-xl border border-border bg-surface p-6 transition-transform duration-300 group-hover:border-primary/25 group-hover:shadow-[0_0_24px_color-mix(in_srgb,var(--primary)_8%,transparent)] group-hover:-translate-y-1 flex flex-col">
                     <div className="flex items-center justify-between mb-4">
                       <Badge
                         variant={
@@ -110,7 +111,7 @@ export default function BlogPage() {
                       </Badge>
                     </div>
 
-                    <h3 className="text-lg font-bold text-text mb-3 leading-snug transition-colors duration-300 group-hover:text-primary line-clamp-2">
+                    <h3 className="text-lg font-bold text-text mb-3 leading-snug transition-transform duration-300 group-hover:text-primary line-clamp-2">
                       {post.title}
                     </h3>
 
@@ -133,7 +134,7 @@ export default function BlogPage() {
                           </span>
                         </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-text-dim transition-all duration-300 group-hover:text-primary group-hover:translate-x-1" />
+                      <ArrowRight className="w-4 h-4 text-text-dim transition-transform duration-300 group-hover:text-primary group-hover:translate-x-1" />
                     </div>
                   </article>
                 </Link>

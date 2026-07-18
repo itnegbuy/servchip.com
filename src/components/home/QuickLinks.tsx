@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 
@@ -42,13 +42,13 @@ export function QuickLinks() {
                 href={ql.href}
                 className="group relative flex flex-col gap-3 p-5 md:p-6 rounded-2xl border border-border-subtle bg-surface card-hover overflow-hidden h-full"
               >
-                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-all" />
+                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-transform" />
 
                 <div className="relative flex items-start justify-between">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform">
                     <ql.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-text-dim group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  <ArrowUpRight className="w-4 h-4 text-text-dim group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
 
                 <div className="relative">

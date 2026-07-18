@@ -34,7 +34,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || loading}
         className={cn(
-          "inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 focus-ring-neon disabled:opacity-50 disabled:cursor-not-allowed",
+          "inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-transform duration-200 focus-ring-neon disabled:opacity-50 disabled:cursor-not-allowed",
           {
             "bg-primary text-bg-dark hover:bg-primary-dark neon-glow hover:scale-[1.02]":
               variant === "solid",

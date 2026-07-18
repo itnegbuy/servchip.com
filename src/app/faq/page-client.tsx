@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -13,6 +13,7 @@ export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
   return (
     <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
       <div className="max-w-3xl mx-auto px-4">
+        <h1 className="sr-only">Frequently Asked Questions</h1>
         <SectionHeading
           label="FAQ"
           title="Frequently Asked Questions"
@@ -48,7 +49,7 @@ export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-bg-dark text-sm font-bold rounded-lg hover:bg-primary-dark transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-bg-dark text-sm font-bold rounded-lg hover:bg-primary-dark transition-transform"
           >
             Contact Our Chip Experts
           </Link>
