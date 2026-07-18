@@ -1,43 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const FAQS = [
-  {
-    q: "Are your chips authentic?",
-    a: "Yes. We source directly from manufacturers and authorized partners. Every chip includes full traceability documentation.",
-  },
-  {
-    q: "What is your minimum order quantity?",
-    a: "There is no minimum order quantity. We serve startups to Fortune 500 enterprises.",
-  },
-  {
-    q: "How fast can you deliver?",
-    a: "Standard orders ship within 5-7 business days. Express shipping available for urgent requirements.",
-  },
-  {
-    q: "Do you offer technical support?",
-    a: "Yes. Our team of multi-vendor certified engineers provides pre-sales consultation and post-sales support across all major platforms.",
-  },
-  {
-    q: "What payment methods do you accept?",
-    a: "We accept wire transfers, Letters of Credit, and net terms for qualified enterprises.",
-  },
-  {
-    q: "Can I return a chip?",
-    a: "Returns accepted within 30 days for unopened items. Defective items covered by manufacturer warranty.",
-  },
-];
+interface FAQItem {
+  q: string;
+  a: string;
+}
 
-export default function FAQPage() {
+export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
   return (
     <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
       <div className="max-w-3xl mx-auto px-4">
         <SectionHeading
           label="FAQ"
           title="Frequently Asked Questions"
-          subtitle="Common questions about our products, services, and processes"
+          subtitle="Enterprise chip purchasing, semiconductor procurement, shipping, warranty & support"
           align="center"
         />
         <motion.div
@@ -45,16 +24,35 @@ export default function FAQPage() {
           animate={{ opacity: 1 }}
           className="space-y-4 mt-10"
         >
-          {FAQS.map((faq, i) => (
-            <div
+          {faqs.map((faq, i) => (
+            <details
               key={i}
-              className="bg-surface border border-border rounded-xl p-5"
+              className="bg-surface border border-border rounded-xl p-5 group"
             >
-              <h3 className="text-text text-sm font-semibold mb-2">{faq.q}</h3>
-              <p className="text-text-muted text-sm">{faq.a}</p>
-            </div>
+              <summary className="text-text text-sm font-semibold cursor-pointer list-none flex items-center justify-between">
+                <span>{faq.q}</span>
+                <span className="text-primary text-xs ml-2 shrink-0 group-open:rotate-45 transition-transform">
+                  +
+                </span>
+              </summary>
+              <p className="text-text-muted text-sm mt-3 leading-relaxed">
+                {faq.a}
+              </p>
+            </details>
           ))}
         </motion.div>
+
+        <div className="mt-16 text-center">
+          <p className="text-text-dim text-sm mb-4">
+            Still have questions about enterprise chip procurement?
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-bg-dark text-sm font-bold rounded-lg hover:bg-primary-dark transition-colors"
+          >
+            Contact Our Chip Experts
+          </Link>
+        </div>
       </div>
     </div>
   );

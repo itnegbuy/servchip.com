@@ -1,19 +1,52 @@
 ﻿import type { Metadata } from "next";
+import { SITE } from "@/lib/constants";
+import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
   title:
-    "Enterprise Chip Products — NVIDIA H100, AMD MI300X, Intel Xeon & More",
+    "Buy Enterprise Chips — NVIDIA H100, AMD MI300X, Intel Xeon & AI Accelerators | Servchip",
   description:
-    "Browse authentic enterprise chips — NVIDIA data center GPUs, AMD Instinct accelerators, Intel Xeon processors, AI servers, networking, memory & storage. ISO 9001 certified distributor.",
-  alternates: { canonical: "https://servchip.com/products" },
+    "Buy authentic enterprise chips from an ISO 9001 certified distributor. NVIDIA H100, H200, B200, AMD MI300X, Intel Xeon & Gaudi 3. AI accelerators, server CPUs, data center GPUs. Semiconductor procurement with global shipping.",
+  keywords: [
+    "buy AI chips",
+    "enterprise chip distributor",
+    "NVIDIA H100 buy",
+    "AMD MI300X supplier",
+    "AI accelerator distributor",
+    "semiconductor procurement",
+    "data center GPU supplier",
+    "enterprise hardware store",
+  ],
+  alternates: { canonical: `${SITE.url}/products` },
   openGraph: {
-    title: "Enterprise Chip Products | Servchip — AI Hardware Distributor",
+    title:
+      "Buy Enterprise Chips | Servchip — NVIDIA, AMD, Intel AI Accelerators",
     description:
-      "Browse authentic enterprise chips from NVIDIA, AMD, Intel & more. Data center GPUs, AI accelerators, server CPUs.",
+      "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: OG_WIDTH,
+        height: OG_HEIGHT,
+        alt: "Servchip Enterprise Chip Products",
+        type: "image/png",
+      },
+    ],
   },
 };
 
 export default function Page() {
-  return <PageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Products", url: "/products" },
+        ])}
+      />
+      <PageClient />
+    </>
+  );
 }

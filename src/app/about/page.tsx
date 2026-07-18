@@ -1,18 +1,52 @@
 ﻿import type { Metadata } from "next";
+import { SITE } from "@/lib/constants";
+import { OG_IMAGE, OG_WIDTH, OG_HEIGHT, breadcrumbSchema } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
-  title: "About Servchip — ISO 9001 Certified Enterprise Chip Distributor",
+  title:
+    "About Servchip — ISO 9001 Certified Enterprise Chip Distributor | Semiconductor Procurement",
   description:
-    "Learn about Servchip, an ISO 9001 certified enterprise chip distributor serving enterprises across India, UAE & 150+ countries. Authorized distribution partner for NVIDIA, AMD, Intel with 27+ manufacturer partnerships.",
-  alternates: { canonical: "https://servchip.com/about" },
+    "Learn about Servchip, an ISO 9001 certified enterprise chip distributor and semiconductor procurement partner. Authorized distribution for NVIDIA, AMD, Intel with 27+ manufacturer partnerships, serving 500+ enterprises across 150+ countries from India & UAE.",
+  keywords: [
+    "about Servchip",
+    "enterprise chip distributor",
+    "semiconductor procurement company",
+    "NVIDIA authorized distributor India",
+    "AI hardware supplier",
+    "data center hardware procurement",
+    "chip sourcing company",
+    "bulk semiconductor purchasing",
+  ],
+  alternates: { canonical: `${SITE.url}/about` },
   openGraph: {
-    title: "About Servchip — Enterprise Chip Distributor & Technology Partner",
+    title:
+      "About Servchip — Enterprise Chip Distributor & Semiconductor Procurement Partner",
     description:
       "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries from India & UAE.",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: OG_WIDTH,
+        height: OG_HEIGHT,
+        alt: "About Servchip — Enterprise Chip Distributor",
+        type: "image/png",
+      },
+    ],
   },
 };
 
 export default function Page() {
-  return <PageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" },
+        ])}
+      />
+      <PageClient />
+    </>
+  );
 }

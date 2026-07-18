@@ -28,7 +28,7 @@ const SERVICES = [
     icon: Truck,
     title: "Hardware Procurement",
     description:
-      "End-to-end global sourcing for NVIDIA enterprise chips with manufacturer-direct verification, secure logistics, and full compliance documentation across all major architectures.",
+      "End-to-end global sourcing for enterprise chips and AI accelerators with manufacturer-direct verification, secure logistics, and full compliance documentation across all major architectures.",
     points: [
       "Global sourcing network",
       "Manufacturer verification",
@@ -52,7 +52,7 @@ const SERVICES = [
     icon: Search,
     title: "Hard-to-Find Parts",
     description:
-      "Specialized sourcing for legacy, EOL, and scarce NVIDIA chips with certified refurbishment programs, verified inventory access, and comprehensive warranty coverage on every unit.",
+      "Specialized sourcing for legacy, EOL, and scarce enterprise chips with certified refurbishment programs, verified inventory access, and comprehensive warranty coverage on every unit.",
     points: [
       "Legacy & EOL chip sourcing",
       "Verified global inventory",
@@ -64,9 +64,9 @@ const SERVICES = [
     icon: Headphones,
     title: "Technical Support",
     description:
-      "Expert NVIDIA-certified engineers available for setup, configuration, troubleshooting, and performance optimization across your entire computing stack — from driver tuning to cluster orchestration.",
+      "Expert multi-vendor certified engineers available for setup, configuration, troubleshooting, and performance optimization across your entire computing stack — from driver tuning to cluster orchestration.",
     points: [
-      "NVIDIA-certified engineers",
+      "Multi-vendor certified engineers",
       "Remote & on-site support",
       "Performance optimization",
       "24/7 escalation pipeline",
@@ -180,8 +180,8 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label="Services"
-        title="End-to-End NVIDIA Computing Solutions"
-        subtitle="From hardware procurement to AI infrastructure design, we deliver comprehensive services backed by NVIDIA-certified engineering expertise and global supply chain capabilities."
+        title="End-to-End Enterprise Chip Solutions"
+        subtitle="From hardware procurement to AI infrastructure design, we deliver comprehensive services backed by multi-vendor engineering expertise and global supply chain capabilities."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
 
@@ -340,10 +340,9 @@ export default function ServicesPage() {
                   Let&apos;s Build Your Solution
                 </h2>
                 <p className="text-sm md:text-base text-text-muted leading-relaxed">
-                  Tell us about your requirements and our NVIDIA-certified
-                  engineers will design a complete solution with detailed
-                  specifications, pricing, and deployment plan — typically
-                  within 24 hours.
+                  Tell us about your requirements and our certified engineers
+                  will design a complete solution with detailed specifications,
+                  pricing, and deployment plan — typically within 24 hours.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">

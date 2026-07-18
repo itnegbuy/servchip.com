@@ -1,19 +1,51 @@
 import type { Metadata } from "next";
-import CategoriesPage from "./page-client";
+import { SITE } from "@/lib/constants";
+import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
+import PageClient from "./page-client";
 
 export const metadata: Metadata = {
   title:
-    "Product Categories — Data Center GPUs, AI Accelerators & Enterprise Hardware",
+    "Product Categories — Data Center GPUs, AI Accelerators, Server CPUs & Enterprise Hardware | Servchip",
   description:
-    "Browse enterprise chip categories — NVIDIA data center GPUs, AMD Instinct accelerators, Intel Xeon CPUs, AI servers, networking, memory & storage from an ISO 9001 certified distributor.",
-  alternates: { canonical: "https://servchip.com/categories" },
+    "Browse enterprise chip categories — NVIDIA data center GPUs, AMD Instinct accelerators, Intel Xeon CPUs, AI servers, networking, memory & storage from an ISO 9001 certified distributor for semiconductor procurement.",
+  keywords: [
+    "enterprise chip categories",
+    "data center GPUs",
+    "AI accelerators",
+    "server CPUs",
+    "enterprise hardware",
+    "NVIDIA GPU categories",
+    "AMD Instinct",
+    "Intel Xeon",
+  ],
+  alternates: { canonical: `${SITE.url}/categories` },
   openGraph: {
     title: "Product Categories | Servchip — Enterprise Chip Distributor",
     description:
       "Browse enterprise chip categories — data center GPUs, AI accelerators, server CPUs & more.",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: OG_WIDTH,
+        height: OG_HEIGHT,
+        alt: "Servchip Product Categories",
+        type: "image/png",
+      },
+    ],
   },
 };
 
 export default function Page() {
-  return <CategoriesPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Categories", url: "/categories" },
+        ])}
+      />
+      <PageClient />
+    </>
+  );
 }

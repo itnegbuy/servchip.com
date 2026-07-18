@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MANUFACTURERS, getManufacturerBySlug } from "@/data/manufacturers";
-import { getChipsByManufacturer } from "@/data/chips";
+import { SITE } from "@/lib/constants";
+import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -15,12 +16,28 @@ export async function generateMetadata(props: {
   const manufacturer = getManufacturerBySlug(slug);
   if (!manufacturer) return {};
   return {
-    title: manufacturer.seo.metaTitle,
-    description: manufacturer.seo.metaDescription,
-    alternates: { canonical: `https://servchip.com/manufacturers/${slug}` },
+    title: `${manufacturer.seo.metaTitle} | Enterprise Chip Distributor`,
+    description: `${manufacturer.seo.metaDescription} Buy authentic ${manufacturer.name} chips from an ISO 9001 certified distributor. Semiconductor procurement with global shipping.`,
+    keywords: [
+      `buy ${manufacturer.name} chips`,
+      `${manufacturer.name} distributor`,
+      `${manufacturer.name} enterprise`,
+      "enterprise chip distributor",
+      "semiconductor procurement",
+    ],
+    alternates: { canonical: `${SITE.url}/manufacturers/${slug}` },
     openGraph: {
-      title: manufacturer.seo.metaTitle,
+      title: `${manufacturer.name} Products | Servchip — Enterprise Chip Distributor`,
       description: manufacturer.seo.metaDescription,
+      images: [
+        {
+          url: OG_IMAGE,
+          width: OG_WIDTH,
+          height: OG_HEIGHT,
+          alt: `${manufacturer.name} Enterprise Chips — Servchip`,
+          type: "image/png",
+        },
+      ],
     },
   };
 }
@@ -31,5 +48,17 @@ export default async function Page(props: {
   const { slug } = await props.params;
   const manufacturer = getManufacturerBySlug(slug);
   if (!manufacturer) notFound();
-  return <PageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Manufacturers", url: "/products" },
+          { name: manufacturer.name, url: `/manufacturers/${slug}` },
+        ])}
+      />
+      <PageClient />
+    </>
+  );
 }

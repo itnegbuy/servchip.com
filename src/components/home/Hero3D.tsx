@@ -269,9 +269,9 @@ export function Hero3D() {
             transition={{ delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight"
           >
-            Enterprise Components for{" "}
+            Enterprise AI Chips &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BCD4] to-[#00E5FF]">
-              AI, HPC & Beyond
+              Accelerators for HPC
             </span>
           </motion.h1>
 

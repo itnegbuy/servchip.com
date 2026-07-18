@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MANUFACTURERS } from "@/data/manufacturers";
-import { CHIPS } from "@/data/chips";
+import { SITE } from "@/lib/constants";
+import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -23,10 +24,30 @@ export async function generateMetadata(props: {
   const category = manufacturer.categories.find((c) => c.slug === categorySlug);
   if (!category) return {};
   return {
-    title: `${manufacturer.name} ${category.name} | Servchip`,
-    description: `Browse ${manufacturer.name} ${category.name}. ${category.description}`,
+    title: `${manufacturer.name} ${category.name} | Buy Enterprise Chips & AI Accelerators`,
+    description: `Buy ${manufacturer.name} ${category.name}. ${category.description} Enterprise chip distributor with semiconductor procurement expertise.`,
+    keywords: [
+      `buy ${manufacturer.name} ${category.name}`,
+      `${manufacturer.name} ${category.name} supplier`,
+      "enterprise chip distributor",
+      "semiconductor procurement",
+      "AI accelerator supplier",
+    ],
     alternates: {
-      canonical: `https://servchip.com/manufacturers/${slug}/${categorySlug}`,
+      canonical: `${SITE.url}/manufacturers/${slug}/${categorySlug}`,
+    },
+    openGraph: {
+      title: `${manufacturer.name} ${category.name} | Servchip`,
+      description: `Buy ${manufacturer.name} ${category.name} from an ISO 9001 certified distributor.`,
+      images: [
+        {
+          url: OG_IMAGE,
+          width: OG_WIDTH,
+          height: OG_HEIGHT,
+          alt: `${manufacturer.name} ${category.name} — Servchip`,
+          type: "image/png",
+        },
+      ],
     },
   };
 }
@@ -39,5 +60,21 @@ export default async function Page(props: {
   if (!manufacturer) notFound();
   const category = manufacturer.categories.find((c) => c.slug === categorySlug);
   if (!category) notFound();
-  return <PageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Manufacturers", url: "/products" },
+          { name: manufacturer.name, url: `/manufacturers/${slug}` },
+          {
+            name: category.name,
+            url: `/manufacturers/${slug}/${categorySlug}`,
+          },
+        ])}
+      />
+      <PageClient />
+    </>
+  );
 }

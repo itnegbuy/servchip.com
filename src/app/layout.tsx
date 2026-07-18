@@ -6,8 +6,14 @@ import { QueryProvider } from "@/providers/QueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ColorProvider } from "@/providers/ColorProvider";
 import { Header } from "@/components/layout/Header";
-import { TopBar } from "@/components/layout/TopBar";
 import { Footer } from "@/components/layout/Footer";
+import { SITE } from "@/lib/constants";
+import { OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
+import {
+  organizationSchema,
+  localBusinessSchema,
+  websiteSchema,
+} from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,37 +28,39 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const baseUrl = "https://servchip.com";
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://servchip.com"),
+  metadataBase: new URL(SITE.url),
   title: {
-    template: "%s | Servchip — Enterprise Chip Distributor",
-    default:
-      "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers | NVIDIA H100, AMD MI300X, Intel Xeon",
+    template: `%s | ${SITE.name} — Enterprise Chip Distributor`,
+    default: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers | Buy NVIDIA H100, AMD MI300X, Intel Xeon`,
   },
   description:
-    "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators. India's trusted data center GPU distributor for AI infrastructure with global shipping.",
+    "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators. Buy AI chips, semiconductor procurement & data center hardware with global shipping.",
   keywords: [
     "enterprise chip distributor",
+    "buy AI chips",
+    "semiconductor procurement",
     "NVIDIA H100 distributor India",
     "AMD Instinct distributor",
     "data center GPU distributor",
     "AI infrastructure provider",
+    "GPU server supplier",
+    "AI accelerator distributor",
     "enterprise IT hardware supplier",
     "HPC hardware solutions",
     "server components wholesale",
+    "bulk semiconductor purchasing",
+    "HBM memory supplier",
+    "data center hardware procurement",
     "enterprise AI hardware India",
-    "data center solutions provider",
-    "high-performance computing hardware",
     "NVIDIA distributor",
     "AMD distributor",
     "Intel distributor",
     "AI accelerators",
     "data center GPUs",
-    "server processors",
     "enterprise GPU",
     "ISO 9001 certified IT distributor",
+    "enterprise chip sourcing",
   ],
   authors: [{ name: "Servchip Inc." }],
   creator: "Servchip Inc.",
@@ -60,19 +68,29 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://servchip.com",
-    siteName: "Servchip",
-    title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
+    url: SITE.url,
+    siteName: SITE.name,
+    title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
     description:
-      "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3. India's trusted data center GPU distributor with global shipping.",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
+      "ISO 9001 certified enterprise chip distributor. Buy NVIDIA H100, AMD MI300X, Intel Xeon. Semiconductor procurement & data center GPU distributor with global shipping.",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: OG_WIDTH,
+        height: OG_HEIGHT,
+        alt: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
+    title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
     description:
-      "ISO 9001 certified enterprise chip distributor. NVIDIA H100, AMD MI300X, Intel Xeon. India's trusted data center GPU distributor.",
-    images: ["/og-image.svg"],
+      "ISO 9001 certified enterprise chip distributor. Buy NVIDIA H100, AMD MI300X, Intel Xeon. Semiconductor procurement & data center hardware.",
+    images: [OG_IMAGE],
+    site: "@servchip",
+    creator: "@servchip",
   },
   robots: {
     index: true,
@@ -89,6 +107,10 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
   },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+  },
 };
 
 export default function RootLayout({
@@ -101,54 +123,15 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Servchip Inc.",
-              url: "https://servchip.com",
-              logo: "https://servchip.com/favicon.svg",
-              description:
-                "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators. Authorized distribution partner for AI, HPC & data center hardware.",
-              foundingDate: "2018",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+91 7982498712",
-                contactType: "sales",
-                email: "sales@servchip.com",
-                availableLanguage: ["English"],
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "IN",
-                addressRegion: "New Delhi",
-              },
-              sameAs: [
-                "https://www.linkedin.com/company/servchip",
-                "https://twitter.com/servchip",
-              ],
-            }),
-          }}
+          dangerouslySetInnerHTML={organizationSchema()}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Servchip",
-              url: "https://servchip.com",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate:
-                    "https://servchip.com/products?q={search_term_string}",
-                },
-                "query-input": "required name=search_term_string",
-              },
-            }),
-          }}
+          dangerouslySetInnerHTML={localBusinessSchema()}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={websiteSchema()}
         />
         <Script
           id="theme-init"

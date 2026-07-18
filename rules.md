@@ -177,3 +177,53 @@ import { isChipProduct } from "@/types";
 8. Register in `products/[slug]/page-client.tsx` routing
 9. Register in `categories/[slug]/page-client.tsx` grouping
 10. Add data file in `src/data/products/`
+
+---
+
+## 13. SEO — Mandatory for Every Page
+
+Every `page.tsx` (Server Component) **must** include:
+
+### Required metadata exports:
+
+- `title` — Include primary keywords + brand. Format: `"<Primary Keyword> | Servchip"`
+- `description` — 150-160 chars. Must include: "enterprise chip distributor", "buy AI chips", or "semiconductor procurement"
+- `keywords` — Array of 6-8 targeted long-tail keywords per page
+- `alternates.canonical` — Always use `SITE.url` from `@/lib/constants` (never hardcode URLs)
+- `openGraph.title`, `openGraph.description`, `openGraph.images` — Use `OG_IMAGE`, `OG_WIDTH`, `OG_HEIGHT` from `@/lib/seo`
+
+### Required JSON-LD schemas:
+
+Use builders from `src/lib/seo.ts` — never write raw JSON-LD strings.
+
+| Page             | Schema(s) Required                                                                            |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| Homepage         | `organizationSchema`, `localBusinessSchema`, `websiteSchema`, `faqSchema` (already in layout) |
+| Products listing | `breadcrumbSchema`                                                                            |
+| Product detail   | `breadcrumbSchema` + `productSchema`                                                          |
+| Categories       | `breadcrumbSchema`                                                                            |
+| Category detail  | `breadcrumbSchema`                                                                            |
+| Manufacturer     | `breadcrumbSchema`                                                                            |
+| Services         | `breadcrumbSchema` + `serviceSchema`                                                          |
+| Solutions        | `breadcrumbSchema` + `serviceSchema`                                                          |
+| Blog listing     | `breadcrumbSchema`                                                                            |
+| Blog post        | `breadcrumbSchema` + `articleSchema`                                                          |
+| FAQ              | `breadcrumbSchema` + `faqSchema`                                                              |
+| About            | `breadcrumbSchema`                                                                            |
+| Contact          | `breadcrumbSchema` + `contactPageSchema`                                                      |
+| RFQ              | `breadcrumbSchema` + `contactPageSchema`                                                      |
+
+### Content SEO rules:
+
+- H1 must contain primary keyword ("enterprise AI chips", "enterprise chip distributor", etc.)
+- Body copy must naturally include target keywords 2-3 times per section
+- Never use vendor-only language (e.g., "NVIDIA computing solutions") — always multi-vendor ("enterprise chip solutions")
+- FAQ answers must be 2-3 sentences minimum (thin content penalty risk)
+
+### Constants:
+
+```ts
+import { SITE } from "@/lib/constants";       // SITE.url = "https://servchip.com"
+import { OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";  // OG image constants
+import { productSchema, faqSchema, ... } from "@/lib/seo";   // JSON-LD builders
+```
