@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import NextImage from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
@@ -379,10 +380,12 @@ export function Hero3D() {
                 key={i}
                 className="flex-shrink-0 h-8 w-24 flex items-center justify-center opacity-30 hover:opacity-60 transition-opacity duration-300"
               >
-                <img
+                <NextImage
                   src={logo.src}
-                  alt={logo.label}
-                  loading="lazy"
+                  alt={`${logo.label} logo`}
+                  width={96}
+                  height={32}
+                  unoptimized
                   className="max-h-full max-w-full object-contain"
                 />
               </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { ArrowRight, Cpu } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -85,12 +86,14 @@ export function BrandSpotlight() {
                         <Cpu className="w-16 h-16 text-primary/30" />
                       </div>
                     ) : (
-                      <img
+                      <Image
                         src={row.image}
-                        alt={row.manufacturer}
-                        loading="lazy"
+                        alt={`${row.manufacturer} enterprise chips`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        unoptimized
                         onError={() => handleImageError(row.manufacturer)}
-                        className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

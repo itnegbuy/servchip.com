@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Server } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -32,11 +33,13 @@ export function ServerCard({ server, index: _index }: Props) {
         <div className="bg-surface border border-primary/40 rounded-xl p-5 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
           <div className="w-full h-48 bg-gradient-to-br from-surface-2 to-bg-dark rounded-lg border border-border mb-4 flex items-center justify-center overflow-hidden">
             {server.images && server.images.length > 0 ? (
-              <img
+              <Image
                 src={server.images[0]}
                 alt={server.name}
-                className="w-full h-full object-cover"
-                loading="lazy"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                unoptimized
+                className="object-cover"
               />
             ) : (
               <Server className="w-16 h-16 text-primary/30" />

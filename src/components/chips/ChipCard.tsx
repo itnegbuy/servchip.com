@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Tilt3D } from "@/components/ui/Tilt3D";
@@ -36,11 +37,13 @@ export const ChipCard = React.memo(function ChipCard({
           {/* Chip visual - Product image or Processor SVG fallback */}
           <div className="w-full h-48 bg-gradient-to-br from-surface-2 to-bg-dark rounded-lg border border-border mb-4 flex items-center justify-center overflow-hidden">
             {chip.images && chip.images.length > 0 ? (
-              <img
+              <Image
                 src={chip.images[0]}
                 alt={chip.name}
-                className="w-full h-full object-cover"
-                loading="lazy"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                unoptimized
+                className="object-cover"
               />
             ) : (
               <svg viewBox="0 0 200 200" className="w-32 h-32 drop-shadow-lg">
