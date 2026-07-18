@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Brain, Zap, Server, Monitor, Radio } from "lucide-react";
@@ -114,7 +114,10 @@ function ProductCard({
 
 export function WorkloadSolutions() {
   const [activeTab, setActiveTab] = useState(WORKLOADS[0].id);
-  const products = getProductsByUseCase(activeTab).slice(0, 6);
+  const products = useMemo(
+    () => getProductsByUseCase(activeTab).slice(0, 6),
+    [activeTab],
+  );
 
   return (
     <section className="py-20 bg-bg-dark">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { Star, Quote } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -20,7 +21,7 @@ export function SuccessStories() {
         />
 
         <div className="grid md:grid-cols-2 gap-6">
-          {TESTIMONIALS.map((t, index) => (
+          {TESTIMONIALS.map((t) => (
             <div
               key={t.author.name}
               className="bg-surface border border-border rounded-xl p-6 relative"
@@ -36,10 +37,13 @@ export function SuccessStories() {
               </p>
               <div className="flex items-center gap-3">
                 {t.author.image && !failedAvatars.has(t.author.name) ? (
-                  <img
+                  <Image
                     src={t.author.image}
                     alt={t.author.name}
+                    width={40}
+                    height={40}
                     loading="lazy"
+                    unoptimized
                     onError={() =>
                       setFailedAvatars((prev) =>
                         new Set(prev).add(t.author.name),

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React from "react";
 import Link from "next/link";
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { MANUFACTURER_COLORS } from "@/data/manufacturer-colors";
@@ -16,7 +16,13 @@ const colorVarName = (name: string) => {
   return color;
 };
 
-function LogoItem({ name, slug }: { name: string; slug: string }) {
+const LogoItem = React.memo(function LogoItem({
+  name,
+  slug,
+}: {
+  name: string;
+  slug: string;
+}) {
   const color = colorVarName(name);
 
   return (
@@ -32,7 +38,7 @@ function LogoItem({ name, slug }: { name: string; slug: string }) {
       </div>
     </Link>
   );
-}
+});
 
 export function ClientLogos() {
   const manufacturers = DISPLAY_MANUFACTURERS;
@@ -52,18 +58,15 @@ export function ClientLogos() {
       </div>
 
       <div className="relative">
-        {/* Gradient fades on edges */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-surface to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-surface to-transparent z-10 pointer-events-none" />
 
-        {/* Row 1 - scroll left */}
         <div className="flex mb-4 animate-scroll-left hover:[animation-play-state:paused]">
           {[...row1, ...row1].map((m, i) => (
             <LogoItem key={`${m.id}-${i}`} name={m.name} slug={m.slug} />
           ))}
         </div>
 
-        {/* Row 2 - scroll right */}
         <div className="flex animate-scroll-right hover:[animation-play-state:paused]">
           {[...row2, ...row2].map((m, i) => (
             <LogoItem key={`${m.id}-${i}`} name={m.name} slug={m.slug} />

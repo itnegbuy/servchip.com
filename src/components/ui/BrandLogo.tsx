@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import { MANUFACTURER_COLORS } from "@/data/manufacturer-colors";
 
 interface BrandLogoProps {
@@ -53,11 +52,16 @@ export function BrandLogo({
   const logoFile = LOGO_MAP[name];
 
   if (logoFile) {
+    const isPng = logoFile.endsWith(".png");
     return (
-      <img
+      <Image
         src={`/images/logos/${logoFile}`}
         alt={`${name} logo`}
+        width={32}
+        height={32}
         className={`${className} object-contain`}
+        unoptimized={isPng}
+        loading="lazy"
       />
     );
   }

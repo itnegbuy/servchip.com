@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -423,7 +423,45 @@ export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const prevScroll = useRef(0);
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navContainerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  const clearMenuTimer = useCallback(() => {
+    if (menuCloseTimer.current) {
+      clearTimeout(menuCloseTimer.current);
+      menuCloseTimer.current = null;
+    }
+  }, []);
+
+  const openMenu = useCallback(
+    (label: string) => {
+      clearMenuTimer();
+      setActiveMenu(label);
+    },
+    [clearMenuTimer],
+  );
+
+  const closeMenuWithDelay = useCallback(
+    (delay = 250) => {
+      clearMenuTimer();
+      menuCloseTimer.current = setTimeout(() => {
+        setActiveMenu(null);
+        menuCloseTimer.current = null;
+      }, delay);
+    },
+    [clearMenuTimer],
+  );
+
+  const toggleMenu = useCallback(
+    (label: string) => {
+      if (activeMenu === label) {
+        setActiveMenu(null);
+      } else {
+        openMenu(label);
+      }
+    },
+    [activeMenu, openMenu],
+  );
 
   useEffect(() => {
     function onScroll() {
@@ -462,6 +500,20 @@ export function Header() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [activeMenu]);
 
+  useEffect(() => {
+    if (!activeMenu) return;
+    function onClickOutside(e: MouseEvent) {
+      if (
+        navContainerRef.current &&
+        !navContainerRef.current.contains(e.target as Node)
+      ) {
+        setActiveMenu(null);
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, [activeMenu]);
+
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
@@ -489,13 +541,9 @@ export function Header() {
 
           {/* Desktop Nav */}
           <div
+            ref={navContainerRef}
             className="hidden lg:block flex-1 relative"
-            onMouseLeave={() => {
-              menuCloseTimer.current = setTimeout(
-                () => setActiveMenu(null),
-                100,
-              );
-            }}
+            onMouseLeave={() => closeMenuWithDelay(250)}
           >
             <nav className="flex items-center justify-center gap-0.5">
               <NavLink
@@ -507,13 +555,10 @@ export function Header() {
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => {
-                    if (menuCloseTimer.current)
-                      clearTimeout(menuCloseTimer.current);
-                    setActiveMenu(item.label);
-                  }}
+                  onMouseEnter={() => openMenu(item.label)}
                 >
                   <button
+                    onClick={() => toggleMenu(item.label)}
                     className={cn(
                       "relative flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 group",
                       activeMenu === item.label
