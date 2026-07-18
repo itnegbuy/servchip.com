@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { useState, useCallback } from "react";
 import {
   ArrowLeft,
   Clock,
@@ -14,6 +15,9 @@ import {
   ArrowRight,
   Lightbulb,
   Package,
+  Share2,
+  Link as LinkIcon,
+  MessageCircle,
 } from "lucide-react";
 import type {
   ChipProduct,
@@ -46,6 +50,80 @@ const CATEGORY_BADGE: Record<string, "green" | "cyan" | "purple" | "amber"> = {
   guides: "amber",
   "case-studies": "green",
 };
+
+function ShareButtons({ title }: { title: string }) {
+  const [copied, setCopied] = useState(false);
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const encodedUrl = encodeURIComponent(shareUrl);
+  const encodedTitle = encodeURIComponent(title);
+
+  const copyLink = useCallback(() => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }, [shareUrl]);
+
+  const buttons = [
+    {
+      label: "Twitter",
+      href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+      color: "hover:bg-[#1DA1F2]/10 hover:text-[#1DA1F2]",
+    },
+    {
+      label: "LinkedIn",
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      color: "hover:bg-[#0A66C2]/10 hover:text-[#0A66C2]",
+    },
+    {
+      label: "Facebook",
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      color: "hover:bg-[#1877F2]/10 hover:text-[#1877F2]",
+    },
+    {
+      label: "WhatsApp",
+      href: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
+      color: "hover:bg-[#25D366]/10 hover:text-[#25D366]",
+    },
+  ];
+
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <div className="flex items-center gap-2 text-text-muted mr-1">
+        <Share2 className="w-4 h-4 text-primary" />
+        <span className="text-xs font-medium">Share</span>
+      </div>
+      {buttons.map((btn) => (
+        <a
+          key={btn.label}
+          href={btn.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted transition-colors duration-200 ${btn.color}`}
+        >
+          {btn.label}
+        </a>
+      ))}
+      <button
+        onClick={copyLink}
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted transition-colors duration-200 hover:bg-primary/10 hover:text-primary"
+      >
+        {copied ? (
+          <>
+            <span className="w-3.5 h-3.5 text-green-500">&#10003;</span>
+            Copied
+          </>
+        ) : (
+          <>
+            <LinkIcon className="w-3.5 h-3.5" />
+            Copy Link
+          </>
+        )}
+      </button>
+    </div>
+  );
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -219,6 +297,10 @@ export default function BlogPostPage() {
               </span>
             ))}
           </div>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="mt-6">
+          <ShareButtons title={post.title} />
         </motion.div>
 
         {relatedProducts.length > 0 && (
