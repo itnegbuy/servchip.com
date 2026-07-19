@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MessageCircle, Mail, X } from "lucide-react";
 
-const DISMISS_KEY = "servchip-float-contact-closed";
-
 const WHATSAPP_NUMBER = "917982498712";
 const PHONE_NUMBER = "+917982498712";
 const EMAIL = "sales@servchip.com";
@@ -13,18 +11,11 @@ const EMAIL = "sales@servchip.com";
 export function FloatingContactWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [showPulse, setShowPulse] = useState(false);
-  const [dismissed, setDismissed] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return !!localStorage.getItem(DISMISS_KEY);
-  });
 
   useEffect(() => {
-    if (dismissed) return;
     const timer = setTimeout(() => setShowPulse(true), 3000);
     return () => clearTimeout(timer);
-  }, [dismissed]);
-
-  if (dismissed) return null;
+  }, []);
 
   return (
     <div className="fixed bottom-6 right-6 z-[9997] flex flex-col items-end gap-3">
@@ -88,18 +79,6 @@ export function FloatingContactWidget() {
                   <p className="text-[10px] opacity-70">{EMAIL}</p>
                 </div>
               </a>
-            </div>
-
-            <div className="mt-3 pt-2 border-t border-border flex items-center justify-center">
-              <button
-                onClick={() => {
-                  localStorage.setItem(DISMISS_KEY, "1");
-                  setDismissed(true);
-                }}
-                className="text-[10px] text-text-dim hover:text-text-muted transition-transform duration-200"
-              >
-                Don&apos;t show again
-              </button>
             </div>
           </motion.div>
         )}
