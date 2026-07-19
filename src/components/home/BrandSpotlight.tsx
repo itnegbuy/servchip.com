@@ -85,32 +85,34 @@ export function BrandSpotlight() {
                         : "polygon(40px 0, 100% 0, 100% 100%, 0 100%)",
                     }}
                   >
-                    {imgFailed ? (
-                      <div className="w-full h-[300px] bg-gradient-to-br from-bg-dark to-surface-2 flex items-center justify-center">
-                        <Cpu className="w-16 h-16 text-primary/30" />
+                    <div className="relative w-full h-[300px] lg:h-[400px]">
+                      {imgFailed ? (
+                        <div className="w-full h-full bg-gradient-to-br from-bg-dark to-surface-2 flex items-center justify-center rounded-2xl">
+                          <Cpu className="w-16 h-16 text-primary/30" />
+                        </div>
+                      ) : (
+                        <Image
+                          src={row.image}
+                          alt={`${row.manufacturer} enterprise chips`}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          unoptimized
+                          onError={() => handleImageError(row.manufacturer)}
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute bottom-4 left-4">
+                        <span
+                          className="text-xs font-bold px-3 py-1 rounded-full"
+                          style={{
+                            backgroundColor: `${color}22`,
+                            color: textColor,
+                          }}
+                        >
+                          {row.manufacturer}
+                        </span>
                       </div>
-                    ) : (
-                      <Image
-                        src={row.image}
-                        alt={`${row.manufacturer} enterprise chips`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        unoptimized
-                        onError={() => handleImageError(row.manufacturer)}
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <span
-                        className="text-xs font-bold px-3 py-1 rounded-full"
-                        style={{
-                          backgroundColor: `${color}22`,
-                          color: textColor,
-                        }}
-                      >
-                        {row.manufacturer}
-                      </span>
                     </div>
                   </div>
                 </div>

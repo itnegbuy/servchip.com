@@ -10,10 +10,10 @@ const ExitIntentPopup = dynamic(
   { ssr: false },
 );
 
-const StickyBottomCTA = dynamic(
+const FloatingContactWidget = dynamic(
   () =>
-    import("@/components/lead-gen/StickyBottomCTA").then(
-      (m) => m.StickyBottomCTA,
+    import("@/components/lead-gen/FloatingContactWidget").then(
+      (m) => m.FloatingContactWidget,
     ),
   { ssr: false },
 );
@@ -22,7 +22,7 @@ export function LeadGenProviders() {
   return (
     <>
       <ExitIntentPopup />
-      <StickyBottomCTA />
+      <FloatingContactWidget />
     </>
   );
 }
