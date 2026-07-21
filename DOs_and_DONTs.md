@@ -128,12 +128,15 @@
 
 ## 9. Git & Version Control
 
+> Is project mein **feature branches nahi** — sab kuch `main` branch par direct commit hota hai.
+
 | #   | DO                                                                      | DON'T                                             |
 | --- | ----------------------------------------------------------------------- | ------------------------------------------------- |
 | 1   | Small, atomic commits karo — ek commit = ek logical change              | Ek commit me 20 files change mat karo             |
 | 2   | Descriptive commit messages — "feat: add login", "fix: broken nav link" | Vague messages "fixed stuff", "changes" mat likho |
 | 3   | `.gitignore` properly set karo — `node_modules/`, `.next/`, `.env`      | Build artifacts / node_modules commit mat karo    |
-| 4   | Branch naming convention follow karo — `feat/`, `fix/`, `chore/`        | Random branch names like `my-branch` mat use karo |
+| 4   | Commit se pehle `git status` + `git diff` dekh lo                       | `git add .` blindly mat karo                      |
+| 5   | Husky / lint-staged hai to `next build` local me test karo pehle        | Broken code `main` par push mat karo              |
 
 ---
 
