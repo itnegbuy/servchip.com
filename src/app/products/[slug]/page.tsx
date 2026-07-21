@@ -102,7 +102,7 @@ export default async function Page(props: {
           status: product.status,
         })}
       />
-      <PageClient />
+      <PageClient product={product} />
     </>
   );
 }

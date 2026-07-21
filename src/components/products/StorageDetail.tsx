@@ -78,7 +78,7 @@ export function StorageDetail() {
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="space-y-12"
         >

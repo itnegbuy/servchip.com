@@ -1,12 +1,7 @@
 ﻿"use client";
 
+import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
-import { ALL_PRODUCTS } from "@/data/products";
-import { ChipDetail } from "@/components/products/ChipDetail";
-import { ServerDetail } from "@/components/products/ServerDetail";
-import { NetworkingDetail } from "@/components/products/NetworkingDetail";
-import { MemoryDetail } from "@/components/products/MemoryDetail";
-import { StorageDetail } from "@/components/products/StorageDetail";
 import {
   isChipProduct,
   isServerProduct,
@@ -14,12 +9,40 @@ import {
   isMemoryProduct,
   isStorageProduct,
 } from "@/types";
+import type { AnyProduct } from "@/types";
 
-export default function ProductDetailPage() {
-  const { slug } = useParams<{ slug: string }>();
-  const product = ALL_PRODUCTS.find((p) => p.slug === slug);
-  if (!product) return <ChipDetail />;
+const ChipDetail = dynamic(
+  () => import("@/components/products/ChipDetail").then((m) => m.ChipDetail),
+  { ssr: false },
+);
+const ServerDetail = dynamic(
+  () =>
+    import("@/components/products/ServerDetail").then((m) => m.ServerDetail),
+  { ssr: false },
+);
+const NetworkingDetail = dynamic(
+  () =>
+    import("@/components/products/NetworkingDetail").then(
+      (m) => m.NetworkingDetail,
+    ),
+  { ssr: false },
+);
+const MemoryDetail = dynamic(
+  () =>
+    import("@/components/products/MemoryDetail").then((m) => m.MemoryDetail),
+  { ssr: false },
+);
+const StorageDetail = dynamic(
+  () =>
+    import("@/components/products/StorageDetail").then((m) => m.StorageDetail),
+  { ssr: false },
+);
 
+export default function ProductDetailPage({
+  product,
+}: {
+  product: AnyProduct;
+}) {
   if (isChipProduct(product)) return <ChipDetail />;
   if (isServerProduct(product)) return <ServerDetail />;
   if (isNetworkingProduct(product)) return <NetworkingDetail />;
