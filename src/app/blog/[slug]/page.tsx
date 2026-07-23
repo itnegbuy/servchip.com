@@ -5,6 +5,7 @@ import { SITE } from "@/lib/constants";
 import {
   articleSchema,
   breadcrumbSchema,
+  faqSchema,
   OG_IMAGE,
   OG_WIDTH,
   OG_HEIGHT,
@@ -80,6 +81,23 @@ export default async function Page(props: {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) notFound();
 
+  const faqSection = post.sections?.find((s) =>
+    s.heading.toLowerCase().includes("frequently asked"),
+  );
+  const faqItems: { question: string; answer: string }[] | undefined =
+    faqSection
+      ? faqSection.paragraphs
+          .map((p) => {
+            const idx = p.indexOf("? ");
+            if (idx === -1) return null;
+            return {
+              question: p.substring(0, idx + 1),
+              answer: p.substring(idx + 2),
+            };
+          })
+          .filter((x): x is NonNullable<typeof x> => x !== null)
+      : undefined;
+
   return (
     <>
       <script
@@ -103,6 +121,12 @@ export default async function Page(props: {
           category: post.category.name,
         })}
       />
+      {faqItems && faqItems.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={faqSchema(faqItems)}
+        />
+      )}
       <PageClient />
     </>
   );

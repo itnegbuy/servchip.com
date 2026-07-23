@@ -19,7 +19,7 @@ export default function ManufacturerCategoryPage() {
 
   if (!manufacturer || !category) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] flex items-center justify-center">
+      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-text mb-2">
             Category Not Found
@@ -35,11 +35,13 @@ export default function ManufacturerCategoryPage() {
   const allProducts = getProductsByManufacturer(manufacturer.id);
   const allChipIds = category.subcategories.flatMap((s) => s.chipIds);
   const categoryProducts = allProducts.filter((p) =>
-    allChipIds.length > 0 ? allChipIds.includes(p.id) : p.categoryId === category.id
+    allChipIds.length > 0
+      ? allChipIds.includes(p.id)
+      : p.categoryId === category.id,
   );
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
+    <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-8">
           <Link

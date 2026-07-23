@@ -45,7 +45,7 @@ const CONTACT_METHODS = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
+    <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <h1 className="sr-only">Enterprise Chip Pricing &amp; Availability</h1>
         <SectionHeading

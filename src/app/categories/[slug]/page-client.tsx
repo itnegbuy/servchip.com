@@ -90,7 +90,7 @@ export default function CategoryDetailPage() {
 
   if (!category) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
+      <div className="min-h-screen bg-bg-dark">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -118,7 +118,7 @@ export default function CategoryDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
+    <div className="min-h-screen bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4 pb-20">
         {/* Breadcrumb */}
         <motion.nav

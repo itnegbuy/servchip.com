@@ -129,7 +129,7 @@ export function ChipDetail() {
 
   if (!chip) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-dark pb-20 flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -158,7 +158,7 @@ export function ChipDetail() {
   const status = statusStyles[chip.status];
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
+    <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           variants={containerVariants}

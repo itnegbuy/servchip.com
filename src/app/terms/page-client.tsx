@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
+    <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4 py-16">
         <h1 className="sr-only">Terms of Service</h1>
         <SectionHeading

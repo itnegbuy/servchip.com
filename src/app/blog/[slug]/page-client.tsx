@@ -153,7 +153,7 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] flex items-center justify-center">
+      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
         <div className="text-center px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -180,7 +180,7 @@ export default function BlogPostPage() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
+    <div className="min-h-screen bg-bg-dark">
       <motion.div
         className="max-w-4xl mx-auto px-4 pb-20"
         variants={containerVariants}
@@ -236,11 +236,31 @@ export default function BlogPostPage() {
                 <h2 className="text-xl lg:text-2xl font-bold text-text mb-4">
                   {section.heading}
                 </h2>
-                {section.paragraphs.map((p, i) => (
-                  <p key={i} className="text-text-muted leading-relaxed mb-4">
-                    {p}
-                  </p>
-                ))}
+                {section.heading.toLowerCase().includes("frequently asked")
+                  ? section.paragraphs.map((p, i) => {
+                      const idx = p.indexOf("? ");
+                      const question =
+                        idx !== -1 ? p.substring(0, idx + 1) : "";
+                      const answer = idx !== -1 ? p.substring(idx + 2) : p;
+                      return (
+                        <div key={i} className="mb-6 last:mb-0">
+                          <h3 className="text-base font-semibold text-text mb-2">
+                            {question}
+                          </h3>
+                          <p className="text-text-muted leading-relaxed">
+                            {answer}
+                          </p>
+                        </div>
+                      );
+                    })
+                  : section.paragraphs.map((p, i) => (
+                      <p
+                        key={i}
+                        className="text-text-muted leading-relaxed mb-4"
+                      >
+                        {p}
+                      </p>
+                    ))}
                 {section.bullets && (
                   <ul className="space-y-2 mt-4">
                     {section.bullets.map((b, i) => (

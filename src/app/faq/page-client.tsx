@@ -11,7 +11,7 @@ interface FAQItem {
 
 export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px]">
+    <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4">
         <h1 className="sr-only">Frequently Asked Questions</h1>
         <SectionHeading

@@ -86,7 +86,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com https://i.pravatar.cc https://res.cloudinary.com data: blob:; font-src 'self' data:; connect-src 'self' ws: https://res.cloudinary.com; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; require-trusted-types-for 'script'",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com https://i.pravatar.cc https://res.cloudinary.com data: blob:; font-src 'self' data:; connect-src 'self' ws: https://res.cloudinary.com; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'",
           },
         ],
       },

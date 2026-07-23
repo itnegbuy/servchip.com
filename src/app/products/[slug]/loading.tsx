@@ -1,6 +1,6 @@
 export default function ProductDetailLoading() {
   return (
-    <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
+    <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4 space-y-12">
         <div className="flex items-center gap-2 text-sm animate-pulse">
           <div className="h-4 w-16 bg-surface-2 rounded" />

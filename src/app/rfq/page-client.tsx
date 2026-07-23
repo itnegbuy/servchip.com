@@ -63,7 +63,7 @@ export default function RFQPage() {
 
   if (formState === "success") {
     return (
-      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] pb-20">
+      <div className="min-h-screen bg-bg-dark pb-20">
         <div className="max-w-lg mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

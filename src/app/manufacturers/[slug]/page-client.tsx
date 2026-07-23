@@ -57,7 +57,7 @@ export default function ManufacturerPage() {
 
   if (!manufacturer) {
     return (
-      <div className="min-h-screen bg-bg-dark pt-[72px] lg:pt-[104px] flex items-center justify-center">
+      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-text mb-2">
             Manufacturer Not Found
