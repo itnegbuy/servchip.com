@@ -180,7 +180,7 @@ export default function RootLayout({
           <ColorProvider>
             <QueryProvider>
               <Header />
-              <main className="pt-[72px] lg:pt-[104px]">{children}</main>
+              <main id="main-content">{children}</main>
               <Footer />
               <LeadGenProviders />
               <GAClient />

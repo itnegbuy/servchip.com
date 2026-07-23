@@ -479,6 +479,10 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    document.documentElement.classList.toggle("header-hidden", hidden);
+  }, [hidden]);
+
+  useEffect(() => {
     const id = setTimeout(() => setMobileOpen(false), 0);
     return () => clearTimeout(id);
   }, [pathname]);

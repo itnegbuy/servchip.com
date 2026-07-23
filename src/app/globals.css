@@ -416,6 +416,29 @@ body {
   background: color-mix(in srgb, var(--primary) 55%, transparent);
 }
 
+/* ============================================================
+   HEADER OFFSET (dynamic — hides on scroll down)
+   ============================================================ */
+#main-content {
+  padding-top: 72px;
+  transition: padding-top 0.3s ease;
+}
+@media (min-width: 1024px) {
+  #main-content {
+    padding-top: 104px;
+  }
+}
+html.header-hidden #main-content {
+  padding-top: 0px;
+}
+
+[data-sticky-sidebar] {
+  transition: top 0.3s ease;
+}
+html.header-hidden [data-sticky-sidebar] {
+  top: 16px !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
